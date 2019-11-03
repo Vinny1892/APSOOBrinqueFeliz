@@ -11,7 +11,7 @@ import javafx.stage.Stage;
  *
  * @author kaio
  */
-public class NewFXMain extends Application {
+public class FXMain extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
