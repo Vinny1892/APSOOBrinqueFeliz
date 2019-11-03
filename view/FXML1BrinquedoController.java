@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author kaio
  */
-public class FXML10FuncionarioController implements Initializable {
+public class FXML1BrinquedoController implements Initializable {
 
     /**
      * Initializes the controller class.

@@ -3,28 +3,19 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="588.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXML1AdministradorController">
+<AnchorPane id="AnchorPane" prefHeight="335.0" prefWidth="362.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXML1AdministradorController">
    <children>
-      <Button layoutX="22.0" layoutY="67.0" mnemonicParsing="false" text="informaDados" />
-      <Button layoutX="22.0" layoutY="120.0" mnemonicParsing="false" text="Corrigir Estoque" />
-      <Button layoutX="22.0" layoutY="182.0" mnemonicParsing="false" text="Delegar Permissao" />
-      <Button layoutX="22.0" layoutY="254.0" mnemonicParsing="false" text="Atualizar Fornecedor" />
-      <Button layoutX="22.0" layoutY="319.0" mnemonicParsing="false" text="Remover Fornecedor" />
-      <Button layoutX="22.0" layoutY="22.0" mnemonicParsing="false" text="Cadastra Fornecedor" />
-      <Button layoutX="376.0" layoutY="28.0" mnemonicParsing="false" text="Cadastrar Fornecedor" />
-      <Button layoutX="386.0" layoutY="80.0" mnemonicParsing="false" text="Busca Fornecedor" />
-      <Button layoutX="314.0" layoutY="120.0" mnemonicParsing="false" text="Atualizaçao Funcionario" />
-      <Button layoutX="386.0" layoutY="156.0" mnemonicParsing="false" text="Remove Funcionario" />
-      <Button layoutX="376.0" layoutY="208.0" mnemonicParsing="false" text="Cadastra Funcionario" />
-      <Button layoutX="386.0" layoutY="306.0" mnemonicParsing="false" text="Cadastra Categoria" />
-      <Button layoutX="386.0" layoutY="260.0" mnemonicParsing="false" text="Busca Funcionario" />
-      <Button layoutX="376.0" layoutY="351.0" mnemonicParsing="false" text="Remove Categoria" />
-      <Button layoutX="62.0" layoutY="414.0" mnemonicParsing="false" text="Atualizada Categoria" />
-      <Button layoutX="69.0" layoutY="455.0" mnemonicParsing="false" text="Busca Categoria" />
-      <Button layoutX="77.0" layoutY="496.0" mnemonicParsing="false" text="Revogar Permissao" />
-      <Button layoutX="68.0" layoutY="548.0" mnemonicParsing="false" text="Cadastra Brinquedo" />
-      <Button layoutX="408.0" layoutY="401.0" mnemonicParsing="false" text="Remove Brinquedo" />
-      <Button layoutX="408.0" layoutY="455.0" mnemonicParsing="false" text="Atualizada Brinquedo" />
-      <Button layoutX="449.0" layoutY="502.0" mnemonicParsing="false" text="Busca Brinquedo" />
+      <Button layoutX="188.0" layoutY="221.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Estoque" />
+      <Button layoutX="35.0" layoutY="77.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Fornecedores" />
+      <Button layoutX="186.0" layoutY="128.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Funcionarios" />
+      <Button layoutX="35.0" layoutY="176.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Categorias" />
+      <Button layoutX="35.0" layoutY="233.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Brinquedos" />
+      <Button layoutX="35.0" layoutY="279.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Vendas" />
+      <Button layoutX="186.0" layoutY="32.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Clientes" />
+      <Button layoutX="186.0" layoutY="80.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Catalogo" />
+      <Button layoutX="35.0" layoutY="126.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Fabricantes" />
+      <Button layoutX="186.0" layoutY="178.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Comprovantes" />
+      <Button layoutX="35.0" layoutY="30.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Relatorios" />
+      <Button layoutX="188.0" layoutY="279.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Backup" />
    </children>
 </AnchorPane>

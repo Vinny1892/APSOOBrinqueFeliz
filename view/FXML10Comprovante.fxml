@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="view.FXML11ComprovanteController">
+   <children>
+      <ImageView fitHeight="82.0" fitWidth="150.0" layoutX="514.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/img/selo-veridico.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="279.0" layoutY="8.0" text="Comprovante">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="58.0" text="Cliente:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="17.0" layoutY="13.0" text="Vendedor:">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="11.0" layoutY="36.0" text="Valor total:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableView" layoutY="86.0" prefHeight="314.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="columnProduto" prefWidth="210.0" text="Produto" />
+          <TableColumn fx:id="columnValor" prefWidth="89.0" text="Valor" />
+            <TableColumn fx:id="columnQuantidade" prefWidth="116.0" text="Quantidade" />
+            <TableColumn fx:id="columnValorSubProduto" prefWidth="184.0" text="valor sub produto" />
+        </columns>
+      </TableView>
+      <Label fx:id="labelVendedor" layoutX="133.0" layoutY="13.0" text="Label" />
+      <Label fx:id="labelCliente" layoutX="133.0" layoutY="58.0" text="Label" />
+      <Label fx:id="labelValorTotal" layoutX="133.0" layoutY="36.0" text="Label" />
+      <Button fx:id="buttonVoltar" layoutX="271.0" layoutY="48.0" mnemonicParsing="false" onAction="#onActionVoltar" prefHeight="26.0" prefWidth="83.0" text="Voltar" />
+      <Button fx:id="buttonImprimir" layoutX="362.0" layoutY="48.0" mnemonicParsing="false" onAction="#onActionButtonImprimir" prefHeight="26.0" prefWidth="83.0" text="imprimir" />
+   </children>
+</AnchorPane>

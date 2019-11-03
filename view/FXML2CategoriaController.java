@@ -1,13 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -24,4 +25,49 @@ public class FXML2CategoriaController implements Initializable {
         // TODO
     }    
     
+     @FXML
+    private Button buttonCria;
+
+    @FXML
+    private Button buttonEditar;
+
+    @FXML
+    private Button buttonExcluir;
+
+    @FXML
+    private MenuButton menuButtonCategorias;
+
+    @FXML
+    private TextField textFieldNome;
+
+    @FXML
+    private TextArea textAreaDescricao;
+
+    @FXML
+    private Button buttonSalvar;
+
+    @FXML
+    void onActionButtonCria(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionButtonEditar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionButtonExcluir(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionButtonSalvar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionMenuButtonCategorias(ActionEvent event) {
+
+    }
 }
