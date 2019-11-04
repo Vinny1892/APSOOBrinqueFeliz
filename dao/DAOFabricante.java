@@ -19,7 +19,17 @@ public class DAOFabricante extends GenericDAO_CRUD {
 
     @Override
     public void salvar(Object object) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            ModelFabricante fabricante = (ModelFabricante) object;
+            String insert = "INSERT INTO fabricante (nome,endereco,cpf,telefone,id_cartao_fidelidade) VALUES(?,?,?,?,?) ";
+            save(insert, fabricante.getNome());
+            System.out.println("Metodo salvar DaoFabricante realizado");
+        } catch (MySQLIntegrityConstraintViolationException e) {
+            JOptionPane.showMessageDialog(null, "Fabricante Ja cadastrado no BD");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null, "Erro ao inserir Fabricante");
+        }
     }
 
     @Override

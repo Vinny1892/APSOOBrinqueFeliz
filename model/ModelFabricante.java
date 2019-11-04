@@ -12,24 +12,45 @@ public class ModelFabricante implements CRUD{
     
     //atributos
     DAOFabricante daoFabricante = new DAOFabricante();
+    private String nome;
     
     //construtor
-    
-    //getters setters
-
-    //acesso DAO
-    @Override
-    public void salvar(Object object) throws SQLException {
-        daoFabricante.salvar(object);
+    public ModelFabricante(String nome) {
+        this.nome = nome;
     }
 
+    public ModelFabricante() {
+    }
+
+    //getters setters
+    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
+    //acesso DAO
     @Override
-    public void atualizar(Object object) throws SQLException {
+    public void salvar() throws SQLException {
+        daoFabricante.salvar(this);
+    }
+
+
+    @Override
+    public List<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deletar(String algumaCoisa) throws SQLException {
+    public void atualizar() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deletar() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -38,10 +59,6 @@ public class ModelFabricante implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public List<Object> getAll() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     
 }
