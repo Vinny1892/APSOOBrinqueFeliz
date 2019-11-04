@@ -9,12 +9,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import model.ModelFabricante;
 
 /**
  *
  * @author kaio
  */
-public class DAOFabricante implements CRUD{
+public class DAOFabricante extends GenericDAO_CRUD {
 
     @Override
     public void salvar(Object object) throws SQLException {
@@ -36,22 +37,22 @@ public class DAOFabricante implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-       /*
+    /*
         Metodo utilizado para pegar todos os fornecedores na tabela/entidade fornecedor,
         e retorna um ArrayList deste objeto GestaoFornecedor.
      */
     @Override
     public ArrayList<Object> getAll() throws SQLException {
-        ArrayList<Object> fornecedores = new ArrayList<>();
-        PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM fornecedor");
+        ArrayList<Object> fabricantes = new ArrayList<>();
+        PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM fabricante");
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-            GestaoFornecedor fornecedor = new GestaoFornecedor(rs.getInt("id_fornecedor"), rs.getString("nome"), rs.getString("cnpj"), rs.getString("endereco"), rs.getBoolean("recorrente"), rs.getInt("taxa_desconto"));
-            fornecedores.add(fornecedor);
+            ModelFabricante fabricante = new ModelFabricante(rs.getInt("id_fabricante"), rs.getString("nome"), rs.getString("cnpj"), rs.getString("endereco"), rs.getBoolean("recorrente"), rs.getInt("taxa_desconto"));
+            fabricantes.add(fabricante);
         }
         rs.close();
         stmt.close();
-        return fornecedores;
+        return fabricantes;
     }
-    
+
 }
