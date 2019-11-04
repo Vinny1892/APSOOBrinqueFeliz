@@ -7,7 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-
+import static controller.ControllerLogin.whoUser;
+import javafx.scene.control.Alert;
 
 /**
  * FXML Controller class
@@ -22,9 +23,9 @@ public class FXML0loginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-        @FXML
+    }
+
+    @FXML
     private Button buttonLogar;
 
     @FXML
@@ -32,10 +33,20 @@ public class FXML0loginController implements Initializable {
 
     @FXML
     private TextField textFieldPassword;
-    
-     @FXML
-    void onActionButtonLogar(ActionEvent event) {
 
+    @FXML
+    void onActionButtonLogar(ActionEvent event) {
+        String user = textFieldUser.getText();
+        String password = textFieldPassword.getText();
+        if (whoUser(user, password) != null) {
+            //chama proxima tela
+        } else {
+            Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
+            dialogoInfo.setTitle("Login");
+            dialogoInfo.setHeaderText("Login negado");
+            dialogoInfo.setContentText("Login ou senha incorreto(s), não foram encontrado.");
+            dialogoInfo.showAndWait();
+        }
     }
-    
+
 }
