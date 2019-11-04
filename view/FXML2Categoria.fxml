@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="349.0" prefWidth="385.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="view.FXML2CategoriaController">
+   <children>
+      <Button fx:id="buttonCria" layoutX="133.0" layoutY="14.0" mnemonicParsing="false" onAction="#onActionButtonCria" prefHeight="26.0" prefWidth="62.0" text="Cria" />
+      <Button fx:id="buttonEditar" layoutX="215.0" layoutY="14.0" mnemonicParsing="false" onAction="#onActionButtonEditar" prefHeight="26.0" prefWidth="62.0" text="Editar" />
+      <Button fx:id="buttonExcluir" layoutX="292.0" layoutY="14.0" mnemonicParsing="false" onAction="#onActionButtonExcluir" text="Excluir" />
+      <MenuButton fx:id="menuButtonCategorias" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onActionMenuButtonCategorias" text="Categorias">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </MenuButton>
+      <TextField fx:id="textFieldNome" layoutX="96.0" layoutY="49.0" prefHeight="26.0" prefWidth="261.0" />
+      <Label layoutX="48.0" layoutY="54.0" text="Nome" />
+      <TextArea fx:id="textAreaDescricao" layoutX="98.0" layoutY="91.0" prefHeight="214.0" prefWidth="261.0" />
+      <Label layoutX="23.0" layoutY="190.0" text="Descriçao" />
+      <Button fx:id="buttonSalvar" layoutX="139.0" layoutY="312.0" mnemonicParsing="false" onAction="#onActionButtonSalvar" prefHeight="26.0" prefWidth="107.0" text="Salvar" />
+   </children>
+</AnchorPane>
