@@ -34,8 +34,8 @@
             <TableColumn prefWidth="241.0" text="Descriçao" />
         </columns>
       </TableView>
-      <Button layoutX="232.0" layoutY="407.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Criar" />
-      <Button layoutX="333.0" layoutY="407.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Editar" />
-      <Button layoutX="437.0" layoutY="407.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Excluir" />
+      <Button layoutX="666.0" layoutY="407.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Criar" />
+      <Button layoutX="21.0" layoutY="407.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Editar" />
+      <Button layoutX="123.0" layoutY="407.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Excluir" />
    </children>
 </AnchorPane>
