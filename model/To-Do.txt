@@ -1,0 +1,16 @@
+Estoque - DONE
+Item de venda - DONE
+Brinquedo
+venda
+Cliente
+Comprovante
+Item Estoque
+Categoria
+Fabricante - DONE 
+Forma de Pagamento
+Cheque
+Pessoa
+Cartão
+Fornecedor
+Administrador - DONE
+Funcionário - DONE
