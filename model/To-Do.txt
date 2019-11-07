@@ -1,7 +1,7 @@
 Estoque - DONE
 Item de venda - DONE
-Brinquedo
-venda
+Brinquedo - DONE
+venda - HALF DONE
 Cliente
 Comprovante
 Item Estoque

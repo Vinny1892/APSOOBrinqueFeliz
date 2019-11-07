@@ -1,41 +1,80 @@
 package model;
 
 import java.sql.SQLException;
-import dao.DAOEstoque;
+import dao.DAOComprovante;
 import java.util.List;
 
-public class ModelEstoque implements CRUD{
+public class ModelComprovante implements CRUD{
     
     //atributos
-    private List<ModelBrinquedo> itensNoEstoque;
-    
+    private Cliente cliente;
+    private Funcionario funcionario;
+    private FormaDePagamento formaDePagamento;
+    private Venda venda;
     //construtor
 
-    public ModelEstoque() {
+    public ModelComprovante() {
     }
+
+
 
     //getter
-    public List getItensNoEstoque(){
-        return this.itensNoEstoque;
+   public Cliente getCliente(){
+       return this.cliente;
+   }
+
+   public Funcionario getFuncionario(){
+       return this.funcionario;
+   }
+
+   public FormaDePagamento getFormaDePagamento(){
+       return this.formaDePagamento;
+   }
+
+   public Venda getVenda(){
+       return this.venda;
+   }
+
+   //setter
+
+   public void 
+
+
+
+    public void gerarRelatorioDeVendaPorDia(){
+
     }
 
-    //setter
-    public void setItensNoEstoque(Brinquedo brinquedo){
-        this.itensNoEstoque.add(brinquedo);
-    }
-
-    public void exibeListaDeProdutos(){
+    public void gerarComprovanteVenda(){
 
     }
 
-    public void criar(Object obj){
+    public void venderBrinquedo(){
 
     }
 
-    public List buscarBrinquedo(Categoria categoria){
-
-    }
+    /*public void inserir(ItemDeVenda item){
+        //Isso aqui n seria a mesma coisa que setItemDeVEnda?
+    }*/
     
+
+    @Override
+    public void atualizar(ItemDeVenda item){
+
+    }
+
+    public Object buscar(Object obj){
+
+    }
+
+    public void excluir(Object obj){
+        
+    }
+
+
+
+
+
     //acesso DAO
     @Override
     public void salvar() throws SQLException {

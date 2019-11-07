@@ -40,6 +40,7 @@ public class ModelItemDeVenda implements CRUD{
 
     public double getValor(){
         //aqui seria o valor de um brinquedo só? de vários?
+        //this.brinquedo.getPreco() * quantidade
     }
 
     //acesso DAO
