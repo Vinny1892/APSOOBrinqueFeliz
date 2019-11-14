@@ -1,14 +1,15 @@
 Estoque - DONE
 Item de venda - DONE
 Brinquedo - DONE
-venda - HALF DONE
-Cliente
-Comprovante
-Item Estoque
-Categoria
-Fabricante - DONE 
-Forma de Pagamento
-Pessoa
-Fornecedor
+venda - DONE
+Cliente - DONE
+Comprovante - DONE
+Item Estoque - DONE
+Categoria - DONE
+Fabricante - DONE
+Forma de Pagamento - DONE
+Pessoa - DONE
+Fornecedor - DONE
 Administrador - DONE
 Funcionário - DONE
+
