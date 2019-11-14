@@ -1,64 +1,53 @@
 package model;
 
 import java.sql.SQLException;
-import java.util.List;
 import dao.DAOFabricante;
+import java.util.List;
+import java.util.ArrayList;
 
-/**
- *
- * @author kaio
- */
-public class ModelFabricante implements CRUD{
-    
-    //atributos
-    DAOFabricante daoFabricante = new DAOFabricante();
+public class ModelFabricante{
     private String nome;
-    
-    //construtor
-    public ModelFabricante(String nome) {
+    private List<ModelBrinquedo> brinquedo = new ArrayList<>(); //Consta como produto de acordo com o diagrama
+
+
+    public ModelFabricante(String nome, ModelBrinquedo brinquedo) {
         this.nome = nome;
+        this.brinquedo = brinquedo;
     }
 
     public ModelFabricante() {
     }
 
-    //getters setters
-    
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-    //acesso DAO
-    @Override
-    public void salvar() throws SQLException {
-        daoFabricante.salvar(this);
+
+    public ModelBrinquedo getBrinquedo() {
+        return this.brinquedo;
+    }
+
+    public void setBrinquedo(ModelBrinquedo brinquedo) {
+        this.brinquedo = brinquedo;
     }
 
 
-    @Override
-    public List<Object> getAll() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void criar(Object obj){
+
     }
 
-    @Override
-    public void atualizar() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void atualizar(Object obj){
+
     }
 
-    @Override
-    public void deletar() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void excluir(Object obj){
+
     }
 
-    @Override
-    public Object getById(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void buscar(Object obj){
 
-    
-    
+    }
 }

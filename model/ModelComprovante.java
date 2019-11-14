@@ -2,7 +2,6 @@ package model;
 
 import java.sql.SQLException;
 import dao.DAOComprovante;
-import java.util.List;
 
 public class ModelComprovante implements CRUD{
     
@@ -17,39 +16,49 @@ public class ModelComprovante implements CRUD{
     }
 
 
-
-    //getter
-   public Cliente getCliente(){
-       return this.cliente;
-   }
-
-   public Funcionario getFuncionario(){
-       return this.funcionario;
-   }
-
-   public FormaDePagamento getFormaDePagamento(){
-       return this.formaDePagamento;
-   }
-
-   public Venda getVenda(){
-       return this.venda;
-   }
-
-   //setter
-
-   public void 
-
-
-
-    public void gerarRelatorioDeVendaPorDia(){
-
+    public ModelComprovante(Cliente cliente, Funcionario funcionario, FormaDePagamento formaDePagamento, Venda venda) {
+        this.cliente = cliente;
+        this.funcionario = funcionario;
+        this.formaDePagamento = formaDePagamento;
+        this.venda = venda;
     }
 
-    public void gerarComprovanteVenda(){
 
+    public Cliente getCliente() {
+        return this.cliente;
     }
 
-    public void venderBrinquedo(){
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Funcionario getFuncionario() {
+        return this.funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public FormaDePagamento getFormaDePagamento() {
+        return this.formaDePagamento;
+    }
+
+    public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
+        this.formaDePagamento = formaDePagamento;
+    }
+
+    public Venda getVenda() {
+        return this.venda;
+    }
+
+    public void setVenda(Venda venda) {
+        this.venda = venda;
+    }
+
+
+
+    public void gerarComprovanteVendaCliente(){
 
     }
 
@@ -58,18 +67,18 @@ public class ModelComprovante implements CRUD{
     }*/
     
 
-    @Override
-    public void atualizar(ItemDeVenda item){
+    // @Override
+    // public void atualizar(ItemDeVenda item){
 
-    }
+    // }
 
-    public Object buscar(Object obj){
+    // public Object buscar(Object obj){
 
-    }
+    // }
 
-    public void excluir(Object obj){
+    // public void excluir(Object obj){
         
-    }
+    // }
 
 
 

@@ -79,9 +79,10 @@ public class ModelVenda implements CRUD{
 
     }
 
-    /*public void inserir(ItemDeVenda item){
+    public void inserir(ItemDeVenda item){
         //Isso aqui n seria a mesma coisa que setItemDeVEnda?
-    }*/
+        this.itensDeVenda.add(item);
+    }
     
 
     @Override
