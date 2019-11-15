@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import dao.DAOPessoa;
 import java.util.Date;
 
-public class ModelPessoa{
+public class ModelPessoa implements CRUD{
     private String nome;
     private String cpf;
     private Date dataDeNascimento;
