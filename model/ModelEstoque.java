@@ -3,45 +3,68 @@ package model;
 import java.sql.SQLException;
 import dao.DAOEstoque;
 import java.util.List;
+import java.util.ArrayList;
 
 public class ModelEstoque implements CRUD{
     
     //atributos
-    private List<ModelBrinquedo> itensNoEstoque;
+    private List<ModelBrinquedo> itensNoEstoque = new ArrayList<>();
+    private int id;
     
     //construtor
 
     public ModelEstoque() {
     }
 
-    //getter
-    public List getItensNoEstoque(){
+    public ModelEstoque(List<ModelBrinquedo> itensNoEstoque, int id, DAOEstoque dao) {
+        this.itensNoEstoque = itensNoEstoque;
+        this.id = id;
+        this.dao = dao;
+    }
+
+
+    public List<ModelBrinquedo> getItensNoEstoque() {
         return this.itensNoEstoque;
     }
 
-    //setter
-    public void setItensNoEstoque(Brinquedo brinquedo){
-        this.itensNoEstoque.add(brinquedo);
+    public void setItensNoEstoque(List<ModelBrinquedo> itensNoEstoque) {
+        this.itensNoEstoque = itensNoEstoque;
     }
 
-    public void exibeListaDeProdutos(){
+    public int getId() {
+        return this.id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+    public void exibeListaDeProdutos(){
+        //toString logo abaixo
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " itensNoEstoque='" + getItensNoEstoque() + "'" +
+            "}";
     }
 
     public void criar(Object obj){
-
+        //????
     }
 
     public List buscarBrinquedo(Categoria categoria){
-
+        //buscar todos os brinquedos da categoria X?
     }
     
     //acesso DAO
+    private DAOEstoque dao = new DAOEstoque();
     @Override
     public void salvar() throws SQLException {
-        daoEstoque.salvar(this);
+        dao.salvar(this);
     }
-
 
     @Override
     public List<Object> getAll() throws SQLException {
