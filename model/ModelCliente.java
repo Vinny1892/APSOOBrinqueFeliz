@@ -3,7 +3,7 @@ package model;
 import java.sql.SQLException;
 import dao.DAOCliente;
 
-public class Cliente{
+public class Cliente implements CRUD{
     private String rg;
     private int id;
 
