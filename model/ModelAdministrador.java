@@ -38,7 +38,7 @@ public class ModelAdministrador extends ModelFuncionario{
     }
 
     public buscaFornecedor(String cnpj){
-
+        
     }
 
     public void atualizaFuncionario(String cpf){

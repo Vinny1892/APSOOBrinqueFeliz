@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package controller;
+import java.util.ArrayList;
+import java.util.List;
+import model.ModelBrinquedo;
 
 /**
  *
@@ -11,4 +14,10 @@ package controller;
  */
 public class ControllerBrinquedo {
     
+    public static ArrayList<ModelBrinquedo> todosBrinquedos(){
+        List<ModelBrinquedo> brinquedos = (List<ModelBrinquedo>) new ModelBrinquedo().getAll();
+    
+    
+        return;
+    }
 }
