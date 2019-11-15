@@ -7,123 +7,130 @@ import java.util.List;
 public class ModelBrinquedo implements CRUD{
     
     //atributos
-    private Categoria categoria;
+    private ModelCategoria categoria;
     private String nome;
     private long codigoDeBarras;
     private Double preco;
-    private Fabricante fabricante;
+    private ModelFabricante fabricante;
     private String descricao;
-    private Fornecedor fornecedor;
+    private ModelFornecedor fornecedor;
     //construtor
 
     public ModelBrinquedo() {
     }
 
-    //getter
-    public Categoria getCategoria(){
+    public ModelBrinquedo(ModelCategoria categoria, String nome, long codigoDeBarras, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor) {
+        this.categoria = categoria;
+        this.nome = nome;
+        this.codigoDeBarras = codigoDeBarras;
+        this.preco = preco;
+        this.fabricante = fabricante;
+        this.descricao = descricao;
+        this.fornecedor = fornecedor;
+    }
+
+    
+
+    public ModelCategoria getCategoria() {
         return this.categoria;
     }
 
-    public String nome getNome(){
-        return this.nome;
-    }
-
-    public long getCodigoDeBarras(){
-        return this.codigoDeBarras;
-    }
-
-    public Double getPreco(){
-        return this.preco;
-    }
-
-    public Fabricante getFabricante(){
-        return this.fabricante;
-    }
-
-    public String getDescricao(){
-        return this.descricao;
-    }
-
-    public Fornecedor getFornecedor(){
-        return this.fornecedor;
-    }
-
-    //setter
-    public void setCategoria(Categoria categoria){
+    public void setCategoria(ModelCategoria categoria) {
         this.categoria = categoria;
     }
 
-    public void setNome(String nome){
+    public String getNome() {
+        return this.nome;
+    }
+
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public void setCodigoDeBarras(long codBar){
-        this.codigoDeBarras = codBar;
+    public long getCodigoDeBarras() {
+        return this.codigoDeBarras;
     }
 
-    public void setPreco(Double preco){
+    public void setCodigoDeBarras(long codigoDeBarras) {
+        this.codigoDeBarras = codigoDeBarras;
+    }
+
+    public Double getPreco() {
+        return this.preco;
+    }
+
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
 
-    public void setFabricante(Fabricante fabricante){
+    public ModelFabricante getFabricante() {
+        return this.fabricante;
+    }
+
+    public void setFabricante(ModelFabricante fabricante) {
         this.fabricante = fabricante;
     }
 
-    public void setDescricao(String descricao){
+    public String getDescricao() {
+        return this.descricao;
+    }
+
+    public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
 
-    public void setFornecedor(Fornecedor fornecedor){
+    public ModelFornecedor getFornecedor() {
+        return this.fornecedor;
+    }
+
+    public void setFornecedor(ModelFornecedor fornecedor) {
         this.fornecedor = fornecedor;
     }
 
 
     
 
-    public void excluirCategoria(){
-        //this.categoria = null;
-    }
+    // public void excluirCategoria(){
+    //     //this.categoria = null;
+    // }
 
-    public void atualizarCategoria(){
-        //n seria a mesma coisa que setCategoria?
-    }
+    // public void atualizarCategoria(){
+    //     //n seria a mesma coisa que setCategoria?
+    // }
 
-    public void criar(Object obj){
+    // public void criar(Object obj){
         
-    }
-
-
-
+    // }
 
 
 
     //acesso DAO
+    private DAOBrinquedo dao = new DAOBrinquedo();
     @Override
     public void salvar() throws SQLException {
-        daoEstoque.salvar(this);
-    }
-
-
-    @Override
-    public List<Object> getAll() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        dao.salvar(this);
     }
 
     @Override
-    public void atualizar(Object obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public abstract void atualizar() throws SQLException {
+        dao.atualizar(this);
     }
 
     @Override
-    public void deletar(Object obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public abstract void deletar() throws SQLException {
+        dao.deletar(this.id);
     }
 
     @Override
-    public Object getById(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public abstract Object getById(int id) throws SQLException {
+        dao.getById(id);
+    }//retorna ArrayList<Object>  
 
-    
-    
+    //public Object getAllById(int id) throws SQLException;//retorna Object
+    //public Object getById(int id, int id) throws SQLException ;
+    @Override
+    public abstract List<Object> getAll() throws SQLException {
+        dao.getAll();
+    }// pega tudo de uma tabela
+
 }
