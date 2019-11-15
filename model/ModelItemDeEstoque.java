@@ -2,17 +2,32 @@ package model;
 
 import java.sql.SQLException;
 import dao.DAOItemDeEstoque;
+import java.util.Date;
 
-public class ModelItemDeEstoque{
+public class ModelItemDeEstoque implements CRUD{
     private ModelBrinquedo brinquedo;
     private Date dataDeAquisicao;
     private int quantidade;
+    private int id;
 
 
-    public ModelItemDeEstoque(ModelBrinquedo brinquedo, Date dataDeAquisicao, int quantidade) {
+    public ModelItemDeEstoque() {
+    }
+
+
+    public ModelItemDeEstoque(ModelBrinquedo brinquedo, Date dataDeAquisicao, int quantidade, int id) {
         this.brinquedo = brinquedo;
         this.dataDeAquisicao = dataDeAquisicao;
         this.quantidade = quantidade;
+        this.id = id;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public ModelBrinquedo getBrinquedo() {
@@ -41,9 +56,10 @@ public class ModelItemDeEstoque{
 
 
     //acesso DAO
+    private DAOBrinquedo dao = new DAOBrinquedo();
     @Override
     public void salvar() throws SQLException {
-        daoEstoque.salvar(this);
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 
