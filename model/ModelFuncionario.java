@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import dao.DAOFuncionario;
 import java.util.Date;
 
-public class ModelFuncionario{
+public class ModelFuncionario implements CRUD{
     private String matricula;
     private String telefoneResidencial;
     private String telefoneCelular;
@@ -16,7 +16,7 @@ public class ModelFuncionario{
     private boolean adm = false;
     private int id;
 
-    //Construtor para funcionario comum
+    //Commom employee constructor
 /*
     public ModelFuncionario(String matricula, String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, String login, String senha, int id) {
         this.matricula = matricula;
@@ -29,8 +29,11 @@ public class ModelFuncionario{
 	this.id = id;
     }
 */
+    
+    public ModelFuncionario(){}
 
-    //Construtor para funcionarios com ou sem ADM
+
+    //
     public ModelFuncionario(String matricula, String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, String login, String senha, boolean adm, int id) {
         this.matricula = matricula;
         this.telefoneResidencial = telefoneResidencial;
@@ -130,4 +133,11 @@ public class ModelFuncionario{
     public ModelCliente consultaCliente(String rg){
         
     }
+
+
+
+
+    //CRUD Methods
+
+
 }
