@@ -56,7 +56,7 @@ public class ModelItemDeEstoque implements CRUD{
 
 
     //acesso DAO
-    private DAOBrinquedo dao = new DAOBrinquedo();
+    private DAOItemDeEstoque dao = new DAOItemDeEstoque();
     @Override
     public void salvar() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet.");
