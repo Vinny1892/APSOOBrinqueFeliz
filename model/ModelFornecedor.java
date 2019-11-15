@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import dao.DAOFornecedor;
 
 
-public class ModelFornecedor{
+public class ModelFornecedor implements CRUD{
     private String cnpj;
     private String nomeFantasia;
     private String razaoSocial;
@@ -14,9 +14,13 @@ public class ModelFornecedor{
     private String telefone;
     private String email;
     private List<ModelFabricante> fabricantes;
+    private int id;
 
 
-    public ModelFornecedor(String cnpj, String nomeFantasia, String razaoSocial, String endereco, String cidade, String estado, String telefone, String email, List<ModelFabricante> fabricantes) {
+    public ModelFornecedor() {
+    }
+
+    public ModelFornecedor(String cnpj, String nomeFantasia, String razaoSocial, String endereco, String cidade, String estado, String telefone, String email, List<ModelFabricante> fabricantes, int id) {
         this.cnpj = cnpj;
         this.nomeFantasia = nomeFantasia;
         this.razaoSocial = razaoSocial;
@@ -26,6 +30,7 @@ public class ModelFornecedor{
         this.telefone = telefone;
         this.email = email;
         this.fabricantes = fabricantes;
+        this.id = id;
     }
 
 
@@ -98,8 +103,19 @@ public class ModelFornecedor{
     }
 
     public void setFabricantes(List<ModelFabricante> fabricantes) {
-        this.fabricantes.add(fabricantes);
+        this.fabricantes = fabricantes;
     }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+
+
 
     public void criar(Object obj){
 
@@ -115,5 +131,34 @@ public class ModelFornecedor{
 
     public void buscar(Object obj){
 
+    }
+
+
+    //acesso DAO
+    private DAOFornecedor dao = new DAOFornecedor();
+    @Override
+    public void salvar() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+
+    @Override
+    public List<Object> getAll() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void atualizar(Object obj) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deletar(Object obj) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object getById(int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

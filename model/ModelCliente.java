@@ -3,11 +3,26 @@ package model;
 import java.sql.SQLException;
 import dao.DAOCliente;
 
-public class Cliente{
+public class Cliente implements CRUD{
     private String rg;
+    private int id;
 
-    public Cliente(String nome, String cpf, String endereco, String cep; String idade; String estado, Date dataDeNascimento){
+    public Cliente() {
+    }
+
+    public Cliente(String nome, String cpf, String endereco, String cep; String idade; String estado, Date dataDeNascimento, String rg, int id){
         super(nome, cpf, endereco, cep, idade, estado, dataDeNascimento);
+        this.id = id;
+        this.rg = rg;
+    }
+
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 	public String getRg() {
@@ -22,9 +37,10 @@ public class Cliente{
 
 
     //acesso DAO
+    private DAOCliente dao = new DAOCliente();
     @Override
     public void salvar() throws SQLException {
-        daoEstoque.salvar(this);
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 

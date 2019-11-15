@@ -42,8 +42,8 @@ public class ModelFuncionario implements CRUD{
         this.dataDeContratacao = dataDeContratacao;
         this.login = login;
         this.senha = senha;
-	this.adm = adm;
-	this.id = id;
+        this.adm = adm;
+        this.id = id;
     }
 
     public String getMatricula() {
@@ -118,26 +118,53 @@ public class ModelFuncionario implements CRUD{
 	return this.adm;
     }
     
-    public void cadastrarCliente(ModelCliente cliente){
+    // public void cadastrarCliente(ModelCliente cliente){
 
-    }
+    // }
 
-    public void excluircliente(ModelCliente cliente){
+    // public void excluircliente(ModelCliente cliente){
 
-    }
+    // }
 
-    public void atualizarCliente(ModelCliente cliente){
+    // public void atualizarCliente(ModelCliente cliente){
 
-    }
+    // }
 
-    public ModelCliente consultaCliente(String rg){
+    // public ModelCliente consultaCliente(String rg){
         
-    }
+    // }
 
 
 
 
     //CRUD Methods
 
+    private DAOFuncionario dao = new DAOFuncionario();
+    @Override
+    public void salvar() throws SQLException{
+        dao.salvar(this);
+    }
+
+    @Override
+    public void atualizar() throws SQLException{
+        dao.atualizar(this);
+    }
+
+    @Override
+    public void deletar() throws SQLException{
+        dao.deletar(this);
+    }
+
+    @Override
+    public Object getById(int id) throws SQLException{
+        dao.getById(id);
+    }
+
+    //public Object getAllById(int id) throws SQLException;//retorna Object
+    //public Object getById(int id, int id) throws SQLException ;
+    @Override
+    public List<Object> getAll() throws SQLException{
+        dao.getAll(this);
+    }// pega tudo de uma tabela
 
 }

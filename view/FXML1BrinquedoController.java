@@ -99,6 +99,7 @@ public class FXML1BrinquedoController implements Initializable {
         
         //preencher a tabela
         brinquedos = todosBrinquedos();
+        inicializarTabela();
         
     }    
     
