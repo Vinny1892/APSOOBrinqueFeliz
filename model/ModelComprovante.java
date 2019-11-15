@@ -6,55 +6,67 @@ import dao.DAOComprovante;
 public class ModelComprovante implements CRUD{
     
     //atributos
-    private Cliente cliente;
-    private Funcionario funcionario;
-    private FormaDePagamento formaDePagamento;
-    private Venda venda;
+    private ModelCliente cliente;
+    private ModelFuncionario funcionario;
+    private ModelFormaDePagamento formaDePagamento;
+    private ModelVenda venda;
+    private int id;
+
     //construtor
 
     public ModelComprovante() {
     }
 
 
-    public ModelComprovante(Cliente cliente, Funcionario funcionario, FormaDePagamento formaDePagamento, Venda venda) {
+    public ModelComprovante(ModelCliente cliente, ModelFuncionario funcionario, ModelFormaDePagamento formaDePagamento, ModelVenda venda, int id) {
         this.cliente = cliente;
         this.funcionario = funcionario;
         this.formaDePagamento = formaDePagamento;
         this.venda = venda;
+        this.id = id;
     }
 
 
-    public Cliente getCliente() {
+    public ModelCliente getCliente() {
         return this.cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(ModelCliente cliente) {
         this.cliente = cliente;
     }
 
-    public Funcionario getFuncionario() {
+    public ModelFuncionario getFuncionario() {
         return this.funcionario;
     }
 
-    public void setFuncionario(Funcionario funcionario) {
+    public void setFuncionario(ModelFuncionario funcionario) {
         this.funcionario = funcionario;
     }
 
-    public FormaDePagamento getFormaDePagamento() {
+    public ModelFormaDePagamento getFormaDePagamento() {
         return this.formaDePagamento;
     }
 
-    public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
+    public void setFormaDePagamento(ModelFormaDePagamento formaDePagamento) {
         this.formaDePagamento = formaDePagamento;
     }
 
-    public Venda getVenda() {
+    public ModelVenda getVenda() {
         return this.venda;
     }
 
-    public void setVenda(Venda venda) {
+    public void setVenda(ModelVenda venda) {
         this.venda = venda;
     }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
 
 
@@ -85,9 +97,10 @@ public class ModelComprovante implements CRUD{
 
 
     //acesso DAO
+    private DAOBrinquedo dao = new DAOBrinquedo();
     @Override
     public void salvar() throws SQLException {
-        daoEstoque.salvar(this);
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 
