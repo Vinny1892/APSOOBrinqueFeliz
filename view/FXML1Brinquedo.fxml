@@ -17,6 +17,7 @@
       <Label layoutX="418.0" layoutY="461.0" text="Categoria" />
       <Label layoutX="413.0" layoutY="511.0" text="Fabricante" />
       <Label layoutX="416.0" layoutY="559.0" text="Descriçao" />
+<<<<<<< HEAD
       <TextField fx:id="textFieldNome" layoutX="98.0" layoutY="456.0" prefHeight="26.0" prefWidth="274.0" />
       <TextField fx:id="textFieldCodigo" layoutX="98.0" layoutY="506.0" prefHeight="26.0" prefWidth="274.0" />
       <TextField fx:id="textFieldPreco" layoutX="98.0" layoutY="557.0" prefHeight="26.0" prefWidth="274.0" />
@@ -25,6 +26,16 @@
       <Button fx:id="buttonCancelar" layoutX="390.0" layoutY="594.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Cancelar" />
       <Button fx:id="buttonVoltar" layoutX="487.0" layoutY="3.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="274.0" text="Voltar" />
       <TableView fx:id="tableViewBrinquedo" layoutX="-2.0" layoutY="32.0" prefHeight="367.0" prefWidth="774.0">
+=======
+      <TextField layoutX="98.0" layoutY="456.0" prefHeight="26.0" prefWidth="274.0" />
+      <TextField layoutX="98.0" layoutY="506.0" prefHeight="26.0" prefWidth="274.0" />
+      <TextField layoutX="98.0" layoutY="557.0" prefHeight="26.0" prefWidth="274.0" />
+      <TextField layoutX="484.0" layoutY="506.0" prefHeight="26.0" prefWidth="274.0" />
+      <TextField layoutX="484.0" layoutY="554.0" prefHeight="26.0" prefWidth="274.0" />
+      <Button layoutX="390.0" layoutY="594.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Cancelar" />
+      <Button layoutX="487.0" layoutY="3.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="274.0" text="Voltar" />
+      <TableView layoutX="-2.0" layoutY="32.0" prefHeight="367.0" prefWidth="774.0">
+>>>>>>> Kaio
         <columns>
           <TableColumn fx:id="tableColumnNome" prefWidth="180.0" text="Nome" />
           <TableColumn fx:id="tableColumnCodigo" prefWidth="69.0" text="Codigo" />
@@ -35,8 +46,14 @@
         </columns>
       </TableView>
       <Button layoutX="666.0" layoutY="407.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Criar" />
+<<<<<<< HEAD
       <Button fx:id="buttonEditar" layoutX="21.0" layoutY="407.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Editar" />
       <Button fx:id="buttonExcluir" layoutX="123.0" layoutY="407.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Excluir" />
       <ComboBox fx:id="comboBoxCategoria" layoutX="487.0" layoutY="456.0" prefHeight="26.0" prefWidth="274.0" />
+=======
+      <Button layoutX="21.0" layoutY="407.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Editar" />
+      <Button layoutX="123.0" layoutY="407.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Excluir" />
+      <ComboBox layoutX="487.0" layoutY="456.0" prefHeight="26.0" prefWidth="274.0" />
+>>>>>>> Kaio
    </children>
 </AnchorPane>

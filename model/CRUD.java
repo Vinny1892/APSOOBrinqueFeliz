@@ -21,4 +21,5 @@ public interface CRUD{
     //public Object getAllById(int id) throws SQLException;//retorna Object
     //public Object getById(int id, int id) throws SQLException ;
     public ArrayList<Object> getAll() throws SQLException;// pega tudo de uma tabela
+
 }
