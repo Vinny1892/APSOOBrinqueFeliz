@@ -15,9 +15,9 @@ import model.ModelBrinquedo;
 public class ControllerBrinquedo {
     
     public static ArrayList<ModelBrinquedo> todosBrinquedos(){
-        List<ModelBrinquedo> brinquedos = (List<ModelBrinquedo>) new ModelBrinquedo().getAll();
+        ArrayList<ModelBrinquedo> brinquedos = new ModelBrinquedo().getAll();
     
     
-        return;
+        return brinquedos;
     }
 }

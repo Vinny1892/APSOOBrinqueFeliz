@@ -20,7 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.ModelBrinquedo;
 import javafx.scene.control.cell.PropertyValueFactory;
-import controller.ControllerBrinquedo;
+import static controller.ControllerBrinquedo.todosBrinquedos;
 
 /**
  * FXML Controller class
@@ -95,10 +95,10 @@ public class FXML1BrinquedoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         //preencher o comboBoxCategoria
+        
         //preencher a tabela
-        paises = new ControllerBrinquedo().todosBrinquedos();
+        brinquedos = todosBrinquedos();
         
     }    
     
