@@ -14,12 +14,13 @@ public class ModelBrinquedo implements CRUD{
     private ModelFabricante fabricante;
     private String descricao;
     private ModelFornecedor fornecedor;
+    private int id;
     //construtor
 
     public ModelBrinquedo() {
     }
 
-    public ModelBrinquedo(ModelCategoria categoria, String nome, long codigoDeBarras, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor) {
+    public ModelBrinquedo(ModelCategoria categoria, String nome, long codigoDeBarras, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor, int id) {
         this.categoria = categoria;
         this.nome = nome;
         this.codigoDeBarras = codigoDeBarras;
@@ -27,9 +28,18 @@ public class ModelBrinquedo implements CRUD{
         this.fabricante = fabricante;
         this.descricao = descricao;
         this.fornecedor = fornecedor;
+        this.id = id;
     }
 
     
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public ModelCategoria getCategoria() {
         return this.categoria;
