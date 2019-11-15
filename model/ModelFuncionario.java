@@ -2,10 +2,12 @@ package model;
 
 import java.sql.SQLException;
 import dao.DAOFuncionario;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ModelFuncionario implements CRUD{
     private String matricula;
+    private String nome;
     private String telefoneResidencial;
     private String telefoneCelular;
     private String email;
@@ -109,13 +111,17 @@ public class ModelFuncionario implements CRUD{
     public void setADM(Boolean adm){
     	this.adm = adm;
     }
-
-    public Double consultaPreco(long codigoDeBarras){
-
-    }
     
     public boolean isADM(){
 	return this.adm;
+    }
+    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     
     // public void cadastrarCliente(ModelCliente cliente){
@@ -140,31 +146,33 @@ public class ModelFuncionario implements CRUD{
     //CRUD Methods
 
     private DAOFuncionario dao = new DAOFuncionario();
+
     @Override
-    public void salvar() throws SQLException{
-        dao.salvar(this);
+    public boolean salvar() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void atualizar() throws SQLException{
-        dao.atualizar(this);
+    public boolean atualizar() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deletar() throws SQLException{
-        dao.deletar(this);
+    public boolean deletar() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Object getById(int id) throws SQLException{
-        dao.getById(id);
+    public Object getById(int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    //public Object getAllById(int id) throws SQLException;//retorna Object
-    //public Object getById(int id, int id) throws SQLException ;
     @Override
-    public List<Object> getAll() throws SQLException{
-        dao.getAll(this);
-    }// pega tudo de uma tabela
+    public ArrayList<Object> getAll() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+
 
 }

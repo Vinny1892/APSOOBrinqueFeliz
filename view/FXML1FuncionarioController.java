@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.net.URL;
@@ -11,9 +6,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import model.ModelFuncionario;
 
 /**
  * FXML Controller class
@@ -27,17 +24,33 @@ public class FXML1FuncionarioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
-    @FXML
-    private TableView<?> tableView;
+        buttonCancelar.setDisable(false);
+        buttonCriar.setDisable(true);
+        buttonEditar.setDisable(false);
+        buttonSalvar.setDisable(false);
+        buttonVoltar.setDisable(true);
+    }
 
     @FXML
-    private TableColumn<?, ?> columnNome;
+    private TableView<ModelFuncionario> tableViewFuncionario;
 
     @FXML
-    private TableColumn<?, ?> columnProduto;
+    private TableColumn<ModelFuncionario, String> tableColumnNome;
+
+    @FXML
+    private TableColumn<ModelFuncionario, String> tableColumnTelefone;
+
+    @FXML
+    private TableColumn<ModelFuncionario, String> tableColumnCelular;
+
+    @FXML
+    private TableColumn<ModelFuncionario, String> tableColumnEMail;
+
+    @FXML
+    private TableColumn<ModelFuncionario, String> tableColumnDataContratacao;
+
+    @FXML
+    private TableColumn<ModelFuncionario, String> tableColumnPermissao;
 
     @FXML
     private Button buttonVoltar;
@@ -52,10 +65,87 @@ public class FXML1FuncionarioController implements Initializable {
     private Button buttonCriar;
 
     @FXML
-    private TextField textFielNome;
+    private TextField textFieldNome;
 
     @FXML
-    private Button buttonEditarProdito;
+    private TextField textFieldTelefone;
+
+    @FXML
+    private TextField textFieldCelular;
+
+    @FXML
+    private TextField textFieldEMail;
+
+    @FXML
+    private TextField textFieldDataContratacao;
+
+    @FXML
+    private ComboBox<?> comboBoxPermissao;
+
+    @FXML
+    private Button buttonSalvar;
+
+    @FXML
+    private Button buttonCancelar;
+    
+
+    @FXML
+    void onActionButtonCancelar(ActionEvent event) {
+        textFieldDataContratacao.clear();
+        textFieldCelular.clear();
+        textFieldEMail.clear();
+        textFieldNome.clear();
+        textFieldTelefone.clear();
+        //comboBoxPermissao.;
+
+        textFieldCelular.setDisable(false);
+        textFieldDataContratacao.setDisable(false);
+        textFieldEMail.setDisable(false);
+        textFieldNome.setDisable(false);
+        textFieldTelefone.setDisable(false);
+        comboBoxPermissao.setDisable(false);
+    }
+
+    @FXML
+    void onActionButtonCriar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionButtonEditar(ActionEvent event) {
+        ModelFuncionario mf = tableViewFuncionario.getSelectionModel().getSelectedItem();
+
+        textFieldCelular.setText(mf.getTelefoneCelular());
+        textFieldDataContratacao.setText(mf.getDataDeContratacao().toString());
+        textFieldEMail.setText(mf.getEmail());
+        textFieldNome.setText(mf.getNome());
+        textFieldTelefone.setText("");
+        if (mf.isADM()) {
+            //comboBoxPermissao.;
+        } else {
+            //comboBoxPermissao.
+        }
+
+        textFieldCelular.setDisable(true);
+        textFieldDataContratacao.setDisable(true);
+        textFieldEMail.setDisable(true);
+        textFieldNome.setDisable(true);
+        textFieldTelefone.setDisable(true);
+        comboBoxPermissao.setDisable(true);
+
+        
+        buttonSalvar.setDisable(true);
+    }
+
+    @FXML
+    void onActionButtonExcluir(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionButtonSalvar(ActionEvent event) {
+
+    }
 
     @FXML
     void onActionButtonVoltar(ActionEvent event) {
