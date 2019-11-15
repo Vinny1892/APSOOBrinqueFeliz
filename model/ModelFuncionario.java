@@ -2,6 +2,7 @@ package model;
 
 import java.sql.SQLException;
 import dao.DAOFuncionario;
+import java.util.Date;
 
 public class ModelFuncionario{
     private String matricula;
@@ -12,9 +13,12 @@ public class ModelFuncionario{
     //private enum tipoDePermissao;
     private String login;
     private String senha;
+    private boolean adm = false;
+    private int id;
 
-
-    public ModelFuncionario(String matricula, String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, String login, String senha) {
+    //Construtor para funcionario comum
+/*
+    public ModelFuncionario(String matricula, String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, String login, String senha, int id) {
         this.matricula = matricula;
         this.telefoneResidencial = telefoneResidencial;
         this.telefoneCelular = telefoneCelular;
@@ -22,6 +26,21 @@ public class ModelFuncionario{
         this.dataDeContratacao = dataDeContratacao;
         this.login = login;
         this.senha = senha;
+	this.id = id;
+    }
+*/
+
+    //Construtor para funcionarios com ou sem ADM
+    public ModelFuncionario(String matricula, String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, String login, String senha, boolean adm, int id) {
+        this.matricula = matricula;
+        this.telefoneResidencial = telefoneResidencial;
+        this.telefoneCelular = telefoneCelular;
+        this.email = email;
+        this.dataDeContratacao = dataDeContratacao;
+        this.login = login;
+        this.senha = senha;
+	this.adm = adm;
+	this.id = id;
     }
 
     public String getMatricula() {
@@ -79,12 +98,19 @@ public class ModelFuncionario{
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
+ 
+    public void setADM(Boolean adm){
+    	this.adm = adm;
+    }
 
     public Double consultaPreco(long codigoDeBarras){
 
     }
-
+    
+    public boolean isADM(){
+	return this.adm;
+    }
+    
     public void cadastrarCliente(ModelCliente cliente){
 
     }
