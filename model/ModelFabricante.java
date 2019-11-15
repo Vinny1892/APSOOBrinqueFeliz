@@ -50,7 +50,7 @@ public class ModelFabricante{
 
 
     //acesso DAO
-    private DAOBrinquedo dao = new DAOBrinquedo();
+    private DAOFabricante dao = new DAOFabricante();
     @Override
     public void salvar() throws SQLException {
         dao.salvar(this);
