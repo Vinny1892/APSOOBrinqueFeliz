@@ -118,30 +118,32 @@ public class ModelBrinquedo implements CRUD{
     //acesso DAO
     private DAOBrinquedo dao = new DAOBrinquedo();
     @Override
-    public void salvar() throws SQLException {
+    public boolean salvar() throws SQLException {
         dao.salvar(this);
+        return true;
     }
 
     @Override
-    public void atualizar() throws SQLException {
-        dao.atualizar(this);
+    public boolean atualizar() throws SQLException {
+        return dao.atualizar(this);
+        
     }
 
     @Override
-    public void deletar() throws SQLException {
-        dao.deletar(this.id);
+    public boolean deletar() throws SQLException {
+        return dao.deletar(this.id);
     }
 
     @Override
     public Object getById(int id) throws SQLException {
-        dao.getById(id);
+        return dao.getById(id);
     }//retorna ArrayList<Object>  
 
     //public Object getAllById(int id) throws SQLException;//retorna Object
     //public Object getById(int id, int id) throws SQLException ;
     @Override
     public ArrayList<Object> getAll() throws SQLException {
-        dao.getAll();
+        return dao.getAll();
     }// pega tudo de uma tabela
 
 }

@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import conectionBD.ConexaoBDMySQL;
+import java.util.ArrayList;
 /**
  *
  * @author kaio
@@ -19,17 +20,17 @@ public abstract class GenericDAO_CRUD {
     
     // CRUD
     // Assinatura metodos para as Classes DAO
-    public abstract void salvar(Object object) throws SQLException;
+    public abstract boolean salvar(Object object) throws SQLException;
 
-    public abstract void atualizar(Object object) throws SQLException;
+    public abstract boolean atualizar(Object object) throws SQLException;
 
-    public abstract void deletar(String algumaCoisa) throws SQLException;
+    public abstract boolean deletar(String algumaCoisa) throws SQLException;
 
     public abstract Object getById(int id) throws SQLException;//retorna ArrayList<Object>  
 
     //public Object getAllById(int id) throws SQLException;//retorna Object
     //public Object getById(int id, int id) throws SQLException ;
-    public abstract List<Object> getAll() throws SQLException;// pega tudo de uma tabela
+    public abstract ArrayList<Object> getAll() throws SQLException;// pega tudo de uma tabela
 
 
     
