@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package controller;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import model.ModelBrinquedo;
 
 /**
@@ -13,9 +13,11 @@ import model.ModelBrinquedo;
  * @author kaio
  */
 public class ControllerBrinquedo {
-    
-    public static ArrayList<ModelBrinquedo> todosBrinquedos(){
-        ArrayList<ModelBrinquedo> brinquedos =  new ModelBrinquedo().getAll();
+    public static ArrayList<ModelBrinquedo> todosBrinquedos() throws SQLException{
+        ArrayList<ModelBrinquedo> brinquedos = new ArrayList<>();
+        for (Object object : new ModelBrinquedo().getAll()) {
+            brinquedos.add((ModelBrinquedo) object);
+        }
         return brinquedos;
     }
 }
