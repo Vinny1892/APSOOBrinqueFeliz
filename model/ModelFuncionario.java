@@ -98,6 +98,10 @@ public class ModelFuncionario{
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public int getID(){
+	return this.id;
+    }
  
     public void setADM(Boolean adm){
     	this.adm = adm;
