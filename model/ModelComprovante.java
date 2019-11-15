@@ -97,7 +97,7 @@ public class ModelComprovante implements CRUD{
 
 
     //acesso DAO
-    private DAOBrinquedo dao = new DAOBrinquedo();
+    private DAOComprovante dao = new DAOComprovante();
     @Override
     public void salvar() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet.");
