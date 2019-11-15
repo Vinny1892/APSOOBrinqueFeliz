@@ -5,15 +5,25 @@ import dao.DAOCategoria;
 
 public class ModelCategoria{
     private String nome;
-
-
-    public ModelCategoria(String nome) {
-        this.nome = nome;
-    }
-
+    private int id;
 
     public ModelCategoria() {
     }
+
+    public ModelCategoria(String nome, int id) {
+        this.nome = nome;
+        this.id = id;
+    }
+
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
     public String getNome() {
         return this.nome;
@@ -44,9 +54,10 @@ public class ModelCategoria{
 
 
     //acesso DAO
+    private DAOCategoria dao = new DAOCategoria();
     @Override
     public void salvar() throws SQLException {
-        daoEstoque.salvar(this);
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 
