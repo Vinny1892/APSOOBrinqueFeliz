@@ -8,14 +8,26 @@ import java.util.ArrayList;
 public class ModelFabricante{
     private String nome;
     private List<ModelBrinquedo> brinquedo = new ArrayList<>(); //Consta como produto de acordo com o diagrama
+    private int id;
 
 
-    public ModelFabricante(String nome, ModelBrinquedo brinquedo) {
+    public ModelFabricante(String nome, ModelBrinquedo brinquedo, int id) {
         this.nome = nome;
         this.brinquedo = brinquedo;
+        this.id = id;
     }
 
     public ModelFabricante() {
+    }
+
+
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -34,20 +46,35 @@ public class ModelFabricante{
         this.brinquedo = brinquedo;
     }
 
+    
 
-    public void criar(Object obj){
 
+    //acesso DAO
+    private DAOBrinquedo dao = new DAOBrinquedo();
+    @Override
+    public void salvar() throws SQLException {
+        dao.salvar(this);
     }
 
-    public void atualizar(Object obj){
-
+    @Override
+    public abstract void atualizar() throws SQLException {
+        dao.atualizar(this);
     }
 
-    public void excluir(Object obj){
-
+    @Override
+    public abstract void deletar() throws SQLException {
+        dao.deletar(this.id);
     }
 
-    public void buscar(Object obj){
+    @Override
+    public abstract Object getById(int id) throws SQLException {
+        dao.getById(id);
+    }//retorna ArrayList<Object>  
 
-    }
+    //public Object getAllById(int id) throws SQLException;//retorna Object
+    //public Object getById(int id, int id) throws SQLException ;
+    @Override
+    public abstract List<Object> getAll() throws SQLException {
+        dao.getAll();
+    }// pega tudo de uma tabela
 }
