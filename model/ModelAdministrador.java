@@ -3,11 +3,31 @@ package model;
 import java.sql.SQLException;
 import dao.DAOAdministrador;
 
-public class ModelAdministrador extends ModelFuncionario{
+public class ModelAdministrador extends ModelFuncionario implements CRUD{
+    private int id;
 
 
     public ModelAdministrador() {
     }
+
+    public ModelAdministrador(int id) {
+        this.id = id;
+    }
+
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+
+
+
+
 
     public Object informaDados(){
 
@@ -103,6 +123,37 @@ public class ModelAdministrador extends ModelFuncionario{
 
     public void gerarRelatorioDeVendaDiario(Date dataInicio, Date dataFinal){
 
+    }
+
+
+
+
+    //acesso DAO
+    private DAOAdministrador dao = new DAOAdministrador();
+    @Override
+    public void salvar() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+
+    @Override
+    public List<Object> getAll() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void atualizar(Object obj) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deletar(Object obj) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object getById(int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
