@@ -2,51 +2,62 @@ package model;
 
 import java.sql.SQLException;
 import dao.DAOItemDeVenda;
-import java.util.List;
 
 public class ModelItemDeVenda implements CRUD{
     
     //atributos
-    private Brinquedo produto;
+    private ModelBrinquedo produto;
     private int quantidade;
+    private int id;
     
     //construtor
 
     public ModelItemDeVenda() {
     }
 
-    public ModelItemDeVenda(Brinquedo produto, int quantidade) {
+
+    public ModelItemDeVenda(ModelBrinquedo produto, int quantidade, int id) {
         this.produto = produto;
         this.quantidade = quantidade;
+        this.id = id;
     }
 
-    //getter
-    public Brinquedo getProduto(){
+
+    public ModelBrinquedo getProduto() {
         return this.produto;
     }
 
-    public int getQuantidade(){
-        return this.quantidade;
-    }
-
-    //setter
-    public void setProduto(Brinquedo produto){
+    public void setProduto(ModelBrinquedo produto) {
         this.produto = produto;
     }
 
-    public void setQuantidade(int quantidade){
+    public int getQuantidade() {
+        return this.quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+
     public double getValor(){
-        //aqui seria o valor de um brinquedo só? de vários?
-        //this.brinquedo.getPreco() * quantidade
+        //produto.getPreco() ???
     }
 
     //acesso DAO
+    private DAOItemDeVenda dao = new DAOItemDeVenda();
     @Override
     public void salvar() throws SQLException {
-        DAOItemDeVenda.salvar(this);
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 
