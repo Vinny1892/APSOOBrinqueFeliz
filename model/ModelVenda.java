@@ -10,61 +10,74 @@ public class ModelVenda implements CRUD{
     private List<ModelItemDeVenda> itensDeVenda;
     private Double valor;
     private String relatorioDeProdutosVendidos;
-    private FormaDePagamento formaDePagamento;
-    private Comprovante comprovante;
+    private ModelFormaDePagamento formaDePagamento;
+    private ModelComprovante comprovante;
+    private int id;
     //construtor
 
     public ModelVenda() {
     }
 
-    // public ModelVenda(List<ModelItemDeVenda> itemDeVenda, Double valor, String relatorioDeProdutosVendidos, FormaDePagamento formaDePagamento, Comprovante comprovante) {
-    //     this.itensDeVenda.add(itemDeVenda);
-    //     //this.valor = valor; o valor no caso teria que ser calculado iterando a lista de itens de venda certo?
-           //talves reconsiderar esse construtor
-    // }
 
-    //getter
-    public List getItensDeVenda(){
+    public ModelVenda(List<ModelItemDeVenda> itensDeVenda, Double valor, String relatorioDeProdutosVendidos, ModelFormaDePagamento formaDePagamento, ModelComprovante comprovante, int id, DAOBrinquedo dao) {
+        this.itensDeVenda = itensDeVenda;
+        this.valor = valor;
+        this.relatorioDeProdutosVendidos = relatorioDeProdutosVendidos;
+        this.formaDePagamento = formaDePagamento;
+        this.comprovante = comprovante;
+        this.id = id;
+        this.dao = dao;
+    }
+
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<ModelItemDeVenda> getItensDeVenda() {
         return this.itensDeVenda;
     }
 
-    public Double getValor(){
+    public void setItensDeVenda(List<ModelItemDeVenda> itensDeVenda) {
+        this.itensDeVenda = itensDeVenda;
+    }
+
+    public Double getValor() {
         return this.valor;
     }
 
-    public String getRelatorioDeProdutosVendidos(){
-        return this.relatorioDeProdutosVendidos;
-    }
-
-    public FormaDePagamento getFormaDePagamento(){
-        return this.formaDePagamento;
-    }
-
-    public Comprovante getComprovante(){
-        return this.comprovante;
-    }
-
-    //setter
-    public void setItensDeVenda(ModelItemDeVenda item){
-        this.itensDeVenda.add(item);
-    }
-
-    public void setValor(Double valor){
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 
-    public void setRelatorioDeProdutosVendidos(String report){
-        this.relatorioDeProdutosVendidos = report;
+    public String getRelatorioDeProdutosVendidos() {
+        return this.relatorioDeProdutosVendidos;
     }
 
-    public void setFormaDePagamento(FormaDePagamento formaDePagamento){
+    public void setRelatorioDeProdutosVendidos(String relatorioDeProdutosVendidos) {
+        this.relatorioDeProdutosVendidos = relatorioDeProdutosVendidos;
+    }
+
+    public ModelFormaDePagamento getFormaDePagamento() {
+        return this.formaDePagamento;
+    }
+
+    public void setFormaDePagamento(ModelFormaDePagamento formaDePagamento) {
         this.formaDePagamento = formaDePagamento;
     }
 
-    public void setComprovante(Comprovante comprovante){
-        this.comprovante = comprovante;
+    public ModelComprovante getComprovante() {
+        return this.comprovante;
     }
 
+    public void setComprovante(ModelComprovante comprovante) {
+        this.comprovante = comprovante;
+    }
+    
 
 
     public void gerarRelatorioDeVendaPorDia(){
@@ -103,9 +116,10 @@ public class ModelVenda implements CRUD{
 
 
     //acesso DAO
+    private DAOVenda dao = new DAOVenda();
     @Override
     public void salvar() throws SQLException {
-        daoEstoque.salvar(this);
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 
