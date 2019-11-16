@@ -8,6 +8,6 @@ import model.ModelFuncionario;
 public class ControllerLogin {
     
     public static ModelFuncionario buscaFuncionario(String user, String password){
-        return new ModelFuncionario().buscarFuncionario();
+        return new ModelFuncionario().logarFuncionario();
     }
 }

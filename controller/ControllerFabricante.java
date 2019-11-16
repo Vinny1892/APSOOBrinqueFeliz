@@ -10,7 +10,6 @@ import model.ModelFabricante;
 public class ControllerFabricante {
 
     public static boolean salvar(String nome) throws SQLException{
-        new ModelFabricante(nome).salvar();
         return true;
     }
     

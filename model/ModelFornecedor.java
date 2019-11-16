@@ -1,7 +1,8 @@
 package model;
 
 import java.sql.SQLException;
-import dao.DAOFornecedor;
+import java.util.ArrayList;
+//import dao.DAOFornecedor;
 
 
 public class ModelFornecedor implements CRUD{
@@ -13,14 +14,14 @@ public class ModelFornecedor implements CRUD{
     private String estado;
     private String telefone;
     private String email;
-    private List<ModelFabricante> fabricantes;
+    private ArrayList<ModelFabricante> fabricantes;
     private int id;
 
 
     public ModelFornecedor() {
     }
 
-    public ModelFornecedor(String cnpj, String nomeFantasia, String razaoSocial, String endereco, String cidade, String estado, String telefone, String email, List<ModelFabricante> fabricantes, int id) {
+    public ModelFornecedor(String cnpj, String nomeFantasia, String razaoSocial, String endereco, String cidade, String estado, String telefone, String email, ArrayList<ModelFabricante> fabricantes, int id) {
         this.cnpj = cnpj;
         this.nomeFantasia = nomeFantasia;
         this.razaoSocial = razaoSocial;
@@ -98,14 +99,6 @@ public class ModelFornecedor implements CRUD{
         this.email = email;
     }
 
-    public List<ModelFabricante> getFabricantes() {
-        return this.fabricantes;
-    }
-
-    public void setFabricantes(List<ModelFabricante> fabricantes) {
-        this.fabricantes = fabricantes;
-    }
-
     public int getId() {
         return this.id;
     }
@@ -113,47 +106,23 @@ public class ModelFornecedor implements CRUD{
     public void setId(int id) {
         this.id = id;
     }
-    
-
-
-
-    public void criar(Object obj){
-
-    }
-
-    public void atualizar(Object obj){
-
-    }
-
-    public void excluir(Object obj){
-
-    }
-
-    public void buscar(Object obj){
-
-    }
 
 
     //acesso DAO
-    private DAOFornecedor dao = new DAOFornecedor();
-    @Override
-    public void salvar() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
+//    private DAOFornecedor dao = new DAOFornecedor();
 
     @Override
-    public List<Object> getAll() throws SQLException {
+    public boolean salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void atualizar(Object obj) throws SQLException {
+    public boolean atualizar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deletar(Object obj) throws SQLException {
+    public boolean deletar(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -161,4 +130,10 @@ public class ModelFornecedor implements CRUD{
     public Object getById(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public ArrayList<Object> getAll() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+  
 }

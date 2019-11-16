@@ -1,7 +1,8 @@
 package model;
 
 import java.sql.SQLException;
-import dao.DAOComprovante;
+import java.util.ArrayList;
+//import dao.DAOComprovante;
 
 public class ModelComprovante implements CRUD{
     
@@ -67,55 +68,21 @@ public class ModelComprovante implements CRUD{
         this.id = id;
     }
     
-
-
-
-    public void gerarComprovanteVendaCliente(){
-
-    }
-
-    /*public void inserir(ItemDeVenda item){
-        //Isso aqui n seria a mesma coisa que setItemDeVEnda?
-    }*/
-    
-
-    // @Override
-    // public void atualizar(ItemDeVenda item){
-
-    // }
-
-    // public Object buscar(Object obj){
-
-    // }
-
-    // public void excluir(Object obj){
-        
-    // }
-
-
-
-
-
     //acesso DAO
-    private DAOComprovante dao = new DAOComprovante();
-    @Override
-    public void salvar() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
+    //private DAOComprovante dao = new DAOComprovante();
 
     @Override
-    public List<Object> getAll() throws SQLException {
+    public boolean salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void atualizar(Object obj) throws SQLException {
+    public boolean atualizar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deletar(Object obj) throws SQLException {
+    public boolean deletar(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -124,6 +91,8 @@ public class ModelComprovante implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    
+    @Override
+    public ArrayList<Object> getAll() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

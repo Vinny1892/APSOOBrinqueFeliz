@@ -80,7 +80,7 @@ public class FXML1FuncionarioController implements Initializable {
     private TextField textFieldDataContratacao;
 
     @FXML
-    private ComboBox<?> comboBoxPermissao;
+    private ComboBox<String> comboBoxPermissao;
 
     @FXML
     private Button buttonSalvar;
@@ -104,10 +104,36 @@ public class FXML1FuncionarioController implements Initializable {
         textFieldNome.setDisable(false);
         textFieldTelefone.setDisable(false);
         comboBoxPermissao.setDisable(false);
+        
+        buttonCriar.setDisable(true);
+        buttonVoltar.setDisable(true);
+        buttonCancelar.setDisable(false);
+        buttonEditar.setDisable(false);
+        buttonSalvar.setDisable(false);
     }
 
     @FXML
     void onActionButtonCriar(ActionEvent event) {
+        buttonCriar.setDisable(false);
+        buttonVoltar.setDisable(true);
+        buttonCancelar.setDisable(true);
+        buttonEditar.setDisable(false);
+        buttonSalvar.setDisable(true);
+        
+        textFieldDataContratacao.clear();
+        textFieldCelular.clear();
+        textFieldEMail.clear();
+        textFieldNome.clear();
+        textFieldTelefone.clear();
+        //comboBoxPermissao.;
+        
+        textFieldCelular.setDisable(true);
+        textFieldDataContratacao.setDisable(true);
+        textFieldEMail.setDisable(true);
+        textFieldNome.setDisable(true);
+        textFieldTelefone.setDisable(true);
+        comboBoxPermissao.setDisable(true);
+        
 
     }
 
@@ -119,7 +145,7 @@ public class FXML1FuncionarioController implements Initializable {
         textFieldDataContratacao.setText(mf.getDataDeContratacao().toString());
         textFieldEMail.setText(mf.getEmail());
         textFieldNome.setText(mf.getNome());
-        textFieldTelefone.setText("");
+        textFieldTelefone.setText(mf.getTelefoneResidencial());
         if (mf.isADM()) {
             //comboBoxPermissao.;
         } else {
@@ -135,10 +161,19 @@ public class FXML1FuncionarioController implements Initializable {
 
         
         buttonSalvar.setDisable(true);
+        buttonCriar.setDisable(false);
+        buttonVoltar.setDisable(true);
+        buttonCancelar.setDisable(true);
+        buttonEditar.setDisable(false);
     }
 
     @FXML
     void onActionButtonExcluir(ActionEvent event) {
+        buttonSalvar.setDisable(false);
+        buttonCriar.setDisable(false);
+        buttonVoltar.setDisable(true);
+        buttonCancelar.setDisable(true);
+        buttonEditar.setDisable(false);
 
     }
 

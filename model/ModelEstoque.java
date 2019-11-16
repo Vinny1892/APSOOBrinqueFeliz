@@ -1,33 +1,28 @@
 package model;
 
 import java.sql.SQLException;
-import dao.DAOEstoque;
-import java.util.List;
+//import dao.DAOEstoque;
 import java.util.ArrayList;
 
 public class ModelEstoque implements CRUD{
-    
-    //atributos
-    private List<ModelBrinquedo> itensNoEstoque = new ArrayList<>();
+    private ArrayList<ModelBrinquedo> itensNoEstoque = new ArrayList<>();
     private int id;
     
-    //construtor
-
     public ModelEstoque() {
     }
 
-    public ModelEstoque(List<ModelBrinquedo> itensNoEstoque, int id, DAOEstoque dao) {
+    public ModelEstoque(ArrayList<ModelBrinquedo> itensNoEstoque, int id/*, DAOEstoque dao*/) {
         this.itensNoEstoque = itensNoEstoque;
         this.id = id;
-        this.dao = dao;
+        //this.dao = dao;
     }
 
 
-    public List<ModelBrinquedo> getItensNoEstoque() {
+    public ArrayList<ModelBrinquedo> getItensNoEstoque() {
         return this.itensNoEstoque;
     }
 
-    public void setItensNoEstoque(List<ModelBrinquedo> itensNoEstoque) {
+    public void setItensNoEstoque(ArrayList<ModelBrinquedo> itensNoEstoque) {
         this.itensNoEstoque = itensNoEstoque;
     }
 
@@ -51,33 +46,21 @@ public class ModelEstoque implements CRUD{
             "}";
     }
 
-    public void criar(Object obj){
-        //????
-    }
-
-    public List buscarBrinquedo(Categoria categoria){
-        //buscar todos os brinquedos da categoria X?
-    }
-    
+   
     //acesso DAO
-    private DAOEstoque dao = new DAOEstoque();
-    @Override
-    public void salvar() throws SQLException {
-        dao.salvar(this);
-    }
 
     @Override
-    public List<Object> getAll() throws SQLException {
+    public boolean salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void atualizar(Object obj) throws SQLException {
+    public boolean atualizar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deletar(Object obj) throws SQLException {
+    public boolean deletar(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -85,6 +68,12 @@ public class ModelEstoque implements CRUD{
     public Object getById(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public ArrayList<Object> getAll() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 
     
     

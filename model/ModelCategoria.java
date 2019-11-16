@@ -1,7 +1,8 @@
 package model;
 
 import java.sql.SQLException;
-import dao.DAOCategoria;
+import java.util.ArrayList;
+//import dao.DAOCategoria;
 
 public class ModelCategoria implements CRUD{
     private String nome;
@@ -37,42 +38,21 @@ public class ModelCategoria implements CRUD{
     public void gerarRelatioDeProdutos(){
 
     }
-
-
-    @Override
-    public void atualizar(ItemDeVenda item){
-
-    }
-
-    public Object buscar(Object obj){
-
-    }
-
-    public void excluir(Object obj){
-        
-    }
-
-
     //acesso DAO
-    private DAOCategoria dao = new DAOCategoria();
-    @Override
-    public void salvar() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
+    //private DAOCategoria dao = new DAOCategoria();
 
     @Override
-    public List<Object> getAll() throws SQLException {
+    public boolean salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void atualizar(Object obj) throws SQLException {
+    public boolean atualizar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deletar(Object obj) throws SQLException {
+    public boolean deletar(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -80,4 +60,10 @@ public class ModelCategoria implements CRUD{
     public Object getById(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public ArrayList<Object> getAll() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }

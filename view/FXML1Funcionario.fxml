@@ -23,7 +23,7 @@
       <Button fx:id="buttonVoltar" layoutX="316.0" layoutY="3.0" mnemonicParsing="false" onAction="#onActionButtonVoltar" prefHeight="26.0" prefWidth="110.0" text="Voltar" />
       <Button fx:id="buttonEditar" layoutX="190.0" layoutY="474.0" mnemonicParsing="false" onAction="#onActionButtonEditar" prefHeight="26.0" prefWidth="110.0" text="Editar" />
       <Button fx:id="buttonExcluir" layoutX="307.0" layoutY="474.0" mnemonicParsing="false" onAction="#onActionButtonExcluir" prefHeight="26.0" prefWidth="110.0" text="Excluir" />
-      <Button fx:id="buttonCriar" layoutX="429.0" layoutY="474.0" mnemonicParsing="false" onAction="#onActionButtonCriar" prefHeight="26.0" prefWidth="110.0" text="Criar" />
+      <Button fx:id="buttonCriar" layoutX="582.0" layoutY="474.0" mnemonicParsing="false" onAction="#onActionButtonCriar" prefHeight="26.0" prefWidth="110.0" text="Criar" />
       <TextField fx:id="textFieldNome" layoutX="100.0" layoutY="511.0" prefHeight="26.0" prefWidth="229.0" />
       <TextField fx:id="textFieldTelefone" layoutX="100.0" layoutY="549.0" prefHeight="26.0" prefWidth="229.0" />
       <TextField fx:id="textFieldCelular" layoutX="100.0" layoutY="586.0" prefHeight="26.0" prefWidth="229.0" />

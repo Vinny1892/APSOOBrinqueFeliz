@@ -1,7 +1,8 @@
 package model;
 
 import java.sql.SQLException;
-import dao.DAOItemDeVenda;
+import java.util.ArrayList;
+//import dao.DAOItemDeVenda;
 
 public class ModelItemDeVenda implements CRUD{
     
@@ -47,32 +48,25 @@ public class ModelItemDeVenda implements CRUD{
         this.id = id;
     }
 
-
-
-    public double getValor(){
-        //produto.getPreco() ???
+    public double getSubValor(){
+        return 0.0;
     }
 
     //acesso DAO
-    private DAOItemDeVenda dao = new DAOItemDeVenda();
-    @Override
-    public void salvar() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
+    //private DAOItemDeVenda dao = new DAOItemDeVenda();
 
     @Override
-    public List<Object> getAll() throws SQLException {
+    public boolean salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void atualizar(Object obj) throws SQLException {
+    public boolean atualizar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deletar(Object obj) throws SQLException {
+    public boolean deletar(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -80,6 +74,12 @@ public class ModelItemDeVenda implements CRUD{
     public Object getById(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public ArrayList<Object> getAll() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 
     
     

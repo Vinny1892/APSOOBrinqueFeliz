@@ -98,7 +98,7 @@ public class FXML1BrinquedoController implements Initializable {
         //preencher o comboBoxCategoria
         
         //preencher a tabela
-        brinquedos = todosBrinquedos();
+        //brinquedos = todosBrinquedos();
         inicializarTabela();
         
     }    

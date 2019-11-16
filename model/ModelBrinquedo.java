@@ -3,7 +3,6 @@ package model;
 import java.sql.SQLException;
 import dao.DAOBrinquedo;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ModelBrinquedo implements CRUD{
     
@@ -34,24 +33,13 @@ public class ModelBrinquedo implements CRUD{
 
     
 
-    public int getId() {
-        return this.id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public ModelCategoria getCategoria() {
-        return this.categoria;
-    }
-
-    public void setCategoria(ModelCategoria categoria) {
-        this.categoria = categoria;
-    }
+    //acesso DAO
+    private DAOBrinquedo dao = new DAOBrinquedo();
 
     public String getNome() {
-        return this.nome;
+        return nome;
     }
 
     public void setNome(String nome) {
@@ -59,7 +47,7 @@ public class ModelBrinquedo implements CRUD{
     }
 
     public long getCodigoDeBarras() {
-        return this.codigoDeBarras;
+        return codigoDeBarras;
     }
 
     public void setCodigoDeBarras(long codigoDeBarras) {
@@ -67,7 +55,7 @@ public class ModelBrinquedo implements CRUD{
     }
 
     public Double getPreco() {
-        return this.preco;
+        return preco;
     }
 
     public void setPreco(Double preco) {
@@ -75,7 +63,7 @@ public class ModelBrinquedo implements CRUD{
     }
 
     public ModelFabricante getFabricante() {
-        return this.fabricante;
+        return fabricante;
     }
 
     public void setFabricante(ModelFabricante fabricante) {
@@ -83,7 +71,7 @@ public class ModelBrinquedo implements CRUD{
     }
 
     public String getDescricao() {
-        return this.descricao;
+        return descricao;
     }
 
     public void setDescricao(String descricao) {
@@ -91,59 +79,44 @@ public class ModelBrinquedo implements CRUD{
     }
 
     public ModelFornecedor getFornecedor() {
-        return this.fornecedor;
+        return fornecedor;
     }
 
     public void setFornecedor(ModelFornecedor fornecedor) {
         this.fornecedor = fornecedor;
     }
 
+    public int getId() {
+        return id;
+    }
 
-    
-
-    // public void excluirCategoria(){
-    //     //this.categoria = null;
-    // }
-
-    // public void atualizarCategoria(){
-    //     //n seria a mesma coisa que setCategoria?
-    // }
-
-    // public void criar(Object obj){
-        
-    // }
-
-
-
-    //acesso DAO
-    private DAOBrinquedo dao = new DAOBrinquedo();
-    @Override
-    public boolean salvar() throws SQLException {
-        dao.salvar(this);
-        return true;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
-    public boolean atualizar() throws SQLException {
-        return dao.atualizar(this);
-        
+    public boolean salvar(Object obj) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean deletar() throws SQLException {
-        return dao.deletar(this.id);
+    public boolean atualizar(Object obj) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean deletar(int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Object getById(int id) throws SQLException {
-        return dao.getById(id);
-    }//retorna ArrayList<Object>  
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-    //public Object getAllById(int id) throws SQLException;//retorna Object
-    //public Object getById(int id, int id) throws SQLException ;
     @Override
     public ArrayList<Object> getAll() throws SQLException {
-        return dao.getAll();
-    }// pega tudo de uma tabela
-
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }

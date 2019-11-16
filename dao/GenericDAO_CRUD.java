@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.SQLException;
-import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -24,13 +23,14 @@ public abstract class GenericDAO_CRUD {
 
     public abstract boolean atualizar(Object object) throws SQLException;
 
-    public abstract boolean deletar(String algumaCoisa) throws SQLException;
+    public abstract boolean deletar(int id) throws SQLException;
 
-    public abstract Object getById(int id) throws SQLException;//retorna ArrayList<Object>  
+    public abstract Object getById(int id) throws SQLException; 
 
-    //public Object getAllById(int id) throws SQLException;//retorna Object
-    //public Object getById(int id, int id) throws SQLException ;
-    public abstract ArrayList<Object> getAll() throws SQLException;// pega tudo de uma tabela
+    public abstract ArrayList<Object> getAll() throws SQLException;
+
+
+
 
 
     

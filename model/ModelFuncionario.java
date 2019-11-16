@@ -1,7 +1,7 @@
 package model;
 
 import java.sql.SQLException;
-import dao.DAOFuncionario;
+//import dao.DAOFuncionario;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -19,7 +19,7 @@ public class ModelFuncionario implements CRUD{
     private int id;
 
     //Commom employee constructor
-/*
+
     public ModelFuncionario(String matricula, String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, String login, String senha, int id) {
         this.matricula = matricula;
         this.telefoneResidencial = telefoneResidencial;
@@ -30,9 +30,10 @@ public class ModelFuncionario implements CRUD{
         this.senha = senha;
 	this.id = id;
     }
-*/
     
-    public ModelFuncionario(){}
+    public ModelFuncionario(){
+    
+    }
 
 
     //
@@ -124,41 +125,26 @@ public class ModelFuncionario implements CRUD{
         this.nome = nome;
     }
     
-    // public void cadastrarCliente(ModelCliente cliente){
-
-    // }
-
-    // public void excluircliente(ModelCliente cliente){
-
-    // }
-
-    // public void atualizarCliente(ModelCliente cliente){
-
-    // }
-
-    // public ModelCliente consultaCliente(String rg){
-        
-    // }
-
-
-
-
+    public ModelFuncionario logarFuncionario(){
+        return null;
+    }
+    
     //CRUD Methods
 
-    private DAOFuncionario dao = new DAOFuncionario();
+    //private DAOFuncionario dao = new DAOFuncionario();
 
     @Override
-    public boolean salvar() throws SQLException {
+    public boolean salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean atualizar() throws SQLException {
+    public boolean atualizar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean deletar() throws SQLException {
+    public boolean deletar(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -171,8 +157,5 @@ public class ModelFuncionario implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
-
 
 }

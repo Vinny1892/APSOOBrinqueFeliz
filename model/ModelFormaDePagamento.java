@@ -1,10 +1,11 @@
 package model;
 
 import java.sql.SQLException;
-import dao.DAOFormaDePagamento;
+import java.util.ArrayList;
+//import dao.DAOFormaDePagamento;
 
 public class ModelFormaDePagamento implements CRUD{
-    private TIPO_PAGAMENTO tipoPagamento;
+//    private TIPO_PAGAMENTO tipoPagamento;
     private int ID;
     //private Cartao cartao;
     //private Cheque cheque;
@@ -13,8 +14,8 @@ public class ModelFormaDePagamento implements CRUD{
     }
 
 
-    public ModelFormaDePagamento(TIPO_PAGAMENTO tipoPagamento, int ID) {
-        this.tipoPagamento = tipoPagamento;
+    public ModelFormaDePagamento(/*TIPO_PAGAMENTO tipoPagamento,*/ int ID) {
+//        this.tipoPagamento = tipoPagamento;
         this.ID = ID;
     }
 
@@ -27,13 +28,13 @@ public class ModelFormaDePagamento implements CRUD{
         this.ID = ID;
     }
 
-    public TIPO_PAGAMENTO getTipoPagamento() {
-        return this.tipoPagamento;
-    }
-
-    public void setTipoPagamento(TIPO_PAGAMENTO tipoPagamento) {
-        this.tipoPagamento = tipoPagamento;
-    }
+//    public TIPO_PAGAMENTO getTipoPagamento() {
+//        return this.tipoPagamento;
+//    }
+//
+//    public void setTipoPagamento(TIPO_PAGAMENTO tipoPagamento) {
+//        this.tipoPagamento = tipoPagamento;
+//    }
 
     public void gerarComprovante(){
         
@@ -41,25 +42,20 @@ public class ModelFormaDePagamento implements CRUD{
 
 
     //acesso DAO
-    private DAOCategoria dao = new DAOCategoria();
-    @Override
-    public void salvar() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
+//    private DAOCategoria dao = new DAOCategoria();
 
     @Override
-    public List<Object> getAll() throws SQLException {
+    public boolean salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void atualizar(Object obj) throws SQLException {
+    public boolean atualizar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deletar(Object obj) throws SQLException {
+    public boolean deletar(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -67,4 +63,10 @@ public class ModelFormaDePagamento implements CRUD{
     public Object getById(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public ArrayList<Object> getAll() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }

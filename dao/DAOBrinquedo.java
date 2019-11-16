@@ -20,58 +20,58 @@ import javax.swing.JOptionPane;
 public class DAOBrinquedo extends GenericDAO_CRUD {
 
     @Override
-    public void salvar(Object object) throws SQLException {
-        try {
+    public boolean salvar(Object object) throws SQLException {
+       // try {
             ModelBrinquedo brinquedo = (ModelBrinquedo) object;
             String insert = "INSERT INTO brinquedos (id_categoria, codigo_de_barras, preco, id_fabricante, descricao, id_fornecedor) VALUES(?,?,?,?,?,?) ";
-            
-            save(insert, brinquedo.getCategoria().getId(), brinquedo.getCodigoDeBarras(), brinquedo.getPreco, brinquedo.getFabricante().getID(), brinquedo.getDescricao, brinquedo.getFornecedor().getId());
-            
-            
+//            save(insert, brinquedo.getCategoria().getId(), brinquedo.getCodigoDeBarras(), brinquedo.getPreco, brinquedo.getFabricante().getID(), brinquedo.getDescricao, brinquedo.getFornecedor().getId());
             System.out.println("Metodo salvar DaoBrinquedo realizado");
-        } catch (MySQLIntegrityConstraintViolationException e) {
-            JOptionPane.showMessageDialog(null, "Brinquedo Ja cadastrado no BD");
-        } catch (SQLException ex) {
-            System.out.println(ex);
-            JOptionPane.showMessageDialog(null, "Erro ao inserir Brinquedo");
-        }
+            return true;
+       // } catch (MySQLIntegrityConstraintViolationException e) {
+         //   JOptionPane.showMessageDialog(null, "Brinquedo Ja cadastrado no BD");
+        //} catch (SQLException ex) {
+          //  System.out.println(ex);
+           // JOptionPane.showMessageDialog(null, "Erro ao inserir Brinquedo");
+       // }
+        //return false;
     }
 
     @Override
-    public void atualizar(Object object) throws SQLException {
-    	  try {
+    public boolean atualizar(Object object) throws SQLException {
+    	 // try {
               ModelBrinquedo brinquedo = (ModelBrinquedo) object;
               String update = "UPDATE brinquedos SET id_categoria=?, codigo_de_barras=?, preco=?, id_fabricante=?, descricao=?, id_fornecedor=? WHERE ID=?";
               
-             update(update, brinquedo.getId(),  brinquedo.getCategoria().getId(), brinquedo.getCodigoDeBarras(), brinquedo.getPreco, brinquedo.getFabricante().getID(), brinquedo.getDescricao, brinquedo.getFornecedor().getId());
+             //update(update, brinquedo.getId(),  brinquedo.getCategoria().getId(), brinquedo.getCodigoDeBarras(), brinquedo.getPreco, brinquedo.getFabricante().getID(), brinquedo.getDescricao, brinquedo.getFornecedor().getId());
               
               
               System.out.println("Metodo atualizar DaoBrinquedo realizado");
-    	  } catch (MySQLIntegrityConstraintViolationException e) {
-              JOptionPane.showMessageDialog(null, "Atributo atualizado invalido");
-          } catch (SQLException ex) {
-              System.out.println(ex);
-              JOptionPane.showMessageDialog(null, "Erro ao atualizar Brinquedo");
-          }
+              return true;
+//    	  } catch (MySQLIntegrityConstraintViolationException e) {
+//              JOptionPane.showMessageDialog(null, "Atributo atualizado invalido");
+//          } catch (SQLException ex) {
+//              System.out.println(ex);
+//              JOptionPane.showMessageDialog(null, "Erro ao atualizar Brinquedo");
+//          }
       }
 
     	
     
 
     @Override
-    public void deletar(String algumaCoisa) throws SQLException {
+    public boolean deletar(int id) throws SQLException {
     	 try {
-             ModelBrinquedo brinquedo = (ModelBrinquedo) object;
+             //ModelBrinquedo brinquedo = (ModelBrinquedo) object;
              String delete = "DELETE FROM brinquedos WHERE ID=?";
              
-            delete(delete, brinquedo.getId());
-             
-             
+            delete(delete, id);
              System.out.println("Metodo deletar DaoBrinquedo realizado");
+             return true;
          } catch (SQLException ex) {
              System.out.println(ex);
              JOptionPane.showMessageDialog(null, "Erro ao deletar Brinquedo");
          }
+         return false;
      }
     
     
@@ -90,8 +90,8 @@ public class DAOBrinquedo extends GenericDAO_CRUD {
         PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM brinquedos");
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-            ModelBrinquedo brinquedo = new ModelBrinquedo(rs.getInt("id_categoria"), rs.getLong("codigo_de_barras"), rs.getDouble("preco"), rs.getInt("id_fabricante"), rs.getString("descricao"), rs.getInt("id_fornecedor"));
-            brinquedos.add(brinquedo);
+            //ModelBrinquedo brinquedo = new ModelBrinquedo(rs.getInt("id_categoria"), rs.getLong("codigo_de_barras"), rs.getDouble("preco"), rs.getInt("id_fabricante"), rs.getString("descricao"), rs.getInt("id_fornecedor"));
+            //brinquedos.add(brinquedo);
         }
         rs.close();
         stmt.close();

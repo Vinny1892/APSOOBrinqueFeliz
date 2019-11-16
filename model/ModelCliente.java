@@ -1,21 +1,21 @@
 package model;
 
 import java.sql.SQLException;
-import dao.DAOCliente;
+//import dao.DAOCliente;
 
-public class Cliente implements CRUD{
+public class ModelCliente extends ModelPessoa {
+
     private String rg;
     private int id;
 
-    public Cliente() {
-    }
-
-    public Cliente(String nome, String cpf, String endereco, String cep; String idade; String estado, Date dataDeNascimento, String rg, int id){
-        super(nome, cpf, endereco, cep, idade, estado, dataDeNascimento);
+    public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado, /*Date dataDeNascimento, String rg,*/ int id) {
+        super(nome, cpf, endereco, cep, cidade, estado, id/*, dataDeNascimento*/);
         this.id = id;
-        this.rg = rg;
+        //this.rg = rg;
     }
 
+    public ModelCliente() {
+    }
 
     public int getId() {
         return this.id;
@@ -25,42 +25,11 @@ public class Cliente implements CRUD{
         this.id = id;
     }
 
-	public String getRg() {
-		return this.rg;
-	}
-
-	public void setRg(String rg) {
-		this.rg = rg;
-	}
-
-    
-
-
-    //acesso DAO
-    private DAOCliente dao = new DAOCliente();
-    @Override
-    public void salvar() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public String getRg() {
+        return this.rg;
     }
 
-
-    @Override
-    public List<Object> getAll() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void atualizar(Object obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void deletar(Object obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Object getById(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setRg(String rg) {
+        this.rg = rg;
     }
 }
