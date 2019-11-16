@@ -20,15 +20,15 @@ public class ModelFuncionario implements CRUD{
 
     //Commom employee constructor
 
-    public ModelFuncionario(String matricula, String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, String login, String senha, int id) {
+    public ModelFuncionario(String matricula, String telefoneResidencial, String telefoneCelular, String email, String dataDeContratacao, String login, String senha) {
         this.matricula = matricula;
         this.telefoneResidencial = telefoneResidencial;
         this.telefoneCelular = telefoneCelular;
         this.email = email;
-        this.dataDeContratacao = dataDeContratacao;
+        //this.dataDeContratacao = (Date) dataDeContratacao;//converte aqui, ou só usa String, pq tanto a tela e BD facilita usar String
         this.login = login;
         this.senha = senha;
-	this.id = id;
+	//this.id = id; BD que cria o ID
     }
     
     public ModelFuncionario(){

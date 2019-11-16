@@ -12,12 +12,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import java.util.logging.Logger;
 import javafx.scene.Scene;
-import java.util.logging.Level;
 import static controller.ControllerFuncionario.buscaFuncionario;
+<<<<<<< HEAD
 import model.ModelFuncionario;
 import sun.applet.Main;
+=======
+
+>>>>>>> Kaio
 /**
  * FXML Controller class
  *
@@ -43,38 +45,26 @@ public class FXML0loginController implements Initializable {
     private TextField textFieldPassword;
 
     @FXML
-    void onActionButtonLogar(ActionEvent event) {
+    void onActionButtonLogar(ActionEvent event) throws IOException {
         String user = textFieldUser.getText();
         String password = textFieldPassword.getText();
         ModelFuncionario mf = buscaFuncionario(user, password);
         if (true) {//if (mf != null) {
-            if (true) {//if (mf.isADM()) //chama tela adm
-                Stage stage = new Stage();
-                Parent root = null;
-                try {
-                    root = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
-                } catch (IOException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            if (false) {//if (mf.isADM()) //chama tela adm
+                Parent p = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
+                Scene scene = new Scene(p);
                 stage.setScene(scene);
-                stage.show();
-                //fecha essa tela1 atual
-                buttonLogar.getScene().getWindow().hide();
+
             } else {//chama tela funcionario
-                Stage stage = new Stage();
-                Parent root = null;
-                try {
-                    root = FXMLLoader.load(getClass().getResource("FXML1Funcionario.fxml"));
-                } catch (IOException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                Scene scene = new Scene(root);
+                Parent p = FXMLLoader.load(getClass().getResource("FXML4Funcionario.fxml"));
+                Scene scene = new Scene(p);
                 stage.setScene(scene);
-                stage.show();
-                //fecha essa tela1 atual
-                buttonLogar.getScene().getWindow().hide();
+
             }
+            stage.show();
+            //fecha essa tela1 atual
+            buttonLogar.getScene().getWindow().hide();
         } else {
             Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
             dialogoInfo.setTitle("Login");
