@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javafx.scene.Scene;
 import java.util.logging.Level;
 import static controller.ControllerFuncionario.buscaFuncionario;
+import model.ModelFuncionario;
 import sun.applet.Main;
 /**
  * FXML Controller class
@@ -45,7 +46,7 @@ public class FXML0loginController implements Initializable {
     void onActionButtonLogar(ActionEvent event) {
         String user = textFieldUser.getText();
         String password = textFieldPassword.getText();
-        int id = buscaFuncionario(user, password);
+        ModelFuncionario mf = buscaFuncionario(user, password);
         if (true) {//if (mf != null) {
             if (true) {//if (mf.isADM()) //chama tela adm
                 Stage stage = new Stage();

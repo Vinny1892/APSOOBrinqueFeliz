@@ -125,14 +125,12 @@ public class ModelFuncionario implements CRUD{
         this.nome = nome;
     }
     
-    public int logarFuncionario(String user, String password){
-        return -1;
-    }
     
+     //private DAOFuncionario dao = new DAOFuncionario();
+    public ModelFuncionario logarFuncionario(String user, String password){
+        return null;
+    }
     //CRUD Methods
-
-    //private DAOFuncionario dao = new DAOFuncionario();
-
     @Override
     public boolean salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
