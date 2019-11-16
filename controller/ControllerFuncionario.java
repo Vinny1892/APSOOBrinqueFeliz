@@ -5,10 +5,14 @@
  */
 package controller;
 
+import model.ModelFuncionario;
+
 /**
  *
  * @author kaio
  */
 public class ControllerFuncionario {
-    
+    public static int buscaFuncionario(String user, String password){
+        return new ModelFuncionario().logarFuncionario(user, password);
+    }
 }

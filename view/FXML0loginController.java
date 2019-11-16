@@ -7,18 +7,16 @@ import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import static controller.ControllerLogin.buscaFuncionario;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import model.ModelFuncionario;
 import java.util.logging.Logger;
 import javafx.scene.Scene;
 import java.util.logging.Level;
+import static controller.ControllerFuncionario.buscaFuncionario;
 import sun.applet.Main;
-
 /**
  * FXML Controller class
  *
@@ -47,9 +45,9 @@ public class FXML0loginController implements Initializable {
     void onActionButtonLogar(ActionEvent event) {
         String user = textFieldUser.getText();
         String password = textFieldPassword.getText();
-        ModelFuncionario mf = buscaFuncionario(user, password);
-        if (mf != null) {
-            if (mf.isADM()) {//chama tela adm
+        int id = buscaFuncionario(user, password);
+        if (true) {//if (mf != null) {
+            if (true) {//if (mf.isADM()) //chama tela adm
                 Stage stage = new Stage();
                 Parent root = null;
                 try {

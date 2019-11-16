@@ -125,8 +125,8 @@ public class ModelFuncionario implements CRUD{
         this.nome = nome;
     }
     
-    public ModelFuncionario logarFuncionario(){
-        return null;
+    public int logarFuncionario(String user, String password){
+        return -1;
     }
     
     //CRUD Methods
