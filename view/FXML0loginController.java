@@ -14,12 +14,8 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import static controller.ControllerFuncionario.buscaFuncionario;
-<<<<<<< HEAD
 import model.ModelFuncionario;
-import sun.applet.Main;
-=======
 
->>>>>>> Kaio
 /**
  * FXML Controller class
  *
