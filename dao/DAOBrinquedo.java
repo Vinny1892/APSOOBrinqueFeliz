@@ -61,10 +61,9 @@ public class DAOBrinquedo extends GenericDAO_CRUD {
     @Override
     public boolean deletar(int id) throws SQLException {
     	 try {
-             //ModelBrinquedo brinquedo = (ModelBrinquedo) object;
              String delete = "DELETE FROM brinquedos WHERE ID=?";
              
-            delete(delete, id);
+             delete(delete, id);
              System.out.println("Metodo deletar DaoBrinquedo realizado");
              return true;
          } catch (SQLException ex) {
@@ -80,10 +79,7 @@ public class DAOBrinquedo extends GenericDAO_CRUD {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /*
-        Metodo utilizado para pegar todos os fornecedores na tabela/entidade fornecedor,
-        e retorna um ArrayList deste objeto GestaoFornecedor.
-     */
+
     @Override
     public ArrayList<Object> getAll() throws SQLException {
         ArrayList<Object> brinquedos = new ArrayList<>();
