@@ -23,7 +23,7 @@ public class DAOCategoria extends GenericDAO_CRUD {
     public boolean salvar(Object object) throws SQLException {
        // try {
             ModelCategoria categoria = (ModelCategoria) object;
-            String insert = "INSERT INTO categorias (nome) VALUES(?,?) ";
+            String insert = "INSERT INTO categorias (nome) VALUES(?) ";
 //          save(insert, categoria.getNome());
             System.out.println("Metodo salvar Daocategoria realizado");
             return true;
