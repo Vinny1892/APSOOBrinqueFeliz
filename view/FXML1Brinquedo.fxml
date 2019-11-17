@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="buttonCriar" prefHeight="634.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.brinquedo.FXML1EditarBrinquedoController">
    <children>
-      <Button fx:id="buttonSalvar" layoutX="304.0" layoutY="594.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Salvar" />
+      <Button fx:id="buttonSalvar" layoutX="105.0" layoutY="594.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Salvar" />
       <Label layoutX="53.0" layoutY="461.0" text="Nome" />
       <Label layoutX="50.0" layoutY="511.0" text="Codigo" />
       <Label layoutX="55.0" layoutY="562.0" text="Preço" />
@@ -20,9 +20,8 @@
       <TextField fx:id="textFieldNome" layoutX="98.0" layoutY="456.0" prefHeight="26.0" prefWidth="274.0" />
       <TextField fx:id="textFieldCodigo" layoutX="98.0" layoutY="506.0" prefHeight="26.0" prefWidth="274.0" />
       <TextField fx:id="textFieldPreco" layoutX="98.0" layoutY="557.0" prefHeight="26.0" prefWidth="274.0" />
-      <TextField fx:id="textFieldFabricante" layoutX="484.0" layoutY="506.0" prefHeight="26.0" prefWidth="274.0" />
       <TextField fx:id="textFieldDescricao" layoutX="484.0" layoutY="554.0" prefHeight="26.0" prefWidth="274.0" />
-      <Button fx:id="buttonCancelar" layoutX="390.0" layoutY="594.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Cancelar" />
+      <Button fx:id="buttonCancelar" layoutX="197.0" layoutY="594.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Cancelar" />
       <Button fx:id="buttonVoltar" layoutX="487.0" layoutY="3.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="274.0" text="Voltar" />
       <TableView fx:id="tableViewBrinquedo" layoutX="-2.0" layoutY="32.0" prefHeight="367.0" prefWidth="774.0">
         <columns>
