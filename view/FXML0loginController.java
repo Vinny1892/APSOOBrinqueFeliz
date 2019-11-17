@@ -14,12 +14,9 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import static controller.ControllerFuncionario.buscaFuncionario;
-<<<<<<< HEAD
 import model.ModelFuncionario;
 import sun.applet.Main;
-=======
 
->>>>>>> Kaio
 /**
  * FXML Controller class
  *
@@ -51,7 +48,7 @@ public class FXML0loginController implements Initializable {
         ModelFuncionario mf = buscaFuncionario(user, password);
         if (true) {//if (mf != null) {
             Stage stage = new Stage();
-            if (false) {//if (mf.isADM()) //chama tela adm
+            if (true) {//if (mf.isADM()) //chama tela adm
                 Parent p = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
                 Scene scene = new Scene(p);
                 stage.setScene(scene);

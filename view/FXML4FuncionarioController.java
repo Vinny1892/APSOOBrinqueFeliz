@@ -5,17 +5,29 @@
  */
 package view;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.binding.BooleanBinding;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.ModelFuncionario;
 
 /**
@@ -30,15 +42,25 @@ public class FXML4FuncionarioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        buttonCancelar.setDisable(true);
-//        buttonCriar.setDisable(true);
-//        buttonEditar.setDisable(false);
-//        buttonSalvar.setDisable(false);
-//        buttonVoltar.setDisable(true);
+   
     }
+
 
     @FXML
     private Button buttonVoltar;
+            
+            
+    @FXML
+    private Button buttonEditar;
+    
+    
+    @FXML
+    private Button buttonExcluir;
+    
+    @FXML
+    private Button buttonCriar;
+
+
 
     @FXML
     private TableView<ModelFuncionario> tableViewFuncionario;
@@ -60,169 +82,42 @@ public class FXML4FuncionarioController implements Initializable {
 
     @FXML
     private TableColumn<ModelFuncionario, String> columnPermissao;
-
-    @FXML
-    private Button buttonSalvar;
-
-    @FXML
-    private Button buttonCancelar;
-
-    @FXML
-    private Button buttonEditar;
-
-    @FXML
-    private Button buttonExcluir;
-
-    @FXML
-    private Button buttonCriar;
-
-    @FXML
-    private TextField textFildNome;
-
-    @FXML
-    private TextField textFieldTelefone;
-
-    @FXML
-    private TextField textFieldCelular;
-
-    @FXML
-    private TextField textFieldEmail;
-
-    @FXML
-    private TextField textFieldDataContratacao;
-
-    @FXML
-    private ComboBox<?> comboBoxPermissao;
-
-    @FXML
-    void onActionButtonSalvar(ActionEvent event) throws SQLException {
-        String nome = textFildNome.getText();
-        String tel = textFieldTelefone.getText();
-        String cel = textFieldCelular.getText();
-        String email = textFieldEmail.getText();
-        String data = textFieldDataContratacao.getText();
-        String permissao = comboBoxPermissao.getTypeSelector();
-        String matricula = "";
-        String login = "";
-        String senha = "";
-        ModelFuncionario mf = new ModelFuncionario(matricula, tel, cel, email, data, login, senha);
-        mf.salvar(mf);
-    }
-
-    @FXML
-    void onActionButtonVoltar(ActionEvent event) {
-        buttonVoltar.getScene().getWindow().hide();
-    }
-
-    @FXML
-    void onActionTextFieldNome(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onActionbuttonCacelar(ActionEvent event) {
-        textFieldDataContratacao.clear();
-        textFieldCelular.clear();
-        textFieldEmail.clear();
-        textFildNome.clear();
-        textFieldTelefone.clear();
-        //comboBoxPermissao.;
-
-        textFieldCelular.setDisable(true);
-        textFieldDataContratacao.setDisable(true);
-        textFieldEmail.setDisable(true);
-        textFildNome.setDisable(true);
-        textFieldTelefone.setDisable(true);
-        comboBoxPermissao.setDisable(true);
-
-        buttonCriar.setDisable(true);
-        buttonCancelar.setDisable(false);
-        buttonEditar.setDisable(false);
-        buttonSalvar.setDisable(false);
-    }
-
-    @FXML
-    void onActionbuttonCriar(ActionEvent event) {
-        buttonCriar.setDisable(true);
-        //buttonCancelar.setDisable(false);
-        buttonSalvar.setDisable(false);
-        buttonExcluir.setDisable(true);
-        buttonEditar.setDisable(true);
-
-        textFieldDataContratacao.clear();
-        textFieldCelular.clear();
-        textFieldEmail.clear();
-        textFildNome.clear();
-        textFieldTelefone.clear();
-        //comboBoxPermissao.;
-
-        textFieldCelular.setDisable(false);
-        textFieldDataContratacao.setDisable(false);
-        textFieldEmail.setDisable(false);
-        textFildNome.setDisable(false);
-        textFieldTelefone.setDisable(false);
-        comboBoxPermissao.setDisable(false);
+    
+    
+      @FXML
+    void onActionbuttonCriar(ActionEvent event) throws IOException {
+        Parent formFuncionario = FXMLLoader.load(getClass().getResource("FXMLFormFuncionario10.fxml"));
+        Scene scene = new Scene(formFuncionario);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        buttonCriar.getScene().getWindow().hide();
     }
 
     @FXML
     void onActionbuttonEditar(ActionEvent event) {
-        ModelFuncionario mf = tableViewFuncionario.getSelectionModel().getSelectedItem();
 
-        textFieldCelular.setText(mf.getTelefoneCelular());
-        textFieldDataContratacao.setText(mf.getDataDeContratacao().toString());
-        textFieldEmail.setText(mf.getEmail());
-        textFildNome.setText(mf.getNome());
-        textFieldTelefone.setText(mf.getTelefoneResidencial());
-        if (mf.isADM()) {
-            //comboBoxPermissao.;
-        } else {
-            //comboBoxPermissao.
-        }
-
-        textFieldCelular.setDisable(false);
-        textFieldDataContratacao.setDisable(false);
-        textFieldEmail.setDisable(false);
-        textFildNome.setDisable(false);
-        textFieldTelefone.setDisable(false);
-        comboBoxPermissao.setDisable(false);
-
-        buttonSalvar.setDisable(false);
-        buttonCriar.setDisable(true);
-        buttonCancelar.setDisable(false);
-        buttonEditar.setDisable(true);
     }
 
     @FXML
     void onActionbuttonExcluir(ActionEvent event) {
-        buttonSalvar.setDisable(false);
-        buttonCriar.setDisable(false);
-        buttonCancelar.setDisable(true);
-        buttonEditar.setDisable(false);
-    }
+        
 
+    }
+    
     @FXML
-    void onActioncomboBoxPermissao(ActionEvent event) {
-
+    void onActionButtonVoltar(ActionEvent event) throws IOException {
+        Parent adm = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
+        Scene scene = new Scene(adm);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        buttonCriar.getScene().getWindow().hide();
     }
+    
+   
+  
+ 
 
-    @FXML
-    void onActiontextFieldCelular(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onActiontextFieldDataContratacao(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onActiontextFieldTelefone(ActionEvent event) {
-
-    }
-
-    @FXML
-    void textFieldbuttonEmail(ActionEvent event) {
-
-    }
 
 }
