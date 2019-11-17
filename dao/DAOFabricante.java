@@ -82,7 +82,7 @@ public class DAOFabricante extends GenericDAO_CRUD {
         PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM fabricante");
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-            //ModelFabricante fabricante = new ModelFabricante(rs.getInt("id_fabricante"), rs.getString("nome"), rs.getString("cnpj"), rs.getString("endereco"), rs.getBoolean("recorrente"), rs.getInt("taxa_desconto"));
+            //ModelFabricante fabricante = new ModelFabricante(rs.getInt("id_fabricante"), rs.getString("nome"));
             //fabricantes.add(fabricante);
         }
         rs.close();

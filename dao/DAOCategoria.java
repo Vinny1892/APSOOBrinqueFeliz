@@ -86,7 +86,7 @@ public class DAOCategoria extends GenericDAO_CRUD {
         PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM categorias");
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-            //ModelCategoria categoria = new ModelCategoria(rs.getInt("id_categoria"), rs.getLong("codigo_de_barras"), rs.getDouble("preco"), rs.getInt("id_fabricante"), rs.getString("descricao"), rs.getInt("id_fornecedor"));
+            //ModelCategoria categoria = new ModelCategoria(rs.getInt("id_categoria"), rs.getString("nome");
             //categorias.add(categoria);
         }
         rs.close();
