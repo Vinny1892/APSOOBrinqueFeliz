@@ -48,13 +48,13 @@ public class FXML0loginController implements Initializable {
         ModelFuncionario mf = buscaFuncionario(user, password);
         if (true) {//if (mf != null) {
             Stage stage = new Stage();
-            if (true) {//if (mf.isADM()) //chama tela adm
+            if (false) {//if (mf.isADM()) //chama tela adm
                 Parent p = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
                 Scene scene = new Scene(p);
                 stage.setScene(scene);
 
             } else {//chama tela funcionario
-                Parent p = FXMLLoader.load(getClass().getResource("FXML4Funcionario.fxml"));
+                Parent p = FXMLLoader.load(getClass().getResource("FXML8Venda.fxml"));
                 Scene scene = new Scene(p);
                 stage.setScene(scene);
 

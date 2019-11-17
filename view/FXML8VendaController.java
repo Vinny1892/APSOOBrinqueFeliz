@@ -32,12 +32,12 @@ public class FXML8VendaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
-            brinquedos = todosBrinquedos();
-        } catch (SQLException ex) {
-            Logger.getLogger(FXML8VendaController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        inicializarTabelaBrinquedosDaLoja();
+//        try {
+//            brinquedos = todosBrinquedos();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(FXML8VendaController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        //inicializarTabelaBrinquedosDaLoja();
     }
 
     public void inicializarTabelaBrinquedosDaLoja() {
