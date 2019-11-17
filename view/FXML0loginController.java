@@ -15,7 +15,10 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import static controller.ControllerFuncionario.buscaFuncionario;
 import model.ModelFuncionario;
+<<<<<<< HEAD
 import sun.applet.Main;
+=======
+>>>>>>> 4741ae9d685f720065ba2924d89defaa341648cc
 
 /**
  * FXML Controller class
