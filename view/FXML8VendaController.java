@@ -13,12 +13,17 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import model.ModelBrinquedo;
 import static controller.ControllerBrinquedo.todosBrinquedos;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -61,7 +66,6 @@ public class FXML8VendaController implements Initializable {
 //        ObservableList<ModelBrinquedo> obsTableList = FXCollections.observableArrayList();
 //        tableViewCarrinhoDeCompras.setItems(obsTableList);
 //    }
-
     ArrayList<ModelBrinquedo> brinquedos;
 
     @FXML
@@ -140,8 +144,14 @@ public class FXML8VendaController implements Initializable {
     }
 
     @FXML
-    void onActionbuttonFinalizarCompra(ActionEvent event) {
-
+    void onActionbuttonFinalizarCompra(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent p = FXMLLoader.load(getClass().getResource("FXML10Comprovante.fxml"));
+        Scene scene = new Scene(p);
+        stage.setScene(scene);
+        stage.show();
+        //fecha essa tela1 atual
+        buttonFinalizarCompra.getScene().getWindow().hide();
     }
 
 }
