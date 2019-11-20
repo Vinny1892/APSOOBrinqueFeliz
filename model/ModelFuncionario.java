@@ -4,8 +4,9 @@ import java.sql.SQLException;
 //import dao.DAOFuncionario;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 
-public class ModelFuncionario implements CRUD{
+public class ModelFuncionario extends ModelPessoa implements CRUD{
     private String matricula;
     private String nome;
     private String telefoneResidencial;
@@ -17,10 +18,12 @@ public class ModelFuncionario implements CRUD{
     private String senha;
     private boolean adm = false;
     private int id;
+    private static ArrayList<ModelFuncionario> funcionarios;
 
     //Commom employee constructor
 
-    public ModelFuncionario(String matricula, String telefoneResidencial, String telefoneCelular, String email, String dataDeContratacao, String login, String senha) {
+    public ModelFuncionario(String matricula, String telefoneResidencial, String telefoneCelular, String email, String dataDeContratacao, String login, String senha, String nome, String cpf, String endereco, String cep, String cidade, String estado) {
+        super();
         this.matricula = matricula;
         this.telefoneResidencial = telefoneResidencial;
         this.telefoneCelular = telefoneCelular;
@@ -37,7 +40,8 @@ public class ModelFuncionario implements CRUD{
 
 
     //
-    public ModelFuncionario(String matricula, String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, String login, String senha, boolean adm, int id) {
+    public ModelFuncionario(String matricula, String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, String login, String senha, boolean adm, int id, String nome, String cpf, String endereco, String cep, String cidade, String estado) {
+        super();
         this.matricula = matricula;
         this.telefoneResidencial = telefoneResidencial;
         this.telefoneCelular = telefoneCelular;
@@ -129,6 +133,10 @@ public class ModelFuncionario implements CRUD{
      //private DAOFuncionario dao = new DAOFuncionario();
     public ModelFuncionario logarFuncionario(String user, String password){
         return null;
+    }
+    
+    public Map<int, ModelFuncionario> loginFuncionario(String cpf, String senha){
+        return Map;
     }
     //CRUD Methods
     @Override
