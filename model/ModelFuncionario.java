@@ -18,7 +18,8 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
     private String senha;
     private boolean adm = false;
     private int id;
-    private static ArrayList<ModelFuncionario> funcionarios;
+    //private static ArrayList<ModelFuncionario> funcionarios;
+    private static Map<Integer, ModelFuncionario> funcionarios;
 
     //Commom employee constructor
 
@@ -135,9 +136,9 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
         return null;
     }
     
-    public Map<int, ModelFuncionario> loginFuncionario(String cpf, String senha){
-        return Map;
-    }
+//    public Map<int, ModelFuncionario> loginFuncionario(String cpf, String senha){
+//        
+//    }
     //CRUD Methods
     @Override
     public boolean salvar(Object obj) throws SQLException {
