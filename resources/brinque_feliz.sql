@@ -2,10 +2,10 @@
 -- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 15-Nov-2019 às 18:42
--- Versão do servidor: 10.4.8-MariaDB
--- versão do PHP: 7.3.11
+-- Host: db
+-- Generation Time: Nov 22, 2019 at 08:20 AM
+-- Server version: 5.6.46
+-- PHP Version: 7.2.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,112 +19,106 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `brinque_feliz`
+-- Database: `brinque_feliz`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `brinquedos`
+-- Table structure for table `brinquedos`
 --
 
 CREATE TABLE `brinquedos` (
   `id_brinquedo` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL,
-  `codigo_de_barras` mediumtext DEFAULT NULL,
+  `codigo_de_barras` mediumtext,
   `preco` decimal(10,0) DEFAULT NULL,
   `id_fabricante` int(11) NOT NULL,
   `descricao` varchar(255) DEFAULT NULL,
   `id_fornecedor` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `categorias`
+-- Table structure for table `categorias`
 --
 
 CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL,
   `nome` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `categorias_brinquedos`
---
-
-CREATE TABLE `categorias_brinquedos` (
-  `id_categoria` int(11) NOT NULL,
-  `id_brinquedo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `clientes`
+-- Table structure for table `clientes`
 --
 
 CREATE TABLE `clientes` (
   `id_cliente` int(11) NOT NULL,
-  `id_pessoa` int(11) NOT NULL,
-  `rg` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `rg` varchar(255) DEFAULT NULL,
+  `nome` varchar(255) DEFAULT NULL,
+  `data_nascimento` date DEFAULT NULL,
+  `endereco` varchar(255) DEFAULT NULL,
+  `cep` varchar(255) DEFAULT NULL,
+  `cidade` varchar(255) DEFAULT NULL,
+  `estado` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `comprovantes`
+-- Table structure for table `comprovantes`
 --
 
 CREATE TABLE `comprovantes` (
   `id_comprovante` int(11) NOT NULL,
   `id_venda` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `estoques`
+-- Table structure for table `estoques`
 --
 
 CREATE TABLE `estoques` (
   `id_estoque` int(11) NOT NULL,
   `local_estoque` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `fabricantes`
+-- Table structure for table `fabricantes`
 --
 
 CREATE TABLE `fabricantes` (
   `id_fabricante` int(11) NOT NULL,
   `nome` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `formas_pagamento`
+-- Table structure for table `formas_pagamento`
 --
 
 CREATE TABLE `formas_pagamento` (
   `id_forma_pagamento` int(11) NOT NULL,
-  `tipo_pagamento` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `tipo_pagamento` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `fornecedores`
+-- Table structure for table `fornecedores`
 --
 
 CREATE TABLE `fornecedores` (
   `id_fornecedor` int(11) NOT NULL,
-  `cnpj` varchar(255) DEFAULT NULL,
+  `cnpj` varchar(25) DEFAULT NULL,
   `nome_fantasia` varchar(255) DEFAULT NULL,
   `razao_social` varchar(255) DEFAULT NULL,
   `endereco` varchar(255) DEFAULT NULL,
@@ -132,55 +126,51 @@ CREATE TABLE `fornecedores` (
   `estado` varchar(255) DEFAULT NULL,
   `telefone` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `fornecedores_fabricantes`
---
-
-CREATE TABLE `fornecedores_fabricantes` (
-  `id_fornecedor` int(11) NOT NULL,
-  `id_fabricante` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `funcionarios`
+-- Table structure for table `funcionarios`
 --
 
 CREATE TABLE `funcionarios` (
   `id_funcionario` int(11) NOT NULL,
-  `login` varchar(255) DEFAULT NULL,
   `senha` varchar(255) DEFAULT NULL,
   `matricula` varchar(255) DEFAULT NULL,
   `telefone_residencial` varchar(255) DEFAULT NULL,
   `telefone_celular` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
+  `email` varchar(25) DEFAULT NULL,
   `data_contratacao` date DEFAULT NULL,
   `is_adm` tinyint(1) NOT NULL,
-  `id_pessoa` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_pessoa` int(11) NOT NULL,
+  `nome` varchar(255) DEFAULT NULL,
+  `cpf` varchar(25) DEFAULT NULL,
+  `data_nascimento` date DEFAULT NULL,
+  `endereco` varchar(255) DEFAULT NULL,
+  `cep` varchar(255) DEFAULT NULL,
+  `cidade` varchar(255) DEFAULT NULL,
+  `estado` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `itens_estoque`
+-- Table structure for table `itens_estoque`
 --
 
 CREATE TABLE `itens_estoque` (
   `id_item_estoque` int(11) NOT NULL,
   `id_brinquedo` int(11) NOT NULL,
+  `data_aquisicao` date DEFAULT NULL,
   `quantidade` int(11) DEFAULT NULL,
   `id_estoque` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `itens_venda`
+-- Table structure for table `itens_venda`
 --
 
 CREATE TABLE `itens_venda` (
@@ -188,37 +178,23 @@ CREATE TABLE `itens_venda` (
   `id_venda` int(11) NOT NULL,
   `id_brinquedo` int(11) NOT NULL,
   `quantidade` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `pessoas`
---
-
-CREATE TABLE `pessoas` (
-  `id_pessoa` int(11) NOT NULL,
-  `nome` varchar(255) DEFAULT NULL,
-  `cpf` varchar(255) DEFAULT NULL,
-  `data_nascimento` date DEFAULT NULL,
-  `cep` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `tipos_pagamento`
+-- Table structure for table `tipos_pagamento`
 --
 
 CREATE TABLE `tipos_pagamento` (
   `id_tipo_pagamento` int(11) NOT NULL,
   `tipo` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `vendas`
+-- Table structure for table `vendas`
 --
 
 CREATE TABLE `vendas` (
@@ -228,14 +204,14 @@ CREATE TABLE `vendas` (
   `id_funcionario` int(11) NOT NULL,
   `id_forma_pagamento` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `brinquedos`
+-- Indexes for table `brinquedos`
 --
 ALTER TABLE `brinquedos`
   ADD PRIMARY KEY (`id_brinquedo`),
@@ -244,74 +220,59 @@ ALTER TABLE `brinquedos`
   ADD KEY `id_fornecedor` (`id_fornecedor`);
 
 --
--- Índices para tabela `categorias`
+-- Indexes for table `categorias`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id_categoria`);
 
 --
--- Índices para tabela `categorias_brinquedos`
---
-ALTER TABLE `categorias_brinquedos`
-  ADD KEY `id_categoria` (`id_categoria`),
-  ADD KEY `id_brinquedo` (`id_brinquedo`);
-
---
--- Índices para tabela `clientes`
+-- Indexes for table `clientes`
 --
 ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`id_cliente`),
-  ADD KEY `id_pessoa` (`id_pessoa`);
+  ADD PRIMARY KEY (`id_cliente`);
 
 --
--- Índices para tabela `comprovantes`
+-- Indexes for table `comprovantes`
 --
 ALTER TABLE `comprovantes`
   ADD PRIMARY KEY (`id_comprovante`),
   ADD KEY `id_venda` (`id_venda`);
 
 --
--- Índices para tabela `estoques`
+-- Indexes for table `estoques`
 --
 ALTER TABLE `estoques`
   ADD PRIMARY KEY (`id_estoque`);
 
 --
--- Índices para tabela `fabricantes`
+-- Indexes for table `fabricantes`
 --
 ALTER TABLE `fabricantes`
   ADD PRIMARY KEY (`id_fabricante`);
 
 --
--- Índices para tabela `formas_pagamento`
+-- Indexes for table `formas_pagamento`
 --
 ALTER TABLE `formas_pagamento`
-  ADD PRIMARY KEY (`id_forma_pagamento`),
-  ADD KEY `tipo_pagamento` (`tipo_pagamento`);
+  ADD PRIMARY KEY (`id_forma_pagamento`);
 
 --
--- Índices para tabela `fornecedores`
+-- Indexes for table `fornecedores`
 --
 ALTER TABLE `fornecedores`
-  ADD PRIMARY KEY (`id_fornecedor`);
+  ADD PRIMARY KEY (`id_fornecedor`),
+  ADD UNIQUE KEY `cnpj` (`cnpj`);
 
 --
--- Índices para tabela `fornecedores_fabricantes`
---
-ALTER TABLE `fornecedores_fabricantes`
-  ADD KEY `id_fornecedor` (`id_fornecedor`),
-  ADD KEY `id_fabricante` (`id_fabricante`);
-
---
--- Índices para tabela `funcionarios`
+-- Indexes for table `funcionarios`
 --
 ALTER TABLE `funcionarios`
   ADD PRIMARY KEY (`id_funcionario`),
-  ADD UNIQUE KEY `login` (`login`),
-  ADD KEY `id_pessoa` (`id_pessoa`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `cpf` (`cpf`);
 
 --
--- Índices para tabela `itens_estoque`
+-- Indexes for table `itens_estoque`
 --
 ALTER TABLE `itens_estoque`
   ADD PRIMARY KEY (`id_item_estoque`),
@@ -319,7 +280,7 @@ ALTER TABLE `itens_estoque`
   ADD KEY `id_estoque` (`id_estoque`);
 
 --
--- Índices para tabela `itens_venda`
+-- Indexes for table `itens_venda`
 --
 ALTER TABLE `itens_venda`
   ADD PRIMARY KEY (`id_item_venda`),
@@ -327,20 +288,13 @@ ALTER TABLE `itens_venda`
   ADD KEY `id_brinquedo` (`id_brinquedo`);
 
 --
--- Índices para tabela `pessoas`
---
-ALTER TABLE `pessoas`
-  ADD PRIMARY KEY (`id_pessoa`),
-  ADD UNIQUE KEY `cpf` (`cpf`);
-
---
--- Índices para tabela `tipos_pagamento`
+-- Indexes for table `tipos_pagamento`
 --
 ALTER TABLE `tipos_pagamento`
   ADD PRIMARY KEY (`id_tipo_pagamento`);
 
 --
--- Índices para tabela `vendas`
+-- Indexes for table `vendas`
 --
 ALTER TABLE `vendas`
   ADD PRIMARY KEY (`id_venda`),
@@ -349,99 +303,93 @@ ALTER TABLE `vendas`
   ADD KEY `id_cliente` (`id_cliente`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `brinquedos`
+-- AUTO_INCREMENT for table `brinquedos`
 --
 ALTER TABLE `brinquedos`
   MODIFY `id_brinquedo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `categorias`
+-- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
   MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `clientes`
+-- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
   MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `comprovantes`
+-- AUTO_INCREMENT for table `comprovantes`
 --
 ALTER TABLE `comprovantes`
   MODIFY `id_comprovante` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `estoques`
+-- AUTO_INCREMENT for table `estoques`
 --
 ALTER TABLE `estoques`
   MODIFY `id_estoque` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `fabricantes`
+-- AUTO_INCREMENT for table `fabricantes`
 --
 ALTER TABLE `fabricantes`
   MODIFY `id_fabricante` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `formas_pagamento`
+-- AUTO_INCREMENT for table `formas_pagamento`
 --
 ALTER TABLE `formas_pagamento`
   MODIFY `id_forma_pagamento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `fornecedores`
+-- AUTO_INCREMENT for table `fornecedores`
 --
 ALTER TABLE `fornecedores`
   MODIFY `id_fornecedor` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `funcionarios`
+-- AUTO_INCREMENT for table `funcionarios`
 --
 ALTER TABLE `funcionarios`
   MODIFY `id_funcionario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `itens_estoque`
+-- AUTO_INCREMENT for table `itens_estoque`
 --
 ALTER TABLE `itens_estoque`
   MODIFY `id_item_estoque` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `itens_venda`
+-- AUTO_INCREMENT for table `itens_venda`
 --
 ALTER TABLE `itens_venda`
   MODIFY `id_item_venda` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `pessoas`
---
-ALTER TABLE `pessoas`
-  MODIFY `id_pessoa` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `tipos_pagamento`
+-- AUTO_INCREMENT for table `tipos_pagamento`
 --
 ALTER TABLE `tipos_pagamento`
   MODIFY `id_tipo_pagamento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `vendas`
+-- AUTO_INCREMENT for table `vendas`
 --
 ALTER TABLE `vendas`
   MODIFY `id_venda` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Restrições para despejos de tabelas
+-- Constraints for dumped tables
 --
 
 --
--- Limitadores para a tabela `brinquedos`
+-- Constraints for table `brinquedos`
 --
 ALTER TABLE `brinquedos`
   ADD CONSTRAINT `brinquedos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`),
@@ -449,59 +397,27 @@ ALTER TABLE `brinquedos`
   ADD CONSTRAINT `brinquedos_ibfk_3` FOREIGN KEY (`id_fornecedor`) REFERENCES `fornecedores` (`id_fornecedor`);
 
 --
--- Limitadores para a tabela `categorias_brinquedos`
---
-ALTER TABLE `categorias_brinquedos`
-  ADD CONSTRAINT `categorias_brinquedos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`),
-  ADD CONSTRAINT `categorias_brinquedos_ibfk_2` FOREIGN KEY (`id_brinquedo`) REFERENCES `brinquedos` (`id_brinquedo`);
-
---
--- Limitadores para a tabela `clientes`
---
-ALTER TABLE `clientes`
-  ADD CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoas` (`id_pessoa`);
-
---
--- Limitadores para a tabela `comprovantes`
+-- Constraints for table `comprovantes`
 --
 ALTER TABLE `comprovantes`
   ADD CONSTRAINT `comprovantes_ibfk_1` FOREIGN KEY (`id_venda`) REFERENCES `vendas` (`id_venda`);
 
 --
--- Limitadores para a tabela `formas_pagamento`
---
-ALTER TABLE `formas_pagamento`
-  ADD CONSTRAINT `formas_pagamento_ibfk_1` FOREIGN KEY (`tipo_pagamento`) REFERENCES `tipos_pagamento` (`id_tipo_pagamento`);
-
---
--- Limitadores para a tabela `fornecedores_fabricantes`
---
-ALTER TABLE `fornecedores_fabricantes`
-  ADD CONSTRAINT `fornecedores_fabricantes_ibfk_1` FOREIGN KEY (`id_fornecedor`) REFERENCES `fornecedores` (`id_fornecedor`),
-  ADD CONSTRAINT `fornecedores_fabricantes_ibfk_2` FOREIGN KEY (`id_fabricante`) REFERENCES `fabricantes` (`id_fabricante`);
-
---
--- Limitadores para a tabela `funcionarios`
---
-ALTER TABLE `funcionarios`
-  ADD CONSTRAINT `funcionarios_ibfk_1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoas` (`id_pessoa`);
-
---
--- Limitadores para a tabela `itens_estoque`
+-- Constraints for table `itens_estoque`
 --
 ALTER TABLE `itens_estoque`
   ADD CONSTRAINT `itens_estoque_ibfk_1` FOREIGN KEY (`id_brinquedo`) REFERENCES `brinquedos` (`id_brinquedo`),
   ADD CONSTRAINT `itens_estoque_ibfk_2` FOREIGN KEY (`id_estoque`) REFERENCES `estoques` (`id_estoque`);
 
 --
--- Limitadores para a tabela `itens_venda`
+-- Constraints for table `itens_venda`
 --
 ALTER TABLE `itens_venda`
   ADD CONSTRAINT `itens_venda_ibfk_1` FOREIGN KEY (`id_venda`) REFERENCES `vendas` (`id_venda`),
   ADD CONSTRAINT `itens_venda_ibfk_2` FOREIGN KEY (`id_brinquedo`) REFERENCES `brinquedos` (`id_brinquedo`);
 
 --
--- Limitadores para a tabela `vendas`
+-- Constraints for table `vendas`
 --
 ALTER TABLE `vendas`
   ADD CONSTRAINT `vendas_ibfk_1` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionarios` (`id_funcionario`),
