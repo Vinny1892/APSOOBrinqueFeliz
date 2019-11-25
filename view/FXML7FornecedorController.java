@@ -5,15 +5,19 @@
  */
 package view;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -29,8 +33,7 @@ public class FXML7FornecedorController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
-    @FXML
+   @FXML
     private AnchorPane tableViewFornecedor;
 
     @FXML
@@ -61,37 +64,20 @@ public class FXML7FornecedorController implements Initializable {
     private Button buttonCriar;
 
     @FXML
+    private Button buttonEditar;
+
+    @FXML
     private Button buttonExcluir;
 
     @FXML
-    private Button buttonEditar;
-    
-    @FXML
-    private TextField textFieldCNPJ;
-
-    @FXML
-    private TextField textFieldCidade;
-
-    @FXML
-    private TextField textFieldEstado;
-
-    @FXML
-    private TextField textFieldEMail;
-
-    @FXML
-    private TextField textFieldNomeFantasia;
-
-    @FXML
-    private TextField textFieldRazaoSocial;
-
-    @FXML
-    private TextField textFieldEndereco;
-
-    @FXML
-    private TextField textFieldTelefone;
-
-    @FXML
-    void onActionButtonCriar(ActionEvent event) {
+    void onActionButtonCriar(ActionEvent event) throws IOException {
+           Parent categoria = FXMLLoader.load(getClass().getResource("FXMLFormFornecedor.fxml"));
+        Scene scene = new Scene(categoria);
+        //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        buttonCriar.getScene().getWindow().hide();
 
     }
 
@@ -106,7 +92,13 @@ public class FXML7FornecedorController implements Initializable {
     }
 
     @FXML
-    void onActionbuttonVoltar(ActionEvent event) {
+    void onActionbuttonVoltar(ActionEvent event) throws IOException {
+          Parent adm = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
+        Scene scene = new Scene(adm);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        buttonCriar.getScene().getWindow().hide();
 
     }
     

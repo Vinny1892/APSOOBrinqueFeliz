@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" fx:id="tableViewFornecedor" prefHeight="614.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="view.FXML7FornecedorController">
+<AnchorPane id="AnchorPane" fx:id="tableViewFornecedor" prefHeight="503.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXML7FornecedorController">
    <children>
       <TableView prefHeight="384.0" prefWidth="700.0">
         <columns>
@@ -21,25 +18,9 @@
             <TableColumn fx:id="columnEMail" prefWidth="139.0" text="Email" />
         </columns>
       </TableView>
-      <Button fx:id="buttonVoltar" layoutX="629.0" layoutY="574.0" mnemonicParsing="false" onAction="#onActionbuttonVoltar" text="Voltar" />
-      <Button fx:id="buttonCriar" layoutX="14.0" layoutY="574.0" mnemonicParsing="false" onAction="#onActionButtonCriar" text="Criar" />
-      <Button fx:id="buttonExcluir" layoutX="78.0" layoutY="574.0" mnemonicParsing="false" onAction="#onActionButtonExcluir" text="Excluir" />
-      <Button fx:id="buttonEditar" layoutX="154.0" layoutY="574.0" mnemonicParsing="false" onAction="#onActionbuttonEditar" text="Editar" />
-      <TextField fx:id="textFieldCNPJ" layoutX="451.0" layoutY="399.0" prefHeight="26.0" prefWidth="227.0" />
-      <TextField fx:id="textFieldCidade" layoutX="451.0" layoutY="443.0" prefHeight="26.0" prefWidth="227.0" />
-      <TextField fx:id="textFieldEstado" layoutX="451.0" layoutY="485.0" prefHeight="26.0" prefWidth="227.0" />
-      <TextField fx:id="textFieldEMail" layoutX="451.0" layoutY="528.0" prefHeight="26.0" prefWidth="227.0" />
-      <TextField fx:id="textFieldNomeFantasia" layoutX="123.0" layoutY="392.0" prefHeight="26.0" prefWidth="227.0" />
-      <TextField fx:id="textFieldRazaoSocial" layoutX="123.0" layoutY="436.0" prefHeight="26.0" prefWidth="227.0" />
-      <TextField fx:id="textFieldEndereco" layoutX="123.0" layoutY="478.0" prefHeight="26.0" prefWidth="227.0" />
-      <TextField fx:id="textFieldTelefone" layoutX="123.0" layoutY="521.0" prefHeight="26.0" prefWidth="227.0" />
-      <Label layoutX="11.0" layoutY="404.0" text="Nome Fantasia" />
-      <Label layoutX="23.0" layoutY="441.0" text="Razao Social" />
-      <Label layoutX="39.0" layoutY="490.0" text="Endereço" />
-      <Label layoutX="42.0" layoutY="539.0" text="Telefone" />
-      <Label layoutX="406.0" layoutY="410.0" text="CNPJ" />
-      <Label layoutX="394.0" layoutY="448.0" text="Cidade" />
-      <Label layoutX="384.0" layoutY="496.0" text="Estado" />
-      <Label layoutX="384.0" layoutY="539.0" text="Email" />
+      <Button fx:id="buttonVoltar" layoutX="577.0" layoutY="453.0" mnemonicParsing="false" onAction="#onActionbuttonVoltar" prefHeight="39.0" prefWidth="92.0" text="Voltar" />
+      <Button fx:id="buttonCriar" layoutX="247.0" layoutY="394.0" mnemonicParsing="false" onAction="#onActionButtonCriar" prefHeight="39.0" prefWidth="71.0" text="Criar" />
+      <Button fx:id="buttonEditar" layoutX="334.0" layoutY="394.0" mnemonicParsing="false" onAction="#onActionbuttonEditar" prefHeight="39.0" prefWidth="71.0" text="Editar" />
+      <Button fx:id="buttonExcluir" layoutX="430.0" layoutY="394.0" mnemonicParsing="false" onAction="#onActionButtonExcluir" prefHeight="39.0" prefWidth="71.0" text="Excluir" />
    </children>
 </AnchorPane>
