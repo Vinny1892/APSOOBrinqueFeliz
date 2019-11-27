@@ -1,31 +1,49 @@
 package model;
 
 import java.sql.SQLException;
-import dao.DAOFabricante;
 import java.util.ArrayList;
+//import dao.DAOItemDeVenda;
 
-public class ModelFabricante implements CRUD{
-    private String nome;
-    //private ArrayList<ModelBrinquedo> brinquedo = new ArrayList<>(); //Consta como produto de acordo com o diagrama
+public class ModelItemDeVenda implements CRUD{
+    
+    //atributos
+    private ModelBrinquedo produto;
+    private int quantidade;
     private int id;
+    
+    //construtor
+
+    public ModelItemDeVenda() {
+    }
 
     //Com ID
-    public ModelFabricante(String nome, /*ModelBrinquedo brinquedo,*/ int id) {
-        this.nome = nome;
-       // this.brinquedo = brinquedo;
+    public ModelItemDeVenda(ModelBrinquedo produto, int quantidade, int id) {
+        this.produto = produto;
+        this.quantidade = quantidade;
         this.id = id;
     }
 
     //Sem ID
-    public ModelFabricante(String nome, DAOFabricante dao) {
-        this.nome = nome;
-        //this.dao = dao;
+    public ModelItemDeVenda(ModelBrinquedo produto, int quantidade) {
+        this.produto = produto;
+        this.quantidade = quantidade;
     }
 
-    public ModelFabricante() {
+    public ModelBrinquedo getProduto() {
+        return this.produto;
     }
 
+    public void setProduto(ModelBrinquedo produto) {
+        this.produto = produto;
+    }
 
+    public int getQuantidade() {
+        return this.quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
 
     public int getId() {
         return this.id;
@@ -35,23 +53,12 @@ public class ModelFabricante implements CRUD{
         this.id = id;
     }
 
-    public String getNome() {
-        return this.nome;
+    public double getSubValor(){
+        return 0.0;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-//    public ModelBrinquedo getBrinquedo() {
-//        return this.brinquedo;
-//    }
-//
-//    public void setBrinquedo(ModelBrinquedo brinquedo) {
-//        this.brinquedo = brinquedo;
-//    }
     //acesso DAO
-    private DAOFabricante dao = new DAOFabricante();
+    //private DAOItemDeVenda dao = new DAOItemDeVenda();
 
     @Override
     public boolean salvar(Object obj) throws SQLException {
@@ -77,4 +84,8 @@ public class ModelFabricante implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+
+    
+    
 }

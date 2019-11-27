@@ -1,30 +1,26 @@
 package model;
 
 import java.sql.SQLException;
-import dao.DAOFabricante;
 import java.util.ArrayList;
+//import dao.DAOCategoria;
 
-public class ModelFabricante implements CRUD{
+public class ModelCategoria implements CRUD{
     private String nome;
-    //private ArrayList<ModelBrinquedo> brinquedo = new ArrayList<>(); //Consta como produto de acordo com o diagrama
     private int id;
 
+    public ModelCategoria() {
+    }
+
     //Com ID
-    public ModelFabricante(String nome, /*ModelBrinquedo brinquedo,*/ int id) {
+    public ModelCategoria(String nome, int id) {
         this.nome = nome;
-       // this.brinquedo = brinquedo;
         this.id = id;
     }
 
     //Sem ID
-    public ModelFabricante(String nome, DAOFabricante dao) {
+    public ModelCategoria(String nome) {
         this.nome = nome;
-        //this.dao = dao;
     }
-
-    public ModelFabricante() {
-    }
-
 
 
     public int getId() {
@@ -35,6 +31,7 @@ public class ModelFabricante implements CRUD{
         this.id = id;
     }
 
+
     public String getNome() {
         return this.nome;
     }
@@ -43,15 +40,12 @@ public class ModelFabricante implements CRUD{
         this.nome = nome;
     }
 
-//    public ModelBrinquedo getBrinquedo() {
-//        return this.brinquedo;
-//    }
-//
-//    public void setBrinquedo(ModelBrinquedo brinquedo) {
-//        this.brinquedo = brinquedo;
-//    }
+
+    public void gerarRelatioDeProdutos(){
+
+    }
     //acesso DAO
-    private DAOFabricante dao = new DAOFabricante();
+    //private DAOCategoria dao = new DAOCategoria();
 
     @Override
     public boolean salvar(Object obj) throws SQLException {
@@ -77,4 +71,5 @@ public class ModelFabricante implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 }

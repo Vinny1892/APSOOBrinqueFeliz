@@ -1,57 +1,48 @@
 package model;
 
 import java.sql.SQLException;
-import dao.DAOFabricante;
 import java.util.ArrayList;
+//import dao.DAOFormaDePagamento;
 
-public class ModelFabricante implements CRUD{
-    private String nome;
-    //private ArrayList<ModelBrinquedo> brinquedo = new ArrayList<>(); //Consta como produto de acordo com o diagrama
-    private int id;
+public class ModelFormaDePagamento implements CRUD{
+//    private TIPO_PAGAMENTO tipoPagamento;
+    private int ID;
+    //private Cartao cartao;
+    //private Cheque cheque;
+
+    public ModelFormaDePagamento() {
+    }
 
     //Com ID
-    public ModelFabricante(String nome, /*ModelBrinquedo brinquedo,*/ int id) {
-        this.nome = nome;
-       // this.brinquedo = brinquedo;
-        this.id = id;
-    }
-
-    //Sem ID
-    public ModelFabricante(String nome, DAOFabricante dao) {
-        this.nome = nome;
-        //this.dao = dao;
-    }
-
-    public ModelFabricante() {
+    public ModelFormaDePagamento(/*TIPO_PAGAMENTO tipoPagamento,*/ int ID) {
+        //this.tipoPagamento = tipoPagamento;
+        this.ID = ID;
     }
 
 
-
-    public int getId() {
-        return this.id;
+    public int getID() {
+        return this.ID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
-    public String getNome() {
-        return this.nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-//    public ModelBrinquedo getBrinquedo() {
-//        return this.brinquedo;
+//    public TIPO_PAGAMENTO getTipoPagamento() {
+//        return this.tipoPagamento;
 //    }
 //
-//    public void setBrinquedo(ModelBrinquedo brinquedo) {
-//        this.brinquedo = brinquedo;
+//    public void setTipoPagamento(TIPO_PAGAMENTO tipoPagamento) {
+//        this.tipoPagamento = tipoPagamento;
 //    }
+
+    public void gerarComprovante(){
+        
+    }
+
+
     //acesso DAO
-    private DAOFabricante dao = new DAOFabricante();
+//    private DAOCategoria dao = new DAOCategoria();
 
     @Override
     public boolean salvar(Object obj) throws SQLException {
@@ -77,4 +68,5 @@ public class ModelFabricante implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 }
