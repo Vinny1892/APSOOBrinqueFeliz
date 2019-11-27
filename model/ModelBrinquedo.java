@@ -104,6 +104,16 @@ public class ModelBrinquedo implements CRUD{
         this.id = id;
     }
 
+    public void adicionarCategoria(){
+        //é pra setar o atributo categoria?
+        //é pra criar um novo tipo de categoria no modelCategoria?
+    }
+    
+    public void excluirCategoria(){
+        //é para setar nulo no atributo categoria?
+        //é para excluir alguma categoria no modelCategoria?d
+    }
+
     @Override
     public boolean salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
