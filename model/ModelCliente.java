@@ -16,7 +16,7 @@ public class ModelCliente extends ModelPessoa {
     }
 
     //Sem ID
-    public ModelCliente(String rg) {
+    public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado /*Date dataDeNascimento, String rg,*/) {
         this.rg = rg;
     }
 
