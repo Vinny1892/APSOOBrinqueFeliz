@@ -1,7 +1,7 @@
 package model;
 
 import java.sql.SQLException;
-import dao.DAOFabricante;
+//import dao.DAOFabricante;
 import java.util.ArrayList;
 
 public class ModelFabricante implements CRUD{
@@ -17,7 +17,7 @@ public class ModelFabricante implements CRUD{
     }
 
     //Sem ID
-    public ModelFabricante(String nome, DAOFabricante dao) {
+    public ModelFabricante(String nome/*, DAOFabricante dao*/) {
         this.nome = nome;
         //this.dao = dao;
     }
@@ -51,7 +51,7 @@ public class ModelFabricante implements CRUD{
 //        this.brinquedo = brinquedo;
 //    }
     //acesso DAO
-    private DAOFabricante dao = new DAOFabricante();
+    //private DAOFabricante dao = new DAOFabricante();
 
     @Override
     public boolean salvar(Object obj) throws SQLException {
