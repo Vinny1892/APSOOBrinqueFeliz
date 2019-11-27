@@ -5,7 +5,7 @@ import java.util.ArrayList;
 //import dao.DAOPessoa;
 import java.util.Date;
 
-public class ModelPessoa implements CRUD{
+public abstract class ModelPessoa implements CRUD{
     private String nome;
     private String cpf;
     private Date dataDeNascimento;
