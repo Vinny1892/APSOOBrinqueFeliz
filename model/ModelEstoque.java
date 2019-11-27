@@ -5,31 +5,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ModelEstoque implements CRUD{
-    private ArrayList<ModelBrinquedo> itensNoEstoque = new ArrayList<>();
+    //private ArrayList<ModelBrinquedo> itensNoEstoque = new ArrayList<>();
+    private String local;
     private int id;
     
     public ModelEstoque() {
     }
 
     //Com ID
-    public ModelEstoque(ArrayList<ModelBrinquedo> itensNoEstoque, int id/*, DAOEstoque dao*/) {
-        this.itensNoEstoque = itensNoEstoque;
+    public ModelEstoque(String local, int id) {
+        this.local = local;
         this.id = id;
-        //this.dao = dao;
     }
+
 
     //Sem ID
-    public ModelEstoque(ArrayList<ModelBrinquedo> itensNoEstoque) {
-        this.itensNoEstoque = itensNoEstoque;
+    public ModelEstoque(String local) {
+        this.local = local;
     }
 
-    public ArrayList<ModelBrinquedo> getItensNoEstoque() {
-        return this.itensNoEstoque;
-    }
-
-    public void setItensNoEstoque(ArrayList<ModelBrinquedo> itensNoEstoque) {
-        this.itensNoEstoque = itensNoEstoque;
-    }
 
     public int getId() {
         return this.id;
@@ -40,16 +34,26 @@ public class ModelEstoque implements CRUD{
     }
 
 
-    public void exibeListaDeProdutos(){
-        //toString logo abaixo
+    public ArrayList<Brinquedo> exibeListaDeProdutos(){
+        List<modelBrinquedo> listaDeProdutos = new ArrayList<modelBrinquedo>();
+        return listaDeProdutos;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-            " itensNoEstoque='" + getItensNoEstoque() + "'" +
-            "}";
+    public void addItemDeEstoque(modelItemDeEstoque itemDeEstoque){
+
+    }   
+
+    public ArrayList<modelBrinquedo> buscarBrinquedo(modelCategoria categoria){
+        List<modelBrinquedo> lista = new ArrayList<modelBrinquedo>();
+        return lista;
     }
+
+    // @Override
+    // public String toString() {
+    //     return "{" +
+    //         " local='" + getItensNoEstoque() + "'" +
+    //         "}";
+    // }
 
    
     //acesso DAO
