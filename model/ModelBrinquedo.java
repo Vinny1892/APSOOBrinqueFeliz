@@ -33,7 +33,7 @@ public class ModelBrinquedo implements CRUD{
     }
 
     //Sem ID
-    public ModelBrinquedo(ModelCategoria categoria, String nome, long codigoDeBarras, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor, DAOBrinquedo dao) {
+    public ModelBrinquedo(ModelCategoria categoria, String nome, long codigoDeBarras, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor/*, DAOBrinquedo dao*/) {
         this.categoria = categoria;
         this.nome = nome;
         this.codigoDeBarras = codigoDeBarras;
