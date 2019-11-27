@@ -3,6 +3,7 @@ package model;
 import java.sql.SQLException;
 //import dao.DAOEstoque;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ModelEstoque implements CRUD{
     //private ArrayList<ModelBrinquedo> itensNoEstoque = new ArrayList<>();
@@ -34,17 +35,17 @@ public class ModelEstoque implements CRUD{
     }
 
 
-    public ArrayList<Brinquedo> exibeListaDeProdutos(){
-        List<modelBrinquedo> listaDeProdutos = new ArrayList<modelBrinquedo>();
+    public ArrayList<ModelBrinquedo> exibeListaDeProdutos(){
+        ArrayList<ModelBrinquedo> listaDeProdutos = new ArrayList<ModelBrinquedo>();
         return listaDeProdutos;
     }
 
-    public void addItemDeEstoque(modelItemDeEstoque itemDeEstoque){
+    public void addItemDeEstoque(ModelItemDeEstoque itemDeEstoque){
 
     }   
 
-    public ArrayList<modelBrinquedo> buscarBrinquedo(modelCategoria categoria){
-        List<modelBrinquedo> lista = new ArrayList<modelBrinquedo>();
+    public ArrayList<ModelBrinquedo> buscarBrinquedo(ModelCategoria categoria){
+        ArrayList<ModelBrinquedo> lista = new ArrayList<ModelBrinquedo>();
         return lista;
     }
 
