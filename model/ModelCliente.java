@@ -12,12 +12,12 @@ public class ModelCliente extends ModelPessoa {
     public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado, /*Date dataDeNascimento, String rg,*/ int id) {
         super(nome, cpf, endereco, cep, cidade, estado, id/*, dataDeNascimento*/);
         this.id = id;
-        //this.rg = rg;
+        this.rg = rg;
     }
 
     //Sem ID
     public ModelCliente(String rg) {
-        //this.rg = rg;
+        this.rg = rg;
     }
 
 
