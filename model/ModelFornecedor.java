@@ -14,7 +14,7 @@ public class ModelFornecedor implements CRUD{
     private String estado;
     private String telefone;
     private String email;
-    private ArrayList<ModelFabricante> fabricantes;
+    //private ArrayList<ModelFabricante> fabricantes;
     private int id;
 
 
@@ -22,7 +22,7 @@ public class ModelFornecedor implements CRUD{
     }
 
     //Com ID
-    public ModelFornecedor(String cnpj, String nomeFantasia, String razaoSocial, String endereco, String cidade, String estado, String telefone, String email, ArrayList<ModelFabricante> fabricantes, int id) {
+    public ModelFornecedor(String cnpj, String nomeFantasia, String razaoSocial, String endereco, String cidade, String estado, String telefone, String email, int id) {
         this.cnpj = cnpj;
         this.nomeFantasia = nomeFantasia;
         this.razaoSocial = razaoSocial;
@@ -31,12 +31,11 @@ public class ModelFornecedor implements CRUD{
         this.estado = estado;
         this.telefone = telefone;
         this.email = email;
-        this.fabricantes = fabricantes;
         this.id = id;
     }
 
     //Sem ID
-    public ModelFornecedor(String cnpj, String nomeFantasia, String razaoSocial, String endereco, String cidade, String estado, String telefone, String email, ArrayList<ModelFabricante> fabricantes) {
+    public ModelFornecedor(String cnpj, String nomeFantasia, String razaoSocial, String endereco, String cidade, String estado, String telefone, String email) {
         this.cnpj = cnpj;
         this.nomeFantasia = nomeFantasia;
         this.razaoSocial = razaoSocial;
@@ -45,7 +44,6 @@ public class ModelFornecedor implements CRUD{
         this.estado = estado;
         this.telefone = telefone;
         this.email = email;
-        this.fabricantes = fabricantes;
     }
 
     public String getCnpj() {
