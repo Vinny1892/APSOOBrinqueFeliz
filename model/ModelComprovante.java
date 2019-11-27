@@ -10,7 +10,6 @@ public class ModelComprovante implements CRUD{
     private ModelCliente cliente;
     private ModelFuncionario funcionario;
     private ModelFormaDePagamento formaDePagamento;
-    private ModelVenda venda;
     private int id;
 
     //construtor
@@ -19,20 +18,19 @@ public class ModelComprovante implements CRUD{
     }
 
     //Com ID
-    public ModelComprovante(ModelCliente cliente, ModelFuncionario funcionario, ModelFormaDePagamento formaDePagamento, ModelVenda venda, int id) {
+    public ModelComprovante(ModelCliente cliente, ModelFuncionario funcionario, ModelFormaDePagamento formaDePagamento, int id) {
         this.cliente = cliente;
         this.funcionario = funcionario;
         this.formaDePagamento = formaDePagamento;
-        this.venda = venda;
+
         this.id = id;
     }
 
     //Sem ID
-    public ModelComprovante(ModelCliente cliente, ModelFuncionario funcionario, ModelFormaDePagamento formaDePagamento, ModelVenda venda) {
+    public ModelComprovante(ModelCliente cliente, ModelFuncionario funcionario, ModelFormaDePagamento formaDePagamento) {
         this.cliente = cliente;
         this.funcionario = funcionario;
         this.formaDePagamento = formaDePagamento;
-        this.venda = venda;
     }
 
     public ModelCliente getCliente() {
@@ -59,13 +57,6 @@ public class ModelComprovante implements CRUD{
         this.formaDePagamento = formaDePagamento;
     }
 
-    public ModelVenda getVenda() {
-        return this.venda;
-    }
-
-    public void setVenda(ModelVenda venda) {
-        this.venda = venda;
-    }
 
     public int getId() {
         return this.id;
@@ -73,6 +64,10 @@ public class ModelComprovante implements CRUD{
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void gerarComprovanteVendaCliente(){
+        //como vão funcionar essas funções? não tem o tipo de retorno no diagrama...
     }
     
     //acesso DAO
