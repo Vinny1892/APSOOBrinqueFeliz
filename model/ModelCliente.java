@@ -2,6 +2,7 @@ package model;
 
 import java.sql.SQLException;
 //import dao.DAOCliente;
+import java.util.Date;
 
 public class ModelCliente extends ModelPessoa {
 
@@ -9,14 +10,15 @@ public class ModelCliente extends ModelPessoa {
     private int id;
 
     //Com ID
-    public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado, /*Date dataDeNascimento, String rg,*/ int id) {
-        super(nome, cpf, endereco, cep, cidade, estado, id/*, dataDeNascimento*/);
+    public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado, Date dataDeNascimento, String rg, int id) {
+        super(nome, cpf, dataDeNascimento, endereco, cep, cidade, estado, id);
         this.id = id;
         this.rg = rg;
     }
 
     //Sem ID
-    public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado /*Date dataDeNascimento, String rg,*/) {
+    public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado, Date dataDeNascimento, String rg) {
+        super(nome, cpf, dataDeNascimento, endereco, cep, cidade, estado);
         this.rg = rg;
     }
 
@@ -25,7 +27,7 @@ public class ModelCliente extends ModelPessoa {
     }
 
     public int getId() {
-        return this.id;
+        return this.id; 
     }
 
     public void setId(int id) {
