@@ -20,7 +20,7 @@ public abstract class ModelPessoa implements CRUD{
 	}
 	
 	//Com ID
-	public ModelPessoa(String nome, String cpf, String endereco, String cep, String cidade, String estado, int id/*, Date dataDeNascimento*/) {
+	public ModelPessoa(String nome, String cpf, Date dataDeNascimento, String endereco, String cep, String cidade, String estado, int id) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.dataDeNascimento = dataDeNascimento;
@@ -30,6 +30,7 @@ public abstract class ModelPessoa implements CRUD{
 		this.estado = estado;
 		this.id = id;
 	}
+
 
 	//Sem ID
 	public ModelPessoa(String nome, String cpf, Date dataDeNascimento, String endereco, String cep, String cidade, String estado) {
@@ -41,6 +42,8 @@ public abstract class ModelPessoa implements CRUD{
 		this.cidade = cidade;
 		this.estado = estado;
 	}
+
+
 
 	public String getNome() {
 		return this.nome;
@@ -105,6 +108,7 @@ public abstract class ModelPessoa implements CRUD{
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 
 
     //acesso DAO
