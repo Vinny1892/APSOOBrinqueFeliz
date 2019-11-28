@@ -3,11 +3,9 @@ package model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 //import dao.DAOItemDeEstoque;
-import java.util.Date;
 
 public class ModelItemDeEstoque implements CRUD{
     private ModelBrinquedo brinquedo;
-    private Date dataDeAquisicao;
     private int quantidade;
     private int id;
 
@@ -16,17 +14,34 @@ public class ModelItemDeEstoque implements CRUD{
     }
 
     //Com ID
-    public ModelItemDeEstoque(ModelBrinquedo brinquedo, Date dataDeAquisicao, int quantidade, int id) {
+    public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade, int id) {
         this.brinquedo = brinquedo;
-        this.dataDeAquisicao = dataDeAquisicao;
         this.quantidade = quantidade;
         this.id = id;
     }
+    
 
     //Sem ID
-    public ModelItemDeEstoque(ModelBrinquedo brinquedo, Date dataDeAquisicao, int quantidade) {
+    public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade) {
         this.brinquedo = brinquedo;
-        this.dataDeAquisicao = dataDeAquisicao;
+        this.quantidade = quantidade;
+    }
+
+
+
+    public ModelBrinquedo getBrinquedo() {
+        return this.brinquedo;
+    }
+
+    public void setBrinquedo(ModelBrinquedo brinquedo) {
+        this.brinquedo = brinquedo;
+    }
+
+    public int getQuantidade() {
+        return this.quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -37,30 +52,7 @@ public class ModelItemDeEstoque implements CRUD{
     public void setId(int id) {
         this.id = id;
     }
-
-    public ModelBrinquedo getBrinquedo() {
-        return this.brinquedo;
-    }
-
-    public void setBrinquedo(ModelBrinquedo brinquedo) {
-        this.brinquedo = brinquedo;
-    }
-
-    public Date getDataDeAquisicao() {
-        return this.dataDeAquisicao;
-    }
-
-    public void setDataDeAquisicao(Date dataDeAquisicao) {
-        this.dataDeAquisicao = dataDeAquisicao;
-    }
-
-    public int getQuantidade() {
-        return this.quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
+    
 
 
     //acesso DAO
