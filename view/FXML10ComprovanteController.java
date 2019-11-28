@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import model.ModelComprovante;
 
 /**
  * FXML Controller class
@@ -26,7 +27,7 @@ public class FXML10ComprovanteController implements Initializable {
     }
 
     @FXML
-    private TableView<?> tableView;
+    private TableView<ModelComprovante> tableView;
 
     @FXML
     private TableColumn<?, ?> columnProduto;

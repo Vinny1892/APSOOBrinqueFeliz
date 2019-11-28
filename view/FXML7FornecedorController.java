@@ -7,7 +7,13 @@ package view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -23,5 +29,85 @@ public class FXML7FornecedorController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    @FXML
+    private AnchorPane tableViewFornecedor;
+
+    @FXML
+    private TableColumn<?, ?> columnNome;
+
+    @FXML
+    private TableColumn<?, ?> columnCNPJ;
+
+    @FXML
+    private TableColumn<?, ?> columnEndereco;
+
+    @FXML
+    private TableColumn<?, ?> columnCidade;
+
+    @FXML
+    private TableColumn<?, ?> columnEstado;
+
+    @FXML
+    private TableColumn<?, ?> columnTelefone;
+
+    @FXML
+    private TableColumn<?, ?> columnEMail;
+
+    @FXML
+    private Button buttonVoltar;
+
+    @FXML
+    private Button buttonCriar;
+
+    @FXML
+    private Button buttonExcluir;
+
+    @FXML
+    private Button buttonEditar;
+    
+    @FXML
+    private TextField textFieldCNPJ;
+
+    @FXML
+    private TextField textFieldCidade;
+
+    @FXML
+    private TextField textFieldEstado;
+
+    @FXML
+    private TextField textFieldEMail;
+
+    @FXML
+    private TextField textFieldNomeFantasia;
+
+    @FXML
+    private TextField textFieldRazaoSocial;
+
+    @FXML
+    private TextField textFieldEndereco;
+
+    @FXML
+    private TextField textFieldTelefone;
+
+    @FXML
+    void onActionButtonCriar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionButtonExcluir(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionbuttonEditar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionbuttonVoltar(ActionEvent event) {
+
+    }
     
 }

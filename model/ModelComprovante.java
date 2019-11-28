@@ -1,3 +1,4 @@
+
 package model;
 
 import java.sql.SQLException;
@@ -97,4 +98,5 @@ public class ModelComprovante implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

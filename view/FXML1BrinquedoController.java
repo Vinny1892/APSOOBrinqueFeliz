@@ -6,8 +6,21 @@
 package view;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import model.ModelBrinquedo;
+import javafx.scene.control.cell.PropertyValueFactory;
+import static controller.ControllerBrinquedo.todosBrinquedos;
 
 /**
  * FXML Controller class
@@ -15,13 +28,94 @@ import javafx.fxml.Initializable;
  * @author kaio
  */
 public class FXML1BrinquedoController implements Initializable {
+    
 
+    @FXML
+    private AnchorPane buttonCriar;
+
+    @FXML
+    private Button buttonSalvar;
+
+    @FXML
+    private TextField textFieldNome;
+
+    @FXML
+    private TextField textFieldCodigo;
+
+    @FXML
+    private TextField textFieldPreco;
+
+    @FXML
+    private TextField textFieldFabricante;
+
+    @FXML
+    private TextField textFieldDescricao;
+
+    @FXML
+    private Button buttonCancelar;
+
+    @FXML
+    private Button buttonVoltar;
+
+    @FXML
+    private TableView<ModelBrinquedo> tableViewBrinquedo;
+
+    @FXML
+    private TableColumn<ModelBrinquedo, String> tableColumnNome;
+
+    @FXML
+    private TableColumn<ModelBrinquedo, Integer> tableColumnCodigo;
+
+    @FXML
+    private TableColumn<ModelBrinquedo, Float> tableColumnPreco;
+
+    @FXML
+    private TableColumn<ModelBrinquedo, String> tableColumnCategoria;
+
+    @FXML
+    private TableColumn<ModelBrinquedo, String> tableColumnFabricante;
+
+    @FXML
+    private TableColumn<ModelBrinquedo, String> tableColumnDescricao;
+
+    @FXML
+    private Button buttonEditar;
+
+    @FXML
+    private Button buttonExcluir;
+
+    @FXML
+    private ComboBox<?> comboBoxCategoria;
+    
+    private ArrayList<ModelBrinquedo> brinquedos;
+    
+    private ObservableList<ModelBrinquedo> obsTableList;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        //preencher o comboBoxCategoria
+        
+        //preencher a tabela
+        //brinquedos = todosBrinquedos();
+        inicializarTabela();
+        
     }    
+    
+    
+    public void inicializarTabela() {
+        tableColumnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        tableColumnCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        tableColumnDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+        tableColumnPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
+        tableColumnCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));;
+        obsTableList = FXCollections.observableArrayList(brinquedos);
+        tableViewBrinquedo.setItems(obsTableList);
+    }
+    
+    public void inicializarComboBoxCategorias() {
+        
+    }
     
 }

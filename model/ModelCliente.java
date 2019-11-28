@@ -1,3 +1,4 @@
+
 package model;
 
 import java.sql.SQLException;
@@ -42,3 +43,4 @@ public class ModelCliente extends ModelPessoa {
         this.rg = rg;
     }
 }
+

@@ -18,27 +18,29 @@ import model.ModelFabricante;
 public class DAOFabricante extends GenericDAO_CRUD {
 
     @Override
-    public void salvar(Object object) throws SQLException {
+    public boolean salvar(Object object) throws SQLException {
         try {
             ModelFabricante fabricante = (ModelFabricante) object;
             String insert = "INSERT INTO fabricante (nome,endereco,cpf,telefone,id_cartao_fidelidade) VALUES(?,?,?,?,?) ";
             save(insert, fabricante.getNome());
             System.out.println("Metodo salvar DaoFabricante realizado");
+            return true;
         } catch (MySQLIntegrityConstraintViolationException e) {
             JOptionPane.showMessageDialog(null, "Fabricante Ja cadastrado no BD");
         } catch (SQLException ex) {
             System.out.println(ex);
             JOptionPane.showMessageDialog(null, "Erro ao inserir Fabricante");
         }
+        return false;
     }
 
     @Override
-    public void atualizar(Object object) throws SQLException {
+    public boolean atualizar(Object object) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deletar(String algumaCoisa) throws SQLException {
+    public boolean deletar(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -57,12 +59,12 @@ public class DAOFabricante extends GenericDAO_CRUD {
         PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM fabricante");
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-            ModelFabricante fabricante = new ModelFabricante(rs.getInt("id_fabricante"), rs.getString("nome"), rs.getString("cnpj"), rs.getString("endereco"), rs.getBoolean("recorrente"), rs.getInt("taxa_desconto"));
-            fabricantes.add(fabricante);
+            //ModelFabricante fabricante = new ModelFabricante(rs.getInt("id_fabricante"), rs.getString("nome"), rs.getString("cnpj"), rs.getString("endereco"), rs.getBoolean("recorrente"), rs.getInt("taxa_desconto"));
+            //fabricantes.add(fabricante);
         }
         rs.close();
         stmt.close();
-        return fabricantes;
+        return null;//fabricantes;
     }
 
 }
