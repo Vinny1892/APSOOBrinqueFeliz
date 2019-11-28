@@ -1,3 +1,4 @@
+
 package model;
 
 import java.sql.SQLException;
@@ -16,13 +17,18 @@ public class ModelItemDeVenda implements CRUD{
     public ModelItemDeVenda() {
     }
 
-
+    //Com ID
     public ModelItemDeVenda(ModelBrinquedo produto, int quantidade, int id) {
         this.produto = produto;
         this.quantidade = quantidade;
         this.id = id;
     }
 
+    //Sem ID
+    public ModelItemDeVenda(ModelBrinquedo produto, int quantidade) {
+        this.produto = produto;
+        this.quantidade = quantidade;
+    }
 
     public ModelBrinquedo getProduto() {
         return this.produto;
@@ -48,7 +54,7 @@ public class ModelItemDeVenda implements CRUD{
         this.id = id;
     }
 
-    public double getSubValor(){
+    public double getValor(){
         return 0.0;
     }
 
@@ -82,5 +88,5 @@ public class ModelItemDeVenda implements CRUD{
     
 
     
-    
+
 }

@@ -1,30 +1,31 @@
+
 package model;
 
 import java.sql.SQLException;
 //import dao.DAOEstoque;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ModelEstoque implements CRUD{
-    private ArrayList<ModelBrinquedo> itensNoEstoque = new ArrayList<>();
+    //private ArrayList<ModelBrinquedo> itensNoEstoque = new ArrayList<>();
+    private String local;
     private int id;
     
     public ModelEstoque() {
     }
 
-    public ModelEstoque(ArrayList<ModelBrinquedo> itensNoEstoque, int id/*, DAOEstoque dao*/) {
-        this.itensNoEstoque = itensNoEstoque;
+    //Com ID
+    public ModelEstoque(String local, int id) {
+        this.local = local;
         this.id = id;
-        //this.dao = dao;
     }
 
 
-    public ArrayList<ModelBrinquedo> getItensNoEstoque() {
-        return this.itensNoEstoque;
+    //Sem ID
+    public ModelEstoque(String local) {
+        this.local = local;
     }
 
-    public void setItensNoEstoque(ArrayList<ModelBrinquedo> itensNoEstoque) {
-        this.itensNoEstoque = itensNoEstoque;
-    }
 
     public int getId() {
         return this.id;
@@ -35,16 +36,26 @@ public class ModelEstoque implements CRUD{
     }
 
 
-    public void exibeListaDeProdutos(){
-        //toString logo abaixo
+    public ArrayList<ModelBrinquedo> exibeListaDeProdutos(){
+        ArrayList<ModelBrinquedo> listaDeProdutos = new ArrayList<ModelBrinquedo>();
+        return listaDeProdutos;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-            " itensNoEstoque='" + getItensNoEstoque() + "'" +
-            "}";
+    public void addItemDeEstoque(ModelItemDeEstoque itemDeEstoque){
+
+    }   
+
+    public ArrayList<ModelBrinquedo> buscarBrinquedo(ModelCategoria categoria){
+        ArrayList<ModelBrinquedo> lista = new ArrayList<ModelBrinquedo>();
+        return lista;
     }
+
+    // @Override
+    // public String toString() {
+    //     return "{" +
+    //         " local='" + getItensNoEstoque() + "'" +
+    //         "}";
+    // }
 
    
     //acesso DAO
@@ -73,8 +84,6 @@ public class ModelEstoque implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+     
 
-    
-    
 }

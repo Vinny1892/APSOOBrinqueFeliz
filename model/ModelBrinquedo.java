@@ -1,7 +1,8 @@
+
 package model;
 
 import java.sql.SQLException;
-import dao.DAOBrinquedo;
+///import dao.DAOBrinquedo;
 import java.util.ArrayList;
 
 public class ModelBrinquedo implements CRUD{
@@ -20,6 +21,7 @@ public class ModelBrinquedo implements CRUD{
     public ModelBrinquedo() {
     }
 
+    //Com ID
     public ModelBrinquedo(ModelCategoria categoria, String nome, long codigoDeBarras, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor, int id) {
         this.categoria = categoria;
         this.nome = nome;
@@ -31,12 +33,21 @@ public class ModelBrinquedo implements CRUD{
         this.id = id;
     }
 
-    
-
+    //Sem ID
+    public ModelBrinquedo(ModelCategoria categoria, String nome, long codigoDeBarras, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor/*, DAOBrinquedo dao*/) {
+        this.categoria = categoria;
+        this.nome = nome;
+        this.codigoDeBarras = codigoDeBarras;
+        this.preco = preco;
+        this.fabricante = fabricante;
+        this.descricao = descricao;
+        this.fornecedor = fornecedor;
+        //this.dao = dao;
+    }
 
 
     //acesso DAO
-    private DAOBrinquedo dao = new DAOBrinquedo();
+    //private DAOBrinquedo dao = new DAOBrinquedo();
 
     public String getNome() {
         return nome;
@@ -94,6 +105,16 @@ public class ModelBrinquedo implements CRUD{
         this.id = id;
     }
 
+    public void adicionarCategoria(){
+        //é pra setar o atributo categoria?
+        //é pra criar um novo tipo de categoria no modelCategoria?
+    }
+    
+    public void excluirCategoria(){
+        //é para setar nulo no atributo categoria?
+        //é para excluir alguma categoria no modelCategoria?d
+    }
+
     @Override
     public boolean salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -119,4 +140,5 @@ public class ModelBrinquedo implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+
 }

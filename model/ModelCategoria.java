@@ -1,3 +1,4 @@
+
 package model;
 
 import java.sql.SQLException;
@@ -11,9 +12,15 @@ public class ModelCategoria implements CRUD{
     public ModelCategoria() {
     }
 
+    //Com ID
     public ModelCategoria(String nome, int id) {
         this.nome = nome;
         this.id = id;
+    }
+
+    //Sem ID
+    public ModelCategoria(String nome) {
+        this.nome = nome;
     }
 
 
@@ -66,4 +73,5 @@ public class ModelCategoria implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+
 }

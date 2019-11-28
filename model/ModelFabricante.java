@@ -1,7 +1,9 @@
+
 package model;
+//package dao;
 
 import java.sql.SQLException;
-import dao.DAOFabricante;
+//import dao.DAOFabricante;
 import java.util.ArrayList;
 
 public class ModelFabricante implements CRUD{
@@ -9,11 +11,17 @@ public class ModelFabricante implements CRUD{
     //private ArrayList<ModelBrinquedo> brinquedo = new ArrayList<>(); //Consta como produto de acordo com o diagrama
     private int id;
 
-
+    //Com ID
     public ModelFabricante(String nome, /*ModelBrinquedo brinquedo,*/ int id) {
         this.nome = nome;
        // this.brinquedo = brinquedo;
         this.id = id;
+    }
+
+    //Sem ID
+    public ModelFabricante(String nome/*, DAOFabricante dao*/) {
+        this.nome = nome;
+        //this.dao = dao;
     }
 
     public ModelFabricante() {
@@ -45,7 +53,7 @@ public class ModelFabricante implements CRUD{
 //        this.brinquedo = brinquedo;
 //    }
     //acesso DAO
-    private DAOFabricante dao = new DAOFabricante();
+    //private DAOFabricante dao = new DAOFabricante();
 
     @Override
     public boolean salvar(Object obj) throws SQLException {
@@ -71,4 +79,6 @@ public class ModelFabricante implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
 }

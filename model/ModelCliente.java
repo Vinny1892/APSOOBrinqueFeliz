@@ -1,24 +1,34 @@
+
 package model;
 
 import java.sql.SQLException;
 //import dao.DAOCliente;
+import java.util.Date;
 
 public class ModelCliente extends ModelPessoa {
 
     private String rg;
     private int id;
 
-    public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado, /*Date dataDeNascimento, String rg,*/ int id) {
-        super(nome, cpf, endereco, cep, cidade, estado, id/*, dataDeNascimento*/);
+    //Com ID
+    public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado, Date dataDeNascimento, String rg, int id) {
+        super(nome, cpf, dataDeNascimento, endereco, cep, cidade, estado, id);
         this.id = id;
-        //this.rg = rg;
+        this.rg = rg;
     }
+
+    //Sem ID
+    public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado, Date dataDeNascimento, String rg) {
+        super(nome, cpf, dataDeNascimento, endereco, cep, cidade, estado);
+        this.rg = rg;
+    }
+
 
     public ModelCliente() {
     }
 
     public int getId() {
-        return this.id;
+        return this.id; 
     }
 
     public void setId(int id) {
@@ -33,3 +43,4 @@ public class ModelCliente extends ModelPessoa {
         this.rg = rg;
     }
 }
+

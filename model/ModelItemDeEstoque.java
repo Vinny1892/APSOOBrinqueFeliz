@@ -1,13 +1,12 @@
+
 package model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 //import dao.DAOItemDeEstoque;
-import java.util.Date;
 
 public class ModelItemDeEstoque implements CRUD{
     private ModelBrinquedo brinquedo;
-    private Date dataDeAquisicao;
     private int quantidade;
     private int id;
 
@@ -15,21 +14,21 @@ public class ModelItemDeEstoque implements CRUD{
     public ModelItemDeEstoque() {
     }
 
-
-    public ModelItemDeEstoque(ModelBrinquedo brinquedo, Date dataDeAquisicao, int quantidade, int id) {
+    //Com ID
+    public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade, int id) {
         this.brinquedo = brinquedo;
-        this.dataDeAquisicao = dataDeAquisicao;
         this.quantidade = quantidade;
         this.id = id;
     }
+    
 
-    public int getId() {
-        return this.id;
+    //Sem ID
+    public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade) {
+        this.brinquedo = brinquedo;
+        this.quantidade = quantidade;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
 
     public ModelBrinquedo getBrinquedo() {
         return this.brinquedo;
@@ -39,14 +38,6 @@ public class ModelItemDeEstoque implements CRUD{
         this.brinquedo = brinquedo;
     }
 
-    public Date getDataDeAquisicao() {
-        return this.dataDeAquisicao;
-    }
-
-    public void setDataDeAquisicao(Date dataDeAquisicao) {
-        this.dataDeAquisicao = dataDeAquisicao;
-    }
-
     public int getQuantidade() {
         return this.quantidade;
     }
@@ -54,6 +45,15 @@ public class ModelItemDeEstoque implements CRUD{
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
 
     //acesso DAO
@@ -84,4 +84,5 @@ public class ModelItemDeEstoque implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+
 }

@@ -1,3 +1,4 @@
+
 package model;
 
 import java.sql.SQLException;
@@ -13,9 +14,9 @@ public class ModelFormaDePagamento implements CRUD{
     public ModelFormaDePagamento() {
     }
 
-
+    //Com ID
     public ModelFormaDePagamento(/*TIPO_PAGAMENTO tipoPagamento,*/ int ID) {
-//        this.tipoPagamento = tipoPagamento;
+        //this.tipoPagamento = tipoPagamento;
         this.ID = ID;
     }
 
@@ -69,4 +70,5 @@ public class ModelFormaDePagamento implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+
 }

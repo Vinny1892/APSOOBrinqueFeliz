@@ -1,3 +1,4 @@
+
 package model;
 
 import java.sql.SQLException;
@@ -10,7 +11,6 @@ public class ModelComprovante implements CRUD{
     private ModelCliente cliente;
     private ModelFuncionario funcionario;
     private ModelFormaDePagamento formaDePagamento;
-    private ModelVenda venda;
     private int id;
 
     //construtor
@@ -18,15 +18,21 @@ public class ModelComprovante implements CRUD{
     public ModelComprovante() {
     }
 
-
-    public ModelComprovante(ModelCliente cliente, ModelFuncionario funcionario, ModelFormaDePagamento formaDePagamento, ModelVenda venda, int id) {
+    //Com ID
+    public ModelComprovante(ModelCliente cliente, ModelFuncionario funcionario, ModelFormaDePagamento formaDePagamento, int id) {
         this.cliente = cliente;
         this.funcionario = funcionario;
         this.formaDePagamento = formaDePagamento;
-        this.venda = venda;
+
         this.id = id;
     }
 
+    //Sem ID
+    public ModelComprovante(ModelCliente cliente, ModelFuncionario funcionario, ModelFormaDePagamento formaDePagamento) {
+        this.cliente = cliente;
+        this.funcionario = funcionario;
+        this.formaDePagamento = formaDePagamento;
+    }
 
     public ModelCliente getCliente() {
         return this.cliente;
@@ -52,13 +58,6 @@ public class ModelComprovante implements CRUD{
         this.formaDePagamento = formaDePagamento;
     }
 
-    public ModelVenda getVenda() {
-        return this.venda;
-    }
-
-    public void setVenda(ModelVenda venda) {
-        this.venda = venda;
-    }
 
     public int getId() {
         return this.id;
@@ -66,6 +65,10 @@ public class ModelComprovante implements CRUD{
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void gerarComprovanteVendaCliente(){
+        //como vão funcionar essas funções? não tem o tipo de retorno no diagrama...
     }
     
     //acesso DAO
@@ -95,4 +98,5 @@ public class ModelComprovante implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }
