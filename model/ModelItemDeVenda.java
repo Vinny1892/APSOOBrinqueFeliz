@@ -53,7 +53,7 @@ public class ModelItemDeVenda implements CRUD{
         this.id = id;
     }
 
-    public double getSubValor(){
+    public double getValor(){
         return 0.0;
     }
 
