@@ -1,4 +1,5 @@
 package model;
+//package dao;
 
 import java.sql.SQLException;
 //import dao.DAOFabricante;
