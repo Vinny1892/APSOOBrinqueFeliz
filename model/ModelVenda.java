@@ -4,14 +4,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 //import dao.DAOVenda;
 import java.util.List;
+import java.util.Date;
 
 public class ModelVenda implements CRUD{
     
     //atributos
-    private List<ModelItemDeVenda> itensDeVenda;
     private Double valor;
-    private String relatorioDeProdutosVendidos;
-    private ModelFormaDePagamento formaDePagamento;
+    private ModelCliente cliente;
+    private ModelFuncionario funcionario;
+    private Date data_venda;
+    private ModelFormaDePagamento FORMA_PAGAMENTO;
     private ModelComprovante comprovante;
     private int id;
     //construtor
@@ -20,22 +22,74 @@ public class ModelVenda implements CRUD{
     }
 
     //Com ID
-    public ModelVenda(List<ModelItemDeVenda> itensDeVenda, Double valor, String relatorioDeProdutosVendidos, ModelFormaDePagamento formaDePagamento, ModelComprovante comprovante, int id/*, DAOBrinquedo dao*/) {
-        this.itensDeVenda = itensDeVenda;
+    public ModelVenda(Double valor, ModelCliente cliente, ModelFuncionario funcionario, Date data_venda, ModelFormaDePagamento FORMA_PAGAMENTO, ModelComprovante comprovante, int id) {
         this.valor = valor;
-        this.relatorioDeProdutosVendidos = relatorioDeProdutosVendidos;
-        this.formaDePagamento = formaDePagamento;
+        this.cliente = cliente;
+        this.funcionario = funcionario;
+        this.data_venda = data_venda;
+        this.FORMA_PAGAMENTO = FORMA_PAGAMENTO;
         this.comprovante = comprovante;
         this.id = id;
-        //this.dao = dao;
     }
 
+
     //Sem ID
-    public ModelVenda(List<ModelItemDeVenda> itensDeVenda, Double valor, String relatorioDeProdutosVendidos, ModelFormaDePagamento formaDePagamento, ModelComprovante comprovante) {
-        this.itensDeVenda = itensDeVenda;
+    public ModelVenda(Double valor, ModelCliente cliente, ModelFuncionario funcionario, Date data_venda, ModelFormaDePagamento FORMA_PAGAMENTO, ModelComprovante comprovante) {
         this.valor = valor;
-        this.relatorioDeProdutosVendidos = relatorioDeProdutosVendidos;
-        this.formaDePagamento = formaDePagamento;
+        this.cliente = cliente;
+        this.funcionario = funcionario;
+        this.data_venda = data_venda;
+        this.FORMA_PAGAMENTO = FORMA_PAGAMENTO;
+        this.comprovante = comprovante;
+    }
+
+
+
+    public Double getValor() {
+        return this.valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
+
+    public ModelCliente getCliente() {
+        return this.cliente;
+    }
+
+    public void setCliente(ModelCliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public ModelFuncionario getFuncionario() {
+        return this.funcionario;
+    }
+
+    public void setFuncionario(ModelFuncionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public Date getData_venda() {
+        return this.data_venda;
+    }
+
+    public void setData_venda(Date data_venda) {
+        this.data_venda = data_venda;
+    }
+
+    public ModelFormaDePagamento getFORMA_PAGAMENTO() {
+        return this.FORMA_PAGAMENTO;
+    }
+
+    public void setFORMA_PAGAMENTO(ModelFormaDePagamento FORMA_PAGAMENTO) {
+        this.FORMA_PAGAMENTO = FORMA_PAGAMENTO;
+    }
+
+    public ModelComprovante getComprovante() {
+        return this.comprovante;
+    }
+
+    public void setComprovante(ModelComprovante comprovante) {
         this.comprovante = comprovante;
     }
 
@@ -46,46 +100,7 @@ public class ModelVenda implements CRUD{
     public void setId(int id) {
         this.id = id;
     }
-
-    public List<ModelItemDeVenda> getItensDeVenda() {
-        return this.itensDeVenda;
-    }
-
-    public void setItensDeVenda(List<ModelItemDeVenda> itensDeVenda) {
-        this.itensDeVenda = itensDeVenda;
-    }
-
-    public Double getValor() {
-        return this.valor;
-    }
-
-    public void setValor(Double valor) {
-        this.valor = valor;
-    }
-
-    public String getRelatorioDeProdutosVendidos() {
-        return this.relatorioDeProdutosVendidos;
-    }
-
-    public void setRelatorioDeProdutosVendidos(String relatorioDeProdutosVendidos) {
-        this.relatorioDeProdutosVendidos = relatorioDeProdutosVendidos;
-    }
-
-    public ModelFormaDePagamento getFormaDePagamento() {
-        return this.formaDePagamento;
-    }
-
-    public void setFormaDePagamento(ModelFormaDePagamento formaDePagamento) {
-        this.formaDePagamento = formaDePagamento;
-    }
-
-    public ModelComprovante getComprovante() {
-        return this.comprovante;
-    }
-
-    public void setComprovante(ModelComprovante comprovante) {
-        this.comprovante = comprovante;
-    }
+    
     
 
 
@@ -97,15 +112,18 @@ public class ModelVenda implements CRUD{
 
     }
 
-    public void venderBrinquedo(){
+    public void concluir(){
 
     }
 
-    public void inserir(ModelItemDeVenda item){
+    public void inserir(ModelItemDeVenda itemDeVenda){
         //Isso aqui n seria a mesma coisa que setItemDeVEnda?
-        this.itensDeVenda.add(item);
+        //this.itensDeVenda.add(itemDeVenda);
     }
     
+    public boolean atualizar(ModelItemDeVenda itemDeVenda){
+        return true;
+    }
 
     //acesso DAO
     //private DAOVenda dao = new DAOVenda();
