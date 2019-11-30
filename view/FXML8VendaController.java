@@ -24,7 +24,6 @@ import static controller.ControllerItemDeEstoque.todosItensDeEstoque;
 import static controller.ControllerVenda.formasDePagamento;
 import static controller.ControllerCliente.todosClientes;
 import java.util.Date;
-//import static controller.ControllerItemVenda.;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import model.ModelBrinquedo;
@@ -70,8 +69,8 @@ public class FXML8VendaController implements Initializable {
     private ArrayList<ModelItemDeEstoque> itensDeEstoqueComprado;
     private ObservableList<ModelItemDeEstoque> obsTableItensDeEstoque;
 
-    private ObservableList<ModelFormaDePagamento> obsCategoriasFormaPagamento;
-    private ArrayList<ModelFormaDePagamento> formasDePagamentos;
+    private ObservableList<String> obsCategoriasFormaPagamento;
+    private ArrayList<String> formasDePagamentos;
 
     private ObservableList<ModelCliente> obsClientes;
     private ArrayList<ModelCliente> clientes;
@@ -115,7 +114,7 @@ public class FXML8VendaController implements Initializable {
     private Button buttonFinalizarCompra;
 
     @FXML
-    private ComboBox<ModelFormaDePagamento> comboBoxFormaDePagamento;
+    private ComboBox<String> comboBoxFormaDePagamento;
 
     @FXML
     private TextField textViewQuantidade;
@@ -160,14 +159,13 @@ public class FXML8VendaController implements Initializable {
 
     @FXML
     void onActionbuttonFinalizarCompra(ActionEvent event) throws IOException, SQLException {
-        ModelFuncionario funcionario = null;
         ModelCliente cliente = comboBoxCliente.getValue();
-        ModelFormaDePagamento forma = comboBoxFormaDePagamento.getValue();
-        Date data_venda = new Date(System.currentTimeMillis());
-        ModelVenda venda = new ModelVenda(valorTotal, cliente, funcionario, data_venda, forma, carrinhoCompra);
+        String forma = comboBoxFormaDePagamento.getValue();
+        Date dataVenda = new Date(System.currentTimeMillis());
+        ModelVenda venda = new ModelVenda(cliente, funcionarioLogado, dataVenda, forma, valorTotal, carrinhoCompra);
         //atualizar tudo no BD
         int idVenda = controller.ControllerVenda.finalizarCompra(venda);//SALVAR NO BD
-        controller.ControllerComprovante.salvar(new ModelComprovante(venda));
+        //controller.ControllerComprovante.salvar(new ModelComprovante(venda));
         controller.ControllerItemDeEstoque.atualizarItensNoEstoque(itensDeEstoqueComprado);
         //chamar proxima tela
         Stage stage = new Stage();
