@@ -8,6 +8,7 @@ package controller;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.ModelItemDeEstoque;
+import model.ModelItemDeVenda;
 
 /**
  *
@@ -16,9 +17,12 @@ import model.ModelItemDeEstoque;
 public class ControllerItemDeEstoque {
     
     
-    public static boolean atualizarItem(int qtdTela, ModelItemDeEstoque item) throws SQLException{
-        item.setQuantidade(item.getQuantidade() - qtdTela);
-        boolean deuCerto = new ModelItemDeEstoque().atualizar(item);
+    public static boolean atualizarItensNoEstoque(ArrayList<ModelItemDeVenda> carrinho) throws SQLException{
+        boolean deuCerto = false;
+        for (ModelItemDeVenda itemComprado : carrinho) {
+            ModelItemDeEstoque produto = new ModelItemDeEstoque(itemComprado.getBrinquedo(), itemComprado.getQuantidade(), itemComprado.getId());
+            deuCerto = new ModelItemDeEstoque().atualizar(produto);
+        }
         new ModelItemDeEstoque().atualizarArrayListItensNoEstoque();
         return deuCerto;
     }

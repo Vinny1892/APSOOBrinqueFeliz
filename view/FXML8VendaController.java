@@ -25,13 +25,17 @@ import java.util.logging.Logger;
 import static controller.ControllerItemDeEstoque.todosItensDeEstoque;
 import static controller.ControllerVenda.formasDePagamento;
 import static controller.ControllerCliente.todosClientes;
+import java.util.Date;
 //import static controller.ControllerItemVenda.;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import model.ModelCliente;
+import model.ModelComprovante;
 import model.ModelItemDeVenda;
 import model.ModelItemDeEstoque;
 import model.ModelFormaDePagamento;
+import model.ModelFuncionario;
+import model.ModelVenda;
 
 /**
  * FXML Controller class
@@ -42,13 +46,13 @@ public class FXML8VendaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
-            inicializarTabelaItensEstoque();
-            inicializarComboBoxFormaPagamento();
-            inicializarComboBoxCliente();
-        } catch (SQLException ex) {
-            Logger.getLogger(FXML8VendaController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            inicializarTabelaItensEstoque();
+//            inicializarComboBoxFormaPagamento();
+//            inicializarComboBoxCliente();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(FXML8VendaController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
     }
 
@@ -131,6 +135,8 @@ public class FXML8VendaController implements Initializable {
 
     @FXML
     private TableColumn<ModelItemDeVenda, Integer> quantidade1;
+     
+    private double valorTotal = 0;
 
 //    @FXML
 //    void onActionButtonVoltar(ActionEvent event) {
@@ -142,13 +148,19 @@ public class FXML8VendaController implements Initializable {
     }
 
     @FXML
-    void onActionbuttonFinalizarCompra(ActionEvent event) throws IOException {
-        //pegar quem é o vendendor
-
-        //atualizar o Estoque
-        //gerar lista de itens comprados e suas devidas qtd
-        ModelFormaDePagamento formaPagamento = comboBoxFormaDePagamento.getValue();
-
+    void onActionbuttonFinalizarCompra(ActionEvent event) throws IOException, SQLException {
+        ModelFuncionario funcionario = null;
+        ModelCliente cliente = null;
+        ModelFormaDePagamento forma = comboBoxFormaDePagamento.getValue();
+        Date data_venda = null;
+        //salvar compra
+        ModelVenda venda = new ModelVenda(valorTotal, cliente, funcionario, data_venda, forma, carrinhoCompra);
+        controller.ControllerVenda.finalizarCompra(venda);
+        controller.ControllerItemDeEstoque.atualizarItensNoEstoque(itensDeEstoque);
+        int idVenda = new ModelVenda().getId();
+        
+        controller.ControllerComprovante.salvar(comprovante);
+        
         //atualizar tudo depois chamar proxima tela
         Stage stage = new Stage();
         Parent p = FXMLLoader.load(getClass().getResource("FXML10Comprovante.fxml"));
@@ -214,7 +226,10 @@ public class FXML8VendaController implements Initializable {
         if (!textViewQuantidade.getText().isEmpty()) {
             if (qtdTela > 0) {
                 if (qtdTela >= item.getQuantidade()) {
-                    controller.ControllerItemDeEstoque.atualizarItem(qtdTela, item);
+                    //atualizar localmente
+                    carrinhoCompra.add(new ModelItemDeVenda(item.getBrinquedo(), qtdTela));
+                    item.setQuantidade(item.getQuantidade()-qtdTela);
+                    itensDeEstoque.set(posicao,item);
                     inicializarTabelaItensCarrinhoCompra(item, qtdTela);
                     inicializarTabelaItensEstoque();//atualizar tableView
                 } else {

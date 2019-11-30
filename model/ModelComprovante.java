@@ -12,28 +12,35 @@ public class ModelComprovante implements CRUD{
     private ModelFuncionario funcionario;
     private ModelFormaDePagamento formaDePagamento;
     private int id;
+    private int idVenda;
+    private double valorTotal;
 
     //construtor
 
     public ModelComprovante() {
     }
 
-    //Com ID
-    public ModelComprovante(ModelCliente cliente, ModelFuncionario funcionario, ModelFormaDePagamento formaDePagamento, int id) {
+    public ModelComprovante(ModelCliente cliente, ModelFuncionario funcionario, ModelFormaDePagamento formaDePagamento, int id, int idVenda, double valorTotal) {
         this.cliente = cliente;
         this.funcionario = funcionario;
         this.formaDePagamento = formaDePagamento;
-
         this.id = id;
+        this.idVenda = idVenda;
+        this.valorTotal = valorTotal;
     }
 
-    //Sem ID
-    public ModelComprovante(ModelCliente cliente, ModelFuncionario funcionario, ModelFormaDePagamento formaDePagamento) {
+    public ModelComprovante(ModelCliente cliente, ModelFuncionario funcionario, ModelFormaDePagamento formaDePagamento, int idVenda, double valorTotal) {
         this.cliente = cliente;
         this.funcionario = funcionario;
         this.formaDePagamento = formaDePagamento;
+        this.idVenda = idVenda;
+        this.valorTotal = valorTotal;
     }
 
+
+
+    
+    
     public ModelCliente getCliente() {
         return this.cliente;
     }
@@ -97,6 +104,22 @@ public class ModelComprovante implements CRUD{
     @Override
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public int getIdVenda() {
+        return idVenda;
+    }
+
+    public void setIdVenda(int idVenda) {
+        this.idVenda = idVenda;
     }
 
 }

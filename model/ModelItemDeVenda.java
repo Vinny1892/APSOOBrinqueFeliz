@@ -8,17 +8,24 @@ import java.util.ArrayList;
 public class ModelItemDeVenda implements CRUD{
     
     //Kaio: Acho que nao faz sentido essa classe ter o atributo static ArrayList<ModelItemDeVenda>, se tiver outra opinião, avise pf, vai que estou errado.
+    //Ao meu entender, não vale a pena manter em memoria esse Array,
+    //melhor deixar no BD, quando precisar buscamos
     private ModelBrinquedo brinquedo;
     private int quantidade;
-    private int idBrinquedo;
+    private int id_ModelItemEstoque;
+    
 
     public ModelItemDeVenda() {
     }
 
-    public ModelItemDeVenda(ModelBrinquedo brinquedo, int quantidade) {
+    public ModelItemDeVenda(ModelBrinquedo brinquedo, int quantidade, int id_ModelItemEstoque) {
         this.brinquedo = brinquedo;
         this.quantidade = quantidade;
+        this.id_ModelItemEstoque = id_ModelItemEstoque;
     }
+    // por enquanto to achando que essa classe não pode ter um construtor sem int id_ModelItemEstoque
+    // pois ela é gerada a partir de ModelItemDeVenda
+    
 
     public ModelBrinquedo getBrinquedo() {
         return this.brinquedo;
@@ -36,13 +43,6 @@ public class ModelItemDeVenda implements CRUD{
         this.quantidade = quantidade;
     }
 
-    public int getId() {
-        return this.idBrinquedo;
-    }
-
-    public void setId(int id) {
-        this.idBrinquedo = id;
-    }
 
     public double getValor(){
         return getQuantidade() * getBrinquedo().getPreco();
@@ -74,6 +74,14 @@ public class ModelItemDeVenda implements CRUD{
     @Override
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getId_ModelItemEstoque() {
+        return id_ModelItemEstoque;
+    }
+
+    public void setId_ModelItemEstoque(int id_ModelItemEstoque) {
+        this.id_ModelItemEstoque = id_ModelItemEstoque;
     }
     
 

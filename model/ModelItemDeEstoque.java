@@ -3,6 +3,7 @@ package model;
 import dao.DAOItemDeEstoque;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ModelItemDeEstoque implements CRUD{
     private static ArrayList<ModelItemDeEstoque> itensNoEstoque;
@@ -60,6 +61,38 @@ public class ModelItemDeEstoque implements CRUD{
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ModelItemDeEstoque other = (ModelItemDeEstoque) obj;
+        if (this.quantidade != other.quantidade) {
+            return false;
+        }
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.brinquedo, other.brinquedo)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
     
 
 
