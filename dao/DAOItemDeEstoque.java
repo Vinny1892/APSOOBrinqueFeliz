@@ -7,6 +7,7 @@ package dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import model.ModelItemDeEstoque;
 
 /**
  *
@@ -16,11 +17,15 @@ public class DAOItemDeEstoque extends GenericDAO_CRUD{
 
     @Override
     public int salvar(Object object) throws SQLException {
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public boolean atualizar(Object object) throws SQLException {
+        ModelItemDeEstoque item = (ModelItemDeEstoque) object;
+        int id = item.getId();
+        int qtd = item.getQuantidade();
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

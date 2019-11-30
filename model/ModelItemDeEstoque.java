@@ -97,18 +97,18 @@ public class ModelItemDeEstoque implements CRUD{
 
 
     //acesso DAO
-    //private DAOItemDeEstoque dao = new DAOItemDeEstoque();
+    private DAOItemDeEstoque dao = new DAOItemDeEstoque();
 
     
     
     @Override
-    public boolean salvar(Object obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int salvar(Object obj) throws SQLException {
+        return dao.salvar(obj);
     }
 
     @Override
     public boolean atualizar(Object obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.atualizar(obj);
     }
 
     @Override

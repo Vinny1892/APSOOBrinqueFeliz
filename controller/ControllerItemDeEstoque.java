@@ -17,13 +17,11 @@ import model.ModelItemDeVenda;
 public class ControllerItemDeEstoque {
 
     public static boolean atualizarItensNoEstoque(ArrayList<ModelItemDeEstoque> itensComprado) throws SQLException {
-        boolean deuCerto = false;
         for (ModelItemDeEstoque itemComprado : itensComprado) {
-            ModelItemDeEstoque produto = new ModelItemDeEstoque(itemComprado.getBrinquedo(), itemComprado.getQuantidade() - qtd, itemComprado.getId());
-            deuCerto = new ModelItemDeEstoque().atualizar(produto);
-        }asaDSASGPOSDG
+            new ModelItemDeEstoque().atualizar(itemComprado);
+        }
         new ModelItemDeEstoque().atualizarArrayListItensNoEstoque();
-        return deuCerto;
+        return true;
     }
 
     public static ArrayList<ModelItemDeEstoque> todosItensDeEstoque() throws SQLException {
