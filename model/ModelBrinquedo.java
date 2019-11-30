@@ -1,31 +1,31 @@
 
 package model;
 
+import dao.DAOBrinquedo;
 import java.sql.SQLException;
 ///import dao.DAOBrinquedo;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ModelBrinquedo implements CRUD{
     
     //atributos
     private ModelCategoria categoria;
     private String nome;
-    private long codigoDeBarras;
     private Double preco;
     private ModelFabricante fabricante;
     private String descricao;
     private ModelFornecedor fornecedor;
-    private int id;
-    //construtor
+    private int id;//o id vai ser o codigo de barras
 
+    
     public ModelBrinquedo() {
     }
 
     //Com ID
-    public ModelBrinquedo(ModelCategoria categoria, String nome, long codigoDeBarras, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor, int id) {
+    public ModelBrinquedo(ModelCategoria categoria, String nome, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor, int id) {
         this.categoria = categoria;
         this.nome = nome;
-        this.codigoDeBarras = codigoDeBarras;
         this.preco = preco;
         this.fabricante = fabricante;
         this.descricao = descricao;
@@ -34,20 +34,16 @@ public class ModelBrinquedo implements CRUD{
     }
 
     //Sem ID
-    public ModelBrinquedo(ModelCategoria categoria, String nome, long codigoDeBarras, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor/*, DAOBrinquedo dao*/) {
+    public ModelBrinquedo(ModelCategoria categoria, String nome, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor/*, DAOBrinquedo dao*/) {
         this.categoria = categoria;
         this.nome = nome;
-        this.codigoDeBarras = codigoDeBarras;
         this.preco = preco;
         this.fabricante = fabricante;
         this.descricao = descricao;
         this.fornecedor = fornecedor;
-        //this.dao = dao;
     }
 
 
-    //acesso DAO
-    //private DAOBrinquedo dao = new DAOBrinquedo();
 
     public String getNome() {
         return nome;
@@ -57,13 +53,6 @@ public class ModelBrinquedo implements CRUD{
         this.nome = nome;
     }
 
-    public long getCodigoDeBarras() {
-        return codigoDeBarras;
-    }
-
-    public void setCodigoDeBarras(long codigoDeBarras) {
-        this.codigoDeBarras = codigoDeBarras;
-    }
 
     public Double getPreco() {
         return preco;
@@ -105,15 +94,51 @@ public class ModelBrinquedo implements CRUD{
         this.id = id;
     }
 
-    public void adicionarCategoria(){
-        //é pra setar o atributo categoria?
-        //é pra criar um novo tipo de categoria no modelCategoria?
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
     }
-    
-    public void excluirCategoria(){
-        //é para setar nulo no atributo categoria?
-        //é para excluir alguma categoria no modelCategoria?d
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ModelBrinquedo other = (ModelBrinquedo) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.descricao, other.descricao)) {
+            return false;
+        }
+        if (!Objects.equals(this.categoria, other.categoria)) {
+            return false;
+        }
+        if (!Objects.equals(this.preco, other.preco)) {
+            return false;
+        }
+        if (!Objects.equals(this.fabricante, other.fabricante)) {
+            return false;
+        }
+        if (!Objects.equals(this.fornecedor, other.fornecedor)) {
+            return false;
+        }
+        return true;
     }
+
+
+    //acesso DAO
+    private DAOBrinquedo dao = new DAOBrinquedo();
 
     @Override
     public boolean salvar(Object obj) throws SQLException {

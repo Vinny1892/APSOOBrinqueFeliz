@@ -1,34 +1,42 @@
-
 package model;
 
+import dao.DAOItemDeEstoque;
 import java.sql.SQLException;
 import java.util.ArrayList;
-//import dao.DAOItemDeEstoque;
+import java.util.Objects;
 
 public class ModelItemDeEstoque implements CRUD{
-    private ModelBrinquedo brinquedo;
+    private static ArrayList<ModelItemDeEstoque> itensNoEstoque;
+    private ModelBrinquedo brinquedo;//tirar?
     private int quantidade;
     private int id;
 
-
-    public ModelItemDeEstoque() {
+    public ModelItemDeEstoque() throws SQLException {
+        atualizarArrayListItensNoEstoque();
     }
 
     //Com ID
-    public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade, int id) {
+    public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade, int id) throws SQLException {
+        atualizarArrayListItensNoEstoque();
         this.brinquedo = brinquedo;
         this.quantidade = quantidade;
         this.id = id;
     }
-    
 
     //Sem ID
-    public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade) {
+    public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade) throws SQLException {
         this.brinquedo = brinquedo;
         this.quantidade = quantidade;
+        atualizarArrayListItensNoEstoque();
     }
 
+    public static ArrayList<ModelItemDeEstoque> getItensNoEstoque() {
+        return itensNoEstoque;
+    }
 
+    public static void atualizarArrayListItensNoEstoque() throws SQLException {
+        itensNoEstoque = (ArrayList<ModelItemDeEstoque>) (ArrayList<?>) new DAOItemDeEstoque().getAll();
+    }
 
     public ModelBrinquedo getBrinquedo() {
         return this.brinquedo;
@@ -53,12 +61,46 @@ public class ModelItemDeEstoque implements CRUD{
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ModelItemDeEstoque other = (ModelItemDeEstoque) obj;
+        if (this.quantidade != other.quantidade) {
+            return false;
+        }
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.brinquedo, other.brinquedo)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
     
 
 
     //acesso DAO
     //private DAOItemDeEstoque dao = new DAOItemDeEstoque();
 
+    
+    
     @Override
     public boolean salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -81,8 +123,7 @@ public class ModelItemDeEstoque implements CRUD{
 
     @Override
     public ArrayList<Object> getAll() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new DAOItemDeEstoque().getAll();
     }
-    
 
 }

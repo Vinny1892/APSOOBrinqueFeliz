@@ -7,35 +7,33 @@ import java.util.ArrayList;
 
 public class ModelItemDeVenda implements CRUD{
     
-    //atributos
-    private ModelBrinquedo produto;
+    //Kaio: Acho que nao faz sentido essa classe ter o atributo static ArrayList<ModelItemDeVenda>, se tiver outra opinião, avise pf, vai que estou errado.
+    //Ao meu entender, não vale a pena manter em memoria esse Array,
+    //melhor deixar no BD, quando precisar buscamos
+    private ModelBrinquedo brinquedo;
     private int quantidade;
-    private int id;
     
-    //construtor
 
     public ModelItemDeVenda() {
     }
 
-    //Com ID
-    public ModelItemDeVenda(ModelBrinquedo produto, int quantidade, int id) {
-        this.produto = produto;
-        this.quantidade = quantidade;
-        this.id = id;
-    }
-
-    //Sem ID
-    public ModelItemDeVenda(ModelBrinquedo produto, int quantidade) {
-        this.produto = produto;
+    public ModelItemDeVenda(ModelBrinquedo brinquedo, int quantidade) {
+        this.brinquedo = brinquedo;
         this.quantidade = quantidade;
     }
 
-    public ModelBrinquedo getProduto() {
-        return this.produto;
+
+
+    // por enquanto to achando que essa classe não pode ter um construtor sem int id_ModelItemEstoque
+    // pois ela é gerada a partir de ModelItemDeVenda
+    
+
+    public ModelBrinquedo getBrinquedo() {
+        return this.brinquedo;
     }
 
-    public void setProduto(ModelBrinquedo produto) {
-        this.produto = produto;
+    public void setBrinquedo(ModelBrinquedo produto) {
+        this.brinquedo = produto;
     }
 
     public int getQuantidade() {
@@ -46,16 +44,9 @@ public class ModelItemDeVenda implements CRUD{
         this.quantidade = quantidade;
     }
 
-    public int getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public double getValor(){
-        return 0.0;
+        return getQuantidade() * getBrinquedo().getPreco();
     }
 
     //acesso DAO
@@ -85,8 +76,5 @@ public class ModelItemDeVenda implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-
-    
 
 }

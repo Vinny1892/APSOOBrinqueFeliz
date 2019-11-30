@@ -42,5 +42,12 @@ public class ModelCliente extends ModelPessoa {
     public void setRg(String rg) {
         this.rg = rg;
     }
+
+    @Override
+    public String toString() {
+        return getNome();
+    }
+    
+    
 }
 

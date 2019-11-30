@@ -5,10 +5,19 @@
  */
 package controller;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import model.ModelCliente;
+import model.ModelItemDeVenda;
+import model.ModelFuncionario;
+
 /**
  *
  * @author kaio
  */
-public class ControllerEstoque {
+public class ControllerItemVenda {
+    
+    
+    
     
 }

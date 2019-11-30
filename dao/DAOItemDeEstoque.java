@@ -1,38 +1,26 @@
-package model;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-//import dao.DAOFormaDePagamento;
 
-public class ModelFormaDePagamento implements CRUD {
+/**
+ *
+ * @author kaio
+ */
+public class DAOItemDeEstoque extends GenericDAO_CRUD{
 
-    // private int ID;
-    //private String nome;//nome da forma de pagamento
-    private ArrayList<String> formas = new ArrayList<>();
-
-    public ModelFormaDePagamento() {
-        formas.add("Dinheiro");
-        formas.add("Cartão");
-        formas.add("Cheque");
-    }
-
-    public ArrayList<String> getFormas() {
-        return formas;
-    }
-
-    public void setFormas(ArrayList<String> formas) {
-        this.formas = formas;
-    }
-
-    //acesso DAO
-//    private DAOCategoria dao = new DAOCategoria();
     @Override
-    public boolean salvar(Object obj) throws SQLException {
+    public int salvar(Object object) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean atualizar(Object obj) throws SQLException {
+    public boolean atualizar(Object object) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -50,5 +38,5 @@ public class ModelFormaDePagamento implements CRUD {
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
 }
