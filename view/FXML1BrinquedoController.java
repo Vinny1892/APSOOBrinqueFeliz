@@ -21,6 +21,9 @@ import javafx.scene.layout.AnchorPane;
 import model.ModelBrinquedo;
 import javafx.scene.control.cell.PropertyValueFactory;
 import static controller.ControllerBrinquedo.todosBrinquedos;
+import javafx.event.ActionEvent;
+import model.ModelCategoria;
+import model.ModelFabricante;
 
 /**
  * FXML Controller class
@@ -28,7 +31,6 @@ import static controller.ControllerBrinquedo.todosBrinquedos;
  * @author kaio
  */
 public class FXML1BrinquedoController implements Initializable {
-    
 
     @FXML
     private AnchorPane buttonCriar;
@@ -85,25 +87,29 @@ public class FXML1BrinquedoController implements Initializable {
     private Button buttonExcluir;
 
     @FXML
-    private ComboBox<?> comboBoxCategoria;
-    
+    private ComboBox<ModelCategoria> comboBoxCategoria;
+
+    @FXML
+    private ComboBox<ModelFabricante> comboBoxFabricante;
+
     private ArrayList<ModelBrinquedo> brinquedos;
-    
+
     private ObservableList<ModelBrinquedo> obsTableList;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //preencher o comboBoxCategoria
-        
+
+        //preencher o comboBoxFabricante
         //preencher a tabela
         //brinquedos = todosBrinquedos();
         inicializarTabela();
-        
-    }    
-    
-    
+
+    }
+
     public void inicializarTabela() {
         tableColumnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tableColumnCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
@@ -114,8 +120,18 @@ public class FXML1BrinquedoController implements Initializable {
         tableViewBrinquedo.setItems(obsTableList);
     }
     
+    private ArrayList<ModelCategoria> categorias;
+    private ObservableList<ModelCategoria> obsTableCategorias;
+
     public void inicializarComboBoxCategorias() {
-        
+        obsTableCategorias = FXCollections.observableArrayList(categorias);
+        comboBoxCategoria.setItems(obsTableCategorias);
+        if (categorias.size() > 0) {
+            comboBoxCategoria.getSelectionModel().selectFirst();
+        } else {
+            comboBoxCategoria.setEditable(false);
+        }
     }
-    
 }
+
+

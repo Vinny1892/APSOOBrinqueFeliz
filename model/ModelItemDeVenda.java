@@ -10,7 +10,7 @@ public class ModelItemDeVenda implements CRUD{
     //atributos
     private ModelBrinquedo produto;
     private int quantidade;
-    private int id;
+    private int idBrinquedo;
     
     //construtor
 
@@ -19,9 +19,9 @@ public class ModelItemDeVenda implements CRUD{
 
     //Com ID
     public ModelItemDeVenda(ModelBrinquedo produto, int quantidade, int id) {
-        this.produto = produto;
+//        this.produto = produto;
         this.quantidade = quantidade;
-        this.id = id;
+        this.idBrinquedo = id;
     }
 
     //Sem ID
@@ -30,13 +30,13 @@ public class ModelItemDeVenda implements CRUD{
         this.quantidade = quantidade;
     }
 
-    public ModelBrinquedo getProduto() {
-        return this.produto;
-    }
-
-    public void setProduto(ModelBrinquedo produto) {
-        this.produto = produto;
-    }
+//    public ModelBrinquedo getProduto() {
+//        return this.produto;
+//    }
+//
+//    public void setProduto(ModelBrinquedo produto) {
+//        this.produto = produto;
+//    }
 
     public int getQuantidade() {
         return this.quantidade;
@@ -47,11 +47,11 @@ public class ModelItemDeVenda implements CRUD{
     }
 
     public int getId() {
-        return this.id;
+        return this.idBrinquedo;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.idBrinquedo = id;
     }
 
     public double getValor(){

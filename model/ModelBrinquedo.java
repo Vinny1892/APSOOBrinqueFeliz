@@ -10,22 +10,22 @@ public class ModelBrinquedo implements CRUD{
     //atributos
     private ModelCategoria categoria;
     private String nome;
-    private long codigoDeBarras;
+    //private long codigoDeBarras;
     private Double preco;
     private ModelFabricante fabricante;
     private String descricao;
     private ModelFornecedor fornecedor;
-    private int id;
+    private int id;//o id vai ser o codigo de barras
     //construtor
 
     public ModelBrinquedo() {
     }
 
     //Com ID
-    public ModelBrinquedo(ModelCategoria categoria, String nome, long codigoDeBarras, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor, int id) {
+    public ModelBrinquedo(ModelCategoria categoria, String nome/*, long codigoDeBarras*/, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor, int id) {
         this.categoria = categoria;
         this.nome = nome;
-        this.codigoDeBarras = codigoDeBarras;
+        //this.codigoDeBarras = codigoDeBarras;
         this.preco = preco;
         this.fabricante = fabricante;
         this.descricao = descricao;
@@ -34,10 +34,10 @@ public class ModelBrinquedo implements CRUD{
     }
 
     //Sem ID
-    public ModelBrinquedo(ModelCategoria categoria, String nome, long codigoDeBarras, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor/*, DAOBrinquedo dao*/) {
+    public ModelBrinquedo(ModelCategoria categoria, String nome/*, long codigoDeBarras*/, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor/*, DAOBrinquedo dao*/) {
         this.categoria = categoria;
         this.nome = nome;
-        this.codigoDeBarras = codigoDeBarras;
+        //this.codigoDeBarras = codigoDeBarras;
         this.preco = preco;
         this.fabricante = fabricante;
         this.descricao = descricao;
@@ -57,13 +57,13 @@ public class ModelBrinquedo implements CRUD{
         this.nome = nome;
     }
 
-    public long getCodigoDeBarras() {
-        return codigoDeBarras;
-    }
-
-    public void setCodigoDeBarras(long codigoDeBarras) {
-        this.codigoDeBarras = codigoDeBarras;
-    }
+//    public long getCodigoDeBarras() {
+//        return codigoDeBarras;
+//    }
+//
+//    public void setCodigoDeBarras(long codigoDeBarras) {
+//        this.codigoDeBarras = codigoDeBarras;
+//    }
 
     public Double getPreco() {
         return preco;

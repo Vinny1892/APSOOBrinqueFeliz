@@ -1,34 +1,41 @@
-
 package model;
 
+import dao.DAOItemDeEstoque;
 import java.sql.SQLException;
 import java.util.ArrayList;
-//import dao.DAOItemDeEstoque;
 
 public class ModelItemDeEstoque implements CRUD{
-    private ModelBrinquedo brinquedo;
+    private static ArrayList<ModelItemDeEstoque> itensNoEstoque;
+    private ModelBrinquedo brinquedo;//tirar?
     private int quantidade;
     private int id;
 
-
-    public ModelItemDeEstoque() {
+    public ModelItemDeEstoque() throws SQLException {
+        itensNoEstoque = (ArrayList<ModelItemDeEstoque>) (ArrayList<?>) new DAOItemDeEstoque().getAll();
     }
 
     //Com ID
-    public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade, int id) {
+    public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade, int id) throws SQLException {
+        itensNoEstoque = (ArrayList<ModelItemDeEstoque>) (ArrayList<?>) new DAOItemDeEstoque().getAll();
         this.brinquedo = brinquedo;
         this.quantidade = quantidade;
         this.id = id;
     }
-    
 
     //Sem ID
-    public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade) {
+    public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade) throws SQLException {
         this.brinquedo = brinquedo;
         this.quantidade = quantidade;
+        itensNoEstoque = (ArrayList<ModelItemDeEstoque>) (ArrayList<?>) new DAOItemDeEstoque().getAll();
     }
 
+    public static ArrayList<ModelItemDeEstoque> getItensNoEstoque() {
+        return itensNoEstoque;
+    }
 
+    public static void atualizarArrayListItensNoEstoque() throws SQLException {
+        itensNoEstoque = (ArrayList<ModelItemDeEstoque>) (ArrayList<?>) new DAOItemDeEstoque().getAll();
+    }
 
     public ModelBrinquedo getBrinquedo() {
         return this.brinquedo;
@@ -81,8 +88,7 @@ public class ModelItemDeEstoque implements CRUD{
 
     @Override
     public ArrayList<Object> getAll() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new DAOItemDeEstoque().getAll();
     }
-    
 
 }

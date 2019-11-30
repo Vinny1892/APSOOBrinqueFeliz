@@ -11,12 +11,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import model.ModelBrinquedo;
-import static controller.ControllerBrinquedo.todosBrinquedos;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +19,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static controller.ControllerItemDeEstoque.todosItensDeEstoque;
+import model.ModelCliente;
+import model.ModelItemDeVenda;
+import model.ModelItemDeEstoque;
+import model.ModelFormaDePagamento;
 /**
  * FXML Controller class
  *
@@ -32,74 +34,67 @@ import javafx.stage.Stage;
  */
 public class FXML8VendaController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        try {
-//            brinquedos = todosBrinquedos();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(FXML8VendaController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        //inicializarTabelaBrinquedosDaLoja();
+        try {
+            itensDeEstoque = todosItensDeEstoque();
+            inicializarTabelaItensEstoque();
+            formasDePagamentos = new controller.ControllerVenda().formasDePagamento();
+            inicializarComboBoxFormaPagamento();
+            inicializarComboBoxCliente();
+        } catch (SQLException ex) {
+            Logger.getLogger(FXML8VendaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
-    public void inicializarTabelaBrinquedosDaLoja() {
-        columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        columnCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
-        columnPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
-        columnCatetoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-        columnFabricante.setCellValueFactory(new PropertyValueFactory<>("fabricante"));
-        columnDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-        ObservableList<ModelBrinquedo> obsTableList = FXCollections.observableArrayList(brinquedos);
-        tableViewBrinquedosDaLoja.setItems(obsTableList);
-    }
+    private ArrayList<ModelItemDeEstoque> itensDeEstoque;
+    private ObservableList<ModelItemDeEstoque> obsTableItensDeEstoque;
 
-//    public void inicializarTabelaCarrinhoDeCompras() {
-//        columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-//        columnCodigo.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-//        columnPreco.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-//        columnCatetoria.setCellValueFactory(new PropertyValueFactory<>("preco"));
-//        columnFabricante.setCellValueFactory(new PropertyValueFactory<>("codigo"));
-//        columnDescricao.setCellValueFactory(new PropertyValueFactory<>("codigo"));
-//        ObservableList<ModelBrinquedo> obsTableList = FXCollections.observableArrayList();
-//        tableViewCarrinhoDeCompras.setItems(obsTableList);
-//    }
-    ArrayList<ModelBrinquedo> brinquedos;
+    private ObservableList<ModelFormaDePagamento> obsCategoriasFormaPagamento;
+    private ArrayList<ModelFormaDePagamento> formasDePagamentos;
+
+    private ObservableList<ModelCliente> obsClientes;
+    private ArrayList<ModelCliente> clientes;
+    
+    @FXML
+    private ComboBox<ModelCliente> comboBoxCliente;
+        
+        
+    @FXML
+    private TableView<ModelItemDeEstoque> tableViewModelItemEstoque;
 
     @FXML
-    private TableView<ModelBrinquedo> tableViewBrinquedosDaLoja;
+    private TableColumn<ModelItemDeEstoque, String> columnNome;
 
     @FXML
-    private TableColumn<ModelBrinquedo, String> columnNome;
+    private TableColumn<ModelItemDeEstoque, String> columnCodigo;
 
     @FXML
-    private TableColumn<ModelBrinquedo, String> columnCodigo;
+    private TableColumn<ModelItemDeEstoque, String> columnPreco;
 
     @FXML
-    private TableColumn<ModelBrinquedo, String> columnPreco;
+    private TableColumn<ModelItemDeEstoque, String> columnCatetoria;
 
     @FXML
-    private TableColumn<ModelBrinquedo, String> columnCatetoria;
+    private TableColumn<ModelItemDeEstoque, String> columnFabricante;
 
     @FXML
-    private TableColumn<ModelBrinquedo, String> columnFabricante;
-
+    private TableColumn<ModelItemDeEstoque, String> columnDescricao;
+    
     @FXML
-    private TableColumn<ModelBrinquedo, String> columnDescricao;
-
+    private TableColumn<ModelItemDeEstoque, Integer> quantidade;
+    
     @FXML
     private Button buttonAddCarrinhoCompras;
 
-    @FXML
-    private Button buttonVoltar;
-
+//    @FXML
+//    private Button buttonVoltar;
     @FXML
     private Button buttonFinalizarCompra;
 
     @FXML
-    private ComboBox<?> comboBoxFormaDePagamento;
+    private ComboBox<ModelFormaDePagamento> comboBoxFormaDePagamento;
 
     @FXML
     private TextField textViewQuantidade;
@@ -108,43 +103,56 @@ public class FXML8VendaController implements Initializable {
     private Button buttonExcluirItemDoCarrinhoDeCompra;
 
     @FXML
-    private TableView<?> tableViewCarrinhoDeCompras;
+    private TableView<ModelItemDeVenda> tableViewCarrinhoDeCompras;
 
     @FXML
-    private TableColumn<ModelBrinquedo, String> columnNome1;
+    private TableColumn<ModelItemDeVenda, String> columnNome1;
 
     @FXML
-    private TableColumn<ModelBrinquedo, String> columnCodigo1;
+    private TableColumn<ModelItemDeVenda, String> columnCodigo1;
 
     @FXML
-    private TableColumn<ModelBrinquedo, String> columnPreco1;
+    private TableColumn<ModelItemDeVenda, String> columnPreco1;
 
     @FXML
-    private TableColumn<ModelBrinquedo, String> columnCatetoria1;
+    private TableColumn<ModelItemDeVenda, String> columnCatetoria1;
 
     @FXML
-    private TableColumn<ModelBrinquedo, String> columnFabricante1;
+    private TableColumn<ModelItemDeVenda, String> columnFabricante1;
 
     @FXML
-    private TableColumn<ModelBrinquedo, String> columnDescricao1;
+    private TableColumn<ModelItemDeVenda, String> columnDescricao1;
+
 
     @FXML
-    void onActionButtonAddCarrinhoCompras(ActionEvent event) {
-
-    }
-
+    private TableColumn<ModelItemDeVenda, Integer> quantidade1;
+    
+    
     @FXML
-    void onActionButtonVoltar(ActionEvent event) {
+    private TextField textFieldRGCliente;
 
-    }
-
+//    @FXML
+//    void onActionButtonVoltar(ActionEvent event) {
+//
+//    }
     @FXML
     void onActionbuttonExcluirItemDoCarrinhoDeCompra(ActionEvent event) {
-
+        //tableViewCarrinhoDeCompras.get
     }
 
     @FXML
     void onActionbuttonFinalizarCompra(ActionEvent event) throws IOException {
+        String rg = textFieldRGCliente.getText();
+        //pegar quem é o vendendor
+        
+        //atualizar o Estoque
+        
+        //gerar lista de itens comprados e suas devidas qtd
+        
+        ModelFormaDePagamento formaPagamento = comboBoxFormaDePagamento.getValue();
+        
+        //atualizar tudo depois chamar proxima tela
+        
         Stage stage = new Stage();
         Parent p = FXMLLoader.load(getClass().getResource("FXML10Comprovante.fxml"));
         Scene scene = new Scene(p);
@@ -152,6 +160,45 @@ public class FXML8VendaController implements Initializable {
         stage.show();
         //fecha essa tela1 atual
         buttonFinalizarCompra.getScene().getWindow().hide();
+    }
+
+    private void inicializarComboBoxFormaPagamento() {
+        obsCategoriasFormaPagamento = FXCollections.observableArrayList(formasDePagamentos);
+        comboBoxFormaDePagamento.setItems(obsCategoriasFormaPagamento);
+        if (formasDePagamentos.size() > 0) {
+            comboBoxFormaDePagamento.getSelectionModel().selectFirst();
+        } else {
+            comboBoxFormaDePagamento.setEditable(false);
+        }
+    }
+    
+    
+
+    
+    private void inicializarComboBoxCliente() {
+        obsClientes = FXCollections.observableArrayList(clientes);
+        comboBoxCliente.setItems(obsClientes);
+        if (clientes.size() > 0) {
+            comboBoxCliente.getSelectionModel().selectFirst();
+        } else {
+            comboBoxCliente.setEditable(false);
+        }
+    }
+
+    private void inicializarTabelaItensEstoque() {
+        columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        columnCodigo.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
+        columnFabricante.setCellValueFactory(new PropertyValueFactory<>("fabricante"));
+        columnDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+        quantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+        obsTableItensDeEstoque = FXCollections.observableArrayList(itensDeEstoque);
+        tableViewModelItemEstoque.setItems(obsTableItensDeEstoque);
+    }
+
+    @FXML
+    void onActionButtonAddCarrinhoCompras(ActionEvent event) {
+        
     }
 
 }
