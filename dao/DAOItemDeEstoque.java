@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class DAOItemDeEstoque extends GenericDAO_CRUD{
 
     @Override
-    public boolean salvar(Object object) throws SQLException {
+    public int salvar(Object object) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

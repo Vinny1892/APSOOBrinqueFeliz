@@ -12,17 +12,18 @@ public class ModelItemDeVenda implements CRUD{
     //melhor deixar no BD, quando precisar buscamos
     private ModelBrinquedo brinquedo;
     private int quantidade;
-    private int id_ModelItemEstoque;
     
 
     public ModelItemDeVenda() {
     }
 
-    public ModelItemDeVenda(ModelBrinquedo brinquedo, int quantidade, int id_ModelItemEstoque) {
+    public ModelItemDeVenda(ModelBrinquedo brinquedo, int quantidade) {
         this.brinquedo = brinquedo;
         this.quantidade = quantidade;
-        this.id_ModelItemEstoque = id_ModelItemEstoque;
     }
+
+
+
     // por enquanto to achando que essa classe não pode ter um construtor sem int id_ModelItemEstoque
     // pois ela é gerada a partir de ModelItemDeVenda
     
@@ -75,16 +76,5 @@ public class ModelItemDeVenda implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    public int getId_ModelItemEstoque() {
-        return id_ModelItemEstoque;
-    }
-
-    public void setId_ModelItemEstoque(int id_ModelItemEstoque) {
-        this.id_ModelItemEstoque = id_ModelItemEstoque;
-    }
-    
-
-    
 
 }

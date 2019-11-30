@@ -45,7 +45,7 @@ public class FXML0loginController implements Initializable {
     void onActionButtonLogar(ActionEvent event) throws IOException {
         String user = textFieldUser.getText();
         String password = textFieldPassword.getText();
-        ModelFuncionario mf = buscaFuncionario(user, password);
+        ModelFuncionario funcionario = buscaFuncionario(user, password);
         if (true) {//if (mf != null) {
             Stage stage = new Stage();
             if (false) {//if (mf.isADM()) //chama tela adm
@@ -54,7 +54,9 @@ public class FXML0loginController implements Initializable {
                 stage.setScene(scene);
 
             } else {//chama tela funcionario
-                Parent p = FXMLLoader.load(getClass().getResource("FXML8Venda.fxml"));
+                FXMLLoader loader = FXMLLoader.load(getClass().getResource("FXML8Venda.fxml"));
+                loader.setController(new FXML8VendaController(funcionario));
+                Parent p = loader.load();
                 Scene scene = new Scene(p);
                 stage.setScene(scene);
 

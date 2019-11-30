@@ -15,20 +15,19 @@ import model.ModelItemDeVenda;
  * @author kaio
  */
 public class ControllerItemDeEstoque {
-    
-    
-    public static boolean atualizarItensNoEstoque(ArrayList<ModelItemDeVenda> carrinho) throws SQLException{
+
+    public static boolean atualizarItensNoEstoque(ArrayList<ModelItemDeEstoque> itensComprado) throws SQLException {
         boolean deuCerto = false;
-        for (ModelItemDeVenda itemComprado : carrinho) {
-            ModelItemDeEstoque produto = new ModelItemDeEstoque(itemComprado.getBrinquedo(), itemComprado.getQuantidade(), itemComprado.getId());
+        for (ModelItemDeEstoque itemComprado : itensComprado) {
+            ModelItemDeEstoque produto = new ModelItemDeEstoque(itemComprado.getBrinquedo(), itemComprado.getQuantidade() - qtd, itemComprado.getId());
             deuCerto = new ModelItemDeEstoque().atualizar(produto);
-        }
+        }asaDSASGPOSDG
         new ModelItemDeEstoque().atualizarArrayListItensNoEstoque();
         return deuCerto;
     }
-    
-    public static ArrayList<ModelItemDeEstoque> todosItensDeEstoque() throws SQLException{
+
+    public static ArrayList<ModelItemDeEstoque> todosItensDeEstoque() throws SQLException {
         return (ArrayList<ModelItemDeEstoque>) (ArrayList<?>) new ModelItemDeEstoque().getAll();
     }
-    
+
 }

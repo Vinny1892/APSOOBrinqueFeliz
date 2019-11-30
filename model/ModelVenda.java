@@ -4,13 +4,12 @@ package model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 //import dao.DAOVenda;
-import java.util.List;
 import java.util.Date;
 
 public class ModelVenda implements CRUD{
     
     //atributos
-    private Double valor;
+    private Double valorTotal;
     private ModelCliente cliente;
     private ModelFuncionario funcionario;
     private Date data_venda;
@@ -24,7 +23,7 @@ public class ModelVenda implements CRUD{
     }
 
     public ModelVenda(Double valor, ModelCliente cliente, ModelFuncionario funcionario, Date data_venda, ModelFormaDePagamento FORMA_PAGAMENTO, int id, ArrayList<ModelItemDeVenda> carrinho) {
-        this.valor = valor;
+        this.valorTotal = valor;
         this.cliente = cliente;
         this.funcionario = funcionario;
         this.data_venda = data_venda;
@@ -34,7 +33,7 @@ public class ModelVenda implements CRUD{
     }
 
     public ModelVenda(Double valor, ModelCliente cliente, ModelFuncionario funcionario, Date data_venda, ModelFormaDePagamento FORMA_PAGAMENTO, ArrayList<ModelItemDeVenda> carrinho) {
-        this.valor = valor;
+        this.valorTotal = valor;
         this.cliente = cliente;
         this.funcionario = funcionario;
         this.data_venda = data_venda;
@@ -45,12 +44,12 @@ public class ModelVenda implements CRUD{
 
 
 
-    public Double getValor() {
-        return this.valor;
+    public Double getValorTotal() {
+        return this.valorTotal;
     }
 
-    public void setValor(Double valor) {
-        this.valor = valor;
+    public void setValorTotal(Double valor) {
+        this.valorTotal = valor;
     }
 
     public ModelCliente getCliente() {
@@ -101,7 +100,7 @@ public class ModelVenda implements CRUD{
     //private DAOVenda dao = new DAOVenda();
 
     @Override
-    public boolean salvar(Object obj) throws SQLException {
+    public int salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

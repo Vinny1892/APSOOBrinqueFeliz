@@ -1,50 +1,31 @@
-
 package model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 //import dao.DAOFormaDePagamento;
 
-public class ModelFormaDePagamento implements CRUD{
-    private int ID;
-    private String nome;//nome da forma de pagamento
-    
-    
-    /*
-    talvez precise colocar os atributos de alguma forma de pagamento, 
-    por exemplo,
-    private int numerocartao;
-    sei la, 
-    algo assim,
-    talvez a gente precise disso,
-    TALVEZ
-    */
+public class ModelFormaDePagamento implements CRUD {
+
+    // private int ID;
+    //private String nome;//nome da forma de pagamento
+    private ArrayList<String> formas = new ArrayList<>();
 
     public ModelFormaDePagamento() {
+        formas.add("Dinheiro");
+        formas.add("Cartão");
+        formas.add("Cheque");
     }
 
-    public ModelFormaDePagamento(int ID, String nome) {
-        this.ID = ID;
-        this.nome = nome;
+    public ArrayList<String> getFormas() {
+        return formas;
     }
 
-    public ModelFormaDePagamento(String nome) {
-        this.nome = nome;
-    }
-
-
-    public int getID() {
-        return this.ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setFormas(ArrayList<String> formas) {
+        this.formas = formas;
     }
 
     //acesso DAO
 //    private DAOCategoria dao = new DAOCategoria();
-
-    
     @Override
     public boolean salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -69,6 +50,5 @@ public class ModelFormaDePagamento implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 
 }
