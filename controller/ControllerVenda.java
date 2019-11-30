@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import model.ModelFormaDePagamento;
 
@@ -18,13 +19,8 @@ public class ControllerVenda {
 //    }
     
     
-    public ArrayList<ModelFormaDePagamento> formasDePagamento(){
+    public static ArrayList<ModelFormaDePagamento> formasDePagamento() throws SQLException{
         ArrayList<ModelFormaDePagamento> formas = new ArrayList<>();
-        //se tiver no BD essas forma de pagamento, é só chamar o DAO que pega
-        formas.add(new ModelFormaDePagamento("vista"));
-        formas.add(new ModelFormaDePagamento("cartão"));
-        formas.add(new ModelFormaDePagamento("boleto"));
-        formas.add(new ModelFormaDePagamento("cheque"));
-        return formas;
+        return (ArrayList<ModelFormaDePagamento>) (ArrayList<?>) new ModelFormaDePagamento().getAll();
     }
 }

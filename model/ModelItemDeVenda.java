@@ -7,36 +7,26 @@ import java.util.ArrayList;
 
 public class ModelItemDeVenda implements CRUD{
     
-    //atributos
-    private ModelBrinquedo produto;
+    //Kaio: Acho que nao faz sentido essa classe ter o atributo static ArrayList<ModelItemDeVenda>, se tiver outra opinião, avise pf, vai que estou errado.
+    private ModelBrinquedo brinquedo;
     private int quantidade;
     private int idBrinquedo;
-    
-    //construtor
 
     public ModelItemDeVenda() {
     }
 
-    //Com ID
-    public ModelItemDeVenda(ModelBrinquedo produto, int quantidade, int id) {
-//        this.produto = produto;
-        this.quantidade = quantidade;
-        this.idBrinquedo = id;
-    }
-
-    //Sem ID
-    public ModelItemDeVenda(ModelBrinquedo produto, int quantidade) {
-        this.produto = produto;
+    public ModelItemDeVenda(ModelBrinquedo brinquedo, int quantidade) {
+        this.brinquedo = brinquedo;
         this.quantidade = quantidade;
     }
 
-//    public ModelBrinquedo getProduto() {
-//        return this.produto;
-//    }
-//
-//    public void setProduto(ModelBrinquedo produto) {
-//        this.produto = produto;
-//    }
+    public ModelBrinquedo getBrinquedo() {
+        return this.brinquedo;
+    }
+
+    public void setBrinquedo(ModelBrinquedo produto) {
+        this.brinquedo = produto;
+    }
 
     public int getQuantidade() {
         return this.quantidade;
@@ -55,7 +45,7 @@ public class ModelItemDeVenda implements CRUD{
     }
 
     public double getValor(){
-        return 0.0;
+        return getQuantidade() * getBrinquedo().getPreco();
     }
 
     //acesso DAO

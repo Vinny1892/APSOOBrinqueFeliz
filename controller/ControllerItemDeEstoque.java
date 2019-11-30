@@ -15,6 +15,14 @@ import model.ModelItemDeEstoque;
  */
 public class ControllerItemDeEstoque {
     
+    
+    public static boolean atualizarItem(int qtdTela, ModelItemDeEstoque item) throws SQLException{
+        item.setQuantidade(item.getQuantidade() - qtdTela);
+        boolean deuCerto = new ModelItemDeEstoque().atualizar(item);
+        new ModelItemDeEstoque().atualizarArrayListItensNoEstoque();
+        return deuCerto;
+    }
+    
     public static ArrayList<ModelItemDeEstoque> todosItensDeEstoque() throws SQLException{
         return (ArrayList<ModelItemDeEstoque>) (ArrayList<?>) new ModelItemDeEstoque().getAll();
     }

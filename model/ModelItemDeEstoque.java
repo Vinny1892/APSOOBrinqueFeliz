@@ -11,12 +11,12 @@ public class ModelItemDeEstoque implements CRUD{
     private int id;
 
     public ModelItemDeEstoque() throws SQLException {
-        itensNoEstoque = (ArrayList<ModelItemDeEstoque>) (ArrayList<?>) new DAOItemDeEstoque().getAll();
+        atualizarArrayListItensNoEstoque();
     }
 
     //Com ID
     public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade, int id) throws SQLException {
-        itensNoEstoque = (ArrayList<ModelItemDeEstoque>) (ArrayList<?>) new DAOItemDeEstoque().getAll();
+        atualizarArrayListItensNoEstoque();
         this.brinquedo = brinquedo;
         this.quantidade = quantidade;
         this.id = id;
@@ -26,7 +26,7 @@ public class ModelItemDeEstoque implements CRUD{
     public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade) throws SQLException {
         this.brinquedo = brinquedo;
         this.quantidade = quantidade;
-        itensNoEstoque = (ArrayList<ModelItemDeEstoque>) (ArrayList<?>) new DAOItemDeEstoque().getAll();
+        atualizarArrayListItensNoEstoque();
     }
 
     public static ArrayList<ModelItemDeEstoque> getItensNoEstoque() {
@@ -66,6 +66,8 @@ public class ModelItemDeEstoque implements CRUD{
     //acesso DAO
     //private DAOItemDeEstoque dao = new DAOItemDeEstoque();
 
+    
+    
     @Override
     public boolean salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
