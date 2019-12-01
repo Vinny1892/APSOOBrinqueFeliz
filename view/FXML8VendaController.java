@@ -28,11 +28,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import model.ModelBrinquedo;
 import model.ModelCliente;
-import model.ModelComprovante;
 import model.ModelFabricante;
 import model.ModelItemDeVenda;
 import model.ModelItemDeEstoque;
-import model.ModelFormaDePagamento;
 import model.ModelFuncionario;
 import model.ModelVenda;
 
@@ -46,9 +44,6 @@ public class FXML8VendaController implements Initializable {
     public FXML8VendaController(ModelFuncionario funcionario) {
         this.funcionarioLogado = funcionario;
     }
-    
-    
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -56,6 +51,9 @@ public class FXML8VendaController implements Initializable {
 //            inicializarTabelaItensEstoque();
 //            inicializarComboBoxFormaPagamento();
 //            inicializarComboBoxCliente();
+        tableViewCarrinhoDeCompras.getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
+            buttonExcluirItemDoCarrinhoDeCompra.setDisable(false);
+        });
 //        } catch (SQLException ex) {
 //            Logger.getLogger(FXML8VendaController.class.getName()).log(Level.SEVERE, null, ex);
 //        }
@@ -74,7 +72,7 @@ public class FXML8VendaController implements Initializable {
 
     private ObservableList<ModelCliente> obsClientes;
     private ArrayList<ModelCliente> clientes;
-    
+
     private ObservableList<ModelItemDeVenda> obsCarrinho;
     private ArrayList<ModelItemDeVenda> carrinhoCompra = new ArrayList<>();
 
@@ -145,7 +143,7 @@ public class FXML8VendaController implements Initializable {
 
     @FXML
     private TableColumn<ModelItemDeVenda, Integer> quantidade1;
-     
+
     private double valorTotal = 0;
 
 //    @FXML
@@ -154,7 +152,8 @@ public class FXML8VendaController implements Initializable {
 //    }
     @FXML
     void onActionbuttonExcluirItemDoCarrinhoDeCompra(ActionEvent event) {
-        //tableViewCarrinhoDeCompras.get
+        ModelItemDeVenda item = tableViewCarrinhoDeCompras.getSelectionModel().getSelectedItem();
+        tableViewCarrinhoDeCompras.getItems().remove(item);
     }
 
     @FXML
@@ -163,9 +162,8 @@ public class FXML8VendaController implements Initializable {
         String forma = comboBoxFormaDePagamento.getValue();
         Date dataVenda = new Date(System.currentTimeMillis());
         ModelVenda venda = new ModelVenda(cliente, funcionarioLogado, dataVenda, forma, valorTotal, carrinhoCompra);
-        //atualizar tudo no BD
-        int idVenda = controller.ControllerVenda.finalizarCompra(venda);//SALVAR NO BD
-        //controller.ControllerComprovante.salvar(new ModelComprovante(venda));
+        //salvar no BD
+        int idVenda = controller.ControllerVenda.finalizarCompra(venda);
         controller.ControllerItemDeEstoque.atualizarItensNoEstoque(itensDeEstoqueComprado);
         //chamar proxima tela
         Stage stage = new Stage();
@@ -210,9 +208,7 @@ public class FXML8VendaController implements Initializable {
         obsTableItensDeEstoque = FXCollections.observableArrayList(itensDeEstoque);
         tableViewModelItemEstoque.setItems(obsTableItensDeEstoque);
     }
-    
-    
-    
+
     private void adicionarItemTabelaItensCarrinhoCompra(ModelItemDeVenda item) throws SQLException {
         carrinhoCompra.add(item);
         columnNome1.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -235,9 +231,9 @@ public class FXML8VendaController implements Initializable {
                 if (qtdTela <= item.getQuantidade()) {
                     //atualizar localmente
                     carrinhoCompra.add(new ModelItemDeVenda(item.getBrinquedo(), qtdTela));
-                    int posicao =  itensDeEstoque.indexOf(item);
-                    item.setQuantidade(item.getQuantidade()-qtdTela);
-                    itensDeEstoque.set(posicao,item);
+                    int posicao = itensDeEstoque.indexOf(item);
+                    item.setQuantidade(item.getQuantidade() - qtdTela);
+                    itensDeEstoque.set(posicao, item);
                     adicionarItemTabelaItensCarrinhoCompra(new ModelItemDeVenda(item.getBrinquedo(), qtdTela));
                     inicializarTabelaItensEstoque();//atualizar tableView
                 } else {
