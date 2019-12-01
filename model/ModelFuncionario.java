@@ -127,8 +127,7 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
     }
 
      //private DAOFuncionario dao = new DAOFuncionario();
-    public TreeMap<String, String> loginFuncionario(String cpf, String password){
-        //TreeMap é um MAP, precisa de dois argumentos... <Key, Value>
+    public ModelFuncionario loginFuncionario(String cpf, String password){
         return null;
     }
 
@@ -141,7 +140,7 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
     }
     //CRUD Methods
     @Override
-    public boolean salvar(Object obj) throws SQLException {
+    public int salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

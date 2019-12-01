@@ -13,6 +13,6 @@ import model.ModelFuncionario;
  */
 public class ControllerFuncionario {
     public static ModelFuncionario buscaFuncionario(String user, String password){
-        return null /*new ModelFuncionario().loginFuncionario(user, password)*/;
+        return new ModelFuncionario().loginFuncionario(user, password);
     }
 }
