@@ -1,3 +1,4 @@
+
 package model;
 
 import java.sql.SQLException;
@@ -6,30 +7,33 @@ import java.util.ArrayList;
 
 public class ModelItemDeVenda implements CRUD{
     
-    //atributos
-    private ModelBrinquedo produto;
+    //Kaio: Acho que nao faz sentido essa classe ter o atributo static ArrayList<ModelItemDeVenda>, se tiver outra opinião, avise pf, vai que estou errado.
+    //Ao meu entender, não vale a pena manter em memoria esse Array,
+    //melhor deixar no BD, quando precisar buscamos
+    private ModelBrinquedo brinquedo;
     private int quantidade;
-    private int id;
     
-    //construtor
 
     public ModelItemDeVenda() {
     }
 
-
-    public ModelItemDeVenda(ModelBrinquedo produto, int quantidade, int id) {
-        this.produto = produto;
+    public ModelItemDeVenda(ModelBrinquedo brinquedo, int quantidade) {
+        this.brinquedo = brinquedo;
         this.quantidade = quantidade;
-        this.id = id;
     }
 
 
-    public ModelBrinquedo getProduto() {
-        return this.produto;
+
+    // por enquanto to achando que essa classe não pode ter um construtor sem int id_ModelItemEstoque
+    // pois ela é gerada a partir de ModelItemDeVenda
+    
+
+    public ModelBrinquedo getBrinquedo() {
+        return this.brinquedo;
     }
 
-    public void setProduto(ModelBrinquedo produto) {
-        this.produto = produto;
+    public void setBrinquedo(ModelBrinquedo produto) {
+        this.brinquedo = produto;
     }
 
     public int getQuantidade() {
@@ -40,23 +44,16 @@ public class ModelItemDeVenda implements CRUD{
         this.quantidade = quantidade;
     }
 
-    public int getId() {
-        return this.id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public double getSubValor(){
-        return 0.0;
+    public double getValor(){
+        return getQuantidade() * getBrinquedo().getPreco();
     }
 
     //acesso DAO
     //private DAOItemDeVenda dao = new DAOItemDeVenda();
 
     @Override
-    public boolean salvar(Object obj) throws SQLException {
+    public int salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -79,8 +76,5 @@ public class ModelItemDeVenda implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 
-    
-    
 }

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 15-Nov-2019 às 18:42
--- Versão do servidor: 10.4.8-MariaDB
--- versão do PHP: 7.3.11
+-- Host: db
+-- Tempo de geração: 01-Dez-2019 às 01:20
+-- Versão do servidor: 8.0.18
+-- versão do PHP: 7.2.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,12 +31,13 @@ SET time_zone = "+00:00";
 CREATE TABLE `brinquedos` (
   `id_brinquedo` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL,
-  `codigo_de_barras` mediumtext DEFAULT NULL,
-  `preco` decimal(10,0) DEFAULT NULL,
+  `nome` varchar(255) NOT NULL,
+  `codigo_de_barras` mediumtext NOT NULL,
+  `preco` decimal(10,0) NOT NULL,
   `id_fabricante` int(11) NOT NULL,
   `descricao` varchar(255) DEFAULT NULL,
   `id_fornecedor` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -47,18 +48,7 @@ CREATE TABLE `brinquedos` (
 CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL,
   `nome` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `categorias_brinquedos`
---
-
-CREATE TABLE `categorias_brinquedos` (
-  `id_categoria` int(11) NOT NULL,
-  `id_brinquedo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -68,9 +58,14 @@ CREATE TABLE `categorias_brinquedos` (
 
 CREATE TABLE `clientes` (
   `id_cliente` int(11) NOT NULL,
-  `id_pessoa` int(11) NOT NULL,
-  `rg` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `rg` varchar(255) NOT NULL,
+  `nome` varchar(255) DEFAULT NULL,
+  `data_nascimento` date DEFAULT NULL,
+  `endereco` varchar(255) DEFAULT NULL,
+  `cep` varchar(255) DEFAULT NULL,
+  `cidade` varchar(255) DEFAULT NULL,
+  `estado` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -80,19 +75,13 @@ CREATE TABLE `clientes` (
 
 CREATE TABLE `comprovantes` (
   `id_comprovante` int(11) NOT NULL,
+  `nome_cliente` varchar(50) DEFAULT NULL,
+  `rg_cliente` varchar(50) DEFAULT NULL,
+  `nome_funcionario` varchar(50) DEFAULT NULL,
+  `cpf_funcionario` varchar(50) DEFAULT NULL,
+  `id_forma_pagamento` int(11) NOT NULL,
   `id_venda` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `estoques`
---
-
-CREATE TABLE `estoques` (
-  `id_estoque` int(11) NOT NULL,
-  `local_estoque` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -103,7 +92,7 @@ CREATE TABLE `estoques` (
 CREATE TABLE `fabricantes` (
   `id_fabricante` int(11) NOT NULL,
   `nome` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -113,8 +102,8 @@ CREATE TABLE `fabricantes` (
 
 CREATE TABLE `formas_pagamento` (
   `id_forma_pagamento` int(11) NOT NULL,
-  `tipo_pagamento` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `tipo_pagamento` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -124,7 +113,7 @@ CREATE TABLE `formas_pagamento` (
 
 CREATE TABLE `fornecedores` (
   `id_fornecedor` int(11) NOT NULL,
-  `cnpj` varchar(255) DEFAULT NULL,
+  `cnpj` varchar(25) NOT NULL,
   `nome_fantasia` varchar(255) DEFAULT NULL,
   `razao_social` varchar(255) DEFAULT NULL,
   `endereco` varchar(255) DEFAULT NULL,
@@ -132,18 +121,7 @@ CREATE TABLE `fornecedores` (
   `estado` varchar(255) DEFAULT NULL,
   `telefone` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `fornecedores_fabricantes`
---
-
-CREATE TABLE `fornecedores_fabricantes` (
-  `id_fornecedor` int(11) NOT NULL,
-  `id_fabricante` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -153,16 +131,20 @@ CREATE TABLE `fornecedores_fabricantes` (
 
 CREATE TABLE `funcionarios` (
   `id_funcionario` int(11) NOT NULL,
-  `login` varchar(255) DEFAULT NULL,
-  `senha` varchar(255) DEFAULT NULL,
-  `matricula` varchar(255) DEFAULT NULL,
+  `senha` varchar(255) NOT NULL,
   `telefone_residencial` varchar(255) DEFAULT NULL,
   `telefone_celular` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
+  `email` varchar(25) NOT NULL,
   `data_contratacao` date DEFAULT NULL,
   `is_adm` tinyint(1) NOT NULL,
-  `id_pessoa` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `nome` varchar(255) NOT NULL,
+  `cpf` varchar(25) NOT NULL,
+  `data_nascimento` date DEFAULT NULL,
+  `endereco` varchar(255) DEFAULT NULL,
+  `cep` varchar(255) DEFAULT NULL,
+  `cidade` varchar(255) DEFAULT NULL,
+  `estado` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -173,9 +155,9 @@ CREATE TABLE `funcionarios` (
 CREATE TABLE `itens_estoque` (
   `id_item_estoque` int(11) NOT NULL,
   `id_brinquedo` int(11) NOT NULL,
-  `quantidade` int(11) DEFAULT NULL,
-  `id_estoque` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `data_aquisicao` date DEFAULT NULL,
+  `quantidade` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -188,21 +170,7 @@ CREATE TABLE `itens_venda` (
   `id_venda` int(11) NOT NULL,
   `id_brinquedo` int(11) NOT NULL,
   `quantidade` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `pessoas`
---
-
-CREATE TABLE `pessoas` (
-  `id_pessoa` int(11) NOT NULL,
-  `nome` varchar(255) DEFAULT NULL,
-  `cpf` varchar(255) DEFAULT NULL,
-  `data_nascimento` date DEFAULT NULL,
-  `cep` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -213,7 +181,7 @@ CREATE TABLE `pessoas` (
 CREATE TABLE `tipos_pagamento` (
   `id_tipo_pagamento` int(11) NOT NULL,
   `tipo` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -225,10 +193,11 @@ CREATE TABLE `vendas` (
   `id_venda` int(11) NOT NULL,
   `data_venda` date DEFAULT NULL,
   `valor` decimal(10,0) DEFAULT NULL,
-  `id_funcionario` int(11) NOT NULL,
+  `id_funcionario` int(11) DEFAULT NULL,
   `id_forma_pagamento` int(11) NOT NULL,
-  `id_cliente` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_cliente` int(11) DEFAULT NULL,
+  `fechada` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Índices para tabelas despejadas
@@ -250,31 +219,19 @@ ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id_categoria`);
 
 --
--- Índices para tabela `categorias_brinquedos`
---
-ALTER TABLE `categorias_brinquedos`
-  ADD KEY `id_categoria` (`id_categoria`),
-  ADD KEY `id_brinquedo` (`id_brinquedo`);
-
---
 -- Índices para tabela `clientes`
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id_cliente`),
-  ADD KEY `id_pessoa` (`id_pessoa`);
+  ADD UNIQUE KEY `rg` (`rg`);
 
 --
 -- Índices para tabela `comprovantes`
 --
 ALTER TABLE `comprovantes`
   ADD PRIMARY KEY (`id_comprovante`),
+  ADD KEY `id_forma_pagamento` (`id_forma_pagamento`),
   ADD KEY `id_venda` (`id_venda`);
-
---
--- Índices para tabela `estoques`
---
-ALTER TABLE `estoques`
-  ADD PRIMARY KEY (`id_estoque`);
 
 --
 -- Índices para tabela `fabricantes`
@@ -286,37 +243,29 @@ ALTER TABLE `fabricantes`
 -- Índices para tabela `formas_pagamento`
 --
 ALTER TABLE `formas_pagamento`
-  ADD PRIMARY KEY (`id_forma_pagamento`),
-  ADD KEY `tipo_pagamento` (`tipo_pagamento`);
+  ADD PRIMARY KEY (`id_forma_pagamento`);
 
 --
 -- Índices para tabela `fornecedores`
 --
 ALTER TABLE `fornecedores`
-  ADD PRIMARY KEY (`id_fornecedor`);
-
---
--- Índices para tabela `fornecedores_fabricantes`
---
-ALTER TABLE `fornecedores_fabricantes`
-  ADD KEY `id_fornecedor` (`id_fornecedor`),
-  ADD KEY `id_fabricante` (`id_fabricante`);
+  ADD PRIMARY KEY (`id_fornecedor`),
+  ADD UNIQUE KEY `cnpj` (`cnpj`);
 
 --
 -- Índices para tabela `funcionarios`
 --
 ALTER TABLE `funcionarios`
   ADD PRIMARY KEY (`id_funcionario`),
-  ADD UNIQUE KEY `login` (`login`),
-  ADD KEY `id_pessoa` (`id_pessoa`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `cpf` (`cpf`);
 
 --
 -- Índices para tabela `itens_estoque`
 --
 ALTER TABLE `itens_estoque`
   ADD PRIMARY KEY (`id_item_estoque`),
-  ADD KEY `id_brinquedo` (`id_brinquedo`),
-  ADD KEY `id_estoque` (`id_estoque`);
+  ADD UNIQUE KEY `id_brinquedo` (`id_brinquedo`);
 
 --
 -- Índices para tabela `itens_venda`
@@ -325,13 +274,6 @@ ALTER TABLE `itens_venda`
   ADD PRIMARY KEY (`id_item_venda`),
   ADD KEY `id_venda` (`id_venda`),
   ADD KEY `id_brinquedo` (`id_brinquedo`);
-
---
--- Índices para tabela `pessoas`
---
-ALTER TABLE `pessoas`
-  ADD PRIMARY KEY (`id_pessoa`),
-  ADD UNIQUE KEY `cpf` (`cpf`);
 
 --
 -- Índices para tabela `tipos_pagamento`
@@ -377,12 +319,6 @@ ALTER TABLE `comprovantes`
   MODIFY `id_comprovante` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `estoques`
---
-ALTER TABLE `estoques`
-  MODIFY `id_estoque` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de tabela `fabricantes`
 --
 ALTER TABLE `fabricantes`
@@ -419,12 +355,6 @@ ALTER TABLE `itens_venda`
   MODIFY `id_item_venda` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `pessoas`
---
-ALTER TABLE `pessoas`
-  MODIFY `id_pessoa` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de tabela `tipos_pagamento`
 --
 ALTER TABLE `tipos_pagamento`
@@ -449,49 +379,17 @@ ALTER TABLE `brinquedos`
   ADD CONSTRAINT `brinquedos_ibfk_3` FOREIGN KEY (`id_fornecedor`) REFERENCES `fornecedores` (`id_fornecedor`);
 
 --
--- Limitadores para a tabela `categorias_brinquedos`
---
-ALTER TABLE `categorias_brinquedos`
-  ADD CONSTRAINT `categorias_brinquedos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`),
-  ADD CONSTRAINT `categorias_brinquedos_ibfk_2` FOREIGN KEY (`id_brinquedo`) REFERENCES `brinquedos` (`id_brinquedo`);
-
---
--- Limitadores para a tabela `clientes`
---
-ALTER TABLE `clientes`
-  ADD CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoas` (`id_pessoa`);
-
---
 -- Limitadores para a tabela `comprovantes`
 --
 ALTER TABLE `comprovantes`
-  ADD CONSTRAINT `comprovantes_ibfk_1` FOREIGN KEY (`id_venda`) REFERENCES `vendas` (`id_venda`);
-
---
--- Limitadores para a tabela `formas_pagamento`
---
-ALTER TABLE `formas_pagamento`
-  ADD CONSTRAINT `formas_pagamento_ibfk_1` FOREIGN KEY (`tipo_pagamento`) REFERENCES `tipos_pagamento` (`id_tipo_pagamento`);
-
---
--- Limitadores para a tabela `fornecedores_fabricantes`
---
-ALTER TABLE `fornecedores_fabricantes`
-  ADD CONSTRAINT `fornecedores_fabricantes_ibfk_1` FOREIGN KEY (`id_fornecedor`) REFERENCES `fornecedores` (`id_fornecedor`),
-  ADD CONSTRAINT `fornecedores_fabricantes_ibfk_2` FOREIGN KEY (`id_fabricante`) REFERENCES `fabricantes` (`id_fabricante`);
-
---
--- Limitadores para a tabela `funcionarios`
---
-ALTER TABLE `funcionarios`
-  ADD CONSTRAINT `funcionarios_ibfk_1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoas` (`id_pessoa`);
+  ADD CONSTRAINT `comprovantes_ibfk_1` FOREIGN KEY (`id_forma_pagamento`) REFERENCES `formas_pagamento` (`id_forma_pagamento`),
+  ADD CONSTRAINT `comprovantes_ibfk_2` FOREIGN KEY (`id_venda`) REFERENCES `vendas` (`id_venda`);
 
 --
 -- Limitadores para a tabela `itens_estoque`
 --
 ALTER TABLE `itens_estoque`
-  ADD CONSTRAINT `itens_estoque_ibfk_1` FOREIGN KEY (`id_brinquedo`) REFERENCES `brinquedos` (`id_brinquedo`),
-  ADD CONSTRAINT `itens_estoque_ibfk_2` FOREIGN KEY (`id_estoque`) REFERENCES `estoques` (`id_estoque`);
+  ADD CONSTRAINT `itens_estoque_ibfk_1` FOREIGN KEY (`id_brinquedo`) REFERENCES `brinquedos` (`id_brinquedo`);
 
 --
 -- Limitadores para a tabela `itens_venda`

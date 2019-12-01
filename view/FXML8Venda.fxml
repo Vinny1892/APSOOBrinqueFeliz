@@ -2,41 +2,41 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-
-<AnchorPane id="AnchorPane" prefHeight="610.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXML8VendaController">
+<AnchorPane id="AnchorPane" prefHeight="629.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXML8VendaController">
    <children>
-      <TableView fx:id="tableViewBrinquedosDaLoja" prefHeight="266.0" prefWidth="782.0">
+      <TableView fx:id="tableViewBrinquedosDaLoja" prefHeight="266.0" prefWidth="897.0">
         <columns>
           <TableColumn fx:id="columnNome" prefWidth="178.0" text="Nome" />
-          <TableColumn fx:id="columnCodigo" prefWidth="62.0" text="Codigo" />
-            <TableColumn fx:id="columnPreco" prefWidth="56.0" text="Preço" />
-            <TableColumn fx:id="columnCatetoria" prefWidth="147.0" text="Categoria" />
-            <TableColumn fx:id="columnFabricante" prefWidth="138.0" text="Fabricante" />
-            <TableColumn fx:id="columnDescricao" prefWidth="200.0" text="Descriçao" />
+          <TableColumn fx:id="columnCodigo" prefWidth="137.0" text="Codigo Barra" />
+            <TableColumn fx:id="columnPreco" prefWidth="73.0" text="Preço" />
+            <TableColumn fx:id="columnCatetoria" prefWidth="127.0" text="Categoria" />
+            <TableColumn fx:id="columnFabricante" prefWidth="139.0" text="Fabricante" />
+            <TableColumn fx:id="columnDescricao" prefWidth="127.0" text="Descriçao" />
+            <TableColumn fx:id="quantidade" prefWidth="115.0" text="Quantidade" />
         </columns>
       </TableView>
-      <Button fx:id="buttonAddCarrinhoCompras" layoutX="489.0" layoutY="273.0" mnemonicParsing="false" onAction="#onActionButtonAddCarrinhoCompras" text="Adicionar no carrinho de compra" />
-      <Button fx:id="buttonVoltar" layoutX="706.0" layoutY="570.0" mnemonicParsing="false" onAction="#onActionButtonVoltar" text="Voltar" />
-      <Button fx:id="buttonFinalizarCompra" layoutX="328.0" layoutY="570.0" mnemonicParsing="false" onAction="#onActionbuttonFinalizarCompra" text="Finalizar compra" />
+      <Button fx:id="buttonAddCarrinhoCompras" layoutX="651.0" layoutY="273.0" mnemonicParsing="false" onAction="#onActionButtonAddCarrinhoCompras" text="Adicionar no carrinho de compra" />
+      <Button fx:id="buttonFinalizarCompra" layoutX="348.0" layoutY="519.0" mnemonicParsing="false" onAction="#onActionbuttonFinalizarCompra" text="Finalizar compra" />
       <ComboBox fx:id="comboBoxFormaDePagamento" layoutX="30.0" layoutY="519.0" prefHeight="26.0" prefWidth="194.0" promptText="Forma de pagamento" />
-      <TextField fx:id="textViewQuantidade" layoutX="306.0" layoutY="273.0" promptText="quantidade" />
-      <Button fx:id="buttonExcluirItemDoCarrinhoDeCompra" layoutX="489.0" layoutY="519.0" mnemonicParsing="false" onAction="#onActionbuttonExcluirItemDoCarrinhoDeCompra" text="Excluir item do carrinho de compra" />
-      <TableView fx:id="tableViewCarrinhoDeCompras" layoutX="5.0" layoutY="305.0" prefHeight="205.0" prefWidth="782.0">
+      <TextField fx:id="textViewQuantidade" layoutX="522.0" layoutY="273.0" prefHeight="26.0" prefWidth="117.0" promptText="quantidade" />
+      <Button fx:id="buttonExcluirItemDoCarrinhoDeCompra" layoutX="14.0" layoutY="273.0" mnemonicParsing="false" onAction="#onActionbuttonExcluirItemDoCarrinhoDeCompra" text="Excluir item do carrinho de compra" />
+      <TableView fx:id="tableViewCarrinhoDeCompras" layoutX="5.0" layoutY="305.0" prefHeight="205.0" prefWidth="892.0">
          <columns>
             <TableColumn fx:id="columnNome1" prefWidth="178.0" text="Nome" />
-            <TableColumn fx:id="columnCodigo1" prefWidth="62.0" text="Codigo" />
-            <TableColumn fx:id="columnPreco1" prefWidth="56.0" text="Preço" />
-            <TableColumn fx:id="columnCatetoria1" prefWidth="147.0" text="Categoria" />
-            <TableColumn fx:id="columnFabricante1" prefWidth="138.0" text="Fabricante" />
-            <TableColumn fx:id="columnDescricao1" prefWidth="200.0" text="Descriçao" />
+            <TableColumn fx:id="columnCodigo1" prefWidth="127.0" text="Codigo Barra" />
+            <TableColumn fx:id="columnPreco1" prefWidth="78.0" text="Preço" />
+            <TableColumn fx:id="columnCatetoria1" prefWidth="112.0" text="Categoria" />
+            <TableColumn fx:id="columnFabricante1" prefWidth="131.0" text="Fabricante" />
+            <TableColumn fx:id="columnDescricao1" prefWidth="155.0" text="Descriçao" />
+            <TableColumn fx:id="quantidade1" prefWidth="110.0" text="Quantidade" />
          </columns>
       </TableView>
+      <ComboBox fx:id="comboBoxCliente" layoutX="30.0" layoutY="554.0" prefHeight="26.0" prefWidth="194.0" promptText="Cliente" />
+      <Button layoutX="348.0" layoutY="554.0" mnemonicParsing="false" text="Cadastrar cliente" />
    </children>
 </AnchorPane>

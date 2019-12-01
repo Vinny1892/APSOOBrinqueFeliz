@@ -26,9 +26,9 @@ public class FXML1AdministradorController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-      @FXML
+    }
+
+    @FXML
     private Button buttonEstoque;
 
     @FXML
@@ -68,7 +68,6 @@ public class FXML1AdministradorController implements Initializable {
     void buttonCategorias(ActionEvent event) throws IOException {
         Parent categoria = FXMLLoader.load(getClass().getResource("FXML2Categoria.fxml"));
         Scene scene = new Scene(categoria);
-        //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
@@ -76,61 +75,81 @@ public class FXML1AdministradorController implements Initializable {
     }
 
     @FXML
-    void nActionbuttonEstoque(ActionEvent event) {
-
+    void nActionbuttonEstoque(ActionEvent event) throws IOException {
+        Parent paret = FXMLLoader.load(getClass().getResource("FXML6Estoques.fxml"));
+        Scene scene = new Scene(paret);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        buttonCategorias.getScene();
     }
 
     @FXML
-    void onActionbuttonBrinquedos(ActionEvent event) {
-
+    void onActionbuttonBrinquedos(ActionEvent event) throws IOException {
+        Parent paret = FXMLLoader.load(getClass().getResource("FXML1Brinquedo.fxml"));
+        Scene scene = new Scene(paret);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        buttonCategorias.getScene();
     }
 
     @FXML
-    void onActionbuttonCatalogo(ActionEvent event) {
-
+    void onActionbuttonCatalogo(ActionEvent event) throws IOException {
+        Parent paret = FXMLLoader.load(getClass().getResource("FXML5Catalogo.fxml"));
+        Scene scene = new Scene(paret);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        buttonCategorias.getScene();
     }
 
     @FXML
-    void onActionbuttonClientes(ActionEvent event) {
-
+    void onActionbuttonClientes(ActionEvent event) throws IOException {
+        Parent paret = FXMLLoader.load(getClass().getResource("FXML9Cliente.fxml"));
+        Scene scene = new Scene(paret);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        buttonCategorias.getScene();
     }
 
     @FXML
-    void onActionbuttonComprovantes(ActionEvent event) {
-
+    void onActionbuttonComprovantes(ActionEvent event) throws IOException {
+        Parent paret = FXMLLoader.load(getClass().getResource("FXMLRelatorioComprovante.fxml"));
+        Scene scene = new Scene(paret);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        buttonCategorias.getScene();
     }
 
     @FXML
     void onActionbuttonFuncionarios(ActionEvent event) {
-        try{
-        Parent funcionario = FXMLLoader.load(getClass().getResource("FXML4Funcionario.fxml"));
-        Scene scene = new Scene(funcionario);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
-        buttonCategorias.getScene();
-        }catch(Exception ex){
+        try {
+            Parent funcionario = FXMLLoader.load(getClass().getResource("FXML4Funcionario.fxml"));
+            Scene scene = new Scene(funcionario);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+            buttonCategorias.getScene();
+        } catch (Exception ex) {
             System.out.println("Erro ao carregar fxml Funcionario" + ex);
         }
     }
 
     @FXML
-    void onActionbuttonRelatorios(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onActionbuttonVendas(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onActionbuttonfabricantes(ActionEvent event) {
-
+    void onActionbuttonfabricantes(ActionEvent event) throws IOException {
+        Parent paret = FXMLLoader.load(getClass().getResource("FXML3Fabricante.fxml"));
+        Scene scene = new Scene(paret);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        buttonCategorias.getScene();
     }
 
     @FXML
     void onActionsButtonBackup(ActionEvent event) {
-
+        
     }
 }

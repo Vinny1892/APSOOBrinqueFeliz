@@ -4,48 +4,30 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 //import dao.DAOFormaDePagamento;
 
-public class ModelFormaDePagamento implements CRUD{
-//    private TIPO_PAGAMENTO tipoPagamento;
-    private int ID;
-    //private Cartao cartao;
-    //private Cheque cheque;
+public class ModelFormaDePagamento implements CRUD {
+
+    // private int ID;
+    //private String nome;//nome da forma de pagamento
+    private ArrayList<String> formas = new ArrayList<>();
 
     public ModelFormaDePagamento() {
+        formas.add("Dinheiro");
+        formas.add("Cartão");
+        formas.add("Cheque");
     }
 
-
-    public ModelFormaDePagamento(/*TIPO_PAGAMENTO tipoPagamento,*/ int ID) {
-//        this.tipoPagamento = tipoPagamento;
-        this.ID = ID;
+    public ArrayList<String> getFormas() {
+        return formas;
     }
 
-
-    public int getID() {
-        return this.ID;
+    public void setFormas(ArrayList<String> formas) {
+        this.formas = formas;
     }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-//    public TIPO_PAGAMENTO getTipoPagamento() {
-//        return this.tipoPagamento;
-//    }
-//
-//    public void setTipoPagamento(TIPO_PAGAMENTO tipoPagamento) {
-//        this.tipoPagamento = tipoPagamento;
-//    }
-
-    public void gerarComprovante(){
-        
-    }
-
 
     //acesso DAO
 //    private DAOCategoria dao = new DAOCategoria();
-
     @Override
-    public boolean salvar(Object obj) throws SQLException {
+    public int salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -68,5 +50,5 @@ public class ModelFormaDePagamento implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

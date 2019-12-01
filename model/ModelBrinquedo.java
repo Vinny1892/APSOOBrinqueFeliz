@@ -1,29 +1,31 @@
+
 package model;
 
-import java.sql.SQLException;
 import dao.DAOBrinquedo;
+import java.sql.SQLException;
+///import dao.DAOBrinquedo;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ModelBrinquedo implements CRUD{
     
     //atributos
     private ModelCategoria categoria;
     private String nome;
-    private long codigoDeBarras;
     private Double preco;
     private ModelFabricante fabricante;
     private String descricao;
     private ModelFornecedor fornecedor;
-    private int id;
-    //construtor
+    private int id;//o id vai ser o codigo de barras
 
+    
     public ModelBrinquedo() {
     }
 
-    public ModelBrinquedo(ModelCategoria categoria, String nome, long codigoDeBarras, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor, int id) {
+    //Com ID
+    public ModelBrinquedo(ModelCategoria categoria, String nome, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor, int id) {
         this.categoria = categoria;
         this.nome = nome;
-        this.codigoDeBarras = codigoDeBarras;
         this.preco = preco;
         this.fabricante = fabricante;
         this.descricao = descricao;
@@ -31,12 +33,17 @@ public class ModelBrinquedo implements CRUD{
         this.id = id;
     }
 
-    
+    //Sem ID
+    public ModelBrinquedo(ModelCategoria categoria, String nome, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor/*, DAOBrinquedo dao*/) {
+        this.categoria = categoria;
+        this.nome = nome;
+        this.preco = preco;
+        this.fabricante = fabricante;
+        this.descricao = descricao;
+        this.fornecedor = fornecedor;
+    }
 
 
-
-    //acesso DAO
-    private DAOBrinquedo dao = new DAOBrinquedo();
 
     public String getNome() {
         return nome;
@@ -46,13 +53,6 @@ public class ModelBrinquedo implements CRUD{
         this.nome = nome;
     }
 
-    public long getCodigoDeBarras() {
-        return codigoDeBarras;
-    }
-
-    public void setCodigoDeBarras(long codigoDeBarras) {
-        this.codigoDeBarras = codigoDeBarras;
-    }
 
     public Double getPreco() {
         return preco;
@@ -95,7 +95,53 @@ public class ModelBrinquedo implements CRUD{
     }
 
     @Override
-    public boolean salvar(Object obj) throws SQLException {
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ModelBrinquedo other = (ModelBrinquedo) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.descricao, other.descricao)) {
+            return false;
+        }
+        if (!Objects.equals(this.categoria, other.categoria)) {
+            return false;
+        }
+        if (!Objects.equals(this.preco, other.preco)) {
+            return false;
+        }
+        if (!Objects.equals(this.fabricante, other.fabricante)) {
+            return false;
+        }
+        if (!Objects.equals(this.fornecedor, other.fornecedor)) {
+            return false;
+        }
+        return true;
+    }
+
+
+    //acesso DAO
+    private DAOBrinquedo dao = new DAOBrinquedo();
+
+    @Override
+    public int salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -119,4 +165,5 @@ public class ModelBrinquedo implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+
 }

@@ -1,109 +1,57 @@
+
 package model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 //import dao.DAOVenda;
-import java.util.List;
+import java.util.Date;
 
 public class ModelVenda implements CRUD{
     
-    //atributos
-    private List<ModelItemDeVenda> itensDeVenda;
-    private Double valor;
-    private String relatorioDeProdutosVendidos;
-    private ModelFormaDePagamento formaDePagamento;
-    private ModelComprovante comprovante;
     private int id;
-    //construtor
-
+    private ModelCliente cliente;
+    private ModelFuncionario funcionario;
+    private Date data_venda;
+    private String forma;
+    private Double valorTotal;
+    private ArrayList<ModelItemDeVenda> carrinho;
+    
     public ModelVenda() {
     }
 
+    public ModelVenda(ModelCliente cliente, ModelFuncionario funcionario, Date data_venda, String forma, Double valorTotal, ArrayList<ModelItemDeVenda> carrinho) {
+        this.cliente = cliente;
+        this.funcionario = funcionario;
+        this.data_venda = data_venda;
+        this.forma = forma;
+        this.valorTotal = valorTotal;
+        this.carrinho = carrinho;
+    }
 
-    public ModelVenda(List<ModelItemDeVenda> itensDeVenda, Double valor, String relatorioDeProdutosVendidos, ModelFormaDePagamento formaDePagamento, ModelComprovante comprovante, int id/*, DAOBrinquedo dao*/) {
-        this.itensDeVenda = itensDeVenda;
-        this.valor = valor;
-        this.relatorioDeProdutosVendidos = relatorioDeProdutosVendidos;
-        this.formaDePagamento = formaDePagamento;
-        this.comprovante = comprovante;
+    public ModelVenda(int id, ModelCliente cliente, ModelFuncionario funcionario, Date data_venda, String forma, Double valorTotal, ArrayList<ModelItemDeVenda> carrinho) {
         this.id = id;
-        //this.dao = dao;
+        this.cliente = cliente;
+        this.funcionario = funcionario;
+        this.data_venda = data_venda;
+        this.forma = forma;
+        this.valorTotal = valorTotal;
+        this.carrinho = carrinho;
     }
 
-
-    public int getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public List<ModelItemDeVenda> getItensDeVenda() {
-        return this.itensDeVenda;
-    }
-
-    public void setItensDeVenda(List<ModelItemDeVenda> itensDeVenda) {
-        this.itensDeVenda = itensDeVenda;
-    }
-
-    public Double getValor() {
-        return this.valor;
-    }
-
-    public void setValor(Double valor) {
-        this.valor = valor;
-    }
-
-    public String getRelatorioDeProdutosVendidos() {
-        return this.relatorioDeProdutosVendidos;
-    }
-
-    public void setRelatorioDeProdutosVendidos(String relatorioDeProdutosVendidos) {
-        this.relatorioDeProdutosVendidos = relatorioDeProdutosVendidos;
-    }
-
-    public ModelFormaDePagamento getFormaDePagamento() {
-        return this.formaDePagamento;
-    }
-
-    public void setFormaDePagamento(ModelFormaDePagamento formaDePagamento) {
-        this.formaDePagamento = formaDePagamento;
-    }
-
-    public ModelComprovante getComprovante() {
-        return this.comprovante;
-    }
-
-    public void setComprovante(ModelComprovante comprovante) {
-        this.comprovante = comprovante;
-    }
+    
+    
     
 
 
-    public void gerarRelatorioDeVendaPorDia(){
-
-    }
-
-    public void gerarComprovanteVenda(){
-
-    }
-
-    public void venderBrinquedo(){
-
-    }
-
-    public void inserir(ModelItemDeVenda item){
-        //Isso aqui n seria a mesma coisa que setItemDeVEnda?
-        this.itensDeVenda.add(item);
-    }
     
+
+
 
     //acesso DAO
     //private DAOVenda dao = new DAOVenda();
 
     @Override
-    public boolean salvar(Object obj) throws SQLException {
+    public int salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -126,5 +74,62 @@ public class ModelVenda implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public ModelCliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ModelCliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public ModelFuncionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(ModelFuncionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public Date getData_venda() {
+        return data_venda;
+    }
+
+    public void setData_venda(Date data_venda) {
+        this.data_venda = data_venda;
+    }
+
+    public String getForma() {
+        return forma;
+    }
+
+    public void setForma(String forma) {
+        this.forma = forma;
+    }
+
+    public Double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public ArrayList<ModelItemDeVenda> getCarrinho() {
+        return carrinho;
+    }
+
+    public void setCarrinho(ArrayList<ModelItemDeVenda> carrinho) {
+        this.carrinho = carrinho;
+    }
     
+
 }

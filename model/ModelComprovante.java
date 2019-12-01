@@ -2,77 +2,40 @@ package model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 //import dao.DAOComprovante;
 
 public class ModelComprovante implements CRUD{
-    
-    //atributos
+
+    private int id;    
+    private int idVenda;
     private ModelCliente cliente;
     private ModelFuncionario funcionario;
-    private ModelFormaDePagamento formaDePagamento;
-    private ModelVenda venda;
-    private int id;
-
-    //construtor
-
+    private Date data_venda;
+    private String forma;
+    private Double valorTotal;
+    private ArrayList<ModelItemDeVenda> carrinho;
+    
     public ModelComprovante() {
     }
 
-
-    public ModelComprovante(ModelCliente cliente, ModelFuncionario funcionario, ModelFormaDePagamento formaDePagamento, ModelVenda venda, int id) {
+    public ModelComprovante(int id, int idVenda, ModelCliente cliente, ModelFuncionario funcionario, Date data_venda, String forma, Double valorTotal, ArrayList<ModelItemDeVenda> carrinho) {
+        this.id = id;
+        this.idVenda = idVenda;
         this.cliente = cliente;
         this.funcionario = funcionario;
-        this.formaDePagamento = formaDePagamento;
-        this.venda = venda;
-        this.id = id;
+        this.data_venda = data_venda;
+        this.forma = forma;
+        this.valorTotal = valorTotal;
+        this.carrinho = carrinho;
     }
 
-
-    public ModelCliente getCliente() {
-        return this.cliente;
-    }
-
-    public void setCliente(ModelCliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public ModelFuncionario getFuncionario() {
-        return this.funcionario;
-    }
-
-    public void setFuncionario(ModelFuncionario funcionario) {
-        this.funcionario = funcionario;
-    }
-
-    public ModelFormaDePagamento getFormaDePagamento() {
-        return this.formaDePagamento;
-    }
-
-    public void setFormaDePagamento(ModelFormaDePagamento formaDePagamento) {
-        this.formaDePagamento = formaDePagamento;
-    }
-
-    public ModelVenda getVenda() {
-        return this.venda;
-    }
-
-    public void setVenda(ModelVenda venda) {
-        this.venda = venda;
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
     
     //acesso DAO
     //private DAOComprovante dao = new DAOComprovante();
 
     @Override
-    public boolean salvar(Object obj) throws SQLException {
+    public int salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -95,4 +58,69 @@ public class ModelComprovante implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdVenda() {
+        return idVenda;
+    }
+
+    public void setIdVenda(int idVenda) {
+        this.idVenda = idVenda;
+    }
+
+    public ModelCliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ModelCliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public ModelFuncionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(ModelFuncionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public Date getData_venda() {
+        return data_venda;
+    }
+
+    public void setData_venda(Date data_venda) {
+        this.data_venda = data_venda;
+    }
+
+    public String getForma() {
+        return forma;
+    }
+
+    public void setForma(String forma) {
+        this.forma = forma;
+    }
+
+    public Double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public ArrayList<ModelItemDeVenda> getCarrinho() {
+        return carrinho;
+    }
+
+    public void setCarrinho(ArrayList<ModelItemDeVenda> carrinho) {
+        this.carrinho = carrinho;
+    }
+
 }

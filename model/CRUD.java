@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author kaio
  */
 public interface CRUD{
-    public boolean salvar(Object obj) throws SQLException;
+    public int salvar(Object obj) throws SQLException;
 
     public boolean atualizar(Object obj) throws SQLException;
 

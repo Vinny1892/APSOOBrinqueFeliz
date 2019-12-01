@@ -37,5 +37,6 @@
       <Button fx:id="buttonEditar" layoutX="21.0" layoutY="407.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Editar" />
       <Button fx:id="buttonExcluir" layoutX="123.0" layoutY="407.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Excluir" />
       <ComboBox fx:id="comboBoxCategoria" layoutX="487.0" layoutY="456.0" prefHeight="26.0" prefWidth="274.0" />
+      <ComboBox fx:id="comboBoxFabricante" layoutX="487.0" layoutY="506.0" prefHeight="26.0" prefWidth="274.0" />
    </children>
 </AnchorPane>

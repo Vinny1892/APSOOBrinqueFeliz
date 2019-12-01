@@ -1,48 +1,31 @@
-package model;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dao;
 
 import java.sql.SQLException;
-import dao.DAOItemDeEstoque;
 import java.util.ArrayList;
+import model.ModelItemDeEstoque;
 
-public class ModelEstoque implements CRUD {
+/**
+ *
+ * @author kaio
+ */
+public class DAOItemDeEstoque extends GenericDAO_CRUD{
 
-/*
-    Kaio: acho que nao precisamos dessa classe ModelEstoque, 
-    precisamos só da ModelItemDeEstoque
-    
-    */
-    private String local;
-
-    public ModelEstoque() throws SQLException {
-    }
-
-    public ModelEstoque(String local) throws SQLException {
-        this.local = local;
-    }
-
-    
-    public String getLocal() {
-        return local;
-    }
-
-    public void setLocal(String local) {
-        this.local = local;
-    }
-    
-    // @Override
-    // public String toString() {
-    //     return "{" +
-    //         " local='" + getItensNoEstoque() + "'" +
-    //         "}";
-    // }
-    //acesso DAO
     @Override
-    public int salvar(Object obj) throws SQLException {
+    public int salvar(Object object) throws SQLException {
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean atualizar(Object obj) throws SQLException {
+    public boolean atualizar(Object object) throws SQLException {
+        ModelItemDeEstoque item = (ModelItemDeEstoque) object;
+        int id = item.getId();
+        int qtd = item.getQuantidade();
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -60,7 +43,5 @@ public class ModelEstoque implements CRUD {
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
     
-
 }

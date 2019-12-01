@@ -4,57 +4,61 @@ import java.sql.SQLException;
 //import dao.DAOFuncionario;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.TreeMap;
 
-public class ModelFuncionario implements CRUD{
-    private String matricula;
-    private String nome;
+public class ModelFuncionario extends ModelPessoa implements CRUD{
+    //private String matricula;
+    //private String nome;
+    private int id;
     private String telefoneResidencial;
     private String telefoneCelular;
     private String email;
     private Date dataDeContratacao;
     //private enum tipoDePermissao;
-    private String login;
+    private boolean isADM;
     private String senha;
-    private boolean adm = false;
-    private int id;
+
+
+    //private static ArrayList<ModelFuncionario> funcionarios;
+    //private static Map<Integer, ModelFuncionario> funcionarios;
 
     //Commom employee constructor
 
-    public ModelFuncionario(String matricula, String telefoneResidencial, String telefoneCelular, String email, String dataDeContratacao, String login, String senha) {
-        this.matricula = matricula;
-        this.telefoneResidencial = telefoneResidencial;
-        this.telefoneCelular = telefoneCelular;
-        this.email = email;
-        //this.dataDeContratacao = (Date) dataDeContratacao;//converte aqui, ou só usa String, pq tanto a tela e BD facilita usar String
-        this.login = login;
-        this.senha = senha;
-	//this.id = id; BD que cria o ID
-    }
     
     public ModelFuncionario(){
     
     }
 
-
-    //
-    public ModelFuncionario(String matricula, String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, String login, String senha, boolean adm, int id) {
-        this.matricula = matricula;
+    //Com ID
+    public ModelFuncionario(int id, String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, boolean isADM, String senha) {
+        this.id = id;
         this.telefoneResidencial = telefoneResidencial;
         this.telefoneCelular = telefoneCelular;
         this.email = email;
         this.dataDeContratacao = dataDeContratacao;
-        this.login = login;
+        this.isADM = isADM;
         this.senha = senha;
-        this.adm = adm;
+    }
+
+
+    //Sem ID
+    public ModelFuncionario(String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, boolean isADM, String senha) {
+        this.telefoneResidencial = telefoneResidencial;
+        this.telefoneCelular = telefoneCelular;
+        this.email = email;
+        this.dataDeContratacao = dataDeContratacao;
+        this.isADM = isADM;
+        this.senha = senha;
+    }
+
+
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
         this.id = id;
-    }
-
-    public String getMatricula() {
-        return this.matricula;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
     }
 
     public String getTelefoneResidencial() {
@@ -89,12 +93,16 @@ public class ModelFuncionario implements CRUD{
         this.dataDeContratacao = dataDeContratacao;
     }
 
-    public String getLogin() {
-        return this.login;
+    public boolean isIsADM() {
+        return this.isADM;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public boolean getIsADM() {
+        return this.isADM;
+    }
+
+    public void setIsADM(boolean isADM) {
+        this.isADM = isADM;
     }
 
     public String getSenha() {
@@ -105,34 +113,34 @@ public class ModelFuncionario implements CRUD{
         this.senha = senha;
     }
 
-    public int getID(){
-	return this.id;
-    }
- 
-    public void setADM(Boolean adm){
-    	this.adm = adm;
+    
+    public Double consultarPreco(long codigoDeBarras){
+        return 0.0;
     }
     
-    public boolean isADM(){
-	return this.adm;
-    }
-    
-    public String getNome() {
-        return nome;
+    public void cadastrarCliente(ModelCliente cliente){
+
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void excluirCliente(ModelCliente cliente){
+
     }
-    
-    
+
      //private DAOFuncionario dao = new DAOFuncionario();
-    public ModelFuncionario logarFuncionario(String user, String password){
+    public ModelFuncionario loginFuncionario(String cpf, String password){
+        return null;
+    }
+
+    public void atualizarCliente(ModelCliente cliente){
+
+    }
+
+    public ModelCliente consultarCliente(String rg){
         return null;
     }
     //CRUD Methods
     @Override
-    public boolean salvar(Object obj) throws SQLException {
+    public int salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
