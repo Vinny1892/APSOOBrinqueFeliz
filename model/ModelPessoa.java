@@ -5,7 +5,7 @@ import java.util.ArrayList;
 //import dao.DAOPessoa;
 import java.util.Date;
 
-public abstract class ModelPessoa implements CRUD{
+public abstract class ModelPessoa{
     private String nome;
     private String cpf;
     private Date dataDeNascimento;
@@ -110,35 +110,6 @@ public abstract class ModelPessoa implements CRUD{
 	}
 	
 
-
-    //acesso DAO
-  //  private DAOPessoa dao = new DAOPessoa();
-
-    @Override
-    public boolean salvar(Object obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean atualizar(Object obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean deletar(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Object getById(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<Object> getAll() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-   
     
 
 }

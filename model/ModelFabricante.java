@@ -45,18 +45,8 @@ public class ModelFabricante implements CRUD{
         this.nome = nome;
     }
 
-//    public ModelBrinquedo getBrinquedo() {
-//        return this.brinquedo;
-//    }
-//
-//    public void setBrinquedo(ModelBrinquedo brinquedo) {
-//        this.brinquedo = brinquedo;
-//    }
-    //acesso DAO
-    //private DAOFabricante dao = new DAOFabricante();
-
     @Override
-    public boolean salvar(Object obj) throws SQLException {
+    public int salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

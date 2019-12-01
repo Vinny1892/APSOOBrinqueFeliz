@@ -27,7 +27,7 @@ public class ModelFormaDePagamento implements CRUD {
     //acesso DAO
 //    private DAOCategoria dao = new DAOCategoria();
     @Override
-    public boolean salvar(Object obj) throws SQLException {
+    public int salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
