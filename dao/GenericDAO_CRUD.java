@@ -19,7 +19,7 @@ public abstract class GenericDAO_CRUD {
     
     // CRUD
     // Assinatura metodos para as Classes DAO
-    public abstract int salvar(Object object) throws SQLException;
+    public abstract boolean salvar(Object object) throws SQLException;
 
     public abstract boolean atualizar(Object object) throws SQLException;
 

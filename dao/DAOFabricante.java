@@ -18,40 +18,41 @@ import model.ModelFabricante;
 public class DAOFabricante extends GenericDAO_CRUD {
 
     @Override
-    public int salvar(Object object) throws SQLException {
+    public boolean salvar(Object object) throws SQLException {
         try {
             ModelFabricante fabricante = (ModelFabricante) object;
             String insert = "INSERT INTO fabricantes (nome) VALUES(?) ";
             save(insert, fabricante.getNome());
             System.out.println("Metodo salvar DaoFabricante realizado");
-            return -1;
+            return true;
         } catch (MySQLIntegrityConstraintViolationException e) {
             JOptionPane.showMessageDialog(null, "Fabricante Ja cadastrado no BD");
         } catch (SQLException ex) {
             System.out.println(ex);
             JOptionPane.showMessageDialog(null, "Erro ao inserir Fabricante");
         }
-        return -1;
+        return false;
     }
 
     @Override
     public boolean atualizar(Object object) throws SQLException {
 
-    	 // try {
+    	try {
         ModelFabricante fabricante = (ModelFabricante) object;
         String update = "UPDATE fabricantes SET nome=? WHERE ID=?";
         
-       //update(update, fabricante.getId(),  fabricante.getNome());
+        update(update, fabricante.getId(),  fabricante.getNome());
         
         
         System.out.println("Metodo atualizar Daofabricante realizado");
         return true;
-//	  } catch (MySQLIntegrityConstraintViolationException e) {
-//        JOptionPane.showMessageDialog(null, "Atributo atualizado invalido");
-//    } catch (SQLException ex) {
-//        System.out.println(ex);
-//        JOptionPane.showMessageDialog(null, "Erro ao atualizar fabricante");
-//    }
+	  } catch (MySQLIntegrityConstraintViolationException e) {
+        JOptionPane.showMessageDialog(null, "Atributo atualizado invalido");
+	  } catch (SQLException ex) {
+        System.out.println(ex);
+    	JOptionPane.showMessageDialog(null, "Erro ao atualizar fabricante");
+	  }
+		return false;
     }
 
 
@@ -82,8 +83,8 @@ public class DAOFabricante extends GenericDAO_CRUD {
         PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM fabricante");
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-            //ModelFabricante fabricante = new ModelFabricante(rs.getInt("id_fabricante"), rs.getString("nome"));
-            //fabricantes.add(fabricante);
+            ModelFabricante fabricante = new ModelFabricante(rs.getString("nome"), rs.getInt("id_fabricante"));
+            fabricantes.add(fabricante);
         }
         rs.close();
         stmt.close();

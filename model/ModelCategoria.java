@@ -3,6 +3,8 @@ package model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import dao.DAOCategoria;
 //import dao.DAOCategoria;
 
 public class ModelCategoria implements CRUD{
@@ -46,7 +48,7 @@ public class ModelCategoria implements CRUD{
 
     }
     //acesso DAO
-    //private DAOCategoria dao = new DAOCategoria();
+    private DAOCategoria dao = new DAOCategoria();
 
     @Override
     public int salvar(Object obj) throws SQLException {

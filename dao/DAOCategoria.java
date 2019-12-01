@@ -21,38 +21,39 @@ public class DAOCategoria extends GenericDAO_CRUD {
 
     @Override
     public boolean salvar(Object object) throws SQLException {
-       // try {
+        try {
             ModelCategoria categoria = (ModelCategoria) object;
             String insert = "INSERT INTO categorias (nome) VALUES(?) ";
-//          save(insert, categoria.getNome());
+            save(insert, categoria.getNome());
             System.out.println("Metodo salvar Daocategoria realizado");
             return true;
-       // } catch (MySQLIntegrityConstraintViolationException e) {
-         //   JOptionPane.showMessageDialog(null, "categoria Ja cadastrado no BD");
-        //} catch (SQLException ex) {
-          //  System.out.println(ex);
-           // JOptionPane.showMessageDialog(null, "Erro ao inserir categoria");
-       // }
-        //return false;
+        } catch (MySQLIntegrityConstraintViolationException e) {
+            JOptionPane.showMessageDialog(null, "categoria Ja cadastrado no BD");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null, "Erro ao inserir categoria");
+        }
+        return false;
     }
 
     @Override
     public boolean atualizar(Object object) throws SQLException {
-    	 // try {
+    	  try {
               ModelCategoria categoria = (ModelCategoria) object;
               String update = "UPDATE categorias SET nome=? WHERE ID=?";
               
-             //update(update, categoria.getId(),  categoria.getNome());
+              update(update, categoria.getId(),  categoria.getNome());
               
               
               System.out.println("Metodo atualizar Daocategoria realizado");
               return true;
-//    	  } catch (MySQLIntegrityConstraintViolationException e) {
-//              JOptionPane.showMessageDialog(null, "Atributo atualizado invalido");
-//          } catch (SQLException ex) {
-//              System.out.println(ex);
-//              JOptionPane.showMessageDialog(null, "Erro ao atualizar categoria");
-//          }
+    	  } catch (MySQLIntegrityConstraintViolationException e) {
+              JOptionPane.showMessageDialog(null, "Atributo atualizado invalido");
+          } catch (SQLException ex) {
+              System.out.println(ex);
+              JOptionPane.showMessageDialog(null, "Erro ao atualizar categoria");
+          }
+		return false;
       }
 
     	
@@ -86,8 +87,8 @@ public class DAOCategoria extends GenericDAO_CRUD {
         PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM categorias");
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-            //ModelCategoria categoria = new ModelCategoria(rs.getInt("id_categoria"), rs.getString("nome");
-            //categorias.add(categoria);
+            ModelCategoria categoria = new ModelCategoria(rs.getString("nome"), rs.getInt("id_categoria"));
+            categorias.add(categoria);
         }
         rs.close();
         stmt.close();
