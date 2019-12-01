@@ -28,7 +28,8 @@ public class ModelCliente extends ModelPessoa implements CRUD{
     public ModelCliente() {
     }
 
-    public int getId() {
+
+	public int getId() {
         return this.id; 
     }
 
