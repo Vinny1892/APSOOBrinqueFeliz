@@ -20,20 +20,20 @@ import javax.swing.JOptionPane;
 public class DAOBrinquedo extends GenericDAO_CRUD {
 
     @Override
-    public boolean salvar(Object object) throws SQLException {
+    public int salvar(Object object) throws SQLException {
         try {
             ModelBrinquedo brinquedo = (ModelBrinquedo) object;
             String insert = "INSERT INTO brinquedos (id_categoria, codigo_de_barras, preco, id_fabricante, descricao, id_fornecedor) VALUES(?,?,?,?,?,?) ";
-            save(insert, brinquedo.getCategoria(), brinquedo.getId(), brinquedo.getPreco(), brinquedo.getFabricante(), brinquedo.getDescricao(), brinquedo.getFornecedor());
+            save(insert, brinquedo.getCategoria().getId(), brinquedo.getId(), brinquedo.getPreco(), brinquedo.getFabricante().getId(), brinquedo.getDescricao(), brinquedo.getFornecedor().getId());
             System.out.println("Metodo salvar DaoBrinquedo realizado");
-            return true;
+            return 1;
         } catch (MySQLIntegrityConstraintViolationException e) {
             JOptionPane.showMessageDialog(null, "Brinquedo Ja cadastrado no BD");
         } catch (SQLException ex) {
             System.out.println(ex);
             JOptionPane.showMessageDialog(null, "Erro ao inserir Brinquedo");
         }
-        return false;
+        return -1;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class DAOBrinquedo extends GenericDAO_CRUD {
               ModelBrinquedo brinquedo = (ModelBrinquedo) object;
               String update = "UPDATE brinquedos SET id_categoria=?, codigo_de_barras=?, preco=?, id_fabricante=?, descricao=?, id_fornecedor=? WHERE ID=?";
               
-             update(update, brinquedo.getId(),  brinquedo.getCategoria(), brinquedo.getId(), brinquedo.getPreco(), brinquedo.getFabricante(), brinquedo.getDescricao(), brinquedo.getFornecedor());
+             update(update, brinquedo.getId(),  brinquedo.getCategoria().getId(), brinquedo.getId(), brinquedo.getPreco(), brinquedo.getFabricante().getId(), brinquedo.getDescricao(), brinquedo.getFornecedor().getId());
               
               
               System.out.println("Metodo atualizar DaoBrinquedo realizado");

@@ -20,20 +20,20 @@ import javax.swing.JOptionPane;
 public class DAOItemDeEstoque extends GenericDAO_CRUD {
 
     @Override
-    public boolean salvar(Object object) throws SQLException {
+    public int salvar(Object object) throws SQLException {
         try {
             ModelItemDeEstoque ItemDeEstoque = (ModelItemDeEstoque) object;
             String insert = "INSERT INTO itens_estoque (id_brinquedo, quantidade) VALUES(?,?) ";
-            save(insert, ItemDeEstoque.getBrinquedo(), ItemDeEstoque.getQuantidade());
+            save(insert, ItemDeEstoque.getBrinquedo().getId(), ItemDeEstoque.getQuantidade());
             System.out.println("Metodo salvar DAOItemDeEstoque realizado");
-            return true;
+            return 1;
         } catch (MySQLIntegrityConstraintViolationException e) {
             JOptionPane.showMessageDialog(null, "ItemDeEstoque Ja cadastrado no BD");
         } catch (SQLException ex) {
             System.out.println(ex);
             JOptionPane.showMessageDialog(null, "Erro ao inserir ItemDeEstoque");
         }
-        return false;
+        return -1;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class DAOItemDeEstoque extends GenericDAO_CRUD {
               ModelItemDeEstoque ItemDeEstoque = (ModelItemDeEstoque) object;
               String update = "UPDATE itens_estoque SET id_brinquedo=?, quantidade=? WHERE ID=?";
               
-             update(update, ItemDeEstoque.getId(),  ItemDeEstoque.getBrinquedo(), ItemDeEstoque.getQuantidade());
+             update(update, ItemDeEstoque.getId(),  ItemDeEstoque.getBrinquedo().getId(), ItemDeEstoque.getQuantidade());
               
               
               System.out.println("Metodo atualizar DAOItemDeEstoque realizado");

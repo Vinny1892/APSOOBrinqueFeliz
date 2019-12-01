@@ -10,12 +10,12 @@ import java.util.Objects;
 public class ModelBrinquedo implements CRUD{
     
     //atributos
-    private int categoria;
+    private ModelCategoria categoria;
     private String nome;
     private Double preco;
-    private int fabricante;
+    private ModelFabricante fabricante;
     private String descricao;
-    private int fornecedor;
+    private ModelFornecedor fornecedor;
     private int id;//o id vai ser o codigo de barras
 
     
@@ -23,7 +23,7 @@ public class ModelBrinquedo implements CRUD{
     }
 
     //Com ID
-    public ModelBrinquedo(int categoria, String nome, Double preco, int fabricante, String descricao, int fornecedor, int id) {
+    public ModelBrinquedo(ModelCategoria categoria, String nome, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor, int id) {
         this.categoria = categoria;
         this.nome = nome;
         this.preco = preco;
@@ -34,7 +34,7 @@ public class ModelBrinquedo implements CRUD{
     }
 
     //Sem ID
-    public ModelBrinquedo(int categoria, String nome, Double preco, int fabricante, String descricao, int fornecedor/*, DAOBrinquedo dao*/) {
+    public ModelBrinquedo(ModelCategoria categoria, String nome, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor/*, DAOBrinquedo dao*/) {
         this.categoria = categoria;
         this.nome = nome;
         this.preco = preco;
@@ -62,11 +62,11 @@ public class ModelBrinquedo implements CRUD{
         this.preco = preco;
     }
 
-    public int getFabricante() {
+    public ModelFabricante getFabricante() {
         return fabricante;
     }
 
-    public void setFabricante(int fabricante) {
+    public void setFabricante(ModelFabricante fabricante) {
         this.fabricante = fabricante;
     }
 
@@ -78,11 +78,11 @@ public class ModelBrinquedo implements CRUD{
         this.descricao = descricao;
     }
 
-    public int getFornecedor() {
+    public ModelFornecedor getFornecedor() {
         return fornecedor;
     }
 
-    public void setFornecedor(int fornecedor) {
+    public void setFornecedor(ModelFornecedor fornecedor) {
         this.fornecedor = fornecedor;
     }
 
@@ -94,11 +94,11 @@ public class ModelBrinquedo implements CRUD{
         this.id = id;
     }
 
-    public int getCategoria() {
+    public ModelCategoria getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(int categoria) {
+	public void setCategoria(ModelCategoria categoria) {
 		this.categoria = categoria;
 	}
 

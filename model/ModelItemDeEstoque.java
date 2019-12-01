@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class ModelItemDeEstoque implements CRUD{
     private static ArrayList<ModelItemDeEstoque> itensNoEstoque;
-    private int brinquedo;//tirar?
+    private ModelBrinquedo brinquedo;//tirar?
     private int quantidade;
     private int id;
 
@@ -16,7 +16,7 @@ public class ModelItemDeEstoque implements CRUD{
     }
 
     //Com ID
-    public ModelItemDeEstoque(int brinquedo, int quantidade, int id) throws SQLException {
+    public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade, int id) throws SQLException {
         atualizarArrayListItensNoEstoque();
         this.brinquedo = brinquedo;
         this.quantidade = quantidade;
@@ -24,7 +24,7 @@ public class ModelItemDeEstoque implements CRUD{
     }
 
     //Sem ID
-    public ModelItemDeEstoque(int brinquedo, int quantidade) throws SQLException {
+    public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade) throws SQLException {
         this.brinquedo = brinquedo;
         this.quantidade = quantidade;
         atualizarArrayListItensNoEstoque();
@@ -38,11 +38,11 @@ public class ModelItemDeEstoque implements CRUD{
         itensNoEstoque = (ArrayList<ModelItemDeEstoque>) (ArrayList<?>) new DAOItemDeEstoque().getAll();
     }
 
-    public int getBrinquedo() {
+    public ModelBrinquedo getBrinquedo() {
         return this.brinquedo;
     }
 
-    public void setBrinquedo(int brinquedo) {
+    public void setBrinquedo(ModelBrinquedo brinquedo) {
         this.brinquedo = brinquedo;
     }
 

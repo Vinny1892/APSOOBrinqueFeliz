@@ -18,20 +18,20 @@ import model.ModelFabricante;
 public class DAOFabricante extends GenericDAO_CRUD {
 
     @Override
-    public boolean salvar(Object object) throws SQLException {
+    public int salvar(Object object) throws SQLException {
         try {
             ModelFabricante fabricante = (ModelFabricante) object;
             String insert = "INSERT INTO fabricantes (nome) VALUES(?) ";
             save(insert, fabricante.getNome());
             System.out.println("Metodo salvar DaoFabricante realizado");
-            return true;
+            return 1;
         } catch (MySQLIntegrityConstraintViolationException e) {
             JOptionPane.showMessageDialog(null, "Fabricante Ja cadastrado no BD");
         } catch (SQLException ex) {
             System.out.println(ex);
             JOptionPane.showMessageDialog(null, "Erro ao inserir Fabricante");
         }
-        return false;
+        return -1;
     }
 
     @Override
