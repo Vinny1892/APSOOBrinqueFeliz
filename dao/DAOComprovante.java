@@ -34,8 +34,11 @@ public class DAOComprovante extends GenericDAO_CRUD{
 	public boolean atualizar(Object object) throws SQLException {
 		try {
 			ModelComprovante comprovante = (ModelComprovante) object;
-			String update= "UPDATE comprovantes SET nome_cliente =?, rg_cliente=?, nome_funcionario=?, cpf_funcionario=?, forma_pagamento=?, id_venda=? WHERE ID=?";
-			update(update,comprovante.getId());
+			String update= "UPDATE comprovantes SET nome_cliente =?, rg_cliente=?, nome_funcionario=?, "
+					+ "cpf_funcionario=?, forma_pagamento=?, id_venda=? WHERE ID=?";
+			update(update,comprovante.getCliente().getNome(), comprovante.getCliente().getRg(), 
+					comprovante.getFuncionario().getNome(), comprovante.getFuncionario().getCpf(), 
+					comprovante.getForma(), comprovante.getIdVenda());
 			System.out.println("atualizado com sucesso");
 			return true;
 		} catch (MySQLIntegrityConstraintViolationException e) {
