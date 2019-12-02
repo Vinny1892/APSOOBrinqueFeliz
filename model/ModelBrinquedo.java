@@ -17,6 +17,7 @@ public class ModelBrinquedo implements CRUD{
     private String descricao;
     private ModelFornecedor fornecedor;
     private int id;//o id vai ser o codigo de barras
+    private ArrayList<ModelBrinquedo> brinquedo;
 
     
     public ModelBrinquedo() {
@@ -173,5 +174,15 @@ public class ModelBrinquedo implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-
+    public void atualizarArrayBrinquedos() throws SQLException{
+        brinquedo = (ArrayList<ModelBrinquedo>)(ArrayList<?>) dao.getAll();
+    }
+    
+    public ArrayList<ModelBrinquedo> getBrinquedo() {
+        return brinquedo;
+    }
+    
+    public ModelBrinquedo getByIdArray(int id)  {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

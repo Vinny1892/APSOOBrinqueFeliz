@@ -123,4 +123,11 @@ public class ModelComprovante implements CRUD{
         this.carrinho = carrinho;
     }
 
+    public void atualizarArrayCarrinho() throws SQLException{
+        carrinho = (ArrayList<ModelItemDeVenda>)(ArrayList<?>) dao.getAll();
+    }
+    
+    public ModelComprovante getByIdArray(int id)  {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

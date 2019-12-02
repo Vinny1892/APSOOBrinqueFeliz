@@ -19,6 +19,7 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
     //private enum tipoDePermissao;
     private boolean isADM;
     private String senha;
+    private ArrayList<ModelFuncionario> funcionario;
 
 
     //private static ArrayList<ModelFuncionario> funcionarios;
@@ -156,6 +157,17 @@ public ModelFuncionario(String telefoneResidencial, String telefoneCelular, Stri
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    public void atualizarArrayFuncionario() throws SQLException{
+        funcionario = (ArrayList<ModelFuncionario>)(ArrayList<?>) dao.getAll();
+    }
+    
+    public ArrayList<ModelFuncionario> getFuncionario() {
+        return funcionario;
+    }
+    
+    public ModelFuncionario getByIdArray(int id)  {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 } 
 

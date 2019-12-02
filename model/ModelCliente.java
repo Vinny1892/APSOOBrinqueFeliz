@@ -10,6 +10,7 @@ public class ModelCliente extends ModelPessoa implements CRUD{
 
     private String rg;
     private int id;
+    private ArrayList<ModelCliente> cliente;
 
     //Com ID
     public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado, Date dataDeNascimento, String rg, int id) {
@@ -76,7 +77,16 @@ public class ModelCliente extends ModelPessoa implements CRUD{
     }
 
    
+    public void atualizarArrayCliente() throws SQLException{
+        cliente = (ArrayList<ModelCliente>)(ArrayList<?>) dao.getAll();
+    }
     
+    public ArrayList<ModelCliente> getCliente() {
+        return cliente;
+    }
     
+    public ModelCliente getByIdArray(int id)  {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 

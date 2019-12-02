@@ -15,7 +15,7 @@ public class ModelFornecedor implements CRUD{
     private String estado;
     private String telefone;
     private String email;
-    //private ArrayList<ModelFabricante> fabricantes;
+    private ArrayList<ModelFornecedor> fornecedor;
     private int id;
 
 
@@ -148,5 +148,15 @@ public class ModelFornecedor implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
   
-
+    public void atualizarArrayFornecedor() throws SQLException{
+        fornecedor = (ArrayList<ModelFornecedor>)(ArrayList<?>) dao.getAll();
+    }
+    
+    public ArrayList<ModelFornecedor> getFornecedor() {
+        return fornecedor;
+    }
+    
+    public ModelFornecedor getByIdArray(int id)  {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

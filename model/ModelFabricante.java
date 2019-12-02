@@ -10,6 +10,7 @@ public class ModelFabricante implements CRUD{
     private String nome;
     //private ArrayList<ModelBrinquedo> brinquedo = new ArrayList<>(); //Consta como produto de acordo com o diagrama
     private int id;
+    private ArrayList<ModelFabricante> fabricante;
 
     //Com ID
     public ModelFabricante(String nome, /*ModelBrinquedo brinquedo,*/ int id) {
@@ -70,5 +71,17 @@ public class ModelFabricante implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-
+    public void atualizarArrayFabricante() throws SQLException{
+        fabricante = (ArrayList<ModelFabricante>)(ArrayList<?>) dao.getAll();
+    }
+    
+    public ArrayList<ModelFabricante> getFabricante() {
+        return fabricante;
+    }
+    
+    public ModelFabricante getByIdArray(int id)  {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 }
