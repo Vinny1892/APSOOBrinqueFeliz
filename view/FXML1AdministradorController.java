@@ -162,6 +162,15 @@ public class FXML1AdministradorController implements Initializable {
         stage.show();
        // buttonFornecedores.getScene();
     }
+    @FXML
+    void onActionbuttonVendas (ActionEvent event) {
+        
+    }
+    
+    @FXML
+    void onActionbuttonRelatorios (ActionEvent event){
+        
+    }
     
     
 }

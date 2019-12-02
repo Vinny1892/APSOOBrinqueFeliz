@@ -5,55 +5,41 @@
  */
 package view;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author Vinny
  */
-public class FXMLFormFornecedorController implements Initializable {
+public class FXMLFormBrinquedoController implements Initializable {
 
     /**
      * Initializes the controller class.
      */
     
-    
-    
-    @FXML
+        @FXML
     private TextField textFieldNome;
 
     @FXML
-    private TextField textFieldRazaoSocial;
+    private TextField textFieldPreco;
 
     @FXML
-    private TextField textFieldCidade;
+    private ComboBox<?> comboBoxFabricantes;
 
     @FXML
-    private TextField textFieldEstado;
+    private ComboBox<?> comboBoxCategoria;
 
     @FXML
-    private TextField textFieldCNPJ;
-
-    @FXML
-    private TextField textFieldNomeFantasia;
-
-    @FXML
-    private TextField textFieldEndereco;
-
-    @FXML
-    private TextField textFieldEmail;
+    private TextArea textAreaDesc;
 
     @FXML
     private Button btnSalvar;
@@ -67,15 +53,11 @@ public class FXMLFormFornecedorController implements Initializable {
     }
 
     @FXML
-    void onActionbtnVoltar(ActionEvent event) throws IOException {
-        Parent fornecedor = FXMLLoader.load(getClass().getResource("FXML7Fornecedor.fxml"));
-        Scene scene = new Scene(fornecedor);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
-        btnVoltar.getScene().getWindow().hide();
+    void onActionbtnVoltar(ActionEvent event) {
 
     }
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

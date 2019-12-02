@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="203.0" prefWidth="419.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane id="AnchorPane" prefHeight="203.0" prefWidth="419.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXML0loginController">
    <children>
       <Button fx:id="buttonLogar" layoutX="219.0" layoutY="134.0" mnemonicParsing="false" onAction="#onActionButtonLogar" text="Logar" />
       <TextField fx:id="textFieldUser" layoutX="115.0" layoutY="35.0" prefHeight="26.0" prefWidth="263.0" />
