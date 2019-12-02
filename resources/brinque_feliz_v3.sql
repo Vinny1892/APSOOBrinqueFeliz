@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Dez-2019 às 19:17
--- Versão do servidor: 10.4.8-MariaDB
--- versão do PHP: 7.3.11
+-- Generation Time: 02-Dez-2019 às 21:57
+-- Versão do servidor: 10.1.38-MariaDB
+-- versão do PHP: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `brinque_feliz`
+-- Database: `brinque_feliz`
 --
 
 -- --------------------------------------------------------
@@ -39,6 +39,17 @@ CREATE TABLE `brinquedos` (
   `id_fornecedor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `brinquedos`
+--
+
+INSERT INTO `brinquedos` (`id_brinquedo`, `id_categoria`, `nome`, `codigo_de_barras`, `preco`, `id_fabricante`, `descricao`, `id_fornecedor`) VALUES
+(1, 1, 'Caixa de Lego', '4252665474856', '175', 1, 'Caixa de Lego pequena', 1),
+(2, 1, 'Caixa de lego', '4225265474856', '350', 2, 'Caixa de Lego grande', 2),
+(3, 2, 'Quebra Cabeça', '589416537', '89', 3, 'Quebra-cabeça 200 peças', 3),
+(4, 3, 'Bateria', '234239492359', '155', 4, 'Bateria de som para crianças', 4),
+(5, 4, 'Cubo Magico', '31241152546', '79', 5, 'Cubo magico iniciante', 5);
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +60,23 @@ CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL,
   `nome` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `categorias`
+--
+
+INSERT INTO `categorias` (`id_categoria`, `nome`) VALUES
+(8, 'Boneca Barbie'),
+(6, 'Boneco de Heroi'),
+(12, 'Brinquedos de Praia'),
+(11, 'Carro de Controle Remoto'),
+(9, 'Copos Infantis'),
+(10, 'Lancheira'),
+(1, 'Lego'),
+(3, 'Musical'),
+(5, 'Pelucia'),
+(2, 'Quebra-Cabeca'),
+(4, 'Raciocinio');
 
 -- --------------------------------------------------------
 
@@ -67,6 +95,17 @@ CREATE TABLE `clientes` (
   `cidade` varchar(255) DEFAULT NULL,
   `estado` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `clientes`
+--
+
+INSERT INTO `clientes` (`id_cliente`, `rg`, `cpf`, `nome`, `data_nascimento`, `endereco`, `cep`, `cidade`, `estado`) VALUES
+(1, '2134141246', '4848412044', 'Jucelino Alves', '1990-11-04', 'Rua das Paineiras ', '547898', 'Campo Grande', 'Mato Grosso do Sul'),
+(2, '15878616', '889785156', 'Marta Alves', '1989-03-20', 'Rua das aguas', '9875487', 'Campo Grande', 'Mato Grosso do Sul'),
+(3, '981075156', '06385684', 'Bruna Fonseca', '1970-02-15', 'Avenida Mato Grosso', '84972400', 'Campo Grande', 'Mato Grosso do Sul'),
+(4, '0032597', '998754152', 'Carlos Dias', '1995-09-04', 'Avenida Afonso Pena', '99875755', 'Campo Grande', 'Mato Grosso do Sul'),
+(5, '7778954465', '000012525', 'Felipe Gonçalves', '1988-10-04', 'Avenida Senador Filinto Miller', '2222448', 'Campo Grande', 'Mato Grosso do Sul');
 
 -- --------------------------------------------------------
 
@@ -96,6 +135,17 @@ CREATE TABLE `fabricantes` (
   `cnpj` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `fabricantes`
+--
+
+INSERT INTO `fabricantes` (`id_fabricante`, `nome`, `cnpj`) VALUES
+(1, 'Estrela', '62565481'),
+(2, 'Balila', '54158513'),
+(3, 'Trol', '5123054'),
+(4, 'GlassLite', '6487851'),
+(5, 'Atma', '6548151');
+
 -- --------------------------------------------------------
 
 --
@@ -113,6 +163,17 @@ CREATE TABLE `fornecedores` (
   `telefone` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `fornecedores`
+--
+
+INSERT INTO `fornecedores` (`id_fornecedor`, `cnpj`, `nome_fantasia`, `razao_social`, `endereco`, `cidade`, `estado`, `telefone`, `email`) VALUES
+(1, '35465415', 'Joao LTDA', 'Joao Almeida ', 'Rua das Paineiras', 'Sao Paulo', 'Sao Paulo', '11 5487 4842', 'joaoalmeira@gmail.com'),
+(2, '40465415', 'Felipe LTDA', 'Felipe Almeida', 'Rua das Aguas', 'Sao Paulo', 'Sao Paulo', '11 5487 4842', 'felipealmeira@gmail.com'),
+(3, '1547865', 'Carlos LTDA', 'Dias Dias', 'Rua 9', 'Curitiba', 'Parana', '21 5487 4842', 'carlosalmeira@gmail.com'),
+(4, '7841265', 'Drandao LTDA', 'Juliane Brandao ', 'Rua Sete', 'Curitiba', 'Parana', '21 5487 4842', 'brandao@gmail.com'),
+(5, '14585415', 'Foz LTDA', 'Bruna Fonseca ', 'Rua Sete', 'Curitiba', 'Parana', '21 5487 4842', 'brandao@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -149,6 +210,16 @@ CREATE TABLE `itens_estoque` (
   `data_aquisicao` date DEFAULT NULL,
   `quantidade` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `itens_estoque`
+--
+
+INSERT INTO `itens_estoque` (`id_item_estoque`, `id_brinquedo`, `data_aquisicao`, `quantidade`) VALUES
+(1, 1, '2019-11-27', 100),
+(2, 2, '2019-12-02', 50),
+(3, 5, '2019-11-13', 50),
+(4, 3, '2019-11-22', 2);
 
 -- --------------------------------------------------------
 
@@ -223,11 +294,11 @@ CREATE TABLE `vendas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `brinquedos`
+-- Indexes for table `brinquedos`
 --
 ALTER TABLE `brinquedos`
   ADD PRIMARY KEY (`id_brinquedo`),
@@ -236,14 +307,14 @@ ALTER TABLE `brinquedos`
   ADD KEY `id_fornecedor` (`id_fornecedor`);
 
 --
--- Índices para tabela `categorias`
+-- Indexes for table `categorias`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id_categoria`),
   ADD UNIQUE KEY `nome` (`nome`);
 
 --
--- Índices para tabela `clientes`
+-- Indexes for table `clientes`
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id_cliente`),
@@ -251,28 +322,28 @@ ALTER TABLE `clientes`
   ADD UNIQUE KEY `cpf` (`cpf`);
 
 --
--- Índices para tabela `comprovantes`
+-- Indexes for table `comprovantes`
 --
 ALTER TABLE `comprovantes`
   ADD PRIMARY KEY (`id_comprovante`),
   ADD KEY `id_venda` (`id_venda`);
 
 --
--- Índices para tabela `fabricantes`
+-- Indexes for table `fabricantes`
 --
 ALTER TABLE `fabricantes`
   ADD PRIMARY KEY (`id_fabricante`),
   ADD UNIQUE KEY `cnpj` (`cnpj`);
 
 --
--- Índices para tabela `fornecedores`
+-- Indexes for table `fornecedores`
 --
 ALTER TABLE `fornecedores`
   ADD PRIMARY KEY (`id_fornecedor`),
   ADD UNIQUE KEY `cnpj` (`cnpj`);
 
 --
--- Índices para tabela `funcionarios`
+-- Indexes for table `funcionarios`
 --
 ALTER TABLE `funcionarios`
   ADD PRIMARY KEY (`id_funcionario`),
@@ -280,14 +351,14 @@ ALTER TABLE `funcionarios`
   ADD UNIQUE KEY `cpf` (`cpf`);
 
 --
--- Índices para tabela `itens_estoque`
+-- Indexes for table `itens_estoque`
 --
 ALTER TABLE `itens_estoque`
   ADD PRIMARY KEY (`id_item_estoque`),
   ADD UNIQUE KEY `id_brinquedo` (`id_brinquedo`);
 
 --
--- Índices para tabela `itens_venda`
+-- Indexes for table `itens_venda`
 --
 ALTER TABLE `itens_venda`
   ADD PRIMARY KEY (`id_item_venda`),
@@ -295,13 +366,13 @@ ALTER TABLE `itens_venda`
   ADD KEY `id_brinquedo` (`id_brinquedo`);
 
 --
--- Índices para tabela `tipos_pagamento`
+-- Indexes for table `tipos_pagamento`
 --
 ALTER TABLE `tipos_pagamento`
   ADD PRIMARY KEY (`id_tipo_pagamento`);
 
 --
--- Índices para tabela `vendas`
+-- Indexes for table `vendas`
 --
 ALTER TABLE `vendas`
   ADD PRIMARY KEY (`id_venda`),
@@ -309,7 +380,7 @@ ALTER TABLE `vendas`
   ADD KEY `id_cliente` (`id_cliente`);
 
 --
--- Restrições para despejos de tabelas
+-- Constraints for dumped tables
 --
 
 --
