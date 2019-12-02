@@ -8,20 +8,24 @@ import dao.DAOCategoria;
 //import dao.DAOCategoria;
 
 public class ModelCategoria implements CRUD{
+    private ArrayList<ModelCategoria> categorias;
     private String nome;
     private int id;
 
-    public ModelCategoria() {
+    public ModelCategoria() throws SQLException {
+        atualizarArrayCategorias();
     }
 
     //Com ID
-    public ModelCategoria(String nome, int id) {
+    public ModelCategoria(String nome, int id) throws SQLException {
+        atualizarArrayCategorias();
         this.nome = nome;
         this.id = id;
     }
 
     //Sem ID
-    public ModelCategoria(String nome) {
+    public ModelCategoria(String nome) throws SQLException {
+        atualizarArrayCategorias();
         this.nome = nome;
     }
 
@@ -44,9 +48,22 @@ public class ModelCategoria implements CRUD{
     }
 
 
-    public void gerarRelatioDeProdutos(){
-
+    public void atualizarArrayCategorias() throws SQLException{
+        categorias = (ArrayList<ModelCategoria>)(ArrayList<?>) dao.getAll();
     }
+    
+    public ArrayList<ModelCategoria> getCategorias() {
+        return categorias;
+    }
+    
+    public ModelCategoria getByIdArray(int id)  {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public ArrayList<ModelCategoria> getAllArray()  {
+        return categorias;
+    }
+  
     //acesso DAO
     private DAOCategoria dao = new DAOCategoria();
 
@@ -74,6 +91,8 @@ public class ModelCategoria implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
     
 
 }
