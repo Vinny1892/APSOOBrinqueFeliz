@@ -5,9 +5,16 @@
  */
 package view;
 
+import java.awt.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import model.ModelFabricante;
 
 /**
  * FXML Controller class
@@ -23,5 +30,59 @@ public class FXML3FabricanteController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    @FXML
+    private TableView<ModelFabricante> tableView;
+
+    @FXML
+    private TableColumn<?, ?> columnNome;
+
+    @FXML
+    private TableColumn<?, ?> columnCNPJ;
+
+    @FXML
+    private Button buttonVoltar;
+
+    @FXML
+    private Button buttonSalvar;
+
+    @FXML
+    private Button buttonExcluir;
+
+    @FXML
+    private Button buttonCriar;
+
+    @FXML
+    private TextField textFielNome;
+
+    @FXML
+    private Button buttonEditarProdito;
+
+    @FXML
+    void onActionButtonCriar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionButtonEditar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionButtonExcluir(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionButtonSalvar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionButtonVoltar(ActionEvent event) {
+
+    }
+    
+    
     
 }

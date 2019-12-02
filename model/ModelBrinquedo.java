@@ -94,7 +94,15 @@ public class ModelBrinquedo implements CRUD{
         this.id = id;
     }
 
-    @Override
+    public ModelCategoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(ModelCategoria categoria) {
+		this.categoria = categoria;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 7;
         return hash;

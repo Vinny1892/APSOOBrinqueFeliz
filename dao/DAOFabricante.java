@@ -20,11 +20,13 @@ public class DAOFabricante extends GenericDAO_CRUD {
     @Override
     public int salvar(Object object) throws SQLException {
         try {
-            ModelFabricante funcionario = (ModelFabricante) object;
-            String insert = "INSERT INTO fabricante (nome,endereco,cpf,telefone,id_cartao_fidelidade) VALUES(?,?,?,?,?) ";
-            save(insert, funcionario.get);
+
+            ModelFabricante fabricante = (ModelFabricante) object;
+            String insert = "INSERT INTO fabricantes (nome) VALUES(?) ";
+            save(insert, fabricante.getNome());
+
             System.out.println("Metodo salvar DaoFabricante realizado");
-            return -1;
+            return 1;
         } catch (MySQLIntegrityConstraintViolationException e) {
             JOptionPane.showMessageDialog(null, "Fabricante Ja cadastrado no BD");
         } catch (SQLException ex) {
@@ -36,12 +38,39 @@ public class DAOFabricante extends GenericDAO_CRUD {
 
     @Override
     public boolean atualizar(Object object) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+    	try {
+        ModelFabricante fabricante = (ModelFabricante) object;
+        String update = "UPDATE fabricantes SET nome=? WHERE ID=?";
+        
+        update(update, fabricante.getId(),  fabricante.getNome());
+        
+        
+        System.out.println("Metodo atualizar Daofabricante realizado");
+        return true;
+	  } catch (MySQLIntegrityConstraintViolationException e) {
+        JOptionPane.showMessageDialog(null, "Atributo atualizado invalido");
+	  } catch (SQLException ex) {
+        System.out.println(ex);
+    	JOptionPane.showMessageDialog(null, "Erro ao atualizar fabricante");
+	  }
+		return false;
     }
+
 
     @Override
     public boolean deletar(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	   	 try {
+	         String delete = "DELETE FROM fabricantes WHERE ID=?";
+	         
+	         delete(delete, id);
+	         System.out.println("Metodo deletar Daofabricante realizado");
+	         return true;
+	     } catch (SQLException ex) {
+	         System.out.println(ex);
+	         JOptionPane.showMessageDialog(null, "Erro ao deletar fabricante");
+	     }
+	     return false;
     }
 
     @Override
@@ -49,22 +78,19 @@ public class DAOFabricante extends GenericDAO_CRUD {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /*
-        Metodo utilizado para pegar todos os fornecedores na tabela/entidade fornecedor,
-        e retorna um ArrayList deste objeto GestaoFornecedor.
-     */
+
     @Override
     public ArrayList<Object> getAll() throws SQLException {
         ArrayList<Object> fabricantes = new ArrayList<>();
         PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM fabricante");
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-            //ModelFabricante fabricante = new ModelFabricante(rs.getInt("id_fabricante"), rs.getString("nome"), rs.getString("cnpj"), rs.getString("endereco"), rs.getBoolean("recorrente"), rs.getInt("taxa_desconto"));
-            //fabricantes.add(fabricante);
+            ModelFabricante fabricante = new ModelFabricante(rs.getString("nome"), rs.getInt("id_fabricante"));
+            fabricantes.add(fabricante);
         }
         rs.close();
         stmt.close();
-        return null;//fabricantes;
+        return fabricantes;
     }
 
 }

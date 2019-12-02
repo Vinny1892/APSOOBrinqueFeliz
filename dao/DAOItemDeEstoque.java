@@ -6,56 +6,58 @@ import java.util.List;
 
 import com.mysql.jdbc.exceptions.jdbc4.MySQLDataException;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
-import helpers.DateHelper;
 
-import model.ModelFuncionario; 
+import model.ModelItemDeEstoque;
+
 
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
+
 import java.util.ArrayList;
-import java.util.Date;
-import javax.swing.JOptionPane; 
+import javax.swing.JOptionPane;
 
 
-public class DAOFuncionario extends GenericDAO_CRUD {
+public class DAOItemDeEstoque extends GenericDAO_CRUD {
 
     @Override
     public int salvar(Object object) throws SQLException {
-       // try {
-            ModelFuncionario funcionario = (ModelFuncionario) object;
-            String insert = "INSERT INTO funcionarios (id_funcionario, senha, telefone_residencial, telefone_celular, email, data_contratacao, is_adm, nome, cpf, data_nascimento, endereco, cep, cidade, estado ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?) "; 
-            save(insert, funcionario.getId(), funcionario.getSenha(), funcionario.getTelefoneResidencial(), funcionario.getTelefoneCelular(), funcionario.getEmail(), funcionario.getDataDeContratacao(), funcionario.getIsADM(), funcionario.getNome(), funcionario.getCpf(), funcionario.getDataDeNascimento(), funcionario.getEndereco(), funcionario.getCep(), funcionario.getCidade(), funcionario.getEstado()); 
-            System.out.println("Metodo salvar DaoBrinquedo realizado");
-            return -1; 
-       // } catch (MySQLIntegrityConstraintViolationException e) {
-         //   JOptionPane.showMessageDialog(null, "Brinquedo Ja cadastrado no BD");
-        //} catch (SQLException ex) {
-          //  System.out.println(ex);
-           // JOptionPane.showMessageDialog(null, "Erro ao inserir Brinquedo");
-       // }
-        //return false;
+        try {
+            ModelItemDeEstoque ItemDeEstoque = (ModelItemDeEstoque) object;
+            String insert = "INSERT INTO itens_estoque (id_brinquedo, quantidade) VALUES(?,?) ";
+            save(insert, ItemDeEstoque.getBrinquedo().getId(), ItemDeEstoque.getQuantidade());
+            System.out.println("Metodo salvar DAOItemDeEstoque realizado");
+            return 1;
+        } catch (MySQLIntegrityConstraintViolationException e) {
+            JOptionPane.showMessageDialog(null, "ItemDeEstoque Ja cadastrado no BD");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null, "Erro ao inserir ItemDeEstoque");
+        }
+        return -1;
+
     }
 
     @Override
     public boolean atualizar(Object object) throws SQLException {
-    	 // try {
-              ModelFuncionario funcionario = (ModelFuncionario) object;
-              String update = "UPDATE brinquedos SET id_categoria=?, codigo_de_barras=?, preco=?, id_fabricante=?, descricao=?, id_fornecedor=? WHERE ID=?";
+
+    	  try {
+              ModelItemDeEstoque ItemDeEstoque = (ModelItemDeEstoque) object;
+              String update = "UPDATE itens_estoque SET id_brinquedo=?, quantidade=? WHERE ID=?";
               
-             //update(update, brinquedo.getId(),  brinquedo.getCategoria().getId(), brinquedo.getCodigoDeBarras(), brinquedo.getPreco, brinquedo.getFabricante().getID(), brinquedo.getDescricao, brinquedo.getFornecedor().getId());
+             update(update, ItemDeEstoque.getId(),  ItemDeEstoque.getBrinquedo().getId(), ItemDeEstoque.getQuantidade());
               
               
-              System.out.println("Metodo atualizar DaoBrinquedo realizado");
+              System.out.println("Metodo atualizar DAOItemDeEstoque realizado");
               return true;
-//    	  } catch (MySQLIntegrityConstraintViolationException e) {
-//              JOptionPane.showMessageDialog(null, "Atributo atualizado invalido");
-//          } catch (SQLException ex) {
-//              System.out.println(ex);
-//              JOptionPane.showMessageDialog(null, "Erro ao atualizar Brinquedo");
-//          }
+    	  } catch (MySQLIntegrityConstraintViolationException e) {
+              JOptionPane.showMessageDialog(null, "Atributo atualizado invalido");
+          } catch (SQLException ex) {
+              System.out.println(ex);
+              JOptionPane.showMessageDialog(null, "Erro ao atualizar ItemDeEstoque");
+          }
+		return false;
       }
 
     	
@@ -64,42 +66,18 @@ public class DAOFuncionario extends GenericDAO_CRUD {
     @Override
     public boolean deletar(int id) throws SQLException {
     	 try {
-             //ModelBrinquedo brinquedo = (ModelBrinquedo) object;
-             String delete = "DELETE FROM brinquedos WHERE ID=?";
+
+             String delete = "DELETE FROM itens_estoque WHERE ID=?";
              
-            delete(delete, id);
-             System.out.println("Metodo deletar DaoBrinquedo realizado");
+             delete(delete, id);
+             System.out.println("Metodo deletar DAOItemDeEstoque realizado");
              return true;
          } catch (SQLException ex) {
              System.out.println(ex);
-             JOptionPane.showMessageDialog(null, "Erro ao deletar Brinquedo");
+             JOptionPane.showMessageDialog(null, "Erro ao deletar ItemDeEstoque");
          }
          return false;
-     } 
-    
-    protected int createId() throws SQLException { 
-        
-        System.out.println("SELECT funcionarios.id_funcionario FROM funcionarios order by ? desc limit 1"); 
-        PreparedStatement stmt = getConnection().prepareStatement("SELECT id_funcionario FROM funcionarios order by ? desc limit 1"); 
-        stmt.setString(1, "id_funcionario"); 
-        stmt.execute(); 
-        ResultSet rs = stmt.executeQuery(); 
-        while (rs.next()) {
-            
-            int ultimoId = rs.getInt("id_funcionario"); 
-            
-            return ultimoId + 1; 
-            
-            //fabricantes.add(fabricante);
-        } 
-        
-        
-        rs.close();
-        stmt.close();
-        return -1;//fabricantes; 
-        
-        
-    } 
+     }
     
     
     @Override
@@ -146,6 +124,20 @@ public class DAOFuncionario extends GenericDAO_CRUD {
         rs.close();
         stmt.close();
         return brinquedos;
+
+    @Override
+    public ArrayList<Object> getAll() throws SQLException {
+        ArrayList<Object> itens_estoque = new ArrayList<>();
+        PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM itens_estoque");
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            ModelItemDeEstoque ItemDeEstoque = new ModelItemDeEstoque(rs.getInt("id_brinquedo"), rs.getInt("quantidade"), rs.getInt("id_item_estoque"));
+            itens_estoque.add(ItemDeEstoque);
+        }
+        rs.close();
+        stmt.close();
+        return itens_estoque;
+
     }
 
 }
