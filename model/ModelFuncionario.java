@@ -1,6 +1,8 @@
 package model;
-
+import helpers.BCrypt;
+import dao.DAOFuncionario;
 import java.sql.SQLException;
+import java.text.ParseException;
 //import dao.DAOFuncionario;
 import java.util.ArrayList;
 import java.util.Date;
@@ -136,7 +138,9 @@ public ModelFuncionario(String telefoneResidencial, String telefoneCelular, Stri
 
      //private DAOFuncionario dao = new DAOFuncionario();
     public ModelFuncionario loginFuncionario(String cpf, String password){
-        return null; 
+     try{ return new  DAOFuncionario().getByEmail(email,password);}
+      catch(Exception ex) {System.out.println(ex);}
+        return null;
     }
 
     public void atualizarCliente(ModelCliente cliente){

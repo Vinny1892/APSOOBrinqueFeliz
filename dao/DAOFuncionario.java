@@ -130,20 +130,19 @@ public class DAOFuncionario extends GenericDAO_CRUD {
         
     } 
     
-    public ModelFuncionario getByEmail(String email) throws SQLException, ParseException{ 
+    public ModelFuncionario getByEmail(String email,String password) throws SQLException, ParseException{ 
         
-        System.out.println("SELECT * FROM funcionarios where funcionarios.email = ?"); 
+        System.out.println("SELECT * FROM funcionarios where funcionarios.email = ? and senha = ?"); 
         PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM funcionarios where funcionarios.email = ?"); 
         stmt.setString(1, email); 
+        stmt.setString(2, password);
         ResultSet rs = stmt.executeQuery(); 
         while (rs.next()) {
             
             ModelFuncionario funcionario = new ModelFuncionario(rs.getInt("id_funcionario"), rs.getString("telefone_residencial"), rs.getString("telefone_celular"), rs.getString("email"), rs.getDate("data_contratacao"), rs.getBoolean("is_adm"), rs.getString("senha"), rs.getString("nome"), rs.getString("cpf"), rs.getDate("data_nascimento"), rs.getString("endereco"), rs.getString("cep"), rs.getString("cidade"), rs.getString("estado")); 
             
             return funcionario; 
-            
-            //fabricantes.add(fabricante);
-        } 
+                    } 
         
         
         rs.close();
