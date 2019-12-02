@@ -1,152 +1,80 @@
+
 package dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
-import com.mysql.jdbc.exceptions.jdbc4.MySQLDataException;
+import javax.swing.JOptionPane;
+
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
-import helpers.DateHelper;
 
-import model.ModelFuncionario; 
+import model.ModelBrinquedo;
+import model.ModelComprovante;
+import model.ModelVenda;
 
+public class DAOVenda extends GenericDAO_CRUD{
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Date;
-import javax.swing.JOptionPane; 
-
-
-public class DAOFuncionario extends GenericDAO_CRUD {
-
-    @Override
-    public int salvar(Object object) throws SQLException {
-       // try {
-            ModelFuncionario funcionario = (ModelFuncionario) object;
-            String insert = "INSERT INTO funcionarios (id_funcionario, senha, telefone_residencial, telefone_celular, email, data_contratacao, is_adm, nome, cpf, data_nascimento, endereco, cep, cidade, estado ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?) "; 
-            save(insert, funcionario.getId(), funcionario.getSenha(), funcionario.getTelefoneResidencial(), funcionario.getTelefoneCelular(), funcionario.getEmail(), funcionario.getDataDeContratacao(), funcionario.getIsADM(), funcionario.getNome(), funcionario.getCpf(), funcionario.getDataDeNascimento(), funcionario.getEndereco(), funcionario.getCep(), funcionario.getCidade(), funcionario.getEstado()); 
-            System.out.println("Metodo salvar DaoBrinquedo realizado");
-            return -1; 
-       // } catch (MySQLIntegrityConstraintViolationException e) {
-         //   JOptionPane.showMessageDialog(null, "Brinquedo Ja cadastrado no BD");
-        //} catch (SQLException ex) {
-          //  System.out.println(ex);
-           // JOptionPane.showMessageDialog(null, "Erro ao inserir Brinquedo");
-       // }
-        //return false;
-    }
-
-    @Override
-    public boolean atualizar(Object object) throws SQLException {
-    	 // try {
-              ModelFuncionario funcionario = (ModelFuncionario) object;
-              String update = "UPDATE brinquedos SET id_categoria=?, codigo_de_barras=?, preco=?, id_fabricante=?, descricao=?, id_fornecedor=? WHERE ID=?";
-              
-             //update(update, brinquedo.getId(),  brinquedo.getCategoria().getId(), brinquedo.getCodigoDeBarras(), brinquedo.getPreco, brinquedo.getFabricante().getID(), brinquedo.getDescricao, brinquedo.getFornecedor().getId());
-              
-              
-              System.out.println("Metodo atualizar DaoBrinquedo realizado");
-              return true;
-//    	  } catch (MySQLIntegrityConstraintViolationException e) {
-//              JOptionPane.showMessageDialog(null, "Atributo atualizado invalido");
-//          } catch (SQLException ex) {
-//              System.out.println(ex);
-//              JOptionPane.showMessageDialog(null, "Erro ao atualizar Brinquedo");
-//          }
-      }
-
-    	
-    
-
-    @Override
-    public boolean deletar(int id) throws SQLException {
-    	 try {
-             //ModelBrinquedo brinquedo = (ModelBrinquedo) object;
-             String delete = "DELETE FROM brinquedos WHERE ID=?";
-             
-            delete(delete, id);
-             System.out.println("Metodo deletar DaoBrinquedo realizado");
-             return true;
-         } catch (SQLException ex) {
-             System.out.println(ex);
-             JOptionPane.showMessageDialog(null, "Erro ao deletar Brinquedo");
-         }
-         return false;
-     } 
-    
-    protected int createId() throws SQLException { 
-        
-        System.out.println("SELECT funcionarios.id_funcionario FROM funcionarios order by ? desc limit 1"); 
-        PreparedStatement stmt = getConnection().prepareStatement("SELECT id_funcionario FROM funcionarios order by ? desc limit 1"); 
-        stmt.setString(1, "id_funcionario"); 
-        stmt.execute(); 
-        ResultSet rs = stmt.executeQuery(); 
-        while (rs.next()) {
-            
-            int ultimoId = rs.getInt("id_funcionario"); 
-            
-            return ultimoId + 1; 
-            
-            //fabricantes.add(fabricante);
-        } 
-        
-        
-        rs.close();
-        stmt.close();
-        return -1;//fabricantes; 
-        
-        
-    } 
-    
-    
-    @Override
-    public Object getById(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    } 
-    
-    public ModelFuncionario getByEmail(String email) throws SQLException, ParseException{ 
-        
-        System.out.println("SELECT * FROM funcionarios where funcionarios.email = ?"); 
-        PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM funcionarios where funcionarios.email = ?"); 
-        stmt.setString(1, email); 
-        ResultSet rs = stmt.executeQuery(); 
-        while (rs.next()) {
-            
-            ModelFuncionario funcionario = new ModelFuncionario(rs.getInt("id_funcionario"), rs.getString("telefone_residencial"), rs.getString("telefone_celular"), rs.getString("email"), rs.getDate("data_contratacao"), rs.getBoolean("is_adm"), rs.getString("senha"), rs.getString("nome"), rs.getString("cpf"), rs.getDate("data_nascimento"), rs.getString("endereco"), rs.getString("cep"), rs.getString("cidade"), rs.getString("estado")); 
-            
-            return funcionario; 
-            
-            //fabricantes.add(fabricante);
-        } 
-        
-        
-        rs.close();
-        stmt.close();
-        return null;//fabricantes; 
-        
-        
-    }
-
-    /*
-        Metodo utilizado para pegar todos os fornecedores na tabela/entidade fornecedor,
-        e retorna um ArrayList deste objeto GestaoFornecedor.
-     */
-    @Override
-    public ArrayList<Object> getAll() throws SQLException {
-        ArrayList<Object> brinquedos = new ArrayList<>();
-        PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM brinquedos");
-        ResultSet rs = stmt.executeQuery();
-        while (rs.next()) {
-            //ModelBrinquedo brinquedo = new ModelBrinquedo(rs.getInt("id_categoria"), rs.getLong("codigo_de_barras"), rs.getDouble("preco"), rs.getInt("id_fabricante"), rs.getString("descricao"), rs.getInt("id_fornecedor"));
-            //brinquedos.add(brinquedo);
+	@Override
+	public int salvar(Object object) throws SQLException {
+		try {
+            ModelVenda venda = (ModelVenda) object;
+            String insert = "INSERT INTO vendas (data_venda, valor, id_funcionario, forma_pagamento, id_cliente) VALUES(?,?,?,?,?,)";
+            save(insert, venda.getData_venda(), venda.getValorTotal(), venda.getFuncionario().getId(), venda.getForma(), venda.getCliente().getId());
+            System.out.println("Metodo salvar DAOVenda realizado");
+            return 1;
+        } catch (MySQLIntegrityConstraintViolationException e) {
+            JOptionPane.showMessageDialog(null, "Venda Ja cadastrado no BD");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null, "Erro ao inserir Venda");
         }
-        rs.close();
-        stmt.close();
-        return brinquedos;
-    }
+        return -1;
+	}
+
+	@Override
+	public boolean atualizar(Object object) throws SQLException {
+		try {
+			ModelVenda venda = (ModelVenda) object;
+			String update= "UPDATE vendas SET data_venda =?, valor=?, id_funcionario=?, forma_pagamento=?, id_cliente=? WHERE ID=?";
+			update(update, venda.getData_venda(), venda.getValorTotal(), venda.getFuncionario().getId(), venda.getForma(), venda.getCliente().getId());
+			System.out.println("atualizado com sucesso");
+			return true;
+		} catch (MySQLIntegrityConstraintViolationException e) {
+          JOptionPane.showMessageDialog(null, "Atributo atualizado invalido");
+          
+		} catch (SQLException ex) {
+          System.out.println(ex);
+          JOptionPane.showMessageDialog(null, "Erro ao atualizar Comprovante");
+		}
+			return false;
+	}
+
+	@Override
+	public boolean deletar(int id) throws SQLException {
+		try {
+            //ModelComprovante comprovante = new ModelComprovante();
+            String delete = "DELETE FROM vendas WHERE ID=?";
+            
+           delete(delete, id);
+            System.out.println("Metodo deletar venda realizado");
+            return true;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null, "Erro ao deletar venda");
+        }
+        return false;
+	}
+
+	@Override
+	public Object getById(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Object> getAll() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
-
