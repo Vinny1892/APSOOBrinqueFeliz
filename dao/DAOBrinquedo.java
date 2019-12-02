@@ -87,8 +87,8 @@ public class DAOBrinquedo extends GenericDAO_CRUD {
         PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM brinquedos");
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-            ModelBrinquedo brinquedo = new ModelBrinquedo(rs.getInt("id_categoria"), rs.getString("nome"), rs.getDouble("preco"), rs.getInt("id_fabricante"), rs.getString("descricao"), rs.getInt("id_fornecedor"),  rs.getInt("codigo_de_barras"));
-            brinquedos.add(brinquedo);
+            //ModelBrinquedo brinquedo = new ModelBrinquedo(rs.getInt("id_categoria"), rs.getString("nome"), rs.getDouble("preco"), rs.getInt("id_fabricante"), rs.getString("descricao"), rs.getInt("id_fornecedor"),  rs.getInt("codigo_de_barras"));
+           // brinquedos.add(brinquedo);
         }
         rs.close();
         stmt.close();
