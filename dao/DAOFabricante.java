@@ -20,9 +20,11 @@ public class DAOFabricante extends GenericDAO_CRUD {
     @Override
     public int salvar(Object object) throws SQLException {
         try {
+
             ModelFabricante fabricante = (ModelFabricante) object;
             String insert = "INSERT INTO fabricantes (nome) VALUES(?) ";
             save(insert, fabricante.getNome());
+
             System.out.println("Metodo salvar DaoFabricante realizado");
             return 1;
         } catch (MySQLIntegrityConstraintViolationException e) {

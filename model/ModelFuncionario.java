@@ -30,7 +30,10 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
     }
 
     //Com ID
-    public ModelFuncionario(int id, String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, boolean isADM, String senha) {
+    public ModelFuncionario(int id, String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, boolean isADM, String senha, String nome, String cpf, Date dataDeNascimento, String endereco, String cep, String cidade, String estado) {
+        
+        super(nome, cpf, dataDeNascimento, endereco, cep, cidade, estado); 
+        
         this.id = id;
         this.telefoneResidencial = telefoneResidencial;
         this.telefoneCelular = telefoneCelular;
@@ -42,13 +45,18 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
 
 
     //Sem ID
-    public ModelFuncionario(String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, boolean isADM, String senha) {
+public ModelFuncionario(String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, boolean isADM, String senha, String nome, String cpf, Date dataDeNascimento, String endereco, String cep, String cidade, String estado) {
+        
+        super(nome, cpf, dataDeNascimento, endereco, cep, cidade, estado); 
         this.telefoneResidencial = telefoneResidencial;
         this.telefoneCelular = telefoneCelular;
         this.email = email;
         this.dataDeContratacao = dataDeContratacao;
         this.isADM = isADM;
-        this.senha = senha;
+        this.senha = senha; 
+        this.id = -1; 
+        
+        
     }
 
 
@@ -128,7 +136,7 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
 
      //private DAOFuncionario dao = new DAOFuncionario();
     public ModelFuncionario loginFuncionario(String cpf, String password){
-        return null;
+        return null; 
     }
 
     public void atualizarCliente(ModelCliente cliente){
@@ -164,4 +172,5 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-}
+} 
+

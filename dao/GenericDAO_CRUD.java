@@ -5,7 +5,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import conectionBD.ConexaoBDMySQL;
+import java.sql.ResultSet;
 import java.util.ArrayList;
+import model.ModelFuncionario;
 /**
  *
  * @author kaio
@@ -66,6 +68,36 @@ public abstract class GenericDAO_CRUD {
         }
         pstmt.execute();
         pstmt.close();
+    } 
+    
+    protected void select(String selectSql) throws SQLException { 
+        PreparedStatement pstmt = getConnection().prepareStatement(selectSql); 
+    } 
+    
+    protected int createId(String table, String id) throws SQLException { 
+        
+        System.out.println("SELECT ? FROM ? order by ? desc limit 1"); 
+        PreparedStatement stmt = getConnection().prepareStatement("SELECT ? FROM ? order by ? desc limit 1"); 
+        stmt.setString(1, id); 
+        stmt.setString(2, table); 
+        stmt.setString(3, id); 
+        // stmt.execute(); 
+        ResultSet rs = stmt.executeQuery(); 
+        while (rs.next()) {
+            
+            int ultimoId = rs.getInt(id); 
+            
+            return ultimoId + 1; 
+            
+            //fabricantes.add(fabricante);
+        } 
+        
+        
+        rs.close();
+        stmt.close();
+        return 0;//fabricantes; 
+        
+        
     }
     
     
