@@ -5,10 +5,15 @@
  */
 package controller;
 
+import java.util.ArrayList;
+import model.ModelFornecedor;
+
 /**
  *
  * @author kaio
  */
 public class ControllerFornecedor {
-    
+    public static ArrayList<ModelFornecedor> todosFornecedores(){
+        return new ModelFornecedor().getAllArray();
+    }
 }

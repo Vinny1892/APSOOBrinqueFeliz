@@ -7,6 +7,7 @@ package view;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -18,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.ModelFornecedor;
 
 /**
  * FXML Controller class
@@ -68,17 +70,18 @@ public class FXML7FornecedorController implements Initializable {
 
     @FXML
     private Button buttonExcluir;
+    
+    private ArrayList<ModelFornecedor> fornecedores;
 
     @FXML
     void onActionButtonCriar(ActionEvent event) throws IOException {
-           Parent categoria = FXMLLoader.load(getClass().getResource("FXMLFormFornecedor.fxml"));
+        Parent categoria = FXMLLoader.load(getClass().getResource("FXMLFormFornecedor.fxml"));
         Scene scene = new Scene(categoria);
-        //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
-        buttonCriar.getScene().getWindow().hide();
-
+        //buttonCriar.getScene().getWindow().hide();
+        inicilizarTableForncedor();
     }
 
     @FXML
@@ -93,13 +96,11 @@ public class FXML7FornecedorController implements Initializable {
 
     @FXML
     void onActionbuttonVoltar(ActionEvent event) throws IOException {
-          Parent adm = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
-        Scene scene = new Scene(adm);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
         buttonCriar.getScene().getWindow().hide();
-
+    }
+    
+    void inicilizarTableForncedor(){
+        fornecedores = controller.ControllerFornecedor.;
     }
     
 }

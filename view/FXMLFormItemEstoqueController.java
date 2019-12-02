@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
  *
  * @author kaio
  */
-public class FXMLRelatorioComprovanteController implements Initializable {
+public class FXMLFormItemEstoqueController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -17,6 +17,6 @@ public class FXMLRelatorioComprovanteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
+    }    
     
 }
