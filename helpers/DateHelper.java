@@ -25,21 +25,21 @@ public abstract class DateHelper {
     static Matcher matcherDate;
 
     
-    static boolean isDate(String data) {
+     public static boolean isDate(String data) {
         patternDate = Pattern.compile(regex);
         matcherDate = patternDate.matcher((CharSequence)data);
         return matcherDate.matches();
 
     }
     
-    static Date toDate(String date) throws ParseException {
+    public static Date toDate(String date) throws ParseException {
         if(DateHelper.isDate(date)){
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
            return  sdf.parse(date);
         }
         return null;
     }
-    static String toDateString(Date data) {
+    public static String toDateString(Date data) {
         DateFormat  formataData = DateFormat.getDateInstance();
         return formataData.format(data);
 
