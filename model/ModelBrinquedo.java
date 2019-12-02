@@ -156,7 +156,7 @@ public class ModelBrinquedo implements CRUD{
         return brinquedo;
     }
 
-    public ModelCategoria getByIdArray(int id)  {
+    public ModelBrinquedo getByIdArray(int id)  {
         atualizarArrayBrinquedos();
         
         //return brinquedo.get(brinquedo.indexOf(Object.getId() == id));
@@ -202,10 +202,5 @@ public class ModelBrinquedo implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 
-    
-    public ModelBrinquedo getByIdArray(int id)  {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

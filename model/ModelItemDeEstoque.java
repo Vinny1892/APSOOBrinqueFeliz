@@ -133,9 +133,9 @@ public class ModelItemDeEstoque implements CRUD{
         itensNoEstoque = (ArrayList<ModelItemDeEstoque>)(ArrayList<?>) dao.getAll();
     }
     
-    public ArrayList<ModelItemDeEstoque> getItensNoEstoque() {
-        return itensNoEstoque;
-    }
+    // public ArrayList<ModelItemDeEstoque> getItensNoEstoque() {
+    //     return itensNoEstoque;
+    // }
     
     public ModelItemDeEstoque getByIdArray(int id)  {
         atualizarArrayItensNoEstoque();
