@@ -13,21 +13,24 @@ public class DAOFornecedor extends GenericDAO_CRUD {
 
 	@Override
 	public int salvar(Object object) throws SQLException {
-		try {
+		//try {
 			ModelFornecedor fornecedor = (ModelFornecedor) object;
-			String insert ="INSERT INTO fornecedores(cnpj, nome_fantasia, razao_social, "
-					+ "endereco, cidade, estado, telefone, email)";
-			save(insert, fornecedor.getCnpj(), fornecedor.getNomeFantasia(), fornecedor.getRazaoSocial(), fornecedor.getEndereco(), 
+			if(fornecedor.getId() > -1) {
+                throw new RuntimeException("Esse Fornecedor já foi inserido, para modifica-lo basta o atualizar");}
+			int id = createId();
+			String insert ="INSERT INTO fornecedores(id_fornecedor, cnpj, nome_fantasia, razao_social, "
+					+ "endereco, cidade, estado, telefone, email) VALUE(?,?,?,?,?,?,?,?,?)";
+			save(insert, id, fornecedor.getCnpj(), fornecedor.getNomeFantasia(), fornecedor.getRazaoSocial(), fornecedor.getEndereco(), 
 					     fornecedor.getCidade(), fornecedor.getEstado(), fornecedor.getTelefone(), fornecedor.getEmail());
-			return 1;
-		} catch (MySQLIntegrityConstraintViolationException e ) {
-			JOptionPane.showMessageDialog(null, "Fornecedor Ja cadastrado no BD");
-			return -1;
-		}catch (SQLException ex) {
-	            System.out.println(ex);
-	            JOptionPane.showMessageDialog(null, "Erro ao inserir Brinquedo");
-	        }
-		return -1;
+			return id;
+		//} catch (MySQLIntegrityConstraintViolationException e ) {
+			//JOptionPane.showMessageDialog(null, "Fornecedor Ja cadastrado no BD");
+			//return -1;
+		//}catch (SQLException ex) {
+	            //System.out.println(ex);
+	           // JOptionPane.showMessageDialog(null, "Erro ao inserir Brinquedo");
+	       // }
+		//return -1;
 	}
 
 	@Override
@@ -35,7 +38,7 @@ public class DAOFornecedor extends GenericDAO_CRUD {
 		try {
 			ModelFornecedor fornecedor= (ModelFornecedor) object;
 			String update = "UPDATE fornecedores SET cnpj=?,nome_fantasia=?, razao_social=?, "
-					+ "endereco=?, cidade=?, estado=?, telefone=?, email=?  WHERE ID=?";
+					+ "endereco=?, cidade=?, estado=?, telefone=?, email=?  WHERE fornecedores.id_fornecedor=?";
 			update(update, fornecedor.getId(), fornecedor.getCnpj(), fornecedor.getNomeFantasia(), fornecedor.getRazaoSocial(),
 					fornecedor.getEndereco(), fornecedor.getCidade(), fornecedor.getEstado(), fornecedor.getTelefone(), fornecedor.getEmail());
 			return true;
@@ -52,7 +55,7 @@ public class DAOFornecedor extends GenericDAO_CRUD {
 	@Override
 	public boolean deletar(int id) throws SQLException {
 		 try {
-             String delete = "DELETE FROM fornecedores WHERE ID=?";
+             String delete = "DELETE FROM fornecedores WHERE fornecedores.id_fornecedor=?";
              
              delete(delete, id);
              System.out.println("Metodo deletar DAOFornecedores realizado");
@@ -85,5 +88,21 @@ public class DAOFornecedor extends GenericDAO_CRUD {
         stmt.close();
         return fornecedores;
 	}
+	 protected int createId() throws SQLException { 
+	        
+	        System.out.println("SELECT fornecedores.id_fornecedor FROM fornecedores order by ? desc limit 1"); 
+	        PreparedStatement stmt = getConnection().prepareStatement("SELECT id_fornecedor FROM fornecedores order by ? desc limit 1"); 
+	        stmt.setString(1, "id_fornecedor"); 
+	        stmt.execute(); 
+	        ResultSet rs = stmt.executeQuery(); 
+	        while (rs.next()) {
+	            int ultimoId = rs.getInt("id_fornecedor"); 
+	            return ultimoId + 1; 
+	        } 
+	     
+	        rs.close();
+	        stmt.close();
+	        return 0; 
+	    }
 
 }

@@ -17,8 +17,11 @@ public class DAOCliente extends GenericDAO_CRUD{
 	public int salvar(Object object) throws SQLException {
 		try {
             ModelCliente cliente = (ModelCliente) object;
-            String insert = "INSERT INTO clientes (rg, nome, data_nascimento, endereco, cep, cidade, estado) VALUES(?, ?, ?, ?, ?, ?,?) ";
-            save(insert, cliente.getRg(), cliente.getNome(), cliente.getDataDeNascimento(), cliente.getEndereco(), cliente.getCep(),cliente.getCidade(), cliente.getEstado());
+            if(cliente.getId() > -1) {
+                throw new RuntimeException("Essa venda já foi inserido, para modifica-lo basta o atualizar");}
+			int id = createId();
+            String insert = "INSERT INTO clientes (id_cliente, rg, nome, data_nascimento, endereco, cep, cidade, estado) VALUES(?, ?, ?, ?, ?, ?, ?, ?) ";
+            save(insert, id, cliente.getRg(), cliente.getNome(), cliente.getDataDeNascimento(), cliente.getEndereco(), cliente.getCep(),cliente.getCidade(), cliente.getEstado());
             System.out.println("Metodo salvar DAOCliente realizado");
             return 1;
         } catch (MySQLIntegrityConstraintViolationException e) {
@@ -35,7 +38,7 @@ public class DAOCliente extends GenericDAO_CRUD{
 		try {
 			ModelCliente cliente = (ModelCliente) object;
 			String update = "UPDATE clientes SET rg=?, nome=?, data_nascimento=?, "
-					+ "endereco=?, cep=?, cidade=?, estado=? WHERE ID=?";
+					+ "endereco=?, cep=?, cidade=?, estado=? WHERE clientes.id_cliente=?";
 			update(update, cliente.getRg(), cliente.getNome(), cliente.getDataDeNascimento(), 
 					cliente.getEndereco(), cliente.getCep(), cliente.getCidade(), cliente.getEstado() );
 			return true;
@@ -52,7 +55,7 @@ public class DAOCliente extends GenericDAO_CRUD{
 	@Override
 	public boolean deletar(int id) throws SQLException {
 		try {
-            String delete = "DELETE FROM clientes WHERE ID=?";
+            String delete = "DELETE FROM clientes WHERE clientes.id_cliente=?";
             
             delete(delete, id);
             System.out.println("Metodo deletar DAOCliente realizado");
@@ -86,5 +89,21 @@ public class DAOCliente extends GenericDAO_CRUD{
         stmt.close();
 		return clientes;
 	}
+protected int createId() throws SQLException { 
+        
+        System.out.println("SELECT clientes.id_cliente FROM clientes order by ? desc limit 1"); 
+        PreparedStatement stmt = (PreparedStatement) getConnection().prepareStatement("SELECT id_cliente FROM clientes order by ? desc limit 1"); 
+        stmt.setString(1, "id_cliente"); 
+        stmt.execute(); 
+        ResultSet rs = stmt.executeQuery(); 
+        while (rs.next()) {
+            int ultimoId = rs.getInt("id_cliente"); 
+            return ultimoId + 1; 
+        } 
+     
+        rs.close();
+        stmt.close();
+        return 0; 
+    }
 
 }
