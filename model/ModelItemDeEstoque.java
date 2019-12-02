@@ -61,6 +61,7 @@ public class ModelItemDeEstoque implements CRUD{
     public void setId(int id) {
         this.id = id;
     }
+    //Fim Getters e Setters
 
     @Override
     public int hashCode() {
@@ -125,5 +126,32 @@ public class ModelItemDeEstoque implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         return new DAOItemDeEstoque().getAll();
     }
+
+
+    //
+    public void atualizarArrayItensNoEstoque() throws SQLException{
+        itensNoEstoque = (ArrayList<ModelItemDeEstoque>)(ArrayList<?>) dao.getAll();
+    }
+    
+    public ArrayList<ModelItemDeEstoque> getItensNoEstoque() {
+        return itensNoEstoque;
+    }
+    
+    public ModelItemDeEstoque getByIdArray(int id)  {
+        atualizarArrayItensNoEstoque();
+
+        //return itensNoEstoque.get(itensNoEstoque.indexOf(Object.getId() == id));
+        // itensNoEstoque.forEach(f -> {
+        //     if(f.getId() == id)
+        //         return f;
+        // });
+        for(ModelItemDeEstoque f : itensNoEstoque){
+            if(f.getId() == id)
+                return f;
+        }
+    }
+    public ArrayList<ModelItemDeEstoque> getAllArray()  {
+        return itensNoEstoque;
+    } 
 
 }
