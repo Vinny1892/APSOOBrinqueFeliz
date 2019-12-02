@@ -39,14 +39,6 @@ public class ModelVenda implements CRUD{
     }
 
     
-    
-    
-
-
-    
-
-
-
     //acesso DAO
     //private DAOVenda dao = new DAOVenda();
 
@@ -74,6 +66,8 @@ public class ModelVenda implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    //Fim acesso DAO
+
 
     public int getId() {
         return id;
@@ -130,6 +124,35 @@ public class ModelVenda implements CRUD{
     public void setCarrinho(ArrayList<ModelItemDeVenda> carrinho) {
         this.carrinho = carrinho;
     }
+    //Fim Getters e Setters
+
+
+
+    //
+    public ArrayList<ModelItemDeVenda> getCarrinho() {
+        return carrinho;
+    }
+
+    public void atualizarArrayCarrinho() throws SQLException{
+        carrinho = (ArrayList<ModelItemDeVenda>)(ArrayList<?>) dao.getAll();
+    }
     
+    public ModelComprovante getByIdArray(int id)  {
+        atualizarArrayCarrinho();
+
+        // carrinho.forEach(c -> {
+        //     if(c.getId() == id)
+        //         return c;
+        // });
+        for(ModelItemDeVenda i : carrinho){
+            if(i.getId() == id)
+                return i;
+        }
+        
+    }
+
+    public ArrayList<ModelItemDeVenda> getAllArray()  {
+        return carrinho;
+    }    
 
 }
