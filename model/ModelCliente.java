@@ -45,6 +45,9 @@ public class ModelCliente extends ModelPessoa implements CRUD{
     public void setRg(String rg) {
         this.rg = rg;
     }
+    //Fim Getters Setters
+
+
 
     @Override
     public String toString() {
@@ -75,8 +78,9 @@ public class ModelCliente extends ModelPessoa implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    //
 
-   
+
     public void atualizarArrayCliente() throws SQLException{
         cliente = (ArrayList<ModelCliente>)(ArrayList<?>) dao.getAll();
     }
@@ -86,7 +90,23 @@ public class ModelCliente extends ModelPessoa implements CRUD{
     }
     
     public ModelCliente getByIdArray(int id)  {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        atualizarArrayCliente();
+
+        //return cliente.get(cliente.indexOf(Object.getId() == id));
+        cliente.forEach(c -> {
+            if(c.getId() == id)
+                return c;
+        });
     }
+    public ArrayList<ModelCategoria> getAllArray()  {
+        return cliente;
+    }
+
+    
+    public ArrayList<ModelCategoria> getCategorias() {
+        return categorias;
+    }
+    
+
 }
 

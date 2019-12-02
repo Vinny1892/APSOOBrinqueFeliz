@@ -49,6 +49,8 @@ public class ModelCategoria implements CRUD{
     //Fim Getters e Setters
 
 
+
+    //
     public void atualizarArrayCategorias() throws SQLException{
         categorias = (ArrayList<ModelCategoria>)(ArrayList<?>) dao.getAll();
     }
@@ -58,8 +60,13 @@ public class ModelCategoria implements CRUD{
     }
     
     public ModelCategoria getByIdArray(int id)  {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        atualizarArrayCategorias();
+        
+        //return categorias.get(categorias.indexOf(Object.getId() == id));
+        categorias.forEach(c -> {
+            if(c.getId() == id)
+                return c;
+        });
     
     public ArrayList<ModelCategoria> getAllArray()  {
         return categorias;
