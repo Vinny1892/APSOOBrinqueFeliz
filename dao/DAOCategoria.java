@@ -3,11 +3,13 @@ package dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLDataException;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import model.ModelCategoria;
 
 
 public class DAOCategoria extends GenericDAO_CRUD {

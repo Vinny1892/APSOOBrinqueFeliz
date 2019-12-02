@@ -80,50 +80,9 @@ public class DAOItemDeEstoque extends GenericDAO_CRUD {
      }
     
     
-    @Override
-    public Object getById(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    } 
-    
-    public ModelFuncionario getByEmail(String email) throws SQLException, ParseException{ 
-        
-        System.out.println("SELECT * FROM funcionarios where funcionarios.email = ?"); 
-        PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM funcionarios where funcionarios.email = ?"); 
-        stmt.setString(1, email); 
-        ResultSet rs = stmt.executeQuery(); 
-        while (rs.next()) {
-            
-            ModelFuncionario funcionario = new ModelFuncionario(rs.getInt("id_funcionario"), rs.getString("telefone_residencial"), rs.getString("telefone_celular"), rs.getString("email"), rs.getDate("data_contratacao"), rs.getBoolean("is_adm"), rs.getString("senha"), rs.getString("nome"), rs.getString("cpf"), rs.getDate("data_nascimento"), rs.getString("endereco"), rs.getString("cep"), rs.getString("cidade"), rs.getString("estado")); 
-            
-            return funcionario; 
-            
-            //fabricantes.add(fabricante);
-        } 
-        
-        
-        rs.close();
-        stmt.close();
-        return null;//fabricantes; 
-        
-        
-    }
+  
 
-    /*
-        Metodo utilizado para pegar todos os fornecedores na tabela/entidade fornecedor,
-        e retorna um ArrayList deste objeto GestaoFornecedor.
-     */
-    @Override
-    public ArrayList<Object> getAll() throws SQLException {
-        ArrayList<Object> brinquedos = new ArrayList<>();
-        PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM brinquedos");
-        ResultSet rs = stmt.executeQuery();
-        while (rs.next()) {
-            //ModelBrinquedo brinquedo = new ModelBrinquedo(rs.getInt("id_categoria"), rs.getLong("codigo_de_barras"), rs.getDouble("preco"), rs.getInt("id_fabricante"), rs.getString("descricao"), rs.getInt("id_fornecedor"));
-            //brinquedos.add(brinquedo);
-        }
-        rs.close();
-        stmt.close();
-        return brinquedos;
+    
 
     @Override
     public ArrayList<Object> getAll() throws SQLException {
@@ -131,13 +90,18 @@ public class DAOItemDeEstoque extends GenericDAO_CRUD {
         PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM itens_estoque");
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-          //  ModelItemDeEstoque ItemDeEstoque = new ModelItemDeEstoque(rs.getInt("id_brinquedo"), rs.getInt("quantidade"), rs.getInt("id_item_estoque"));
-            //itens_estoque.add(ItemDeEstoque);
+          // ModelItemDeEstoque ItemDeEstoque = new ModelItemDeEstoque(rs.getInt("id_brinquedo"), rs.getInt("quantidade"), rs.getInt("id_item_estoque"));
+           // itens_estoque.add(ItemDeEstoque);
         }
         rs.close();
         stmt.close();
         return itens_estoque;
 
+    }
+
+    @Override
+    public Object getById(int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
