@@ -45,6 +45,7 @@ public class ModelFabricante implements CRUD{
     public void setNome(String nome) {
         this.nome = nome;
     }
+    //Fim Getters e Setters
 
     @Override
     public int salvar(Object obj) throws SQLException {
@@ -71,6 +72,8 @@ public class ModelFabricante implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+
+    //
     public void atualizarArrayFabricante() throws SQLException{
         fabricante = (ArrayList<ModelFabricante>)(ArrayList<?>) dao.getAll();
     }
@@ -80,8 +83,16 @@ public class ModelFabricante implements CRUD{
     }
     
     public ModelFabricante getByIdArray(int id)  {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        atualizarArrayFabricante();
+
+        //return fabricante.get(fabricante.indexOf(Object.getId() == id));
+        fabricante.forEach(f -> {
+            if(f.getId() == id)
+                return f;
+        });
     }
-    
-    
+    public ArrayList<ModelFabricante> getAllArray()  {
+        return fabricante;
+    } 
+
 }
