@@ -45,6 +45,7 @@ public class ModelFornecedor implements CRUD{
         this.estado = estado;
         this.telefone = telefone;
         this.email = email;
+        this.id = -1;
     }
 
 

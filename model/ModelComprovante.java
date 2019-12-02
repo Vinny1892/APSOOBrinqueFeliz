@@ -19,6 +19,7 @@ public class ModelComprovante implements CRUD{
     public ModelComprovante() {
     }
 
+    //Com ID
     public ModelComprovante(int id, int idVenda, ModelCliente cliente, ModelFuncionario funcionario, Date data_venda, String forma, Double valorTotal, ArrayList<ModelItemDeVenda> carrinho) {
         this.id = id;
         this.idVenda = idVenda;
@@ -28,6 +29,19 @@ public class ModelComprovante implements CRUD{
         this.forma = forma;
         this.valorTotal = valorTotal;
         this.carrinho = carrinho;
+    }
+
+    
+    //Sem ID
+    public ModelComprovante(int idVenda, ModelCliente cliente, ModelFuncionario funcionario, Date data_venda, String forma, Double valorTotal, ArrayList<ModelItemDeVenda> carrinho) {
+        this.idVenda = idVenda;
+        this.cliente = cliente;
+        this.funcionario = funcionario;
+        this.data_venda = data_venda;
+        this.forma = forma;
+        this.valorTotal = valorTotal;
+        this.carrinho = carrinho;
+        this.id = -1;
     }
 
     

@@ -22,6 +22,7 @@ public class ModelFabricante implements CRUD{
     //Sem ID
     public ModelFabricante(String nome/*, DAOFabricante dao*/) {
         this.nome = nome;
+        this.id = -1;
         //this.dao = dao;
     }
 

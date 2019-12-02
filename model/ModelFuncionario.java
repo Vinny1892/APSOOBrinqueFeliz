@@ -48,7 +48,7 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
 
 
     //Sem ID
-public ModelFuncionario(String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, boolean isADM, String senha, String nome, String cpf, Date dataDeNascimento, String endereco, String cep, String cidade, String estado) {
+    public ModelFuncionario(String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, boolean isADM, String senha, String nome, String cpf, Date dataDeNascimento, String endereco, String cep, String cidade, String estado) {
         
         super(nome, cpf, dataDeNascimento, endereco, cep, cidade, estado); 
         this.telefoneResidencial = telefoneResidencial;
@@ -58,8 +58,6 @@ public ModelFuncionario(String telefoneResidencial, String telefoneCelular, Stri
         this.isADM = isADM;
         this.senha = senha; 
         this.id = -1; 
-        
-        
     }
 
 

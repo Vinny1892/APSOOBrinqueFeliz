@@ -27,6 +27,7 @@ public class ModelItemDeEstoque implements CRUD{
     public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade) throws SQLException {
         this.brinquedo = brinquedo;
         this.quantidade = quantidade;
+        this.id = -1;
         atualizarArrayListItensNoEstoque();
     }
 

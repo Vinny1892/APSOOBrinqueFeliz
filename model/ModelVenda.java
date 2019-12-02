@@ -19,15 +19,7 @@ public class ModelVenda implements CRUD{
     public ModelVenda() {
     }
 
-    public ModelVenda(ModelCliente cliente, ModelFuncionario funcionario, Date data_venda, String forma, Double valorTotal, ArrayList<ModelItemDeVenda> carrinho) {
-        this.cliente = cliente;
-        this.funcionario = funcionario;
-        this.data_venda = data_venda;
-        this.forma = forma;
-        this.valorTotal = valorTotal;
-        this.carrinho = carrinho;
-    }
-
+    //Com ID
     public ModelVenda(int id, ModelCliente cliente, ModelFuncionario funcionario, Date data_venda, String forma, Double valorTotal, ArrayList<ModelItemDeVenda> carrinho) {
         this.id = id;
         this.cliente = cliente;
@@ -36,6 +28,17 @@ public class ModelVenda implements CRUD{
         this.forma = forma;
         this.valorTotal = valorTotal;
         this.carrinho = carrinho;
+    }
+
+    //Sem ID
+    public ModelVenda(ModelCliente cliente, ModelFuncionario funcionario, Date data_venda, String forma, Double valorTotal, ArrayList<ModelItemDeVenda> carrinho) {
+        this.cliente = cliente;
+        this.funcionario = funcionario;
+        this.data_venda = data_venda;
+        this.forma = forma;
+        this.valorTotal = valorTotal;
+        this.carrinho = carrinho;
+        this.id = -1;
     }
 
     

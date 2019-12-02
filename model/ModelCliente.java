@@ -23,6 +23,7 @@ public class ModelCliente extends ModelPessoa implements CRUD{
     public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado, Date dataDeNascimento, String rg) {
         super(nome, cpf, dataDeNascimento, endereco, cep, cidade, estado);
         this.rg = rg;
+        this.id = -1;
     }
 
 

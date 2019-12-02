@@ -26,6 +26,7 @@ public class ModelCategoria implements CRUD{
     public ModelCategoria(String nome) throws SQLException {
         atualizarArrayCategorias();
         this.nome = nome;
+        this.id = -1;
     }
     //Fim construtores
 

@@ -42,6 +42,7 @@ public class ModelBrinquedo implements CRUD{
         this.fabricante = fabricante;
         this.descricao = descricao;
         this.fornecedor = fornecedor;
+        this.id = -1;
     }
 
 
