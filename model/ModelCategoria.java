@@ -27,6 +27,7 @@ public class ModelCategoria implements CRUD{
         atualizarArrayCategorias();
         this.nome = nome;
     }
+    //Fim construtores
 
 
     public int getId() {
@@ -45,6 +46,7 @@ public class ModelCategoria implements CRUD{
     public void setNome(String nome) {
         this.nome = nome;
     }
+    //Fim Getters e Setters
 
 
     public void atualizarArrayCategorias() throws SQLException{
@@ -63,6 +65,7 @@ public class ModelCategoria implements CRUD{
         return categorias;
     }
   
+
     //acesso DAO
     private DAOCategoria dao = new DAOCategoria();
 
