@@ -13,6 +13,7 @@ import model.ModelCliente;
 
 public class DAOCliente extends GenericDAO_CRUD{
 
+
 	@Override
 	public int salvar(Object object) throws SQLException {
 		try {
