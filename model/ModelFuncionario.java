@@ -137,7 +137,7 @@ public ModelFuncionario(String telefoneResidencial, String telefoneCelular, Stri
     }
 
      //private DAOFuncionario dao = new DAOFuncionario();
-    public ModelFuncionario loginFuncionario(String cpf, String password){
+    public ModelFuncionario loginFuncionario(String email, String password){
      try{ return new  DAOFuncionario().getByEmail(email,password);}
       catch(Exception ex) {System.out.println(ex);}
         return null;
