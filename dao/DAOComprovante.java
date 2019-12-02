@@ -1,3 +1,4 @@
+
 package dao;
 
 import java.sql.PreparedStatement;
@@ -21,7 +22,7 @@ public class DAOComprovante extends GenericDAO_CRUD{
 				System.out.println("Metodo salvar DaoComprovante realizado");
 				return 1;
 		} catch (MySQLIntegrityConstraintViolationException e) {
-			JOptionPane.showMessageDialog(null, "já tem esse comprovante no BD");
+			JOptionPane.showMessageDialog(null, "jï¿½ tem esse comprovante no BD");
 			return -1;
 		}catch (SQLException ex) {
 			System.out.println(ex);
@@ -82,7 +83,7 @@ public class DAOComprovante extends GenericDAO_CRUD{
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
         	ModelComprovante brinquedo = new ModelComprovante ();
-        	// vê como vai ficar isso 
+        	// vï¿½ como vai ficar isso 
         	//brinquedo.getCliente().setNome(rs.getString("nome_cliente"));
         	brinquedo.setForma(rs.getString("forma_pagamento"));
             comprovantes.add(brinquedo);

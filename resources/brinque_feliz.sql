@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01-Dez-2019 às 20:54
+-- Tempo de geração: 01-Dez-2019 às 22:12
 -- Versão do servidor: 10.4.8-MariaDB
 -- versão do PHP: 7.3.11
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `brinque_feliz_01122019`
+-- Banco de dados: `brinque_feliz`
 --
 
 -- --------------------------------------------------------
@@ -59,6 +59,7 @@ CREATE TABLE `categorias` (
 CREATE TABLE `clientes` (
   `id_cliente` int(11) NOT NULL,
   `rg` varchar(255) NOT NULL,
+  `cpf` varchar(255) NOT NULL,
   `nome` varchar(255) DEFAULT NULL,
   `data_nascimento` date DEFAULT NULL,
   `endereco` varchar(255) DEFAULT NULL,
@@ -79,7 +80,7 @@ CREATE TABLE `comprovantes` (
   `rg_cliente` varchar(50) DEFAULT NULL,
   `nome_funcionario` varchar(50) DEFAULT NULL,
   `cpf_funcionario` varchar(50) DEFAULT NULL,
-  `id_forma_pagamento` varchar(255) DEFAULT NULL,
+  `forma_pagamento` varchar(255) DEFAULT NULL,
   `id_venda` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -217,9 +218,8 @@ CREATE TABLE `vendas` (
   `data_venda` date DEFAULT NULL,
   `valor` decimal(10,0) DEFAULT NULL,
   `id_funcionario` int(11) DEFAULT NULL,
-  `id_forma_pagamento` varchar(255) DEFAULT NULL,
-  `id_cliente` int(11) DEFAULT NULL,
-  `fechada` tinyint(1) NOT NULL
+  `forma_pagamento` varchar(255) DEFAULT NULL,
+  `id_cliente` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -247,7 +247,8 @@ ALTER TABLE `categorias`
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id_cliente`),
-  ADD UNIQUE KEY `rg` (`rg`);
+  ADD UNIQUE KEY `rg` (`rg`),
+  ADD UNIQUE KEY `cpf` (`cpf`);
 
 --
 -- Índices para tabela `comprovantes`

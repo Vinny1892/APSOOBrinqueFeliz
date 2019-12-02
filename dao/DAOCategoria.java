@@ -6,13 +6,6 @@ import java.util.List;
 
 import com.mysql.jdbc.exceptions.jdbc4.MySQLDataException;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
-
-import model.ModelCategoria;
-
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -38,6 +31,7 @@ public class DAOCategoria extends GenericDAO_CRUD {
 
     @Override
     public boolean atualizar(Object object) throws SQLException {
+
     	  try {
               ModelCategoria categoria = (ModelCategoria) object;
               String update = "UPDATE categorias SET nome=? WHERE ID=?";
@@ -54,6 +48,7 @@ public class DAOCategoria extends GenericDAO_CRUD {
               JOptionPane.showMessageDialog(null, "Erro ao atualizar categoria");
           }
 		return false;
+
       }
 
     	
@@ -62,6 +57,7 @@ public class DAOCategoria extends GenericDAO_CRUD {
     @Override
     public boolean deletar(int id) throws SQLException {
     	 try {
+
              String delete = "DELETE FROM categorias WHERE ID=?";
              
              delete(delete, id);
@@ -73,11 +69,13 @@ public class DAOCategoria extends GenericDAO_CRUD {
          }
          return false;
      }
+
     
     
     @Override
     public Object getById(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
   
