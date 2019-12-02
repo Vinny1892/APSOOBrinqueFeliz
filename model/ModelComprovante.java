@@ -140,9 +140,9 @@ public class ModelComprovante implements CRUD{
         //     if(c.getId() == id)
         //         return c;
         // });
-        for(ModelComprovante c : carrinho){
-            if(c.getId() == id)
-                return c;
+        for(ModelItemDeVenda i : carrinho){
+            if(i.getId() == id)
+                return i;
         }
         
     }
