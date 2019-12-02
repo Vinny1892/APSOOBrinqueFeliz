@@ -152,4 +152,16 @@ public class FXML1AdministradorController implements Initializable {
     void onActionsButtonBackup(ActionEvent event) {
         
     }
+    @FXML
+    void onActionbuttonFornecedor (ActionEvent event) throws IOException{
+        Parent fornecedor = FXMLLoader.load(getClass().getResource("FXML7Fornecedor.fxml"));
+        Scene scene = new Scene(fornecedor);
+        //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+       // buttonFornecedores.getScene();
+    }
+    
+    
 }

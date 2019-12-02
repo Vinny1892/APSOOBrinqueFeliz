@@ -6,7 +6,7 @@
 <AnchorPane id="AnchorPane" prefHeight="335.0" prefWidth="362.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXML1AdministradorController">
    <children>
       <Button fx:id="buttonEstoque" layoutX="188.0" layoutY="233.0" mnemonicParsing="false" onAction="#nActionbuttonEstoque" prefHeight="26.0" prefWidth="133.0" text="Estoque" />
-      <Button fx:id="buttonFornecedores" layoutX="35.0" layoutY="77.0" mnemonicParsing="false" onAction="#onActionbuttonClientes" prefHeight="26.0" prefWidth="133.0" text="Fornecedores" />
+      <Button fx:id="buttonFornecedores" layoutX="35.0" layoutY="77.0" mnemonicParsing="false" onAction="#onActionbuttonFornecedor" prefHeight="26.0" prefWidth="133.0" text="Fornecedores" />
       <Button fx:id="buttonFuncionarios" layoutX="186.0" layoutY="128.0" mnemonicParsing="false" onAction="#onActionbuttonFuncionarios" prefHeight="26.0" prefWidth="133.0" text="Funcionarios" />
       <Button fx:id="buttonCategorias" layoutX="35.0" layoutY="176.0" mnemonicParsing="false" onAction="#buttonCategorias" prefHeight="26.0" prefWidth="133.0" text="Categorias" />
       <Button fx:id="buttonBrinquedos" layoutX="35.0" layoutY="233.0" mnemonicParsing="false" onAction="#onActionbuttonBrinquedos" prefHeight="26.0" prefWidth="133.0" text="Brinquedos" />
