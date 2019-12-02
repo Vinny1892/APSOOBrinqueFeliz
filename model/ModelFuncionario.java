@@ -157,7 +157,9 @@ public ModelFuncionario(String telefoneResidencial, String telefoneCelular, Stri
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+
+    //
     public void atualizarArrayFuncionario() throws SQLException{
         funcionario = (ArrayList<ModelFuncionario>)(ArrayList<?>) dao.getAll();
     }
@@ -167,7 +169,22 @@ public ModelFuncionario(String telefoneResidencial, String telefoneCelular, Stri
     }
     
     public ModelFuncionario getByIdArray(int id)  {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        atualizarArrayFuncionario();
+        
+        //return funcionario.get(funcionario.indexOf(Object.getId() == id));
+        // funcionario.forEach(f -> {
+        //     if(f.getId() == id)
+        //         return f;
+        // });
+        for(ModelFuncionario f : funcionario){
+            if(f.getId() == id)
+                return f;
+        }
     }
+
+    public ArrayList<ModelFuncionario> getAllArray()  {
+        return funcionario;
+    } 
+
 } 
 

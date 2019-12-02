@@ -136,10 +136,14 @@ public class ModelComprovante implements CRUD{
     public ModelComprovante getByIdArray(int id)  {
         atualizarArrayCarrinho();
 
-        carrinho.forEach(c -> {
+        // carrinho.forEach(c -> {
+        //     if(c.getId() == id)
+        //         return c;
+        // });
+        for(ModelComprovante c : carrinho){
             if(c.getId() == id)
                 return c;
-        });
+        }
         
     }
 

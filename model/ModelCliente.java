@@ -93,10 +93,15 @@ public class ModelCliente extends ModelPessoa implements CRUD{
         atualizarArrayCliente();
 
         //return cliente.get(cliente.indexOf(Object.getId() == id));
-        cliente.forEach(c -> {
+        // this.cliente.forEach(c -> {
+        //     if(c.getId() == id)
+        //         return c;
+        // });
+
+        for(ModelCliente c : cliente){
             if(c.getId() == id)
                 return c;
-        });
+        }
     }
     public ArrayList<ModelCliente> getAllArray()  {
         return cliente;

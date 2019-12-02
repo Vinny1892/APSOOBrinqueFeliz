@@ -164,14 +164,42 @@ public class ModelFornecedor implements CRUD{
         atualizarArrayFornecedor();
         
         //return fornecedor.get(fornecedor.indexOf(Object.getId() == id));
-        fornecedor.forEach(f -> {
+        // fornecedor.forEach(f -> {
+        //     if(f.getId() == id)
+        //         return f;
+        // });
+        for(ModelFornecedor f : fornecedor){
             if(f.getId() == id)
                 return f;
-        });
+        }
     }
 
     public ArrayList<ModelFornecedor> getAllArray()  {
         return fornecedor;
     } 
 
+    // public void atualizarArrayFabricante() throws SQLException{
+    //     fabricante = (ArrayList<ModelFabricante>)(ArrayList<?>) dao.getAll();
+    // }
+    
+    // public ArrayList<ModelFabricante> getFabricante() {
+    //     return fabricante;
+    // }
+    
+    // public ModelFabricante getByIdArray(int id)  {
+    //     atualizarArrayFabricante();
+
+    //     //return fabricante.get(fabricante.indexOf(Object.getId() == id));
+    //     // fabricante.forEach(f -> {
+    //     //     if(f.getId() == id)
+    //     //         return f;
+    //     // });
+    //     for(ModelFabricante f : fabricante){
+    //         if(f.getId() == id)
+    //             return f;
+    //     }
+    // }
+    // public ArrayList<ModelFabricante> getAllArray()  {
+    //     return fabricante;
+    // } 
 }

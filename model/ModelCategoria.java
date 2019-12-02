@@ -63,10 +63,14 @@ public class ModelCategoria implements CRUD{
         atualizarArrayCategorias();
         
         //return categorias.get(categorias.indexOf(Object.getId() == id));
-        categorias.forEach(c -> {
+        // categorias.forEach(c -> {
+        //     if(c.getId() == id)
+        //         return c;
+        // });
+        for(ModelCategoria c : categorias){
             if(c.getId() == id)
                 return c;
-        });
+        }
     }
     
     public ArrayList<ModelCategoria> getAllArray()  {

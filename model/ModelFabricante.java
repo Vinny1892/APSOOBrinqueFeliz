@@ -86,10 +86,14 @@ public class ModelFabricante implements CRUD{
         atualizarArrayFabricante();
 
         //return fabricante.get(fabricante.indexOf(Object.getId() == id));
-        fabricante.forEach(f -> {
+        // fabricante.forEach(f -> {
+        //     if(f.getId() == id)
+        //         return f;
+        // });
+        for(ModelFabricante f : fabricante){
             if(f.getId() == id)
                 return f;
-        });
+        }
     }
     public ArrayList<ModelFabricante> getAllArray()  {
         return fabricante;
