@@ -23,14 +23,14 @@ public class DAOFornecedor extends GenericDAO_CRUD {
 			save(insert, id, fornecedor.getCnpj(), fornecedor.getNomeFantasia(), fornecedor.getRazaoSocial(), fornecedor.getEndereco(), 
 					     fornecedor.getCidade(), fornecedor.getEstado(), fornecedor.getTelefone(), fornecedor.getEmail());
 			return id;
-		//} catch (MySQLIntegrityConstraintViolationException e ) {
-			//JOptionPane.showMessageDialog(null, "Fornecedor Ja cadastrado no BD");
-			//return -1;
-		//}catch (SQLException ex) {
-	            //System.out.println(ex);
-	           // JOptionPane.showMessageDialog(null, "Erro ao inserir Brinquedo");
-	       // }
-		//return -1;
+		/*} catch (MySQLIntegrityConstraintViolationException e ) {
+			JOptionPane.showMessageDialog(null, "Fornecedor Ja cadastrado no BD");
+			return -1;
+		}catch (SQLException ex) {
+	            System.out.println(ex);
+	            JOptionPane.showMessageDialog(null, "Erro ao inserir Brinquedo");
+	        }
+		return -1;*/
 	}
 
 	@Override
