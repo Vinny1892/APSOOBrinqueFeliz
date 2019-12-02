@@ -123,33 +123,14 @@ public ModelFuncionario(String telefoneResidencial, String telefoneCelular, Stri
         this.senha = senha;
     }
 
-    
-    public Double consultarPreco(long codigoDeBarras){
-        return 0.0;
-    }
-    
-    public void cadastrarCliente(ModelCliente cliente){
-
-    }
-
-    public void excluirCliente(ModelCliente cliente){
-
-    }
 
      //private DAOFuncionario dao = new DAOFuncionario();
-    public ModelFuncionario loginFuncionario(String cpf, String password){
+    public ModelFuncionario loginFuncionario(String email, String password){
      try{ return new  DAOFuncionario().getByEmail(email,password);}
       catch(Exception ex) {System.out.println(ex);}
         return null;
     }
 
-    public void atualizarCliente(ModelCliente cliente){
-
-    }
-
-    public ModelCliente consultarCliente(String rg){
-        return null;
-    }
     //CRUD Methods
     @Override
     public int salvar(Object obj) throws SQLException {

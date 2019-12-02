@@ -45,8 +45,6 @@ public class FXMLFormFuncionarioController implements Initializable {
                 .or(textFieldPassword.textProperty().isEmpty());
         buttonSalvar.disableProperty().bind(camposPreenchidos);
         inicializarComboBox();
-        
-        
     } 
     
     @FXML

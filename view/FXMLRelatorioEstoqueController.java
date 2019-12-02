@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author kaio
  */
-public class FXML5CatalogoController implements Initializable {
+public class FXMLRelatorioEstoqueController implements Initializable {
 
     /**
      * Initializes the controller class.
