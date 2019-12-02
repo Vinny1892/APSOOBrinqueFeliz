@@ -152,7 +152,7 @@ public class ModelBrinquedo implements CRUD{
         brinquedo = (ArrayList<ModelBrinquedo>)(ArrayList<?>) dao.getAll();
     }
     
-    public ArrayList<ModelBrinquedo> getBrinquedos() {
+    public ArrayList<ModelBrinquedo> getBrinquedo() {
         return brinquedo;
     }
 

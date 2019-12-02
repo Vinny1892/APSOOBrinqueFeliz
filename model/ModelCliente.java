@@ -85,7 +85,7 @@ public class ModelCliente extends ModelPessoa implements CRUD{
         cliente = (ArrayList<ModelCliente>)(ArrayList<?>) dao.getAll();
     }
     
-    public ArrayList<ModelCliente> getClientes() {
+    public ArrayList<ModelCliente> getCliente() {
         return cliente;
     }
     

@@ -58,7 +58,9 @@ public class ModelComprovante implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 
+    //////
     public int getId() {
         return id;
     }
@@ -115,12 +117,16 @@ public class ModelComprovante implements CRUD{
         this.valorTotal = valorTotal;
     }
 
-    public ArrayList<ModelItemDeVenda> getCarrinho() {
-        return carrinho;
-    }
-
     public void setCarrinho(ArrayList<ModelItemDeVenda> carrinho) {
         this.carrinho = carrinho;
+    }
+    //Fim Getters e Setters
+
+    
+    
+    ////
+    public ArrayList<ModelItemDeVenda> getCarrinho() {
+        return carrinho;
     }
 
     public void atualizarArrayCarrinho() throws SQLException{
@@ -128,6 +134,17 @@ public class ModelComprovante implements CRUD{
     }
     
     public ModelComprovante getByIdArray(int id)  {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        atualizarArrayCarrinho();
+
+        carrinho.forEach(c -> {
+            if(c.getId() == id)
+                return c;
+        });
+        
     }
+
+    public ArrayList<ModelItemDeVenda> getAllArray()  {
+        return carrinho;
+    }    
+
 }

@@ -67,6 +67,7 @@ public class ModelCategoria implements CRUD{
             if(c.getId() == id)
                 return c;
         });
+    }
     
     public ArrayList<ModelCategoria> getAllArray()  {
         return categorias;
