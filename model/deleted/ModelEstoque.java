@@ -61,6 +61,6 @@ public class ModelEstoque implements CRUD {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
+   
 
 }

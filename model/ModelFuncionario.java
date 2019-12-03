@@ -48,7 +48,7 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
 
 
     //Sem ID
-public ModelFuncionario(String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, boolean isADM, String senha, String nome, String cpf, Date dataDeNascimento, String endereco, String cep, String cidade, String estado) {
+    public ModelFuncionario(String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, boolean isADM, String senha, String nome, String cpf, Date dataDeNascimento, String endereco, String cep, String cidade, String estado) {
         
         super(nome, cpf, dataDeNascimento, endereco, cep, cidade, estado); 
         this.telefoneResidencial = telefoneResidencial;
@@ -58,8 +58,6 @@ public ModelFuncionario(String telefoneResidencial, String telefoneCelular, Stri
         this.isADM = isADM;
         this.senha = senha; 
         this.id = -1; 
-        
-        
     }
 
 
@@ -157,7 +155,9 @@ public ModelFuncionario(String telefoneResidencial, String telefoneCelular, Stri
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+
+    //
     public void atualizarArrayFuncionario() throws SQLException{
         funcionario = (ArrayList<ModelFuncionario>)(ArrayList<?>) dao.getAll();
     }
@@ -166,8 +166,23 @@ public ModelFuncionario(String telefoneResidencial, String telefoneCelular, Stri
         return funcionario;
     }
     
-    public ModelFuncionario getByIdArray(int id)  {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static ModelFuncionario getByIdArray(int id)  {
+        atualizarArrayFuncionario();
+        
+        //return funcionario.get(funcionario.indexOf(Object.getId() == id));
+        // funcionario.forEach(f -> {
+        //     if(f.getId() == id)
+        //         return f;
+        // });
+        for(ModelFuncionario f : funcionario){
+            if(f.getId() == id)
+                return f;
+        }
     }
+
+    public ArrayList<ModelFuncionario> getAllArray()  {
+        return funcionario;
+    } 
+
 } 
 

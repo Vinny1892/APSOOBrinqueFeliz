@@ -26,7 +26,9 @@ public class ModelCategoria implements CRUD{
     public ModelCategoria(String nome) throws SQLException {
         atualizarArrayCategorias();
         this.nome = nome;
+        this.id = -1;
     }
+    //Fim construtores
 
 
     public int getId() {
@@ -45,8 +47,11 @@ public class ModelCategoria implements CRUD{
     public void setNome(String nome) {
         this.nome = nome;
     }
+    //Fim Getters e Setters
 
 
+
+    //
     public void atualizarArrayCategorias() throws SQLException{
         categorias = (ArrayList<ModelCategoria>)(ArrayList<?>) dao.getAll();
     }
@@ -55,14 +60,25 @@ public class ModelCategoria implements CRUD{
         return categorias;
     }
     
-    public ModelCategoria getByIdArray(int id)  {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static ModelCategoria getByIdArray(int id)  {
+        atualizarArrayCategorias();
+        
+        //return categorias.get(categorias.indexOf(Object.getId() == id));
+        // categorias.forEach(c -> {
+        //     if(c.getId() == id)
+        //         return c;
+        // });
+        for(ModelCategoria c : categorias){
+            if(c.getId() == id)
+                return c;
+        }
     }
     
     public ArrayList<ModelCategoria> getAllArray()  {
         return categorias;
     }
   
+
     //acesso DAO
     private DAOCategoria dao = new DAOCategoria();
 

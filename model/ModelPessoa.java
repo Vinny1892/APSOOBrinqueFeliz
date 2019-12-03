@@ -41,6 +41,7 @@ public abstract class ModelPessoa{
 		this.cep = cep;
 		this.cidade = cidade;
 		this.estado = estado;
+		this.id = -1;
 	}
 
 
@@ -108,6 +109,7 @@ public abstract class ModelPessoa{
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	
 
     
