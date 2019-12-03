@@ -10,7 +10,7 @@ public class ModelCliente extends ModelPessoa implements CRUD{
 
     private String rg;
     private int id;
-    private ArrayList<ModelCliente> cliente;
+    private static ArrayList<ModelCliente> clientes; 
 
     //Com ID
     public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado, Date dataDeNascimento, String rg, int id) {
@@ -83,14 +83,14 @@ public class ModelCliente extends ModelPessoa implements CRUD{
 
 
     public void atualizarArrayCliente() throws SQLException{
-        cliente = (ArrayList<ModelCliente>)(ArrayList<?>) new dao.DAOCliente.getAll();
+        clientes = (ArrayList<ModelCliente>)(ArrayList<?>) new dao.DAOCliente().getAll(); 
     }
     
     public ArrayList<ModelCliente> getCliente() {
-        return cliente;
+        return clientes; 
     }
     
-    public static ModelCliente getByIdArray(int id)  {
+    public ModelCliente getByIdArray(int id) throws SQLException  {
         atualizarArrayCliente();
 
         //return cliente.get(cliente.indexOf(Object.getId() == id));
@@ -99,13 +99,17 @@ public class ModelCliente extends ModelPessoa implements CRUD{
         //         return c;
         // });
 
-        for(ModelCliente c : cliente){
+        for(ModelCliente c : clientes){
             if(c.getId() == id)
                 return c;
-        }
-    }
+        } 
+        
+        return null; 
+        
+        
+    } 
     public ArrayList<ModelCliente> getAllArray()  {
-        return cliente;
+        return clientes; 
     }    
 
 }
