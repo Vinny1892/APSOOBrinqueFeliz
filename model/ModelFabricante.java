@@ -14,7 +14,7 @@ public class ModelFabricante implements CRUD{
     private ArrayList<ModelFabricante> fabricante;
 
     //Com ID
-    public ModelFabricante(String nome, /*ModelBrinquedo brinquedo,*/ , String cnpj, int id) {
+    public ModelFabricante(String nome, /*ModelBrinquedo brinquedo, ,*/ String cnpj, int id) {
         this.nome = nome;
         this.cnpj = cnpj;
        // this.brinquedo = brinquedo;
@@ -87,14 +87,14 @@ public class ModelFabricante implements CRUD{
 
     //
     public void atualizarArrayFabricante() throws SQLException{
-        fabricante = (ArrayList<ModelFabricante>)(ArrayList<?>) dao.getAll();
+        fabricante = (ArrayList<ModelFabricante>)(ArrayList<?>) new dao.DAOFabricante.getAll();
     }
     
     public ArrayList<ModelFabricante> getFabricante() {
         return fabricante;
     }
     
-    public static ModelFabricante getByIdArray(int id)  {
+    public static ModelFabricante getByIdArray(int id) throws SQLException  {
         atualizarArrayFabricante();
 
         //return fabricante.get(fabricante.indexOf(Object.getId() == id));
@@ -105,7 +105,8 @@ public class ModelFabricante implements CRUD{
         for(ModelFabricante f : fabricante){
             if(f.getId() == id)
                 return f;
-        }
+        } 
+        return null; 
     }
     public ArrayList<ModelFabricante> getAllArray()  {
         return fabricante;
