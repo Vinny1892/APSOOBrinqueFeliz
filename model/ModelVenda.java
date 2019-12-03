@@ -141,20 +141,19 @@ public class ModelVenda implements CRUD{
     }
     
     //Aqui acho que não pode ser retornado ModelVenda pq o ArrayList é do tipo ModelItemDeVenda, então ele só retornaria objetos desse tipo.
-    //*ModelItemDeVenda não tem ID
-    // public ModelItemDeVenda getByIdArray(int id)  {
+    public ModelItemDeVenda getByIdArray(int id)  {
     //     atualizarArrayCarrinho();
 
     //     // carrinho.forEach(c -> {
     //     //     if(c.getId() == id)
     //     //         return c;
     //     // });
-    //     for(ModelItemDeVenda item : carrinho){
-    //         if(item.getId() == id)
-    //             return item;
-    //     }
+        for(ModelItemDeVenda item : carrinho){
+            if(item.getId() == id)
+                return item;
+        }
         
-    // }
+    }
 
     public ArrayList<ModelItemDeVenda> getAllArray()  {
         return carrinho;

@@ -14,14 +14,24 @@ public class ModelItemDeVenda implements CRUD{
     //Yan: Ok
     private ModelBrinquedo brinquedo;
     private int quantidade;
+    private int id;
     
 
     public ModelItemDeVenda() {
     }
 
+    //Com ID
+    public ModelItemDeVenda(ModelBrinquedo brinquedo, int quantidade, int id) {
+        this.brinquedo = brinquedo;
+        this.quantidade = quantidade;
+        this.id = id;
+    }
+
+    //Sem ID
     public ModelItemDeVenda(ModelBrinquedo brinquedo, int quantidade) {
         this.brinquedo = brinquedo;
         this.quantidade = quantidade;
+        this.id = -1;
     }
 
 
@@ -45,6 +55,15 @@ public class ModelItemDeVenda implements CRUD{
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
 
     public double getValor(){
