@@ -345,6 +345,12 @@ ALTER TABLE `itens_venda`
 ALTER TABLE `vendas`
   ADD CONSTRAINT `vendas_ibfk_1` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionarios` (`id_funcionario`),
   ADD CONSTRAINT `vendas_ibfk_2` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`);
+
+INSERT INTO `funcionarios` (`id_funcionario`, `senha`, `telefone_residencial`, `telefone_celular`, `email`, `data_contratacao`, `is_adm`, `nome`, `cpf`, `data_nascimento`, `endereco`, `cep`, `cidade`, `estado`) VALUES
+(0, '$2a$12$HV/kWCfo/nPJkZglrQktSe0Xcu4.TbX/bFfJ2KYE72sqfa8hoRI3G', '99999-9999', '99999-9999', 'admin@admin.com', '2019-12-02', 1, 'admin', '1233456789', '1998-12-02', 'av seila rua 123', '123456789', 'Campo Grande ', 'MS'),
+(1, '$2a$12$w.5YpdmYnNy4VL.f6mx6A.uaSQ0QJZIFaaW2su43qcEdxALFFV2aO', '99999999', '1234566789', 'funcionario@teste.com', '2019-12-12', 0, 'estagiario', '12334567892', '1994-12-12', 'av seila rua somedaqui', '1234556789', 'Campo Grande', 'MS');
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
