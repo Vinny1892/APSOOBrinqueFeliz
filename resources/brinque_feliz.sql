@@ -86,6 +86,28 @@ CREATE TABLE `comprovantes` (
   `id_venda` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+delimiter $$ 
+
+create trigger gera_comprovante after insert on vendas for each row 
+	
+    begin 
+		
+        insert into comprovantes (nome_cliente, rg_cliente, nome_funcionario, cpf_funcionario, valor, data_venda, forma_pagamento, id_venda) values ( 
+        
+        (select clientes.nome, clientes.rg from clientes where clientes.id_cliente = new.id_cliente), 
+        (select funcionarios.nome, funcionarios.cpf from funcionarios where funcionarios.id_funcionario = new.id_funcionario), 
+        new.valor, 
+        new.forma_pagamento, 
+        new.id_venda 
+        
+        ); 
+	
+    end $$ 
+
+delimiter ; 
+
+
 -- --------------------------------------------------------
 
 --
