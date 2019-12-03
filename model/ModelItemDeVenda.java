@@ -14,7 +14,9 @@ public class ModelItemDeVenda implements CRUD{
     //Yan: Ok
     private ModelBrinquedo brinquedo;
     private int quantidade;
-    private int id;
+    private int id; 
+    
+    private static ArrayList<ModelItemDeVenda> intesDeVenda; 
     
 
     public ModelItemDeVenda() {
