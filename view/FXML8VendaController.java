@@ -42,23 +42,17 @@ import model.ModelVenda;
 public class FXML8VendaController implements Initializable {
 
     public FXML8VendaController(ModelFuncionario funcionario) {
-        this.funcionarioLogado = funcionario;
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-//        try {
-//            inicializarTabelaItensEstoque();
-//            inicializarComboBoxFormaPagamento();
-//            inicializarComboBoxCliente();
-        tableViewCarrinhoDeCompras.getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
+            tableViewCarrinhoDeCompras.getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
             buttonExcluirItemDoCarrinhoDeCompra.setDisable(false);
         });
-//        } catch (SQLException ex) {
-//            Logger.getLogger(FXML8VendaController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-
+        this.funcionarioLogado = funcionario;
     }
+    
+    public FXML8VendaController(){
+        
+    }
+
+ 
     private ModelFuncionario funcionarioLogado;
     @FXML
     private FXML10ComprovanteController telaComprovanteFXML;
@@ -249,6 +243,11 @@ public class FXML8VendaController implements Initializable {
             alert.show();
         }
 
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

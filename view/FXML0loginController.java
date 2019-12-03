@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import static controller.ControllerFuncionario.buscaFuncionario;
 import model.ModelFuncionario;
-import sun.applet.Main;
 
 /**
  * FXML Controller class
@@ -45,6 +44,7 @@ public class FXML0loginController implements Initializable {
     void onActionButtonLogar(ActionEvent event) throws IOException {
         String user = textFieldUser.getText();
         String password = textFieldPassword.getText();
+<<<<<<< Updated upstream
         String passwordHashed = BCrypt.hashpw(password,  BCrypt.gensalt(6));
         
         ModelFuncionario funcionario = buscaFuncionario(user, password);
@@ -53,15 +53,29 @@ public class FXML0loginController implements Initializable {
             if (false) {//if (mf.isADM()) //chama tela adm
                  System.out.println(passwordHashed);
                  System.out.println(BCrypt.checkpw(password, passwordHashed));
+=======
+        String passwordHashed = BCrypt.hashpw(password,  BCrypt.gensalt(12));
+        System.out.println(passwordHashed);
+         ModelFuncionario funcionario = null;
+         funcionario = buscaFuncionario(user, passwordHashed);
+            //System.out.println(funcionario.getEmail());
+        if (funcionario != null && BCrypt.checkpw(password,funcionario.getSenha())) {//if (mf != null) {
+              System.out.println(funcionario.getEmail());
+
+            Stage stage = new Stage();
+            if (funcionario.isIsADM()) {//if (mf.isADM()) //chama tela adm
+                 System.out.println(funcionario.isIsADM());
+>>>>>>> Stashed changes
                 Parent p = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
                 Scene scene = new Scene(p);
                 stage.setScene(scene);
 
             } else {//chama tela funcionario
-                FXMLLoader loader = FXMLLoader.load(getClass().getResource("FXML8Venda.fxml"));
+                System.out.println("chamando tela venda");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML8Venda.fxml"));
                 loader.setController(new FXML8VendaController(funcionario));
-                Parent p = loader.load();
-                Scene scene = new Scene(p);
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
                 stage.setScene(scene);
 
             }
