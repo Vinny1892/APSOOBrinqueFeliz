@@ -17,7 +17,7 @@ public class ModelBrinquedo implements CRUD{
     private String descricao;
     private ModelFornecedor fornecedor;
     private int id;//o id vai ser o codigo de barras
-    private ArrayList<ModelBrinquedo> brinquedo;
+    private static ArrayList<ModelBrinquedo> brinquedos; 
 
     
     public ModelBrinquedo() {
@@ -145,34 +145,38 @@ public class ModelBrinquedo implements CRUD{
             return false;
         }
         return true;
-    }
+    } 
 
 
     //
     public void atualizarArrayBrinquedos() throws SQLException{
-        brinquedo = (ArrayList<ModelBrinquedo>)(ArrayList<?>) dao.getAll();
+        brinquedos = (ArrayList<ModelBrinquedo>)(ArrayList<?>) dao.getAll(); 
     }
     
     public ArrayList<ModelBrinquedo> getBrinquedo() {
-        return brinquedo;
+        return brinquedos; 
     }
 
-    public static ModelBrinquedo getByIdArray(int id)  {
-        atualizarArrayBrinquedos();
+    public ModelBrinquedo getByIdArray(int id) throws SQLException  {
+        atualizarArrayBrinquedos(); 
         
         //return brinquedo.get(brinquedo.indexOf(Object.getId() == id));
         // brinquedo.forEach(b -> {
         //     if(b.getId() == id)
         //         return b;
         // });
-        for(ModelBrinquedo b : brinquedo){
+        for(ModelBrinquedo b : brinquedos){
             if(b.getId() == id)
                 return b;
-        }
+        } 
+        
+        return null; 
+        
+        
     }
 
     public ArrayList<ModelBrinquedo> getAllArray()  {
-        return brinquedo;
+        return brinquedos;
     }
 
 
@@ -180,28 +184,35 @@ public class ModelBrinquedo implements CRUD{
     private DAOBrinquedo dao = new DAOBrinquedo();
 
     @Override
-    public int salvar(Object obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int salvar(Object obj) throws SQLException { 
+        return new DAOBrinquedo().salvar(this); 
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean atualizar(Object obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean atualizar(Object obj) throws SQLException { 
+        return new DAOBrinquedo().atualizar(this); 
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean deletar(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean deletar(int id) throws SQLException { 
+        return new DAOBrinquedo().deletar(id); 
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Object getById(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Object getById(int id) throws SQLException { 
+        return new DAOBrinquedo().getById(id); 
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<Object> getAll() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public ArrayList<Object> getAll() throws SQLException { 
+        return new DAOBrinquedo().getAll(); 
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    } 
+    
 
-}
+} 
+
