@@ -44,16 +44,7 @@ public class FXML0loginController implements Initializable {
     void onActionButtonLogar(ActionEvent event) throws IOException {
         String user = textFieldUser.getText();
         String password = textFieldPassword.getText();
-<<<<<<< Updated upstream
-        String passwordHashed = BCrypt.hashpw(password,  BCrypt.gensalt(6));
-        
-        ModelFuncionario funcionario = buscaFuncionario(user, password);
-        if (true) {//if (
-            Stage stage = new Stage();
-            if (false) {//if (mf.isADM()) //chama tela adm
-                 System.out.println(passwordHashed);
-                 System.out.println(BCrypt.checkpw(password, passwordHashed));
-=======
+
         String passwordHashed = BCrypt.hashpw(password,  BCrypt.gensalt(12));
         System.out.println(passwordHashed);
          ModelFuncionario funcionario = null;
@@ -65,7 +56,6 @@ public class FXML0loginController implements Initializable {
             Stage stage = new Stage();
             if (funcionario.isIsADM()) {//if (mf.isADM()) //chama tela adm
                  System.out.println(funcionario.isIsADM());
->>>>>>> Stashed changes
                 Parent p = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
                 Scene scene = new Scene(p);
                 stage.setScene(scene);

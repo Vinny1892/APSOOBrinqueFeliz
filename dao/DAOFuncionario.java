@@ -133,11 +133,9 @@ public class DAOFuncionario extends GenericDAO_CRUD {
     public ModelFuncionario getByEmail(String email,String password){ 
         try{
         System.out.println("SELECT * FROM funcionarios where funcionarios.email = ? and senha = ?"); 
-<<<<<<< Updated upstream
-        PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM funcionarios where funcionarios.email = ? and funcionarios.senha = ?"); 
-=======
+
         PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM funcionarios where email = ? "); 
->>>>>>> Stashed changes
+
         stmt.setString(1, email); 
         ResultSet rs = stmt.executeQuery(); 
         while(rs.next()){
