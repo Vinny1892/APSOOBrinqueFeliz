@@ -8,7 +8,8 @@ import com.mysql.jdbc.exceptions.jdbc4.MySQLDataException;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 import model.ModelBrinquedo;
-
+import model.ModelCategoria;
+import model.ModelFabricante;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,12 +20,38 @@ import javax.swing.JOptionPane;
 
 public class DAOBrinquedo extends GenericDAO_CRUD {
 
+	
+	protected int createId() throws SQLException { 
+	        
+	        System.out.println("SELECT id_brinquedo FROM brinquedos order by ? desc limit 1"); 
+	        PreparedStatement stmt = getConnection().prepareStatement("SELECT id_brinquedo FROM brinquedos order by ? desc limit 1"); 
+	        stmt.setString(1, "id_brinquedo"); 
+	        stmt.execute(); 
+	        ResultSet rs = stmt.executeQuery(); 
+	        while (rs.next()) {
+	            
+	            int ultimoId = rs.getInt("id_brinquedo"); 
+	            
+	            return ultimoId + 1; 
+	            
+	           
+	        } 
+	        
+	        
+	        rs.close();
+	        stmt.close();
+	        return 0;
+	        
+	        
+	   } 
     @Override
     public int salvar(Object object) throws SQLException {
         try {
             ModelBrinquedo brinquedo = (ModelBrinquedo) object;
-            String insert = "INSERT INTO brinquedos (id_categoria, codigo_de_barras, preco, id_fabricante, descricao, id_fornecedor) VALUES(?,?,?,?,?,?) ";
-            save(insert, brinquedo.getCategoria().getId(), brinquedo.getId(), brinquedo.getPreco(), brinquedo.getFabricante().getId(), brinquedo.getDescricao(), brinquedo.getFornecedor().getId());
+            int id = createId();
+            
+            String insert = "INSERT INTO brinquedos (id_brinquedo, id_categoria, codigo_de_barras, preco, id_fabricante, descricao, id_fornecedor) VALUES(?,?,?,?,?,?,?) ";
+            save(insert, id, brinquedo.getCategoria().getId(), brinquedo.getId(), brinquedo.getPreco(), brinquedo.getFabricante().getId(), brinquedo.getDescricao(), brinquedo.getFornecedor().getId());
             System.out.println("Metodo salvar DaoBrinquedo realizado");
             return 1;
         } catch (MySQLIntegrityConstraintViolationException e) {
@@ -87,8 +114,8 @@ public class DAOBrinquedo extends GenericDAO_CRUD {
         PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM brinquedos");
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-            //ModelBrinquedo brinquedo = new ModelBrinquedo(rs.getInt("id_categoria"), rs.getString("nome"), rs.getDouble("preco"), rs.getInt("id_fabricante"), rs.getString("descricao"), rs.getInt("id_fornecedor"),  rs.getInt("codigo_de_barras"));
-           // brinquedos.add(brinquedo);
+            ModelBrinquedo brinquedo = new ModelBrinquedo(ModelCategoria.getByIdArray(rs.getInt("id_categoria")), rs.getString("nome"), rs.getDouble("preco"), ModelFabricante.getByIdArray(rs.getInt("id_fabricante")), rs.getString("descricao"), ModelFabricante.getByIdArray(rs.getInt("id_fornecedor")),  rs.getInt("codigo_de_barras"));
+            brinquedos.add(brinquedo);
         }
         rs.close();
         stmt.close();

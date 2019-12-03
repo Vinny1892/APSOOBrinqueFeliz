@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 
 public class DAOFormaDePagamento extends GenericDAO_CRUD {
 
+	
     @Override
     public int salvar(Object object) throws SQLException {
        // try {
