@@ -5,9 +5,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="447.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXML7FornecedorController">
+<AnchorPane id="AnchorPane" prefHeight="440.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXML7FornecedorController">
    <children>
-      <TableView fx:id="tableViewFornecedores" prefHeight="384.0" prefWidth="700.0">
+      <TableView fx:id="tableViewFornecedores" prefHeight="384.0" prefWidth="837.0">
         <columns>
           <TableColumn fx:id="columnNome" prefWidth="137.0" text="Nome" />
           <TableColumn fx:id="columnCNPJ" prefWidth="62.0" text="CNPJ" />
@@ -16,6 +16,7 @@
             <TableColumn fx:id="columnEstado" prefWidth="61.0" text="Estado" />
             <TableColumn fx:id="columnTelefone" prefWidth="81.0" text="Telefone" />
             <TableColumn fx:id="columnEMail" prefWidth="139.0" text="Email" />
+            <TableColumn prefWidth="129.0" text="Razao Social" />
         </columns>
       </TableView>
       <Button fx:id="buttonVoltar" layoutX="573.0" layoutY="391.0" mnemonicParsing="false" onAction="#onActionbuttonVoltar" prefHeight="39.0" prefWidth="92.0" text="Voltar" />
