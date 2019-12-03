@@ -42,6 +42,7 @@ public class ModelBrinquedo implements CRUD{
         this.fabricante = fabricante;
         this.descricao = descricao;
         this.fornecedor = fornecedor;
+        this.id = -1;
     }
 
 
@@ -101,7 +102,8 @@ public class ModelBrinquedo implements CRUD{
 
 	public void setCategoria(ModelCategoria categoria) {
 		this.categoria = categoria;
-	}
+    }
+    //Fim Getters e Setters
 
 	@Override
     public int hashCode() {
@@ -146,6 +148,34 @@ public class ModelBrinquedo implements CRUD{
     }
 
 
+    //
+    public void atualizarArrayBrinquedos() throws SQLException{
+        brinquedo = (ArrayList<ModelBrinquedo>)(ArrayList<?>) dao.getAll();
+    }
+    
+    public ArrayList<ModelBrinquedo> getBrinquedo() {
+        return brinquedo;
+    }
+
+    public ModelBrinquedo getByIdArray(int id)  {
+        atualizarArrayBrinquedos();
+        
+        //return brinquedo.get(brinquedo.indexOf(Object.getId() == id));
+        // brinquedo.forEach(b -> {
+        //     if(b.getId() == id)
+        //         return b;
+        // });
+        for(ModelBrinquedo b : brinquedo){
+            if(b.getId() == id)
+                return b;
+        }
+    }
+
+    public ArrayList<ModelBrinquedo> getAllArray()  {
+        return brinquedo;
+    }
+
+
     //acesso DAO
     private DAOBrinquedo dao = new DAOBrinquedo();
 
@@ -173,16 +203,5 @@ public class ModelBrinquedo implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public void atualizarArrayBrinquedos() throws SQLException{
-        brinquedo = (ArrayList<ModelBrinquedo>)(ArrayList<?>) dao.getAll();
-    }
-    
-    public ArrayList<ModelBrinquedo> getBrinquedo() {
-        return brinquedo;
-    }
-    
-    public ModelBrinquedo getByIdArray(int id)  {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 }

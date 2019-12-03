@@ -23,6 +23,7 @@ public class ModelCliente extends ModelPessoa implements CRUD{
     public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado, Date dataDeNascimento, String rg) {
         super(nome, cpf, dataDeNascimento, endereco, cep, cidade, estado);
         this.rg = rg;
+        this.id = -1;
     }
 
 
@@ -45,6 +46,9 @@ public class ModelCliente extends ModelPessoa implements CRUD{
     public void setRg(String rg) {
         this.rg = rg;
     }
+    //Fim Getters Setters
+
+
 
     @Override
     public String toString() {
@@ -75,8 +79,9 @@ public class ModelCliente extends ModelPessoa implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    //
 
-   
+
     public void atualizarArrayCliente() throws SQLException{
         cliente = (ArrayList<ModelCliente>)(ArrayList<?>) dao.getAll();
     }
@@ -86,7 +91,22 @@ public class ModelCliente extends ModelPessoa implements CRUD{
     }
     
     public ModelCliente getByIdArray(int id)  {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        atualizarArrayCliente();
+
+        //return cliente.get(cliente.indexOf(Object.getId() == id));
+        // this.cliente.forEach(c -> {
+        //     if(c.getId() == id)
+        //         return c;
+        // });
+
+        for(ModelCliente c : cliente){
+            if(c.getId() == id)
+                return c;
+        }
     }
+    public ArrayList<ModelCliente> getAllArray()  {
+        return cliente;
+    }    
+
 }
 

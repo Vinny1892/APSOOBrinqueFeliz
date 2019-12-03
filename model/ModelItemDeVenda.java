@@ -10,16 +10,28 @@ public class ModelItemDeVenda implements CRUD{
     //Kaio: Acho que nao faz sentido essa classe ter o atributo static ArrayList<ModelItemDeVenda>, se tiver outra opinião, avise pf, vai que estou errado.
     //Ao meu entender, não vale a pena manter em memoria esse Array,
     //melhor deixar no BD, quando precisar buscamos
+
+    //Yan: Ok
     private ModelBrinquedo brinquedo;
     private int quantidade;
+    private int id;
     
 
     public ModelItemDeVenda() {
     }
 
+    //Com ID
+    public ModelItemDeVenda(ModelBrinquedo brinquedo, int quantidade, int id) {
+        this.brinquedo = brinquedo;
+        this.quantidade = quantidade;
+        this.id = id;
+    }
+
+    //Sem ID
     public ModelItemDeVenda(ModelBrinquedo brinquedo, int quantidade) {
         this.brinquedo = brinquedo;
         this.quantidade = quantidade;
+        this.id = -1;
     }
 
 
@@ -43,6 +55,15 @@ public class ModelItemDeVenda implements CRUD{
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
 
     public double getValor(){
@@ -77,4 +98,6 @@ public class ModelItemDeVenda implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+
+    
 }
