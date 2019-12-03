@@ -14,7 +14,7 @@ public class ModelComprovante implements CRUD{
     private Date data_venda;
     private String forma;
     private Double valorTotal;
-    private ArrayList<ModelItemDeVenda> carrinho;
+    private ArrayList<ModelItemDeVenda> itensComprado;
     
     public ModelComprovante() {
     }
@@ -28,7 +28,7 @@ public class ModelComprovante implements CRUD{
         this.data_venda = data_venda;
         this.forma = forma;
         this.valorTotal = valorTotal;
-        this.carrinho = carrinho;
+        this.itensComprado = carrinho;
     }
 
     
@@ -40,7 +40,7 @@ public class ModelComprovante implements CRUD{
         this.data_venda = data_venda;
         this.forma = forma;
         this.valorTotal = valorTotal;
-        this.carrinho = carrinho;
+        this.itensComprado = carrinho;
         this.id = -1;
     }
 
@@ -131,39 +131,32 @@ public class ModelComprovante implements CRUD{
         this.valorTotal = valorTotal;
     }
 
-    public void setCarrinho(ArrayList<ModelItemDeVenda> carrinho) {
-        this.carrinho = carrinho;
-    }
-    //Fim Getters e Setters
+ public ArrayList<ModelItemDeVenda> getAllArray()  {
+        return itensComprado;
+    }    
 
-    
-    
-    ////
-    public ArrayList<ModelItemDeVenda> getCarrinho() {
-        return carrinho;
+    public ArrayList<ModelItemDeVenda> getItensComprado() {
+        return itensComprado;
     }
 
     public void atualizarArrayCarrinho() throws SQLException{
-        carrinho = (ArrayList<ModelItemDeVenda>)(ArrayList<?>) dao.getAll();
+        itensComprado = (ArrayList<ModelItemDeVenda>)(ArrayList<?>) dao.getAll();
     }
     
     //Aqui acho que não pode ser retornado ModelComprovante pq o ArrayList é do tipo ModelItemDeVenda, então ele só retornaria objetos desse tipo.
     public static ModelItemDeVenda getByIdArray(int id)  {
         atualizarArrayCarrinho();
 
-        // carrinho.forEach(c -> {
+        // itensComprado.forEach(c -> {
         //     if(c.getId() == id)
         //         return c;
         // });
-        for(ModelItemDeVenda item : carrinho){
+        for(ModelItemDeVenda item : itensComprado){
             if(item.getId() == id)
                 return item;
         }
         
     }
 
-    public ArrayList<ModelItemDeVenda> getAllArray()  {
-        return carrinho;
-    }    
-
+   
 }
