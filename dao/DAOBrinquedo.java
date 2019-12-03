@@ -49,12 +49,17 @@ public class DAOBrinquedo extends GenericDAO_CRUD {
     public int salvar(Object object) throws SQLException {
         try {
             ModelBrinquedo brinquedo = (ModelBrinquedo) object;
+            
+            if(brinquedo.getId() > -1 )
+            	throw new RuntimeException("Valor ja inserido, para alterar o valor use o update");
+            
+            
             int id = createId();
             
             String insert = "INSERT INTO brinquedos (id_brinquedo, id_categoria, codigo_de_barras, preco, id_fabricante, descricao, id_fornecedor) VALUES(?,?,?,?,?,?,?) ";
             save(insert, id, brinquedo.getCategoria().getId(), brinquedo.getId(), brinquedo.getPreco(), brinquedo.getFabricante().getId(), brinquedo.getDescricao(), brinquedo.getFornecedor().getId());
             System.out.println("Metodo salvar DaoBrinquedo realizado");
-            return 1;
+            return id;
         } catch (MySQLIntegrityConstraintViolationException e) {
             JOptionPane.showMessageDialog(null, "Brinquedo Ja cadastrado no BD");
         } catch (SQLException ex) {

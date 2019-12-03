@@ -43,10 +43,14 @@ public class DAOFabricante extends GenericDAO_CRUD {
         try {
 
             ModelFabricante fabricante = (ModelFabricante) object;
-            int id = createId();
             
+            if(fabricante.getId() > -1 )
+            	throw new RuntimeException("Valor ja inserido, para alterar o valor use o update");
+            int id = createId();
+                    
             String insert = "INSERT INTO fabricantes (id_fabricante, cnpj, nome) VALUES(?,?,?) ";
             save(insert, id, fabricante.getCnpj(), fabricante.getNome());
+
             System.out.println("Metodo salvar DaoFabricante realizado");
             return id;
         } catch (MySQLIntegrityConstraintViolationException e) {

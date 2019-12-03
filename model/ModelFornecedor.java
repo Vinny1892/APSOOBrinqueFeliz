@@ -15,7 +15,7 @@ public class ModelFornecedor implements CRUD{
     private String estado;
     private String telefone;
     private String email;
-    private ArrayList<ModelFornecedor> fornecedor;
+    private ArrayList<ModelFornecedor> fornecedores;
     private int id;
 
 
@@ -109,7 +109,16 @@ public class ModelFornecedor implements CRUD{
     public String getEmail() {
         return this.email;
     }
-
+public boolean salvarNoArrayList(ModelFornecedor fornecedor){
+127
+ 
+        fornecedores.add(fornecedor);
+128
+ 
+        return true;
+129
+ 
+    }
     public void setEmail(String email) {
         this.email = email;
     }
@@ -121,7 +130,14 @@ public class ModelFornecedor implements CRUD{
     public void setId(int id) {
         this.id = id;
     }
-    //Fim Getters e Setters
+
+
+    public boolean salvarNoArrayList(ModelFornecedor fornecedor){
+        fornecedores.add(fornecedor);
+        return true;
+    }
+    
+    
 
     //acesso DAO
 //    private DAOFornecedor dao = new DAOFornecedor();
