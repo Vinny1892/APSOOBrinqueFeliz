@@ -78,7 +78,7 @@ public class ModelCliente extends ModelPessoa implements CRUD{
 
    
     public void atualizarArrayCliente() throws SQLException{
-        cliente = (ArrayList<ModelCliente>)(ArrayList<?>) dao.getAll();
+        cliente = (ArrayList<ModelCliente>)(ArrayList<?>) new dao.DAOCliente.getAll();
     }
     
     public ArrayList<ModelCliente> getCliente() {

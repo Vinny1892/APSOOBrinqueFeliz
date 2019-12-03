@@ -50,7 +50,7 @@ public class FXML0loginController implements Initializable {
         ModelFuncionario funcionario = buscaFuncionario(user, password);
         if (true) {//if (
             Stage stage = new Stage();
-            if (true) {//if (mf.isADM()) //chama tela adm
+            if (false) {//if (mf.isADM()) //chama tela adm
                  System.out.println(passwordHashed);
                  System.out.println(BCrypt.checkpw(password, passwordHashed));
                 Parent p = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
