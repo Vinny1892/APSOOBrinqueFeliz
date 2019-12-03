@@ -1,4 +1,4 @@
-package model;
+    package model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,7 +14,10 @@ public class ModelComprovante implements CRUD{
     private Date data_venda;
     private String forma;
     private Double valorTotal;
-    private ArrayList<ModelItemDeVenda> carrinho;
+    private ArrayList<ModelItemDeVenda> carrinho; 
+    
+    private static ArrayList<ModelComprovante> comrpovantes; 
+    
     
     public ModelComprovante() {
     }
@@ -144,12 +147,12 @@ public class ModelComprovante implements CRUD{
     }
 
     public void atualizarArrayCarrinho() throws SQLException{
-        carrinho = (ArrayList<ModelItemDeVenda>)(ArrayList<?>) dao.getAll();
+        carrinho = (ArrayList<ModelItemDeVenda>)(ArrayList<?>) new dao.DAOComprovante().getAll(); 
     }
     
     //Aqui acho que não pode ser retornado ModelComprovante pq o ArrayList é do tipo ModelItemDeVenda, então ele só retornaria objetos desse tipo.
-    public static ModelItemDeVenda getByIdArray(int id)  {
-        atualizarArrayCarrinho();
+    public ModelItemDeVenda getByIdArray(int id) throws SQLException  {
+        atualizarArrayCarrinho(); 
 
         // carrinho.forEach(c -> {
         //     if(c.getId() == id)
@@ -158,12 +161,16 @@ public class ModelComprovante implements CRUD{
         for(ModelItemDeVenda item : carrinho){
             if(item.getId() == id)
                 return item;
-        }
+        } 
         
-    }
+        return null; 
+        
+        
+    } 
 
     public ArrayList<ModelItemDeVenda> getAllArray()  {
         return carrinho;
     }    
 
-}
+} 
+
