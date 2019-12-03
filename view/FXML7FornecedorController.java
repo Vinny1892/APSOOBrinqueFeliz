@@ -91,7 +91,13 @@ public class FXML7FornecedorController implements Initializable {
 
     @FXML
     void onActionbuttonEditar(ActionEvent event) {
-
+        Parent categoria = FXMLLoader.load(getClass().getResource("FXMLFormFornecedor.fxml"));
+        Scene scene = new Scene(categoria);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        //buttonCriar.getScene().getWindow().hide();
+        inicilizarTableForncedor();
     }
 
     @FXML
@@ -100,7 +106,7 @@ public class FXML7FornecedorController implements Initializable {
     }
     
     void inicilizarTableForncedor(){
-        fornecedores = controller.ControllerFornecedor.;
+        fornecedores = controller.ControllerFornecedor.todosFornecedores();
     }
     
 }
