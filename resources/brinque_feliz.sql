@@ -33,7 +33,7 @@ CREATE TABLE `brinquedos` (
   `id_categoria` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `codigo_de_barras` mediumtext NOT NULL,
-  `preco` decimal(10,0) NOT NULL,
+  `preco` decimal(10,2) NOT NULL,
   `id_fabricante` int(11) NOT NULL,
   `descricao` varchar(255) DEFAULT NULL,
   `id_fornecedor` int(11) NOT NULL
@@ -80,6 +80,8 @@ CREATE TABLE `comprovantes` (
   `rg_cliente` varchar(25) DEFAULT NULL,
   `nome_funcionario` varchar(50) DEFAULT NULL,
   `cpf_funcionario` varchar(25) DEFAULT NULL,
+  `valor` decimal(10,2) NOT NULL, 
+  `data_venda` date NOT NULL, 
   `forma_pagamento` varchar(255) DEFAULT NULL,
   `id_venda` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -216,7 +218,7 @@ CREATE TABLE `tipos_pagamento` (
 CREATE TABLE `vendas` (
   `id_venda` int(11) NOT NULL,
   `data_venda` date DEFAULT NULL,
-  `valor` decimal(10,0) DEFAULT NULL,
+  `valor` decimal(10,2) DEFAULT NULL,
   `id_funcionario` int(11) DEFAULT NULL,
   `forma_pagamento` varchar(255) DEFAULT NULL,
   `id_cliente` int(11) DEFAULT NULL
