@@ -10,11 +10,13 @@ public class ModelFabricante implements CRUD{
     private String nome;
     //private ArrayList<ModelBrinquedo> brinquedo = new ArrayList<>(); //Consta como produto de acordo com o diagrama
     private int id;
+    private String cnpj;
     private ArrayList<ModelFabricante> fabricante;
 
     //Com ID
-    public ModelFabricante(String nome, /*ModelBrinquedo brinquedo,*/ int id) {
+    public ModelFabricante(String nome, /*ModelBrinquedo brinquedo,*/ , String cnpj, int id) {
         this.nome = nome;
+        this.cnpj = cnpj;
        // this.brinquedo = brinquedo;
         this.id = id;
     }
@@ -23,6 +25,7 @@ public class ModelFabricante implements CRUD{
     public ModelFabricante(String nome/*, DAOFabricante dao*/) {
         this.nome = nome;
         this.id = -1;
+        this.cnpj = cnpj;
         //this.dao = dao;
     }
 
@@ -30,6 +33,14 @@ public class ModelFabricante implements CRUD{
     }
 
 
+
+    public String getCnpj() {
+        return this.cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
 
     public int getId() {
         return this.id;
