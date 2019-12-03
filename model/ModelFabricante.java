@@ -94,7 +94,7 @@ public class ModelFabricante implements CRUD{
         return fabricante;
     }
     
-    public ModelFabricante getByIdArray(int id)  {
+    public static ModelFabricante getByIdArray(int id)  {
         atualizarArrayFabricante();
 
         //return fabricante.get(fabricante.indexOf(Object.getId() == id));

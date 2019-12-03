@@ -60,7 +60,7 @@ public class ModelCategoria implements CRUD{
         return categorias;
     }
     
-    public ModelCategoria getByIdArray(int id)  {
+    public static ModelCategoria getByIdArray(int id)  {
         atualizarArrayCategorias();
         
         //return categorias.get(categorias.indexOf(Object.getId() == id));

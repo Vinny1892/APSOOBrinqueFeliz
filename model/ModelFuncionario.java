@@ -166,7 +166,7 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
         return funcionario;
     }
     
-    public ModelFuncionario getByIdArray(int id)  {
+    public static ModelFuncionario getByIdArray(int id)  {
         atualizarArrayFuncionario();
         
         //return funcionario.get(funcionario.indexOf(Object.getId() == id));

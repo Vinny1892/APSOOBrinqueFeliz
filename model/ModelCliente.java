@@ -90,7 +90,7 @@ public class ModelCliente extends ModelPessoa implements CRUD{
         return cliente;
     }
     
-    public ModelCliente getByIdArray(int id)  {
+    public static ModelCliente getByIdArray(int id)  {
         atualizarArrayCliente();
 
         //return cliente.get(cliente.indexOf(Object.getId() == id));

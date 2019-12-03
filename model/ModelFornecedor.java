@@ -161,7 +161,7 @@ public class ModelFornecedor implements CRUD{
         return fornecedor;
     }
     
-    public ModelFornecedor getByIdArray(int id)  {
+    public static ModelFornecedor getByIdArray(int id)  {
         atualizarArrayFornecedor();
         
         //return fornecedor.get(fornecedor.indexOf(Object.getId() == id));

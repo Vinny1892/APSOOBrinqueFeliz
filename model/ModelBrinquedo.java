@@ -157,7 +157,7 @@ public class ModelBrinquedo implements CRUD{
         return brinquedo;
     }
 
-    public ModelBrinquedo getByIdArray(int id)  {
+    public static ModelBrinquedo getByIdArray(int id)  {
         atualizarArrayBrinquedos();
         
         //return brinquedo.get(brinquedo.indexOf(Object.getId() == id));

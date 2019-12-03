@@ -138,7 +138,7 @@ public class ModelItemDeEstoque implements CRUD{
     //     return itensNoEstoque;
     // }
     
-    public ModelItemDeEstoque getByIdArray(int id)  {
+    public static ModelItemDeEstoque getByIdArray(int id)  {
         atualizarArrayItensNoEstoque();
 
         //return itensNoEstoque.get(itensNoEstoque.indexOf(Object.getId() == id));
