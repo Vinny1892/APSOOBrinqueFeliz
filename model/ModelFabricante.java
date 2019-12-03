@@ -14,11 +14,7 @@ public class ModelFabricante implements CRUD{
     private ArrayList<ModelFabricante> fabricante;
 
     //Com ID
-<<<<<<< HEAD
-    public ModelFabricante(String nome, /*ModelBrinquedo brinquedo,*/  String cnpj, int id) {
-=======
     public ModelFabricante(String nome, /*ModelBrinquedo brinquedo,*/ String cnpj, int id) {
->>>>>>> developer
         this.nome = nome;
         this.cnpj = cnpj;
        // this.brinquedo = brinquedo;

@@ -12,7 +12,7 @@ public class ModelItemDeVenda implements CRUD{
     //melhor deixar no BD, quando precisar buscamos
 
     //Yan: Ok
-    private ModelBrinquedo brinquedo;
+    private ArrayList<ModelItemDeVenda> brinquedo;
     private int quantidade;
     private int id;
     
@@ -21,14 +21,14 @@ public class ModelItemDeVenda implements CRUD{
     }
 
     //Com ID
-    public ModelItemDeVenda(ModelBrinquedo brinquedo, int quantidade, int id) {
+    public ModelItemDeVenda(ArrayList <ModelItemDeVenda> brinquedo, int quantidade, int id) {
         this.brinquedo = brinquedo;
         this.quantidade = quantidade;
         this.id = id;
     }
 
     //Sem ID
-    public ModelItemDeVenda(ModelBrinquedo brinquedo, int quantidade) {
+    public ModelItemDeVenda(ArrayList<ModelItemDeVenda> brinquedo, int quantidade) {
         this.brinquedo = brinquedo;
         this.quantidade = quantidade;
         this.id = -1;
@@ -40,11 +40,11 @@ public class ModelItemDeVenda implements CRUD{
     // pois ela é gerada a partir de ModelItemDeVenda
     
 
-    public ModelBrinquedo getBrinquedo() {
+    public ArrayList<ModelItemDeVenda> getBrinquedo() {
         return this.brinquedo;
     }
 
-    public void setBrinquedo(ModelBrinquedo produto) {
+    public void setBrinquedo(ArrayList<ModelItemDeVenda> produto) {
         this.brinquedo = produto;
     }
 
