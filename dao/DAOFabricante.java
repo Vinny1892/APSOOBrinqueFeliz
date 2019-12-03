@@ -45,10 +45,10 @@ public class DAOFabricante extends GenericDAO_CRUD {
             ModelFabricante fabricante = (ModelFabricante) object;
             int id = createId();
             
-            String insert = "INSERT INTO fabricantes (id_fabricante, nome) VALUES(?,?) ";
-            save(insert, id, fabricante.getNome());
+            String insert = "INSERT INTO fabricantes (id_fabricante, cnpj, nome) VALUES(?,?,?) ";
+            save(insert, id, fabricante.getCnpj(), fabricante.getNome());
             System.out.println("Metodo salvar DaoFabricante realizado");
-            return 1;
+            return id;
         } catch (MySQLIntegrityConstraintViolationException e) {
             JOptionPane.showMessageDialog(null, "Fabricante Ja cadastrado no BD");
         } catch (SQLException ex) {
@@ -63,9 +63,9 @@ public class DAOFabricante extends GenericDAO_CRUD {
 
     	try {
         ModelFabricante fabricante = (ModelFabricante) object;
-        String update = "UPDATE fabricantes SET nome=? WHERE ID=?";
+        String update = "UPDATE fabricantes SET nome=?, cnpj=? WHERE ID=?";
         
-        update(update, fabricante.getId(),  fabricante.getNome());
+        update(update, fabricante.getId(),  fabricante.getNome(), fabricante.getCnpj());
         
         
         System.out.println("Metodo atualizar Daofabricante realizado");
@@ -107,7 +107,7 @@ public class DAOFabricante extends GenericDAO_CRUD {
         PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM fabricante");
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-            ModelFabricante fabricante = new ModelFabricante(rs.getString("nome"), rs.getInt("id_fabricante"));
+            ModelFabricante fabricante = new ModelFabricante(rs.getString("nome"), rs.getString("cnpj"),rs.getInt("id_fabricante"));
             fabricantes.add(fabricante);
         }
         rs.close();
