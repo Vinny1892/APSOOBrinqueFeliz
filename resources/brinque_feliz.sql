@@ -75,7 +75,7 @@ CREATE TABLE `clientes` (
 --
 
 CREATE TABLE `comprovantes` (
-  `id_comprovante` int(11) NOT NULL,
+  `id_comprovante` int(11) AUTO_INCREMENT NOT NULL,
   `nome_cliente` varchar(50) DEFAULT NULL,
   `rg_cliente` varchar(25) DEFAULT NULL,
   `nome_funcionario` varchar(50) DEFAULT NULL,
