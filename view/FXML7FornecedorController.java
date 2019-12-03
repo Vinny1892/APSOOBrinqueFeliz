@@ -5,15 +5,21 @@
  */
 package view;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import model.ModelFornecedor;
 
 /**
  * FXML Controller class
@@ -29,8 +35,7 @@ public class FXML7FornecedorController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
-    @FXML
+   @FXML
     private AnchorPane tableViewFornecedor;
 
     @FXML
@@ -61,38 +66,22 @@ public class FXML7FornecedorController implements Initializable {
     private Button buttonCriar;
 
     @FXML
-    private Button buttonExcluir;
-
-    @FXML
     private Button buttonEditar;
+
+    @FXML
+    private Button buttonExcluir;
     
-    @FXML
-    private TextField textFieldCNPJ;
+    private ArrayList<ModelFornecedor> fornecedores;
 
     @FXML
-    private TextField textFieldCidade;
-
-    @FXML
-    private TextField textFieldEstado;
-
-    @FXML
-    private TextField textFieldEMail;
-
-    @FXML
-    private TextField textFieldNomeFantasia;
-
-    @FXML
-    private TextField textFieldRazaoSocial;
-
-    @FXML
-    private TextField textFieldEndereco;
-
-    @FXML
-    private TextField textFieldTelefone;
-
-    @FXML
-    void onActionButtonCriar(ActionEvent event) {
-
+    void onActionButtonCriar(ActionEvent event) throws IOException {
+        Parent categoria = FXMLLoader.load(getClass().getResource("FXMLFormFornecedor.fxml"));
+        Scene scene = new Scene(categoria);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        //buttonCriar.getScene().getWindow().hide();
+        inicilizarTableForncedor();
     }
 
     @FXML
@@ -102,12 +91,22 @@ public class FXML7FornecedorController implements Initializable {
 
     @FXML
     void onActionbuttonEditar(ActionEvent event) {
-
+        Parent categoria = FXMLLoader.load(getClass().getResource("FXMLFormFornecedor.fxml"));
+        Scene scene = new Scene(categoria);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        //buttonCriar.getScene().getWindow().hide();
+        inicilizarTableForncedor();
     }
 
     @FXML
-    void onActionbuttonVoltar(ActionEvent event) {
-
+    void onActionbuttonVoltar(ActionEvent event) throws IOException {
+        buttonCriar.getScene().getWindow().hide();
+    }
+    
+    void inicilizarTableForncedor(){
+        fornecedores = controller.ControllerFornecedor.todosFornecedores();
     }
     
 }

@@ -14,7 +14,7 @@ public class DAOFornecedor extends GenericDAO_CRUD {
 
 	@Override
 	public int salvar(Object object) throws SQLException {
-		//try {
+		try {
 			ModelFornecedor fornecedor = (ModelFornecedor) object;
 			if(fornecedor.getId() > -1) {
                 throw new RuntimeException("Esse Fornecedor já foi inserido, para modifica-lo basta o atualizar");}
@@ -24,14 +24,14 @@ public class DAOFornecedor extends GenericDAO_CRUD {
 			save(insert, id, fornecedor.getCnpj(), fornecedor.getNomeFantasia(), fornecedor.getRazaoSocial(), fornecedor.getEndereco(), 
 					     fornecedor.getCidade(), fornecedor.getEstado(), fornecedor.getTelefone(), fornecedor.getEmail());
 			return id;
-		/*} catch (MySQLIntegrityConstraintViolationException e ) {
+		} catch (MySQLIntegrityConstraintViolationException e ) {
 			JOptionPane.showMessageDialog(null, "Fornecedor Ja cadastrado no BD");
 			return -1;
 		}catch (SQLException ex) {
 	            System.out.println(ex);
 	            JOptionPane.showMessageDialog(null, "Erro ao inserir Brinquedo");
 	        }
-		return -1;*/
+		return -1;
 	}
 
 	@Override

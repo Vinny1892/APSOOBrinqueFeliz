@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="897.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXMLRelatorioEstoqueController">
+    <children>
+        <TableView fx:id="tableViewBrinquedosDaLoja" prefHeight="530.0" prefWidth="897.0">
+        <columns>
+          <TableColumn fx:id="columnNome" prefWidth="178.0" text="Nome" />
+          <TableColumn fx:id="columnCodigo" prefWidth="137.0" text="Codigo Barra" />
+            <TableColumn fx:id="columnPreco" prefWidth="73.0" text="Preço" />
+            <TableColumn fx:id="columnCatetoria" prefWidth="127.0" text="Categoria" />
+            <TableColumn fx:id="columnFabricante" prefWidth="139.0" text="Fabricante" />
+            <TableColumn fx:id="columnDescricao" prefWidth="127.0" text="Descriçao" />
+            <TableColumn fx:id="quantidade" prefWidth="115.0" text="Quantidade" />
+        </columns>
+      </TableView>
+      <Button fx:id="buttonEditar" layoutX="152.0" layoutY="558.0" mnemonicParsing="false" onAction="#onActionbuttonEditar" text="Editar" />
+      <Button fx:id="buttonExcluir" layoutX="225.0" layoutY="558.0" mnemonicParsing="false" onAction="#onActionButtonExcluir" text="Excluir" />
+      <Button fx:id="buttonCriar" layoutX="634.0" layoutY="558.0" mnemonicParsing="false" onAction="#onActionButtonCriar" text="Criar" />
+      <Button fx:id="buttonVoltar" layoutX="771.0" layoutY="558.0" mnemonicParsing="false" onAction="#onActionButtonVoltar" text="Voltar" />
+        
+    </children>
+    
+</AnchorPane>

@@ -11,20 +11,42 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.ModelFabricante;
 
-/**
- *
- * @author kaio
- */
+
+
 public class DAOFabricante extends GenericDAO_CRUD {
 
+	protected int createId() throws SQLException { 
+        
+        System.out.println("SELECT id_fabricante FROM fabricantes order by ? desc limit 1"); 
+        PreparedStatement stmt = getConnection().prepareStatement("SELECT id_fabricante FROM fabricantes order by ? desc limit 1"); 
+        stmt.setString(1, "id_fabricante"); 
+        stmt.execute(); 
+        ResultSet rs = stmt.executeQuery(); 
+        while (rs.next()) {
+            
+            int ultimoId = rs.getInt("id_fabricante"); 
+            
+            return ultimoId + 1; 
+            
+           
+        } 
+        
+        
+        rs.close();
+        stmt.close();
+        return 0;
+        
+        
+   } 
     @Override
     public int salvar(Object object) throws SQLException {
         try {
 
             ModelFabricante fabricante = (ModelFabricante) object;
-            String insert = "INSERT INTO fabricantes (nome) VALUES(?) ";
-            save(insert, fabricante.getNome());
-
+            int id = createId();
+            
+            String insert = "INSERT INTO fabricantes (id_fabricante, nome) VALUES(?,?) ";
+            save(insert, id, fabricante.getNome());
             System.out.println("Metodo salvar DaoFabricante realizado");
             return 1;
         } catch (MySQLIntegrityConstraintViolationException e) {

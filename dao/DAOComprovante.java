@@ -8,35 +8,43 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
+
+import model.ModelCliente;
 import model.ModelComprovante;
+import model.ModelFuncionario;
+import model.ModelItemDeVenda;
 
 public class DAOComprovante extends GenericDAO_CRUD{
 
 	@Override
 	public int salvar(Object object) throws SQLException {
-		//try {
+		// me falaram que a daocomprovante não terá mais os metodos salvar nem atualizar, vou deixar como comentario vai que muda de ideia
+		//
+		/*try {
 			ModelComprovante comprovante = (ModelComprovante) object;
+			
 			if(comprovante.getId() > -1) 
-                throw new RuntimeException("Esse Comprovante já foi inserido, para modifica-lo basta o atualizar"); 
+			     throw new RuntimeException("Comprovante Já Inserido, use o update para altera-lo"); 
             
             int id = createId(); 
 			String insert = "INSERT INTO comprovantes (id_comprovante, nome_cliente, rg_cliente, nome_funcionario, cpf_funcionario, forma_pagamento, id_venda) VALUES(?,?,?,?,?,?,?) ";
 			save(insert, id, comprovante.getCliente().getNome(), comprovante.getCliente().getRg(), comprovante.getFuncionario().getNome(), comprovante.getFuncionario().getCpf(), comprovante.getForma(), comprovante.getIdVenda());
 				System.out.println("Metodo salvar DaoComprovante realizado");
-				return 1;
-		/*} catch (MySQLIntegrityConstraintViolationException e) {
+				return id;
+		} catch (MySQLIntegrityConstraintViolationException e) {
 			JOptionPane.showMessageDialog(null, "já tem esse comprovante no BD");
 			return -1;
 		}catch (SQLException ex) {
 			System.out.println(ex);
 			JOptionPane.showMessageDialog(null, "Erro ao inserir Comprovante");
-		}
-		return -1;*/
+		}*/
+		return -1;
 	}
 
 	@Override
 	public boolean atualizar(Object object) throws SQLException {
-		try {
+	
+		/*try {
 			ModelComprovante comprovante = (ModelComprovante) object;
 			String update= "UPDATE comprovantes SET nome_cliente =?, rg_cliente=?, nome_funcionario=?, "
 					+ "cpf_funcionario=?, forma_pagamento=?, id_venda=? WHERE comprovantes.id_comprovante=?";
@@ -51,7 +59,7 @@ public class DAOComprovante extends GenericDAO_CRUD{
 		} catch (SQLException ex) {
           System.out.println(ex);
           JOptionPane.showMessageDialog(null, "Erro ao atualizar Comprovante");
-		}
+		}*/
 			return false;
 	}
 
@@ -73,9 +81,11 @@ public class DAOComprovante extends GenericDAO_CRUD{
 
 	@Override
 	public Object getById(int id) throws SQLException {
-		// TODO Auto-generated method stub
+		PreparedStatement stmt = getConnection().prepareStatement("select * from itens_venda  where itens_venda.id_venda = ?")
 		return null;
 	}
+	
+
 
 	@Override
 	public ArrayList<Object> getAll() throws SQLException {
@@ -85,11 +95,10 @@ public class DAOComprovante extends GenericDAO_CRUD{
         
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-        	ModelComprovante brinquedo = new ModelComprovante ();
-        	// vê como vai ficar isso 
-        	//brinquedo.getCliente().setNome(rs.getString("nome_cliente"));
-        	brinquedo.setForma(rs.getString("forma_pagamento"));
-            comprovantes.add(brinquedo);
+        	ModelComprovante comprovante = new ModelComprovante(rs.getInt("id_comprovante"), rs.getInt("id_venda"), 
+        			ModelCliente.getByIdArray(rs.getInt("id_cliente")), ModelFuncionario.getByIdArray(rs.getInt("id_funcionario")), 
+        			rs.getDate("data_venda"),rs.getString("forma_pagamento"), rs.getDouble("valor"), carrinho);
+            comprovantes.add(comprovante);
         }
         rs.close();
         stmt.close();

@@ -1,6 +1,8 @@
 package model;
-
+import helpers.BCrypt;
+import dao.DAOFuncionario;
 import java.sql.SQLException;
+import java.text.ParseException;
 //import dao.DAOFuncionario;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,6 +19,7 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
     //private enum tipoDePermissao;
     private boolean isADM;
     private String senha;
+    private ArrayList<ModelFuncionario> funcionario;
 
 
     //private static ArrayList<ModelFuncionario> funcionarios;
@@ -45,7 +48,7 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
 
 
     //Sem ID
-public ModelFuncionario(String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, boolean isADM, String senha, String nome, String cpf, Date dataDeNascimento, String endereco, String cep, String cidade, String estado) {
+    public ModelFuncionario(String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, boolean isADM, String senha, String nome, String cpf, Date dataDeNascimento, String endereco, String cep, String cidade, String estado) {
         
         super(nome, cpf, dataDeNascimento, endereco, cep, cidade, estado); 
         this.telefoneResidencial = telefoneResidencial;
@@ -55,8 +58,6 @@ public ModelFuncionario(String telefoneResidencial, String telefoneCelular, Stri
         this.isADM = isADM;
         this.senha = senha; 
         this.id = -1; 
-        
-        
     }
 
 
@@ -121,31 +122,14 @@ public ModelFuncionario(String telefoneResidencial, String telefoneCelular, Stri
         this.senha = senha;
     }
 
-    
-    public Double consultarPreco(long codigoDeBarras){
-        return 0.0;
-    }
-    
-    public void cadastrarCliente(ModelCliente cliente){
-
-    }
-
-    public void excluirCliente(ModelCliente cliente){
-
-    }
 
      //private DAOFuncionario dao = new DAOFuncionario();
-    public ModelFuncionario loginFuncionario(String cpf, String password){
-        return null; 
-    }
-
-    public void atualizarCliente(ModelCliente cliente){
-
-    }
-
-    public ModelCliente consultarCliente(String rg){
+    public ModelFuncionario loginFuncionario(String email, String password){
+     try{ return new  DAOFuncionario().getByEmail(email,password);}
+      catch(Exception ex) {System.out.println(ex);}
         return null;
     }
+
     //CRUD Methods
     @Override
     public int salvar(Object obj) throws SQLException {
@@ -171,6 +155,34 @@ public ModelFuncionario(String telefoneResidencial, String telefoneCelular, Stri
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
+    //
+    public void atualizarArrayFuncionario() throws SQLException{
+        funcionario = (ArrayList<ModelFuncionario>)(ArrayList<?>) dao.getAll();
+    }
+    
+    public ArrayList<ModelFuncionario> getFuncionario() {
+        return funcionario;
+    }
+    
+    public static ModelFuncionario getByIdArray(int id)  {
+        atualizarArrayFuncionario();
+        
+        //return funcionario.get(funcionario.indexOf(Object.getId() == id));
+        // funcionario.forEach(f -> {
+        //     if(f.getId() == id)
+        //         return f;
+        // });
+        for(ModelFuncionario f : funcionario){
+            if(f.getId() == id)
+                return f;
+        }
+    }
+
+    public ArrayList<ModelFuncionario> getAllArray()  {
+        return funcionario;
+    } 
 
 } 
 

@@ -5,17 +5,16 @@
 
 <AnchorPane id="AnchorPane" prefHeight="335.0" prefWidth="362.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXML1AdministradorController">
    <children>
-      <Button fx:id="buttonEstoque" layoutX="188.0" layoutY="233.0" mnemonicParsing="false" onAction="#nActionbuttonEstoque" prefHeight="26.0" prefWidth="133.0" text="Estoque" />
-      <Button fx:id="buttonFornecedores" layoutX="35.0" layoutY="77.0" mnemonicParsing="false" onAction="#onActionbuttonClientes" prefHeight="26.0" prefWidth="133.0" text="Fornecedores" />
+      <Button fx:id="buttonEstoque" layoutX="13.0" layoutY="32.0" mnemonicParsing="false" onAction="#nActionbuttonEstoque" prefHeight="26.0" prefWidth="155.0" text="Relatorio Estoque" />
+      <Button fx:id="buttonFornecedores" layoutX="13.0" layoutY="77.0" mnemonicParsing="false" onAction="#onActionbuttonFornecedor" prefHeight="26.0" prefWidth="155.0" text="Fornecedores" />
       <Button fx:id="buttonFuncionarios" layoutX="186.0" layoutY="128.0" mnemonicParsing="false" onAction="#onActionbuttonFuncionarios" prefHeight="26.0" prefWidth="133.0" text="Funcionarios" />
-      <Button fx:id="buttonCategorias" layoutX="35.0" layoutY="176.0" mnemonicParsing="false" onAction="#buttonCategorias" prefHeight="26.0" prefWidth="133.0" text="Categorias" />
-      <Button fx:id="buttonBrinquedos" layoutX="35.0" layoutY="233.0" mnemonicParsing="false" onAction="#onActionbuttonBrinquedos" prefHeight="26.0" prefWidth="133.0" text="Brinquedos" />
-      <Button fx:id="buttonVendas" layoutX="35.0" layoutY="279.0" mnemonicParsing="false" onAction="#onActionbuttonVendas" prefHeight="26.0" prefWidth="133.0" text="Vendas" />
+      <Button fx:id="buttonCategorias" layoutX="13.0" layoutY="176.0" mnemonicParsing="false" onAction="#buttonCategorias" prefHeight="26.0" prefWidth="155.0" text="Categorias" />
+      <Button fx:id="buttonBrinquedos" layoutX="13.0" layoutY="233.0" mnemonicParsing="false" onAction="#onActionbuttonBrinquedos" prefHeight="26.0" prefWidth="155.0" text="Brinquedos" />
+      <Button fx:id="buttonVendas" layoutX="13.0" layoutY="279.0" mnemonicParsing="false" onAction="#onActionbuttonVendas" prefHeight="26.0" prefWidth="155.0" text="Vendas" />
       <Button fx:id="buttonClientes" layoutX="186.0" layoutY="32.0" mnemonicParsing="false" onAction="#onActionbuttonClientes" prefHeight="26.0" prefWidth="133.0" text="Clientes" />
       <Button fx:id="buttonCatalogo" layoutX="186.0" layoutY="80.0" mnemonicParsing="false" onAction="#onActionbuttonCatalogo" prefHeight="26.0" prefWidth="133.0" text="Catalogo" />
-      <Button fx:id="buttonfabricantes" layoutX="35.0" layoutY="126.0" mnemonicParsing="false" onAction="#onActionbuttonfabricantes" prefHeight="26.0" prefWidth="133.0" text="Fabricantes" />
+      <Button fx:id="buttonfabricantes" layoutX="13.0" layoutY="126.0" mnemonicParsing="false" onAction="#onActionbuttonfabricantes" prefHeight="26.0" prefWidth="155.0" text="Fabricantes" />
       <Button fx:id="buttonComprovantes" layoutX="186.0" layoutY="178.0" mnemonicParsing="false" onAction="#onActionbuttonComprovantes" prefHeight="26.0" prefWidth="133.0" text="Comprovantes" />
-      <Button fx:id="buttonRelatorios" layoutX="35.0" layoutY="30.0" mnemonicParsing="false" onAction="#onActionbuttonRelatorios" prefHeight="26.0" prefWidth="133.0" text="Relatorios" />
       <Button fx:id="buttonBackUp" layoutX="188.0" layoutY="279.0" mnemonicParsing="false" onAction="#onActionsButtonBackup" prefHeight="26.0" prefWidth="133.0" text="Backup" />
    </children>
 </AnchorPane>

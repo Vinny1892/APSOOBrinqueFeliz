@@ -5,10 +5,20 @@
  */
 package controller;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import model.ModelCategoria;
+import model.ModelCliente;
+
 /**
  *
  * @author kaio
  */
 public class ControllerCategoria {
+    
+    public static ArrayList<ModelCategoria> todasCategorias() throws SQLException{
+        return new ModelCategoria().getAllArray();
+    
+    }
     
 }

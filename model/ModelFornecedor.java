@@ -15,7 +15,7 @@ public class ModelFornecedor implements CRUD{
     private String estado;
     private String telefone;
     private String email;
-    //private ArrayList<ModelFabricante> fabricantes;
+    private ArrayList<ModelFornecedor> fornecedores;
     private int id;
 
 
@@ -45,7 +45,10 @@ public class ModelFornecedor implements CRUD{
         this.estado = estado;
         this.telefone = telefone;
         this.email = email;
+        this.id = -1;
     }
+
+
 
     public String getCnpj() {
         return this.cnpj;
@@ -106,7 +109,16 @@ public class ModelFornecedor implements CRUD{
     public String getEmail() {
         return this.email;
     }
-
+public boolean salvarNoArrayList(ModelFornecedor fornecedor){
+127
+ 
+        fornecedores.add(fornecedor);
+128
+ 
+        return true;
+129
+ 
+    }
     public void setEmail(String email) {
         this.email = email;
     }
@@ -119,6 +131,13 @@ public class ModelFornecedor implements CRUD{
         this.id = id;
     }
 
+
+    public boolean salvarNoArrayList(ModelFornecedor fornecedor){
+        fornecedores.add(fornecedor);
+        return true;
+    }
+    
+    
 
     //acesso DAO
 //    private DAOFornecedor dao = new DAOFornecedor();
@@ -148,5 +167,33 @@ public class ModelFornecedor implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
   
+
+    //
+    public void atualizarArrayFornecedor() throws SQLException{
+        fornecedor = (ArrayList<ModelFornecedor>)(ArrayList<?>) dao.getAll();
+    }
+    
+    public ArrayList<ModelFornecedor> getFornecedor() {
+        return fornecedor;
+    }
+    
+    public static ModelFornecedor getByIdArray(int id)  {
+        atualizarArrayFornecedor();
+        
+        //return fornecedor.get(fornecedor.indexOf(Object.getId() == id));
+        // fornecedor.forEach(f -> {
+        //     if(f.getId() == id)
+        //         return f;
+        // });
+        for(ModelFornecedor f : fornecedor){
+            if(f.getId() == id)
+                return f;
+        }
+    }
+
+    public ArrayList<ModelFornecedor> getAllArray()  {
+        return fornecedor;
+    } 
+
 
 }

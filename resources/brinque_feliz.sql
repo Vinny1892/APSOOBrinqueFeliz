@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01-Dez-2019 às 22:12
+-- Tempo de geração: 02-Dez-2019 às 19:17
 -- Versão do servidor: 10.4.8-MariaDB
 -- versão do PHP: 7.3.11
 
@@ -47,7 +47,7 @@ CREATE TABLE `brinquedos` (
 
 CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL,
-  `nome` varchar(255) NOT NULL
+  `nome` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -58,8 +58,8 @@ CREATE TABLE `categorias` (
 
 CREATE TABLE `clientes` (
   `id_cliente` int(11) NOT NULL,
-  `rg` varchar(255) NOT NULL,
-  `cpf` varchar(255) NOT NULL,
+  `rg` varchar(25) NOT NULL,
+  `cpf` varchar(25) NOT NULL,
   `nome` varchar(255) DEFAULT NULL,
   `data_nascimento` date DEFAULT NULL,
   `endereco` varchar(255) DEFAULT NULL,
@@ -77,9 +77,9 @@ CREATE TABLE `clientes` (
 CREATE TABLE `comprovantes` (
   `id_comprovante` int(11) NOT NULL,
   `nome_cliente` varchar(50) DEFAULT NULL,
-  `rg_cliente` varchar(50) DEFAULT NULL,
+  `rg_cliente` varchar(25) DEFAULT NULL,
   `nome_funcionario` varchar(50) DEFAULT NULL,
-  `cpf_funcionario` varchar(50) DEFAULT NULL,
+  `cpf_funcionario` varchar(25) DEFAULT NULL,
   `forma_pagamento` varchar(255) DEFAULT NULL,
   `id_venda` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -93,7 +93,7 @@ CREATE TABLE `comprovantes` (
 CREATE TABLE `fabricantes` (
   `id_fabricante` int(11) NOT NULL,
   `nome` varchar(255) DEFAULT NULL,
-  `cnpj` varchar(255) DEFAULT NULL
+  `cnpj` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -261,7 +261,8 @@ ALTER TABLE `comprovantes`
 -- Índices para tabela `fabricantes`
 --
 ALTER TABLE `fabricantes`
-  ADD PRIMARY KEY (`id_fabricante`);
+  ADD PRIMARY KEY (`id_fabricante`),
+  ADD UNIQUE KEY `cnpj` (`cnpj`);
 
 --
 -- Índices para tabela `fornecedores`

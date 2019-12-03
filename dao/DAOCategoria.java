@@ -3,21 +3,48 @@ package dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLDataException;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import model.ModelCategoria;
 
 
 public class DAOCategoria extends GenericDAO_CRUD {
 
+	protected int createId() throws SQLException { 
+        
+        System.out.println("SELECT id_categoria FROM categorias order by ? desc limit 1"); 
+        PreparedStatement stmt = getConnection().prepareStatement("SELECT id_categoria FROM categorias order by ? desc limit 1"); 
+        stmt.setString(1, "id_categoria"); 
+        stmt.execute(); 
+        ResultSet rs = stmt.executeQuery(); 
+        while (rs.next()) {
+            
+            int ultimoId = rs.getInt("id_categoria"); 
+            
+            return ultimoId + 1; 
+            
+           
+        } 
+        
+        
+        rs.close();
+        stmt.close();
+        return 0;
+        
+        
+   } 
     @Override
     public int salvar(Object object) throws SQLException {
         try {
             ModelCategoria categoria = (ModelCategoria) object;
-            String insert = "INSERT INTO categorias (nome) VALUES(?) ";
-            save(insert, categoria.getNome());
+            int id = createId();
+            
+            String insert = "INSERT INTO categorias (id_categoria, nome) VALUES(?,?) ";
+            save(insert, id, categoria.getNome());
             System.out.println("Metodo salvar Daocategoria realizado");
             return 1;
         } catch (MySQLIntegrityConstraintViolationException e) {

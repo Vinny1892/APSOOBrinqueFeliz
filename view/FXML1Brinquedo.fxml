@@ -1,29 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="buttonCriar" prefHeight="634.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.brinquedo.FXML1EditarBrinquedoController">
+<AnchorPane id="AnchorPane" fx:id="buttonCriar" prefHeight="494.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.brinquedo.FXML1EditarBrinquedoController">
    <children>
-      <Button fx:id="buttonSalvar" layoutX="105.0" layoutY="594.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Salvar" />
-      <Label layoutX="53.0" layoutY="461.0" text="Nome" />
-      <Label layoutX="50.0" layoutY="511.0" text="Codigo" />
-      <Label layoutX="55.0" layoutY="562.0" text="Preço" />
-      <Label layoutX="418.0" layoutY="461.0" text="Categoria" />
-      <Label layoutX="413.0" layoutY="511.0" text="Fabricante" />
-      <Label layoutX="416.0" layoutY="559.0" text="Descriçao" />
-      <TextField fx:id="textFieldNome" layoutX="98.0" layoutY="456.0" prefHeight="26.0" prefWidth="274.0" />
-      <TextField fx:id="textFieldCodigo" layoutX="98.0" layoutY="506.0" prefHeight="26.0" prefWidth="274.0" />
-      <TextField fx:id="textFieldPreco" layoutX="98.0" layoutY="557.0" prefHeight="26.0" prefWidth="274.0" />
-      <TextField fx:id="textFieldDescricao" layoutX="484.0" layoutY="554.0" prefHeight="26.0" prefWidth="274.0" />
-      <Button fx:id="buttonCancelar" layoutX="197.0" layoutY="594.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Cancelar" />
-      <Button fx:id="buttonVoltar" layoutX="487.0" layoutY="3.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="274.0" text="Voltar" />
-      <TableView fx:id="tableViewBrinquedo" layoutX="-2.0" layoutY="32.0" prefHeight="367.0" prefWidth="774.0">
+      <Button fx:id="buttonVoltar" layoutX="663.0" layoutY="452.0" mnemonicParsing="false" onAction="#onActionButtonVoltar" prefHeight="36.0" prefWidth="94.0" text="Voltar" />
+      <TableView fx:id="tableViewBrinquedo" layoutX="6.0" prefHeight="367.0" prefWidth="774.0">
         <columns>
           <TableColumn fx:id="tableColumnNome" prefWidth="180.0" text="Nome" />
           <TableColumn fx:id="tableColumnCodigo" prefWidth="69.0" text="Codigo" />
@@ -33,10 +18,8 @@
             <TableColumn fx:id="tableColumnDescricao" prefWidth="241.0" text="Descriçao" />
         </columns>
       </TableView>
-      <Button fx:id="buttonCriar" layoutX="666.0" layoutY="407.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Criar" />
-      <Button fx:id="buttonEditar" layoutX="21.0" layoutY="407.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Editar" />
-      <Button fx:id="buttonExcluir" layoutX="123.0" layoutY="407.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Excluir" />
-      <ComboBox fx:id="comboBoxCategoria" layoutX="487.0" layoutY="456.0" prefHeight="26.0" prefWidth="274.0" />
-      <ComboBox fx:id="comboBoxFabricante" layoutX="487.0" layoutY="506.0" prefHeight="26.0" prefWidth="274.0" />
+      <Button fx:id="buttonCriar" layoutX="258.0" layoutY="380.0" mnemonicParsing="false" onAction="#onActionButtonCriar" prefHeight="26.0" prefWidth="84.0" text="Criar" />
+      <Button fx:id="buttonEditar" layoutX="358.0" layoutY="380.0" mnemonicParsing="false" onAction="#onActionButtonEditar" prefHeight="26.0" prefWidth="84.0" text="Editar" />
+      <Button fx:id="buttonExcluir" layoutX="461.0" layoutY="380.0" mnemonicParsing="false" onAction="#onActionButtonExcluir" prefHeight="26.0" prefWidth="76.0" text="Excluir" />
    </children>
 </AnchorPane>

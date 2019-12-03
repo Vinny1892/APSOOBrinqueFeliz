@@ -19,12 +19,12 @@ public class DAOCliente extends GenericDAO_CRUD{
 		try {
             ModelCliente cliente = (ModelCliente) object;
             if(cliente.getId() > -1) {
-                throw new RuntimeException("Essa venda já foi inserido, para modifica-lo basta o atualizar");}
+                throw new RuntimeException("Esse cliente já foi inserido, para modifica-lo basta o atualizar");}
 			int id = createId();
             String insert = "INSERT INTO clientes (id_cliente, rg, nome, data_nascimento, endereco, cep, cidade, estado) VALUES(?, ?, ?, ?, ?, ?, ?, ?) ";
             save(insert, id, cliente.getRg(), cliente.getNome(), cliente.getDataDeNascimento(), cliente.getEndereco(), cliente.getCep(),cliente.getCidade(), cliente.getEstado());
             System.out.println("Metodo salvar DAOCliente realizado");
-            return 1;
+            return id;
         } catch (MySQLIntegrityConstraintViolationException e) {
             JOptionPane.showMessageDialog(null, "DAOCliente Ja cadastrado no BD");
         } catch (SQLException ex) {

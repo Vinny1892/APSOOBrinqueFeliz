@@ -8,8 +8,6 @@ package controller;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.ModelItemDeEstoque;
-import model.ModelItemDeVenda;
-
 /**
  *
  * @author kaio
@@ -26,6 +24,10 @@ public class ControllerItemDeEstoque {
 
     public static ArrayList<ModelItemDeEstoque> todosItensDeEstoque() throws SQLException {
         return (ArrayList<ModelItemDeEstoque>) (ArrayList<?>) new ModelItemDeEstoque().getAll();
+    }
+    
+    public static boolean excluirItemNoEstoque(int id) throws SQLException{
+        return new ModelItemDeEstoque().deletar(id);
     }
 
 }

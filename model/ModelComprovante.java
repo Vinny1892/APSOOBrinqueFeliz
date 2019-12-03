@@ -19,6 +19,7 @@ public class ModelComprovante implements CRUD{
     public ModelComprovante() {
     }
 
+    //Com ID
     public ModelComprovante(int id, int idVenda, ModelCliente cliente, ModelFuncionario funcionario, Date data_venda, String forma, Double valorTotal, ArrayList<ModelItemDeVenda> carrinho) {
         this.id = id;
         this.idVenda = idVenda;
@@ -28,6 +29,19 @@ public class ModelComprovante implements CRUD{
         this.forma = forma;
         this.valorTotal = valorTotal;
         this.carrinho = carrinho;
+    }
+
+    
+    //Sem ID
+    public ModelComprovante(int idVenda, ModelCliente cliente, ModelFuncionario funcionario, Date data_venda, String forma, Double valorTotal, ArrayList<ModelItemDeVenda> carrinho) {
+        this.idVenda = idVenda;
+        this.cliente = cliente;
+        this.funcionario = funcionario;
+        this.data_venda = data_venda;
+        this.forma = forma;
+        this.valorTotal = valorTotal;
+        this.carrinho = carrinho;
+        this.id = -1;
     }
 
     
@@ -58,7 +72,9 @@ public class ModelComprovante implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 
+    //////
     public int getId() {
         return id;
     }
@@ -115,12 +131,39 @@ public class ModelComprovante implements CRUD{
         this.valorTotal = valorTotal;
     }
 
+    public void setCarrinho(ArrayList<ModelItemDeVenda> carrinho) {
+        this.carrinho = carrinho;
+    }
+    //Fim Getters e Setters
+
+    
+    
+    ////
     public ArrayList<ModelItemDeVenda> getCarrinho() {
         return carrinho;
     }
 
-    public void setCarrinho(ArrayList<ModelItemDeVenda> carrinho) {
-        this.carrinho = carrinho;
+    public void atualizarArrayCarrinho() throws SQLException{
+        carrinho = (ArrayList<ModelItemDeVenda>)(ArrayList<?>) dao.getAll();
     }
+    
+    //Aqui acho que não pode ser retornado ModelComprovante pq o ArrayList é do tipo ModelItemDeVenda, então ele só retornaria objetos desse tipo.
+    public static ModelItemDeVenda getByIdArray(int id)  {
+        atualizarArrayCarrinho();
+
+        // carrinho.forEach(c -> {
+        //     if(c.getId() == id)
+        //         return c;
+        // });
+        for(ModelItemDeVenda item : carrinho){
+            if(item.getId() == id)
+                return item;
+        }
+        
+    }
+
+    public ArrayList<ModelItemDeVenda> getAllArray()  {
+        return carrinho;
+    }    
 
 }

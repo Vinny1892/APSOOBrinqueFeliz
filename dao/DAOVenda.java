@@ -6,13 +6,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
+import model.ModelCliente;
+import model.ModelComprovante;
+import model.ModelFuncionario;
 import model.ModelVenda;
 
 public class DAOVenda extends GenericDAO_CRUD{
 
 	@Override
 	public int salvar(Object object) throws SQLException {
-		//try {
+		try {
             ModelVenda venda = (ModelVenda) object;
             if(venda.getId() > -1) {
                 throw new RuntimeException("Essa venda já foi inserido, para modifica-lo basta o atualizar");}
@@ -21,13 +25,13 @@ public class DAOVenda extends GenericDAO_CRUD{
             save(insert, id,venda.getData_venda(), venda.getValorTotal(), venda.getFuncionario().getId(), venda.getForma(), venda.getCliente().getId());
             System.out.println("Metodo salvar DAOVenda realizado");
             return id;
-       /* } catch (MySQLIntegrityConstraintViolationException e) {
+        } catch (MySQLIntegrityConstraintViolationException e) {
             JOptionPane.showMessageDialog(null, "Venda Ja cadastrado no BD");
         } catch (SQLException ex) {
             System.out.println(ex);
             JOptionPane.showMessageDialog(null, "Erro ao inserir Venda");
         }
-        return -1;*/
+        return -1;
 	}
 
 	@Override
@@ -51,10 +55,9 @@ public class DAOVenda extends GenericDAO_CRUD{
 	@Override
 	public boolean deletar(int id) throws SQLException {
 		try {
-            //ModelComprovante comprovante = new ModelComprovante();
-            String delete = "DELETE FROM vendas WHERE vendas.id_venda=?";
             
-           delete(delete, id);
+            String delete = "DELETE FROM vendas WHERE vendas.id_venda=?";
+            delete(delete, id);
             System.out.println("Metodo deletar venda realizado");
             return true;
         } catch (SQLException ex) {
@@ -72,8 +75,19 @@ public class DAOVenda extends GenericDAO_CRUD{
 
 	@Override
 	public ArrayList<Object> getAll() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Object> comprovantes = new ArrayList<>();
+        PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM comprovantes");
+        ResultSet rs = stmt.executeQuery();
+        
+        while (rs.next()) {
+        	ModelVenda ve1= new ModelVenda();
+        	ModelVenda venda= new ModelVenda(rs.getInt("id_venda"), ModelCliente.getByIdArray(rs.getInt("id_cliente")),
+        			ModelFuncionario.getByIdArray(rs.getInt("id_funcionario")), rs.getDate("data_venda"), rs.getString("forma_pagamento"), 
+        			rs.getDouble("valor"), ve1.getAllArray());
+        }
+        rs.close();
+        stmt.close();
+        return comprovantes;
 	}
 	protected int createId() throws SQLException { 
         

@@ -59,9 +59,6 @@ public class FXML1AdministradorController implements Initializable {
     private Button buttonComprovantes;
 
     @FXML
-    private Button buttonRelatorios;
-
-    @FXML
     private Button buttonBackUp;
 
     @FXML
@@ -76,7 +73,7 @@ public class FXML1AdministradorController implements Initializable {
 
     @FXML
     void nActionbuttonEstoque(ActionEvent event) throws IOException {
-        Parent paret = FXMLLoader.load(getClass().getResource("FXML6Estoques.fxml"));
+        Parent paret = FXMLLoader.load(getClass().getResource("FXMLRelatorioEstoque.fxml"));
         Scene scene = new Scene(paret);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -152,4 +149,22 @@ public class FXML1AdministradorController implements Initializable {
     void onActionsButtonBackup(ActionEvent event) {
         
     }
+    @FXML
+    void onActionbuttonFornecedor (ActionEvent event) throws IOException{
+        Parent fornecedor = FXMLLoader.load(getClass().getResource("FXML7Fornecedor.fxml"));
+        Scene scene = new Scene(fornecedor);
+        //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+       // buttonFornecedores.getScene();
+    }
+    @FXML
+    void onActionbuttonVendas (ActionEvent event) {
+        
+    }
+    
+    
+    
+    
 }

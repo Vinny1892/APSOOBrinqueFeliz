@@ -1,5 +1,5 @@
 package view;
-
+import helpers.BCrypt;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -45,10 +45,14 @@ public class FXML0loginController implements Initializable {
     void onActionButtonLogar(ActionEvent event) throws IOException {
         String user = textFieldUser.getText();
         String password = textFieldPassword.getText();
+        String passwordHashed = BCrypt.hashpw(password,  BCrypt.gensalt(6));
+        
         ModelFuncionario funcionario = buscaFuncionario(user, password);
-        if (true) {//if (mf != null) {
+        if (true) {//if (
             Stage stage = new Stage();
             if (false) {//if (mf.isADM()) //chama tela adm
+                 System.out.println(passwordHashed);
+                 System.out.println(BCrypt.checkpw(password, passwordHashed));
                 Parent p = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
                 Scene scene = new Scene(p);
                 stage.setScene(scene);

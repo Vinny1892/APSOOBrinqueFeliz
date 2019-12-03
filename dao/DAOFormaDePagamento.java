@@ -20,8 +20,9 @@ import java.util.Date;
 import javax.swing.JOptionPane; 
 
 
-public class DAOFuncionario extends GenericDAO_CRUD {
+public class DAOFormaDePagamento extends GenericDAO_CRUD {
 
+	
     @Override
     public int salvar(Object object) throws SQLException {
        // try {
