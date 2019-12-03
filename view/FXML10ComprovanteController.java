@@ -36,6 +36,7 @@ public class FXML10ComprovanteController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         ModelComprovante comprovante = controller.ControllerComprovante.getByIdVenda(idVenda);
         itensComprado = comprovante.getCarrinho();
+        inicializarTabelaDeItensComprados();
         // TODO
     }
 
@@ -96,7 +97,6 @@ public class FXML10ComprovanteController implements Initializable {
 
     void inicializarTabelaDeItensComprados() {
         
-        itensComprado = controller.ControllerComprovante.;
         
     }
 }
