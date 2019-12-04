@@ -86,38 +86,14 @@ public class ModelFabricante implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-
-    //
-<<<<<<< HEAD
-//    public void atualizarArrayFabricante() throws SQLException{
-//        fabricante = (ArrayList<ModelFabricante>)(ArrayList<?>) dao.getAll();
-//    }
-=======
     public void atualizarArrayFabricante() throws SQLException{
         fabricantes = (ArrayList<ModelFabricante>)(ArrayList<?>) new dao.DAOFabricante().getAll(); 
 
-    }
->>>>>>> developer
+    } 
     
     public ArrayList<ModelFabricante> getFabricante() {
         return fabricantes;
-    }
-    
-<<<<<<< HEAD
-//    public static ModelFabricante getByIdArray(int id)  {
-//        atualizarArrayFabricante();
-//
-//        //return fabricante.get(fabricante.indexOf(Object.getId() == id));
-//        // fabricante.forEach(f -> {
-//        //     if(f.getId() == id)
-//        //         return f;
-//        // });
-//        for(ModelFabricante f : fabricante){
-//            if(f.getId() == id)
-//                return f;
-//        }
-//    }
-=======
+    } 
 
     public ModelFabricante getByIdArray(int id) throws SQLException  {
         atualizarArrayFabricante();
@@ -133,8 +109,6 @@ public class ModelFabricante implements CRUD{
         return null; 
     } 
     
-
->>>>>>> developer
     public ArrayList<ModelFabricante> getAllArray()  {
         return fabricantes; 
     } 

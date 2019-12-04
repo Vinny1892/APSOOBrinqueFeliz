@@ -174,8 +174,7 @@ public class ModelBrinquedo implements CRUD{
         return null; 
         
         
-    }
->>>>>>> developer
+    } 
 
     public ArrayList<ModelBrinquedo> getAllArray()  {
         return brinquedos;
