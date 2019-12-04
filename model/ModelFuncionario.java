@@ -21,7 +21,7 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
     private String senha;
     private static ArrayList<ModelFuncionario> funcionarios; 
     
-    private DAOFuncionario dao; 
+    private DAOFuncionario dao = new DAOFuncionario(); 
 
 
     //private static ArrayList<ModelFuncionario> funcionarios;
@@ -161,7 +161,7 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
     //
 
     public void atualizarArrayFuncionario() throws SQLException{
-        funcionarios = (ArrayList<ModelFuncionario>)(ArrayList<?>) new dao.DAOFuncionario().getAll(); 
+        funcionarios = (ArrayList<ModelFuncionario>)(ArrayList<?>) dao.getAll(); 
     }
     
     public ModelFuncionario getByIdArray(int id) throws SQLException  {

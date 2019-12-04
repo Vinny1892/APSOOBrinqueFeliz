@@ -20,7 +20,9 @@ public class ControllerFuncionario {
     
     
     public static ArrayList<ModelFuncionario> todosFuncionarios() throws SQLException{
-        return new ModelFuncionario().getAllArray(); 
+        ModelFuncionario f = new ModelFuncionario();
+        f.atualizarArrayFuncionario();
+        return f.getAllArray(); 
     }
     
     public static boolean excluirFuncionario(ModelFuncionario funcionario) throws SQLException{
