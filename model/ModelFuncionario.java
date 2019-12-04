@@ -20,6 +20,8 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
     private boolean isADM;
     private String senha;
     private static ArrayList<ModelFuncionario> funcionarios; 
+    
+    private DAOFuncionario dao; 
 
 
     //private static ArrayList<ModelFuncionario> funcionarios;
@@ -42,22 +44,21 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
         this.email = email;
         this.dataDeContratacao = dataDeContratacao;
         this.isADM = isADM;
-        this.senha = senha;
-    }
+        this.senha = senha; 
+        
+        this.dao = new DAOFuncionario(); 
+        
+        
+    } 
 
 
     //Sem ID
     public ModelFuncionario(String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, boolean isADM, String senha, String nome, String cpf, Date dataDeNascimento, String endereco, String cep, String cidade, String estado) throws SQLException {
         
-        super(nome, cpf, dataDeNascimento, endereco, cep, cidade, estado); 
-        this.telefoneResidencial = telefoneResidencial;
-        this.telefoneCelular = telefoneCelular;
-        this.email = email;
-        this.dataDeContratacao = dataDeContratacao;
-        this.isADM = isADM;
-        this.senha = senha; 
-        this.id = -1; 
-    }
+        this( -1, telefoneResidencial, telefoneCelular, email, dataDeContratacao, isADM, senha, nome, cpf, dataDeNascimento, endereco, cep, cidade, estado); 
+        
+        
+    } 
 
 
 
@@ -132,26 +133,28 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
     //CRUD Methods
     @Override
     public int salvar(Object obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.salvar(this); // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public boolean atualizar(Object obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.atualizar(this); // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public boolean deletar(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.deletar(id); // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Object getById(int id) throws SQLException {
+
+        return dao.getById(id); // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public ArrayList<Object> getAll() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.getAll(); // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 
