@@ -20,5 +20,9 @@ public class ControllerVenda {
         
         return new ModelVenda().salvar(venda);
     }
+    
+    public static ModelVenda getById(int idVenda){
+        return null;
+    }
 
 }

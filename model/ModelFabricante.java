@@ -88,15 +88,16 @@ public class ModelFabricante implements CRUD{
     //
     public void atualizarArrayFabricante() throws SQLException{
         fabricantes = (ArrayList<ModelFabricante>)(ArrayList<?>) new dao.DAOFabricante().getAll(); 
+
     }
     
     public ArrayList<ModelFabricante> getFabricante() {
         return fabricantes;
     }
     
+
     public ModelFabricante getByIdArray(int id) throws SQLException  {
         atualizarArrayFabricante();
-
         //return fabricante.get(fabricante.indexOf(Object.getId() == id));
         // fabricante.forEach(f -> {
         //     if(f.getId() == id)
@@ -105,13 +106,11 @@ public class ModelFabricante implements CRUD{
         for(ModelFabricante f : fabricantes){
             if(f.getId() == id)
                 return f;
-        } 
-        
+        }     
         return null; 
-        
-        
     } 
     
+
     public ArrayList<ModelFabricante> getAllArray()  {
         return fabricantes; 
     } 

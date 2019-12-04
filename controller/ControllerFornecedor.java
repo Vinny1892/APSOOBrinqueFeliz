@@ -27,4 +27,8 @@ public class ControllerFornecedor {
         return new ModelFornecedor().atualizar(forncedor);
     }
     
+    public static boolean excluir(ModelFornecedor fornecedor) throws SQLException{
+        return new ModelFornecedor().deletar(fornecedor.getId());
+    }
+    
 }
