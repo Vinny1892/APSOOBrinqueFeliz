@@ -1,6 +1,6 @@
 package view;
 
-import br.com.fandrauss.fx.gui.WindowControllerFx;
+//import br.com.fandrauss.fx.gui.WindowControllerFx;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -50,7 +50,7 @@ public class FXML8VendaController  implements Initializable {
              tableViewCarrinhoDeCompras.getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
             buttonExcluirItemDoCarrinhoDeCompra.setDisable(false);
         });
-         }  
+    }
   
  
     private ModelFuncionario funcionarioLogado;
@@ -158,7 +158,7 @@ public class FXML8VendaController  implements Initializable {
         ModelVenda venda = new ModelVenda(cliente, funcionarioLogado, dataVenda, forma, valorTotal, carrinhoCompra);
         //salvar no BD
         int idVenda = controller.ControllerVenda.finalizarCompra(venda);
-        passar para a proxima comprovante tela esse idVenda;
+        //passar para a proxima comprovante tela esse idVenda;
         controller.ControllerItemDeEstoque.atualizarItensNoEstoque(itensDeEstoqueComprado);
         //chamar proxima tela
         Stage stage = new Stage();
@@ -246,9 +246,5 @@ public class FXML8VendaController  implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }
