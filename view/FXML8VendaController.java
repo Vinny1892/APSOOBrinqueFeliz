@@ -158,7 +158,7 @@ public class FXML8VendaController  implements Initializable {
         ModelVenda venda = new ModelVenda(cliente, funcionarioLogado, dataVenda, forma, valorTotal, carrinhoCompra);
         //salvar no BD
         int idVenda = controller.ControllerVenda.finalizarCompra(venda);
-        passar para a proxima comprovante tela esse idVenda;
+        //passar para a proxima comprovante tela esse idVenda;
         controller.ControllerItemDeEstoque.atualizarItensNoEstoque(itensDeEstoqueComprado);
         //chamar proxima tela
         Stage stage = new Stage();
