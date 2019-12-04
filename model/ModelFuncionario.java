@@ -19,7 +19,7 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
     //private enum tipoDePermissao;
     private boolean isADM;
     private String senha;
-    private ArrayList<ModelFuncionario> funcionario;
+    private static ArrayList<ModelFuncionario> funcionarios; 
 
 
     //private static ArrayList<ModelFuncionario> funcionarios;
@@ -159,29 +159,33 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
 
     //
     public void atualizarArrayFuncionario() throws SQLException{
-        funcionario = (ArrayList<ModelFuncionario>)(ArrayList<?>) dao.getAll();
+        funcionarios = (ArrayList<ModelFuncionario>)(ArrayList<?>) new dao.DAOFuncionario().getAll(); 
     }
     
     public ArrayList<ModelFuncionario> getFuncionario() {
-        return funcionario;
+        return funcionarios; 
     }
     
-    public static ModelFuncionario getByIdArray(int id)  {
-        atualizarArrayFuncionario();
+    public ModelFuncionario getByIdArray(int id) throws SQLException  {
+        atualizarArrayFuncionario(); 
         
         //return funcionario.get(funcionario.indexOf(Object.getId() == id));
         // funcionario.forEach(f -> {
         //     if(f.getId() == id)
         //         return f;
         // });
-        for(ModelFuncionario f : funcionario){
+        for(ModelFuncionario f : funcionarios){
             if(f.getId() == id)
                 return f;
-        }
-    }
+        } 
+        
+        return null; 
+        
+        
+    } 
 
     public ArrayList<ModelFuncionario> getAllArray()  {
-        return funcionario;
+        return funcionarios; 
     } 
 
 } 

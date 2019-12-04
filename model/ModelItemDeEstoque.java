@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class ModelItemDeEstoque implements CRUD{
-    private static ArrayList<ModelItemDeEstoque> itensNoEstoque;
-    private ModelBrinquedo brinquedo;//tirar?
+    private static ArrayList<ModelItemDeEstoque> itensDeEstoque; 
+    private ModelBrinquedo brinquedo; //tirar? 
     private int quantidade;
     private int id;
 
@@ -32,11 +32,11 @@ public class ModelItemDeEstoque implements CRUD{
     }
 
     public static ArrayList<ModelItemDeEstoque> getItensNoEstoque() {
-        return itensNoEstoque;
+        return itensDeEstoque;
     }
 
     public static void atualizarArrayListItensNoEstoque() throws SQLException {
-        itensNoEstoque = (ArrayList<ModelItemDeEstoque>) (ArrayList<?>) new DAOItemDeEstoque().getAll();
+        itensDeEstoque = (ArrayList<ModelItemDeEstoque>) (ArrayList<?>) new DAOItemDeEstoque().getAll();
     }
 
     public ModelBrinquedo getBrinquedo() {
@@ -131,14 +131,14 @@ public class ModelItemDeEstoque implements CRUD{
 
     //
     public void atualizarArrayItensNoEstoque() throws SQLException{
-        itensNoEstoque = (ArrayList<ModelItemDeEstoque>)(ArrayList<?>) dao.getAll();
+        itensDeEstoque = (ArrayList<ModelItemDeEstoque>)(ArrayList<?>) dao.getAll();
     }
     
     // public ArrayList<ModelItemDeEstoque> getItensNoEstoque() {
     //     return itensNoEstoque;
     // }
     
-    public static ModelItemDeEstoque getByIdArray(int id)  {
+    public ModelItemDeEstoque getByIdArray(int id) throws SQLException  {
         atualizarArrayItensNoEstoque();
 
         //return itensNoEstoque.get(itensNoEstoque.indexOf(Object.getId() == id));
@@ -146,13 +146,20 @@ public class ModelItemDeEstoque implements CRUD{
         //     if(f.getId() == id)
         //         return f;
         // });
-        for(ModelItemDeEstoque f : itensNoEstoque){
+        for(ModelItemDeEstoque f : itensDeEstoque){
             if(f.getId() == id)
                 return f;
-        }
-    }
-    public ArrayList<ModelItemDeEstoque> getAllArray()  {
-        return itensNoEstoque;
+        } 
+        
+        return null; 
+        
+        
     } 
+    
+    public ArrayList<ModelItemDeEstoque> getAllArray()  {
+        return itensDeEstoque; 
+    } 
+    
 
-}
+} 
+
