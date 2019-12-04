@@ -5,6 +5,8 @@
  */
 package controller;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import model.ModelFuncionario;
 
 /**
@@ -12,7 +14,17 @@ import model.ModelFuncionario;
  * @author kaio
  */
 public class ControllerFuncionario {
-    public static ModelFuncionario buscaFuncionario(String user, String password){
+    public static ModelFuncionario buscaFuncionario(String user, String password) throws SQLException{
         return new ModelFuncionario().loginFuncionario(user, password);
+    }
+    
+    
+    public static ArrayList<ModelFuncionario> todosFuncionarios() throws SQLException{
+        return new ModelFuncionario().getAllArray(); 
+    }
+    
+    public static boolean excluirFuncionario(ModelFuncionario funcionario) throws SQLException{
+        new ModelFuncionario().getAllArray().remove(funcionario);
+        return new ModelFuncionario().deletar(funcionario.getId()); 
     }
 }

@@ -35,10 +35,10 @@ public class FXML3FabricanteController implements Initializable {
     private TableView<ModelFabricante> tableView;
 
     @FXML
-    private TableColumn<?, ?> columnNome;
+    private TableColumn<ModelFabricante, String> columnNome;
 
     @FXML
-    private TableColumn<?, ?> columnCNPJ;
+    private TableColumn<ModelFabricante, String> columnCNPJ;
 
     @FXML
     private Button buttonVoltar;

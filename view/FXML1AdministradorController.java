@@ -122,17 +122,14 @@ public class FXML1AdministradorController implements Initializable {
     }
 
     @FXML
-    void onActionbuttonFuncionarios(ActionEvent event) {
-        try {
+    void onActionbuttonFuncionarios(ActionEvent event) throws IOException {
             Parent funcionario = FXMLLoader.load(getClass().getResource("FXML4Funcionario.fxml"));
             Scene scene = new Scene(funcionario);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
             buttonCategorias.getScene();
-        } catch (Exception ex) {
-            System.out.println("Erro ao carregar fxml Funcionario" + ex);
-        }
+       
     }
 
     @FXML

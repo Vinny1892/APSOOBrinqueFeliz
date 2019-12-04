@@ -14,6 +14,7 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import static controller.ControllerFuncionario.buscaFuncionario;
+import java.sql.SQLException;
 import model.ModelFuncionario;
 
 /**
@@ -49,7 +50,7 @@ public class FXML0loginController implements Initializable {
     
 
     @FXML
-    void onActionButtonLogar(ActionEvent event) throws IOException {
+    void onActionButtonLogar(ActionEvent event) throws IOException, SQLException{
         String user = textFieldUser.getText();
         String password = textFieldPassword.getText();
 

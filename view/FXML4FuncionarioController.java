@@ -5,12 +5,16 @@
  */
 package view;
 
+import static controller.ControllerItemDeEstoque.todosItensDeEstoque;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,11 +25,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.ModelFuncionario;
@@ -42,7 +48,11 @@ public class FXML4FuncionarioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-   
+        try {
+            inicializarFuncionarios();
+        } catch (SQLException ex) {
+            Logger.getLogger(FXML4FuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 
@@ -78,10 +88,10 @@ public class FXML4FuncionarioController implements Initializable {
     private TableColumn<ModelFuncionario, String> comumnEmail;
 
     @FXML
-    private TableColumn<ModelFuncionario, String> columnDataContracao;
+    private TableColumn<ModelFuncionario, Date> columnDataContracao;
 
     @FXML
-    private TableColumn<ModelFuncionario, String> columnPermissao;
+    private TableColumn<ModelFuncionario, Boolean> columnPermissao;
     
     
       @FXML
@@ -91,28 +101,59 @@ public class FXML4FuncionarioController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
-        buttonCriar.getScene().getWindow().hide();
+        //buttonCriar.getScene().getWindow().hide();
     }
 
     @FXML
-    void onActionbuttonEditar(ActionEvent event) {
-
+    void onActionbuttonEditar(ActionEvent event) throws IOException {
+        ModelFuncionario funcionario = tableViewFuncionario.getSelectionModel().getSelectedItem();
+        //passar o funcionario para  a proxima tela form, e preencher a tela com esses dados;
+        Parent formFuncionario = FXMLLoader.load(getClass().getResource("FXMLFormFuncionario10.fxml"));
+        Scene scene = new Scene(formFuncionario);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        //buttonCriar.getScene().getWindow().hide();
     }
 
     @FXML
-    void onActionbuttonExcluir(ActionEvent event) {
-        
-
+    void onActionbuttonExcluir(ActionEvent event) throws SQLException {
+        ModelFuncionario funcionario = tableViewFuncionario.getSelectionModel().getSelectedItem();
+        if (!controller.ControllerFuncionario.excluirFuncionario(funcionario)) {
+            Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
+            dialogoInfo.setTitle("Funcionario");
+            dialogoInfo.setHeaderText("Excluir Funcionario");
+            dialogoInfo.setContentText("Não foi possivel excluir o funcionario.");
+            dialogoInfo.showAndWait();
+        }
+     
     }
     
     @FXML
     void onActionButtonVoltar(ActionEvent event) throws IOException {
-        Parent adm = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
-        Scene scene = new Scene(adm);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
+//        Parent adm = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
+//        Scene scene = new Scene(adm);
+//        Stage stage = new Stage();
+//        stage.setScene(scene);
+//        stage.show();
         buttonCriar.getScene().getWindow().hide();
+    }
+    
+    
+    private ArrayList<ModelFuncionario> funcionarios;
+    private ObservableList<ModelFuncionario> obsFuncionarios;
+    
+    
+    private void inicializarFuncionarios() throws SQLException {
+        funcionarios = controller.ControllerFuncionario.todosFuncionarios();
+        columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        columnCelular.setCellValueFactory(new PropertyValueFactory<>("telefoneCelular"));
+        columnDataContracao.setCellValueFactory(new PropertyValueFactory<>("dataDeContratacao"));
+        columnPermissao.setCellValueFactory(new PropertyValueFactory<>("isADM"));
+        columnTelefone.setCellValueFactory(new PropertyValueFactory<>("telefoneResidencial"));
+        comumnEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        obsFuncionarios = FXCollections.observableArrayList(funcionarios);
+        tableViewFuncionario.setItems(obsFuncionarios);
     }
     
    
