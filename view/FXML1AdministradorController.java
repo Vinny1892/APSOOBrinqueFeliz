@@ -60,7 +60,7 @@ public class FXML1AdministradorController implements Initializable {
 
     @FXML
     private Button buttonBackUp;
-    
+
     @FXML
     void buttonCategorias(ActionEvent event) throws IOException {
         Parent categoria = FXMLLoader.load(getClass().getResource("FXML2Categoria.fxml"));
@@ -91,15 +91,15 @@ public class FXML1AdministradorController implements Initializable {
         buttonBrinquedos.getScene();
     }
 
-    @FXML
-    void onActionbuttonCatalogo(ActionEvent event) throws IOException {
-        Parent paret = FXMLLoader.load(getClass().getResource("FXML5Catalogo.fxml"));
-        Scene scene = new Scene(paret);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
-        buttonCategorias.getScene();
-    }
+//    @FXML
+//    void onActionbuttonCatalogo(ActionEvent event) throws IOException {
+//        Parent paret = FXMLLoader.load(getClass().getResource("FXML5Catalogo.fxml"));
+//        Scene scene = new Scene(paret);
+//        Stage stage = new Stage();
+//        stage.setScene(scene);
+//        stage.show();
+//        buttonCategorias.getScene();
+//    }
 
     @FXML
     void onActionbuttonClientes(ActionEvent event) throws IOException {
@@ -123,13 +123,12 @@ public class FXML1AdministradorController implements Initializable {
 
     @FXML
     void onActionbuttonFuncionarios(ActionEvent event) throws IOException {
-            Parent funcionario = FXMLLoader.load(getClass().getResource("FXML4Funcionario.fxml"));
-            Scene scene = new Scene(funcionario);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-            buttonCategorias.getScene();
-       
+        Parent funcionario = FXMLLoader.load(getClass().getResource("FXML4Funcionario.fxml"));
+        Scene scene = new Scene(funcionario);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        buttonCategorias.getScene();
     }
 
     @FXML
@@ -144,24 +143,24 @@ public class FXML1AdministradorController implements Initializable {
 
     @FXML
     void onActionsButtonBackup(ActionEvent event) {
-        
+
     }
+
     @FXML
-    void onActionbuttonFornecedor (ActionEvent event) throws IOException{
+    void onActionbuttonFornecedor(ActionEvent event) throws IOException {
         Parent fornecedor = FXMLLoader.load(getClass().getResource("FXML7Fornecedor.fxml"));
         Scene scene = new Scene(fornecedor);
         //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
-       // buttonFornecedores.getScene();
+        // buttonFornecedores.getScene();
     }
-    @FXML
-    void onActionbuttonVendas (ActionEvent event) {
-        
-    }
-    
-    
-    
-    
+//    @FXML
+//    void onActionbuttonVendas (ActionEvent event) {
+//        
+//    }
+//    
+//    
+
 }

@@ -63,7 +63,6 @@ public class FXML2CategoriaController implements Initializable {
     @FXML
     private Button buttonSalvar;
 
-    private ArrayList<ModelCategoria> categorias;
 
     @FXML
     void onActionButtonCria(ActionEvent event) {
@@ -88,7 +87,7 @@ public class FXML2CategoriaController implements Initializable {
         ModelCategoria categoria = comboBoxCategorias.getValue();
         Alert alert = null;
         if (categoria != null) {
-                controller.ControllerCategoria.remover(categoria);
+            controller.ControllerCategoria.remover(categoria);
         } else {
             alert = new Alert(Alert.AlertType.NONE, "Não foi selecionado nenhuma categoria", ButtonType.YES);
             alert.show();
@@ -96,17 +95,24 @@ public class FXML2CategoriaController implements Initializable {
     }
 
     @FXML
-    void onActionButtonSalvar(ActionEvent event) throws SQLException {
+    void onActionButtonSalvar(ActionEvent event) {
         ModelCategoria categoria = comboBoxCategorias.getValue();
         String nome = textFieldNome.getText();
-        if (categoria == null) {//editar
-            categoria.setNome(nome);
-            controller.ControllerCategoria.editar(categoria);
-        } else {//salvar novo
-            categoria = new ModelCategoria(nome);
-            controller.ControllerCategoria.salvar(categoria);
+        try {
+            if (categoria != null) {//editar
+                categoria.setNome(nome);
+                controller.ControllerCategoria.editar(categoria);
+            } else {//salvar novo
+                categoria = new ModelCategoria(nome);
+                controller.ControllerCategoria.salvar(categoria);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FXML2CategoriaController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        //inicializarComboBoxCategoria();
     }
+
+    private ArrayList<ModelCategoria> categorias;
     private ObservableList<ModelCategoria> obsCategoria;
 
     private void inicializarComboBoxCategoria() {
