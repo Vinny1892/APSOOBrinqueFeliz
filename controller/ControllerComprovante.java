@@ -28,4 +28,8 @@ public class ControllerComprovante {
     public static boolean remover(ModelComprovante comprovante) throws SQLException{
         return new ModelComprovante().deletar(comprovante.getId());
     }
+    
+    public static ArrayList<ModelComprovante> todosComprovantes(){
+        return new ModelComprovante().getcomprovantes();
+    }
 }

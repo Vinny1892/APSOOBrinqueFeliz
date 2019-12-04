@@ -16,7 +16,9 @@ import model.ModelFuncionario;
  * @author kaio
  */
 public class ControllerItemVenda {
-    
+    public static ArrayList<ModelItemDeVenda> todosItensDeVenda() throws SQLException{
+        return (ArrayList<ModelItemDeVenda>) (ArrayList<?>) new  ModelItemDeVenda().getAll();
+    }
     
     
     

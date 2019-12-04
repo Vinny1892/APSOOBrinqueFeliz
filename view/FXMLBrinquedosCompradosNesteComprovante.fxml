@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXMLBrinquedosCompradosNesteComprovanteController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="606.0" prefWidth="676.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="view.FXMLBrinquedosCompradosNesteComprovanteController">
+   <children>
+      <TableView fx:id="tableViewItemDeVenda" prefHeight="295.0" prefWidth="676.0">
+        <columns>
+          <TableColumn fx:id="columnBrinquedo" prefWidth="305.0" text="Brinquedo" />
+          <TableColumn fx:id="cloumnQtd" prefWidth="205.0" text="Quantidade" />
+            <TableColumn fx:id="columnIDItemDeVenda" prefWidth="165.0" text="ID item de venda" />
+        </columns>
+      </TableView>
+      <TextField fx:id="textFieldIDComprovante" layoutX="128.0" layoutY="303.0" />
+      <Label layoutX="14.0" layoutY="308.0" text="ID Comprovante" />
+      <TextField fx:id="textFieldIDVenda" layoutX="452.0" layoutY="303.0" />
+      <Label layoutX="384.0" layoutY="308.0" text="ID Venda" />
+      <TextField fx:id="textFieldCliente" layoutX="128.0" layoutY="337.0" />
+      <Label layoutX="14.0" layoutY="342.0" text="Cliente" />
+      <TextField fx:id="textFieldFuncionario" layoutX="128.0" layoutY="373.0" />
+      <Label layoutX="14.0" layoutY="378.0" text="Funcionario" />
+      <TextField fx:id="textFieldDataVenda" layoutX="128.0" layoutY="408.0" />
+      <Label layoutX="14.0" layoutY="413.0" text="Data Venda" />
+      <TextField fx:id="textFieldFormaPagamento" layoutX="452.0" layoutY="337.0" />
+      <Label layoutX="315.0" layoutY="342.0" text="Forma pagamento" />
+      <TextField fx:id="textFieldValorTotal" layoutX="452.0" layoutY="373.0" />
+      <Label layoutX="338.0" layoutY="378.0" text="Valor total" />
+   </children>
 </AnchorPane>
