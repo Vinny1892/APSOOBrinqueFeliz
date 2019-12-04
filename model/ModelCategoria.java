@@ -58,7 +58,7 @@ public class ModelCategoria implements CRUD{
     public ArrayList<ModelCategoria> getCategorias() {
         return categorias;
     }
-    
+
     public ModelCategoria getByIdArray(int id) throws SQLException  {
         atualizarArrayCategorias(); 
         
@@ -76,6 +76,7 @@ public class ModelCategoria implements CRUD{
         
         
     } 
+
     
     public ArrayList<ModelCategoria> getAllArray()  {
         return categorias;
