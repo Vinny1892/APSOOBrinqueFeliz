@@ -170,11 +170,11 @@ public class FXMLFormFuncionarioController implements Initializable {
 
     @FXML
     void btnVoltarAction(ActionEvent event) throws IOException {
-        Parent adm = FXMLLoader.load(getClass().getResource("FXML4Funcionario.fxml"));
-        Scene scene = new Scene(adm);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
+//        Parent adm = FXMLLoader.load(getClass().getResource("FXML4Funcionario.fxml"));
+//        Scene scene = new Scene(adm);
+//        Stage stage = new Stage();
+//        stage.setScene(scene);
+//        stage.show();
         buttonVoltar.getScene().getWindow().hide();
     }
 

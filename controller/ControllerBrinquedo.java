@@ -7,14 +7,18 @@ package controller;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.ModelBrinquedo;
-import model.ModelCliente;
 
 /**
  *
  * @author kaio
  */
 public class ControllerBrinquedo {
-    public static ArrayList<ModelCliente> todosBrinquedos() throws SQLException{
-        return (ArrayList<ModelCliente>)(ArrayList<?>) new ModelBrinquedo().getAll();
+    public static ArrayList<ModelBrinquedo> todosBrinquedos() throws SQLException{
+        new ModelBrinquedo().atualizarArrayBrinquedos();
+        return new ModelBrinquedo().getAllArray();
+    }
+    
+    public static boolean excluirBrinquedo(ModelBrinquedo brinquedo) throws SQLException{
+        return new ModelBrinquedo().deletar(brinquedo.getId());
     }
 }

@@ -17,8 +17,8 @@ import model.ModelCliente;
 public class ControllerCategoria {
     
     public static ArrayList<ModelCategoria> todasCategorias() throws SQLException{
+        new ModelCategoria().atualizarArrayCategorias();
         return new ModelCategoria().getAllArray();
-    
     }
     
     public static int salvar(ModelCategoria categoria) throws SQLException{
@@ -37,5 +37,6 @@ public class ControllerCategoria {
         new ModelCategoria().getCategorias().remove(categoria);
         return new ModelCategoria().deletar(categoria.getId());
     }
-    
+ 
+            
 }

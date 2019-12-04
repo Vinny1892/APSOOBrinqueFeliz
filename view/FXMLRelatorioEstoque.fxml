@@ -20,8 +20,8 @@
         </TableView>
         <Button fx:id="buttonEditar" layoutX="152.0" layoutY="558.0" mnemonicParsing="false" onAction="#onActionbuttonEditar" text="Editar" />
         <Button fx:id="buttonExcluir" layoutX="225.0" layoutY="558.0" mnemonicParsing="false" onAction="#onActionButtonExcluir" text="Excluir" />
-        <Button fx:id="buttonCriar" layoutX="634.0" layoutY="558.0" mnemonicParsing="false" onAction="#onActionButtonCriar" text="Criar" />
         <Button fx:id="buttonVoltar" layoutX="771.0" layoutY="558.0" mnemonicParsing="false" onAction="#onActionButtonVoltar" text="Voltar" />
+      <Button fx:id="buttonComprarBrinquedo" layoutX="330.0" layoutY="558.0" mnemonicParsing="false" onAction="#onActionbuttonComprarBrinquedo" text="Comprar Brinquedo" />
         
     </children>
     

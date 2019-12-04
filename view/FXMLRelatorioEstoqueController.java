@@ -72,23 +72,28 @@ public class FXMLRelatorioEstoqueController implements Initializable {
     @FXML
     private Button buttonExcluir;
 
-    @FXML
-    private Button buttonCriar;
+
 
     @FXML
     private Button buttonVoltar;
 
     private ArrayList<ModelItemDeEstoque> itensDeEstoque;
     private ObservableList<ModelItemDeEstoque> obsTableItensDeEstoque;
-
-    @FXML
-    void onActionButtonCriar(ActionEvent event) throws IOException {
+    
+     @FXML
+    private Button buttonComprarBrinquedo;
+     
+     
+     @FXML
+    void onActionbuttonComprarBrinquedo(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         Parent p = FXMLLoader.load(getClass().getResource("FXMLFormItemEstoque.fxml"));
         Scene scene = new Scene(p);
         stage.setScene(scene);
         stage.show();
     }
+
+   
 
     @FXML
     void onActionButtonExcluir(ActionEvent event) throws SQLException {
