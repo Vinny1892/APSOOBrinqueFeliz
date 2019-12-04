@@ -9,13 +9,15 @@ import java.sql.SQLException;
  */
 public class ConexaoBDMySQL {
 
-    private static final String URL_MYSQL = "jdbc:mysql://172.20.0.2/padaria";
+
+    private static final String URL_MYSQL = "jdbc:mysql://localhost:3306/brinque_feliz";
     private static final String DRIVER_CLASS = "com.mysql.jdbc.Driver";
     private static final String USER = "root";
-    private static final String PASS = "root";
+    private static final String PASS = "passwordRoot";
 
     public static Connection getConnection() {
         System.out.println("Conectando ao Banco de Dados");
+        System.out.println("passou Aqui");
         try {
             Class.forName(DRIVER_CLASS);
             return DriverManager.getConnection(URL_MYSQL, USER, PASS);

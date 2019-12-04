@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="471.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXMLFormBrinquedoController">
+   <children>
+      <Label layoutX="31.0" layoutY="39.0" text="Nome" />
+      <Label layoutX="33.0" layoutY="75.0" text="Preço" />
+      <Label layoutX="33.0" layoutY="111.0" text="Categoria" />
+      <Label layoutX="34.0" layoutY="148.0" text="Fabricante" />
+      <Label layoutX="34.0" layoutY="233.0" text="Descriçao" />
+      <TextField fx:id="textFielNome" layoutX="139.0" layoutY="34.0" prefHeight="26.0" prefWidth="370.0" />
+      <TextField fx:id="textFieldPreco" layoutX="139.0" layoutY="70.0" prefHeight="26.0" prefWidth="370.0" />
+      <ComboBox fx:id="comboBoxCategoria" layoutX="139.0" layoutY="106.0" prefHeight="26.0" prefWidth="370.0" />
+      <ComboBox fx:id="comboBoxFabricantes" layoutX="139.0" layoutY="151.0" prefHeight="26.0" prefWidth="370.0" />
+      <TextArea fx:id="textAreaDesc" layoutX="142.0" layoutY="229.0" prefHeight="98.0" prefWidth="370.0" />
+      <Button fx:id="btnSalvar" layoutX="314.0" layoutY="354.0" mnemonicParsing="false" onAction="#onActionButtonSalvar" prefHeight="26.0" prefWidth="144.0" text="Salvar" />
+      <Button fx:id="btnVoltar" layoutX="152.0" layoutY="354.0" mnemonicParsing="false" onAction="#onActionButtonVoltar" prefHeight="26.0" prefWidth="144.0" text="Voltar" />
+      <Label layoutX="34.0" layoutY="195.0" text="Fornecedor" />
+      <ComboBox fx:id="comboBoxFonecedor" layoutX="139.0" layoutY="190.0" prefHeight="26.0" prefWidth="370.0" />
+   </children>
+</AnchorPane>

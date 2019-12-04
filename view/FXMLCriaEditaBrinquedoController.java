@@ -11,8 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 /**
@@ -20,7 +20,7 @@ import javafx.scene.control.TextField;
  *
  * @author kaio
  */
-public class FXML1FuncionarioController implements Initializable {
+public class FXMLCriaEditaBrinquedoController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -29,37 +29,34 @@ public class FXML1FuncionarioController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
     @FXML
-    private TableView<?> tableView;
+    private TextField textFieldNome;
 
     @FXML
-    private TableColumn<?, ?> columnNome;
+    private TextField textFieldPreco;
 
     @FXML
-    private TableColumn<?, ?> columnProduto;
+    private ComboBox<?> comboBoxFabricante;
 
     @FXML
-    private Button buttonVoltar;
+    private ComboBox<?> comboBoxFornecedor;
 
     @FXML
-    private Button buttonEditar;
+    private ComboBox<?> comboBoxCategoria;
 
     @FXML
-    private Button buttonExcluir;
+    private TextArea textAreaDescricao;
 
     @FXML
-    private Button buttonCriar;
+    private Button buttonSalvar;
 
     @FXML
-    private TextField textFielNome;
+    void onActionButtonSalvar(ActionEvent event) {
 
-    @FXML
-    private Button buttonEditarProdito;
+    }
 
     @FXML
     void onActionButtonVoltar(ActionEvent event) {
 
     }
-
 }

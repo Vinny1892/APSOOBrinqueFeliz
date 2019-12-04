@@ -1,11 +1,13 @@
 package dao;
 
 import java.sql.SQLException;
-import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import conectionBD.ConexaoBDMySQL;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import model.ModelFuncionario;
 /**
  *
  * @author kaio
@@ -19,17 +21,18 @@ public abstract class GenericDAO_CRUD {
     
     // CRUD
     // Assinatura metodos para as Classes DAO
-    public abstract void salvar(Object object) throws SQLException;
+    public abstract int salvar(Object object) throws SQLException;
 
-    public abstract void atualizar(Object object) throws SQLException;
+    public abstract boolean atualizar(Object object) throws SQLException;
 
-    public abstract void deletar(String algumaCoisa) throws SQLException;
+    public abstract boolean deletar(int id) throws SQLException;
 
-    public abstract Object getById(int id) throws SQLException;//retorna ArrayList<Object>  
+    public abstract Object getById(int id) throws SQLException; 
 
-    //public Object getAllById(int id) throws SQLException;//retorna Object
-    //public Object getById(int id, int id) throws SQLException ;
-    public abstract List<Object> getAll() throws SQLException;// pega tudo de uma tabela
+    public abstract ArrayList<Object> getAll() throws SQLException;
+
+
+
 
 
     
@@ -65,6 +68,36 @@ public abstract class GenericDAO_CRUD {
         }
         pstmt.execute();
         pstmt.close();
+    } 
+    
+    protected void select(String selectSql) throws SQLException { 
+        PreparedStatement pstmt = getConnection().prepareStatement(selectSql); 
+    } 
+    
+    protected int createId(String table, String id) throws SQLException { 
+        
+        System.out.println("SELECT ? FROM ? order by ? desc limit 1"); 
+        PreparedStatement stmt = getConnection().prepareStatement("SELECT ? FROM ? order by ? desc limit 1"); 
+        stmt.setString(1, id); 
+        stmt.setString(2, table); 
+        stmt.setString(3, id); 
+        // stmt.execute(); 
+        ResultSet rs = stmt.executeQuery(); 
+        while (rs.next()) {
+            
+            int ultimoId = rs.getInt(id); 
+            
+            return ultimoId + 1; 
+            
+            //fabricantes.add(fabricante);
+        } 
+        
+        
+        rs.close();
+        stmt.close();
+        return 0;//fabricantes; 
+        
+        
     }
     
     

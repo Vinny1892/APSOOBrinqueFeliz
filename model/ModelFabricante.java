@@ -1,64 +1,151 @@
+
 package model;
+//package dao;
 
-import java.sql.SQLException;
-import java.util.List;
 import dao.DAOFabricante;
+import java.sql.SQLException;
+//import dao.DAOFabricante;
+import java.util.ArrayList;
 
-/**
- *
- * @author kaio
- */
 public class ModelFabricante implements CRUD{
-    
-    //atributos
-    DAOFabricante daoFabricante = new DAOFabricante();
     private String nome;
+    //private ArrayList<ModelBrinquedo> brinquedo = new ArrayList<>(); //Consta como produto de acordo com o diagrama
+    private int id;
+    private String cnpj;
+    private static ArrayList<ModelFabricante> fabricantes; 
     
-    //construtor
-    public ModelFabricante(String nome) {
+    private DAOFabricante dao; 
+
+    //Com ID
+    public ModelFabricante(String nome, /*ModelBrinquedo brinquedo,*/  String cnpj, int id) {
+
+
         this.nome = nome;
-    }
+        this.cnpj = cnpj;
+       // this.brinquedo = brinquedo;
+        this.id = id; 
+        
+        dao = new DAOFabricante(); 
+        
+        
+    } 
+
+    //Sem ID
+    public ModelFabricante(String nome, String cnpj/*, DAOFabricante dao*/) {
+        
+        
+        this(nome, cnpj, -1); 
+        
+        // this.dao = dao; 
+        
+    } 
 
     public ModelFabricante() {
     }
 
-    //getters setters
-    
+
+
+    public String getCnpj() {
+        return this.cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-    //acesso DAO
-    @Override
-    public void salvar() throws SQLException {
-        daoFabricante.salvar(this);
-    }
-
+    //Fim Getters e Setters
 
     @Override
-    public List<Object> getAll() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int salvar(Object obj) throws SQLException {
+        return dao.salvar(obj); // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void atualizar() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean atualizar(Object obj) throws SQLException {
+        return dao.atualizar(obj); // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deletar() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean deletar(int id) throws SQLException {
+        return dao.deletar(id); // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Object getById(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.getById(id); // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public ArrayList<Object> getAll() throws SQLException {
+        return dao.getAll(); // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    } 
+
+    //
+//    public void atualizarArrayFabricante() throws SQLException{
+//        fabricante = (ArrayList<ModelFabricante>)(ArrayList<?>) dao.getAll();
+//    }
+    public void atualizarArrayFabricante() throws SQLException{
+        fabricantes = (ArrayList<ModelFabricante>)(ArrayList<?>) dao.getAll(); 
+
+    }
     
+    public ArrayList<ModelFabricante> getFabricante() {
+        return fabricantes;
+    }
+//    public static ModelFabricante getByIdArray(int id)  {
+//        atualizarArrayFabricante();
+//
+//        //return fabricante.get(fabricante.indexOf(Object.getId() == id));
+//        // fabricante.forEach(f -> {
+//        //     if(f.getId() == id)
+//        //         return f;
+//        // });
+//        for(ModelFabricante f : fabricante){
+//            if(f.getId() == id)
+//                return f;
+//        }
+//    }
+
+    public ModelFabricante getByIdArray(int id) throws SQLException  {
+        atualizarArrayFabricante();
+        //return fabricante.get(fabricante.indexOf(Object.getId() == id));
+        // fabricante.forEach(f -> {
+        //     if(f.getId() == id)
+        //         return f;
+        // });
+        for(ModelFabricante f : fabricantes){
+            if(f.getId() == id)
+                return f;
+        }     
+        return null; 
+    } 
     
-}
+
+
+    public ArrayList<ModelFabricante> getAllArray()  {
+        return fabricantes; 
+    } 
+    
+    @Override 
+    public String toString() { 
+        return getNome(); 
+    } 
+    
+
+} 
+

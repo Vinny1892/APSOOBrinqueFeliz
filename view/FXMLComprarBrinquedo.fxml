@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="465.0" prefWidth="780.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="view.FXMLComprarBrinquedoController">
+    <children>
+      <TableView fx:id="tableViewBrinquedo" layoutX="6.0" prefHeight="367.0" prefWidth="774.0">
+        <columns>
+          <TableColumn fx:id="tableColumnNome" prefWidth="180.0" text="Nome" />
+          <TableColumn fx:id="tableColumnCodigo" prefWidth="69.0" text="Codigo" />
+            <TableColumn fx:id="tableColumnPreco" prefWidth="77.0" text="Preço" />
+            <TableColumn fx:id="tableColumnCategoria" prefWidth="103.0" text="Categoria" />
+            <TableColumn fx:id="tableColumnFabricante" prefWidth="103.0" text="Fabricante" />
+            <TableColumn fx:id="tableColumnDescricao" prefWidth="241.0" text="Descriçao" />
+        </columns>
+      </TableView>
+      <Button layoutX="493.0" layoutY="382.0" mnemonicParsing="false" text="Comprar" />
+      <Button layoutX="276.0" layoutY="426.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="171.0" text="Voltar" />
+      <ComboBox fx:id="comboBoxFornecedor" layoutX="77.0" layoutY="382.0" prefWidth="150.0" promptText="Fornecedores" />
+      <TextField fx:id="textFildQuantidade" layoutX="276.0" layoutY="382.0" promptText="Quantidade" />
+   </children>
+</AnchorPane>
