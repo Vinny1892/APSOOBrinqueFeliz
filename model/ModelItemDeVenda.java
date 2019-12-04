@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 //import dao.DAOItemDeVenda;
 
-public class ModelItemDeVenda implements CRUD{
+public class ModelItemDeVenda implements CRUD { 
     
     //Kaio: Acho que nao faz sentido essa classe ter o atributo static ArrayList<ModelItemDeVenda>, se tiver outra opinião, avise pf, vai que estou errado.
     //Ao meu entender, não vale a pena manter em memoria esse Array,
@@ -17,6 +17,8 @@ public class ModelItemDeVenda implements CRUD{
     private int id; 
     
     private static ArrayList<ModelItemDeVenda> intesDeVenda; 
+    
+    // private DAOItemDeVenda dao; 
     
 
     public ModelItemDeVenda() {

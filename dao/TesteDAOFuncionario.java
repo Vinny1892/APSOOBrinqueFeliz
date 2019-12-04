@@ -5,7 +5,14 @@
  */
 package dao;
 
+import controller.ControllerFuncionario;
+import helpers.DateHelper;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.ModelCategoria;
+import model.ModelFuncionario;
 
 /**
  *
@@ -13,7 +20,7 @@ import java.sql.SQLException;
  */
 public class TesteDAOFuncionario { 
     
-    public static void main(String args[]) throws SQLException { 
+    public static void main(String args[]) { 
         
         DAOCategoria daoCategoria = new DAOCategoria(); 
         // DAOFabricante daoFabricante = new DAOFabricante(); 
@@ -25,12 +32,12 @@ public class TesteDAOFuncionario {
         // DAOCliente daoCliente = new DAOCliente(); 
         // DAOVenda daoVenda = new DAOVenda(); 
         
-        System.out.println(daoFuncionario.getAll());;
+  
             // daoCategoria.salvar(new ModelCategoria("eletronico")); 
             
           //  daoFuncionario.salvar(new ModelFuncionario("31243549541", "354346", "fudedfdfdggdssg@gmail.com", DateHelper.toDate("27/2806"), false, "354346", "funcionario ", "3543535435450", DateHelper.toDate("23/12/2019"), "dgg", "fhfghj", "fhfgh", "fghghj")); 
             
-            System.out.println(daoFuncionario.getByEmail("fudedfdfdggdssg@gmail.com", "354346").getEmail()); 
+          //  System.out.println(daoFuncionario.getByEmail("fudedfdfdggdssg@gmail.com", "354346").getEmail()); 
             
 //            ControllerFuncionario.buscaFuncionario("fudedfdfdggdssg@gmail.com", "354346"); 
             

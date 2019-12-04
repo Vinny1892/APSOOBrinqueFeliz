@@ -25,6 +25,8 @@ import static controller.ControllerItemDeEstoque.todosItensDeEstoque;
 import static controller.ControllerVenda.formasDePagamento;
 import static controller.ControllerCliente.todosClientes;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import model.ModelBrinquedo;
@@ -48,10 +50,18 @@ public class FXML8VendaController  implements Initializable {
     
       @Override
     public void initialize(URL url, ResourceBundle rb) {
-          System.out.println(funcionarioLogado.getEmail());
-             tableViewCarrinhoDeCompras.getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
+          //System.out.println(funcionarioLogado.getEmail());
+            tableViewCarrinhoDeCompras.getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
             buttonExcluirItemDoCarrinhoDeCompra.setDisable(false);
         });
+            // TODO
+//        try {
+//            inicializarComboBoxCliente();
+//            inicializarTabelaItensEstoque();
+//            inicializarComboBoxFormaPagamento();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(FXML8VendaController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
   
  

@@ -17,9 +17,9 @@ public class DAOFabricante extends GenericDAO_CRUD {
 
 	protected int createId() throws SQLException { 
         
-        System.out.println("SELECT id_fabricante FROM fabricantes order by ? desc limit 1"); 
-        PreparedStatement stmt = getConnection().prepareStatement("SELECT id_fabricante FROM fabricantes order by ? desc limit 1"); 
-        stmt.setString(1, "id_fabricante"); 
+        System.out.println("SELECT id_fabricante FROM fabricantes order by id_fabricante desc limit 1"); 
+        PreparedStatement stmt = getConnection().prepareStatement("SELECT id_fabricante FROM fabricantes order by id_fabricante desc limit 1"); 
+        // stmt.setString(1, "id_fabricante"); 
         stmt.execute(); 
         ResultSet rs = stmt.executeQuery(); 
         while (rs.next()) {
@@ -44,9 +44,10 @@ public class DAOFabricante extends GenericDAO_CRUD {
 
             ModelFabricante fabricante = (ModelFabricante) object;
             
-            if(fabricante.getId() > -1 )
-            	throw new RuntimeException("Valor ja inserido, para alterar o valor use o update");
-            int id = createId();
+            if(fabricante.getId() > -1 ) 
+            	throw new RuntimeException("Valor ja inserido, para alterar o valor use o update"); 
+            
+            int id = createId(); 
                     
             String insert = "INSERT INTO fabricantes (id_fabricante, cnpj, nome) VALUES(?,?,?) ";
             save(insert, id, fabricante.getCnpj(), fabricante.getNome());
