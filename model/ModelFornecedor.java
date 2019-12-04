@@ -190,6 +190,11 @@ public boolean salvarNoArrayList(ModelFornecedor fornecedor){
     public ArrayList<ModelFornecedor> getAllArray()  {
         return fornecedores; 
     } 
+    
+    @Override 
+    public String toString() { 
+        return getNomeFantasia(); 
+    } 
 
 
 

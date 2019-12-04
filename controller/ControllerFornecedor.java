@@ -30,6 +30,6 @@ public class ControllerFornecedor {
     
     public static boolean excluir(ModelFornecedor fornecedor) throws SQLException{
         return new ModelFornecedor().deletar(fornecedor.getId());
-    }
+    } 
     
 }

@@ -185,6 +185,11 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
     public ArrayList<ModelFuncionario> getAllArray()  {
         return funcionarios; 
     } 
+    
+    @Override 
+    public String toString() { 
+        return getNome(); 
+    } 
 
 } 
 

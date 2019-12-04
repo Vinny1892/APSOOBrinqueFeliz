@@ -141,6 +141,11 @@ public class ModelFabricante implements CRUD{
         return fabricantes; 
     } 
     
+    @Override 
+    public String toString() { 
+        return getNome(); 
+    } 
+    
 
 } 
 

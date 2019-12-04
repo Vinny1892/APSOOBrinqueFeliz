@@ -53,8 +53,26 @@ public class ModelCliente extends ModelPessoa implements CRUD{
 
     public void setRg(String rg) {
         this.rg = rg;
-    }
+    } 
+    
+    
     //Fim Getters Setters
+
+    public static ArrayList<ModelCliente> getClientes() {
+        return clientes;
+    }
+
+    public static void setClientes(ArrayList<ModelCliente> clientes) {
+        ModelCliente.clientes = clientes;
+    }
+
+    public DAOCliente getDao() {
+        return dao;
+    }
+
+    public void setDao(DAOCliente dao) {
+        this.dao = dao;
+    }
 
 
 
@@ -122,7 +140,8 @@ public class ModelCliente extends ModelPessoa implements CRUD{
 
     public ArrayList<ModelCliente> getAllArray()  {
         return clientes; 
-    }    
+    } 
+    
 
 }
 

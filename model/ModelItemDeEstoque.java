@@ -163,6 +163,11 @@ public class ModelItemDeEstoque implements CRUD{
         return itensDeEstoque; 
     } 
     
+    @Override 
+    public String toString() { 
+       return getBrinquedo().getNome() + " quantidade: " + getQuantidade(); 
+    } 
+    
 
 } 
 
