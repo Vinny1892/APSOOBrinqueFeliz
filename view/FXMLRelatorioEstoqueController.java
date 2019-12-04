@@ -110,7 +110,7 @@ public class FXMLRelatorioEstoqueController implements Initializable {
     @FXML
     void onActionbuttonEditar(ActionEvent event) throws IOException {
         ModelItemDeEstoque item = tableViewBrinquedosDaLoja.getSelectionModel().getSelectedItem();
-        passa para a proxima tela o item a ser editado;
+        //passa para a proxima tela o item a ser editado;
         Stage stage = new Stage();
         Parent p = FXMLLoader.load(getClass().getResource("FXMLFormItemEstoque.fxml"));
         Scene scene = new Scene(p);
