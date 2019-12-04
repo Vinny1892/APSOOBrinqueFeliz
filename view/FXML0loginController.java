@@ -1,5 +1,9 @@
 package view;
+<<<<<<< HEAD
 import br.com.fandrauss.fx.gui.WindowControllerFx;
+=======
+
+>>>>>>> developer
 import helpers.BCrypt;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -54,7 +58,7 @@ public class FXML0loginController extends WindowControllerFx implements Initiali
         String user = textFieldUser.getText();
         String password = textFieldPassword.getText();
 
-        String passwordHashed = BCrypt.hashpw(password,  BCrypt.gensalt(12));
+        String passwordHashed = BCrypt.hashpw(password, BCrypt.gensalt(12));
         System.out.println(passwordHashed);
           this.funcionarioLogado = null;
          this.funcionarioLogado = buscaFuncionario(user, passwordHashed);

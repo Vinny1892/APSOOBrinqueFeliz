@@ -1,6 +1,7 @@
 
 package model;
 
+import dao.DAOVenda;
 import java.sql.SQLException;
 import java.util.ArrayList;
 //import dao.DAOVenda;
@@ -14,7 +15,12 @@ public class ModelVenda implements CRUD{
     private Date data_venda;
     private String forma;
     private Double valorTotal;
-    private ArrayList<ModelItemDeVenda> carrinho;
+    private ArrayList<ModelItemDeVenda> carrinho; 
+    
+    private static ArrayList<ModelVenda> vendas; 
+    
+    private DAOVenda dao; 
+    
     
     public ModelVenda() {
     }
@@ -27,18 +33,19 @@ public class ModelVenda implements CRUD{
         this.data_venda = data_venda;
         this.forma = forma;
         this.valorTotal = valorTotal;
-        this.carrinho = carrinho;
-    }
+        this.carrinho = carrinho; 
+        
+        this.dao = new DAOVenda(); 
+        
+        
+    } 
 
     //Sem ID
     public ModelVenda(ModelCliente cliente, ModelFuncionario funcionario, Date data_venda, String forma, Double valorTotal, ArrayList<ModelItemDeVenda> carrinho) {
-        this.cliente = cliente;
-        this.funcionario = funcionario;
-        this.data_venda = data_venda;
-        this.forma = forma;
-        this.valorTotal = valorTotal;
-        this.carrinho = carrinho;
-        this.id = -1;
+        
+        this(-1, cliente, funcionario, data_venda, forma, valorTotal, carrinho); 
+        
+        
     }
 
     
@@ -121,7 +128,7 @@ public class ModelVenda implements CRUD{
     }
 
     public ArrayList<ModelItemDeVenda> getCarrinho() {
-        return carrinho;
+        return carrinho; 
     }
 
     public void setCarrinho(ArrayList<ModelItemDeVenda> carrinho) {
@@ -136,27 +143,33 @@ public class ModelVenda implements CRUD{
     //     return carrinho;
     // }
 
-//    public void atualizarArrayCarrinho() throws SQLException{
-//        carrinho = (ArrayList<ModelItemDeVenda>)(ArrayList<?>) dao.getAll();
-//    }
+
+    public void atualizarArrayVenda() throws SQLException{
+        vendas = (ArrayList<ModelVenda>)(ArrayList<?>) dao.getAll(); 
+    }
     
     //Aqui acho que não pode ser retornado ModelVenda pq o ArrayList é do tipo ModelItemDeVenda, então ele só retornaria objetos desse tipo.
-//    public static ModelItemDeVenda getByIdArray(int id)  {
-//    //     atualizarArrayCarrinho();
-//
-//    //     // carrinho.forEach(c -> {
-//    //     //     if(c.getId() == id)
-//    //     //         return c;
-//    //     // });
-//        for(ModelItemDeVenda item : carrinho){
-//            if(item.getId() == id)
-//                return item;
-//        }
-//        
-//    }
+    public ModelVenda getByIdArray(int id)  {
+    //     atualizarArrayCarrinho();
+
+    //     // carrinho.forEach(c -> {
+    //     //     if(c.getId() == id) 
+    //     //         return c;
+    //     // });
+        for(ModelVenda venda : vendas){
+            if(venda.getId() == id)
+                return venda; 
+        } 
+        
+        return null; 
+        
+        
+    }
+
 
     public ArrayList<ModelItemDeVenda> getAllArray()  {
         return carrinho;
     }    
 
-}
+} 
+

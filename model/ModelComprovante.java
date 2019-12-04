@@ -1,21 +1,23 @@
 package model;
 
+import dao.DAOComprovante;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 //import dao.DAOComprovante;
 
-public class ModelComprovante implements CRUD{
+public class ModelComprovante implements CRUD {
 
-    private int id;    
+    private int id;
     private int idVenda;
     private ModelCliente cliente;
     private ModelFuncionario funcionario;
     private Date data_venda;
     private String forma;
     private Double valorTotal;
-    private ArrayList<ModelItemDeVenda> carrinho;
-    
+    private ArrayList<ModelItemDeVenda> itensComprado;
+    private static ArrayList<ModelComprovante> comprovantes;
+
     public ModelComprovante() {
     }
 
@@ -28,10 +30,9 @@ public class ModelComprovante implements CRUD{
         this.data_venda = data_venda;
         this.forma = forma;
         this.valorTotal = valorTotal;
-        this.carrinho = carrinho;
+        this.itensComprado = carrinho;
     }
 
-    
     //Sem ID
     public ModelComprovante(int idVenda, ModelCliente cliente, ModelFuncionario funcionario, Date data_venda, String forma, Double valorTotal, ArrayList<ModelItemDeVenda> carrinho) {
         this.idVenda = idVenda;
@@ -40,14 +41,12 @@ public class ModelComprovante implements CRUD{
         this.data_venda = data_venda;
         this.forma = forma;
         this.valorTotal = valorTotal;
-        this.carrinho = carrinho;
+        this.itensComprado = carrinho;
         this.id = -1;
     }
 
-    
     //acesso DAO
-    //private DAOComprovante dao = new DAOComprovante();
-
+    private DAOComprovante dao = new DAOComprovante();
     @Override
     public int salvar(Object obj) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -72,7 +71,6 @@ public class ModelComprovante implements CRUD{
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 
     //////
     public int getId() {
@@ -131,39 +129,35 @@ public class ModelComprovante implements CRUD{
         this.valorTotal = valorTotal;
     }
 
-    public void setCarrinho(ArrayList<ModelItemDeVenda> carrinho) {
-        this.carrinho = carrinho;
+    public ArrayList<ModelComprovante> getcomprovantes() {
+        return comprovantes;
     }
-    //Fim Getters e Setters
 
-    
-    
-    ////
     public ArrayList<ModelItemDeVenda> getCarrinho() {
-        return carrinho;
+        return itensComprado;
     }
 
-//    public void atualizarArrayCarrinho() throws SQLException{
-//        carrinho = (ArrayList<ModelItemDeVenda>)(ArrayList<?>) dao.getAll();
-//    }
-    
-    //Aqui acho que não pode ser retornado ModelComprovante pq o ArrayList é do tipo ModelItemDeVenda, então ele só retornaria objetos desse tipo.
-//    public static ModelItemDeVenda getByIdArray(int id)  {
-//        atualizarArrayCarrinho();
-//
-//        // carrinho.forEach(c -> {
-//        //     if(c.getId() == id)
-//        //         return c;
-//        // });
-//        for(ModelItemDeVenda item : carrinho){
-//            if(item.getId() == id)
-//                return item;
-//        }
-//        
-//    }
 
-    public ArrayList<ModelItemDeVenda> getAllArray()  {
-        return carrinho;
-    }    
+    public void atualizarArrayCarrinho() throws SQLException {
+        itensComprado = (ArrayList<ModelItemDeVenda>) (ArrayList<?>) dao.getAll();
+    }
+
+    //Aqui acho que não pode ser retornado ModelComprovante pq o ArrayList é do tipo ModelItemDeVenda, então ele só retornaria objetos desse tipo.
+    public ModelItemDeVenda getByIdArray(int id) throws SQLException {
+        atualizarArrayCarrinho();
+
+        // itensComprado.forEach(c -> {
+        //     if(c.getId() == id)
+        //         return c;
+        // });
+        for (ModelItemDeVenda item : itensComprado) {
+            if (item.getId() == id) {
+                return item;
+            }
+        }
+
+        return null;
+
+    }
 
 }

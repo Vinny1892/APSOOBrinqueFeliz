@@ -3,11 +3,10 @@ package model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import dao.DAOCategoria;
-//import dao.DAOCategoria;
+import dao.DAOCategoria;  
 
 public class ModelCategoria implements CRUD{
-    private ArrayList<ModelCategoria> categorias;
+    private static ArrayList<ModelCategoria> categorias; 
     private String nome;
     private int id;
 
@@ -59,20 +58,25 @@ public class ModelCategoria implements CRUD{
     public ArrayList<ModelCategoria> getCategorias() {
         return categorias;
     }
-    
-//    public static ModelCategoria getByIdArray(int id)  {
-////        atualizarArrayCategorias();
-////        
-////        //return categorias.get(categorias.indexOf(Object.getId() == id));
-////        // categorias.forEach(c -> {
-////        //     if(c.getId() == id)
-////        //         return c;
-////        // });
-////        for(ModelCategoria c : categorias){
-////            if(c.getId() == id)
-////                return c;
-////        }
-//    }
+
+    public ModelCategoria getByIdArray(int id) throws SQLException  {
+        atualizarArrayCategorias(); 
+        
+        //return categorias.get(categorias.indexOf(Object.getId() == id));
+        // categorias.forEach(c -> {
+        //     if(c.getId() == id)
+        //         return c;
+        // });
+        for(ModelCategoria c : categorias){
+            if(c.getId() == id)
+                return c;
+        } 
+        
+        return null; 
+        
+        
+    } 
+
     
     public ArrayList<ModelCategoria> getAllArray()  {
         return categorias;
@@ -111,3 +115,4 @@ public class ModelCategoria implements CRUD{
     
 
 }
+

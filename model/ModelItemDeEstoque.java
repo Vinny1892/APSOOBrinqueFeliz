@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class ModelItemDeEstoque implements CRUD{
-    private static ArrayList<ModelItemDeEstoque> itensNoEstoque;
-    private ModelBrinquedo brinquedo;//tirar?
+    private static ArrayList<ModelItemDeEstoque> itensDeEstoque; 
+    private ModelBrinquedo brinquedo; //tirar? 
     private int quantidade;
     private int id;
 
@@ -32,11 +32,11 @@ public class ModelItemDeEstoque implements CRUD{
     }
 
     public static ArrayList<ModelItemDeEstoque> getItensNoEstoque() {
-        return itensNoEstoque;
+        return itensDeEstoque;
     }
 
     public static void atualizarArrayListItensNoEstoque() throws SQLException {
-        itensNoEstoque = (ArrayList<ModelItemDeEstoque>) (ArrayList<?>) new DAOItemDeEstoque().getAll();
+        itensDeEstoque = (ArrayList<ModelItemDeEstoque>) (ArrayList<?>) new DAOItemDeEstoque().getAll();
     }
 
     public ModelBrinquedo getBrinquedo() {
@@ -131,28 +131,37 @@ public class ModelItemDeEstoque implements CRUD{
 
     //
     public void atualizarArrayItensNoEstoque() throws SQLException{
-        itensNoEstoque = (ArrayList<ModelItemDeEstoque>)(ArrayList<?>) dao.getAll();
+        itensDeEstoque = (ArrayList<ModelItemDeEstoque>)(ArrayList<?>) dao.getAll();
     }
     
     // public ArrayList<ModelItemDeEstoque> getItensNoEstoque() {
     //     return itensNoEstoque;
     // }
     
-//    public static ModelItemDeEstoque getByIdArray(int id)  {
-//        atualizarArrayItensNoEstoque();
-//
-//        //return itensNoEstoque.get(itensNoEstoque.indexOf(Object.getId() == id));
-//        // itensNoEstoque.forEach(f -> {
-//        //     if(f.getId() == id)
-//        //         return f;
-//        // });
-//        for(ModelItemDeEstoque f : itensNoEstoque){
-//            if(f.getId() == id)
-//                return f;
-//        }
-//    }
-    public ArrayList<ModelItemDeEstoque> getAllArray()  {
-        return itensNoEstoque;
-    } 
 
-}
+    public ModelItemDeEstoque getByIdArray(int id) throws SQLException  {
+        atualizarArrayItensNoEstoque();
+
+        //return itensNoEstoque.get(itensNoEstoque.indexOf(Object.getId() == id));
+        // itensNoEstoque.forEach(f -> {
+        //     if(f.getId() == id)
+        //         return f;
+        // });
+        for(ModelItemDeEstoque f : itensDeEstoque){
+            if(f.getId() == id)
+                return f;
+        } 
+        
+        return null; 
+        
+        
+    } 
+    
+>>>>>>> developer
+    public ArrayList<ModelItemDeEstoque> getAllArray()  {
+        return itensDeEstoque; 
+    } 
+    
+
+} 
+

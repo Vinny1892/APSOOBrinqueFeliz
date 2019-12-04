@@ -157,7 +157,6 @@ public class ModelBrinquedo implements CRUD{
         return brinquedos; 
     }
 
-
     public ModelBrinquedo getByIdArray(int id) throws SQLException  {
         atualizarArrayBrinquedos(); 
         
@@ -175,7 +174,6 @@ public class ModelBrinquedo implements CRUD{
         
         
     }
->>>>>>> developer
 
     public ArrayList<ModelBrinquedo> getAllArray()  {
         return brinquedos;

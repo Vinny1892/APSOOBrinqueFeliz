@@ -1,6 +1,7 @@
 
 package model;
 
+import dao.DAOFornecedor;
 import java.sql.SQLException;
 import java.util.ArrayList;
 //import dao.DAOFornecedor;
@@ -15,8 +16,10 @@ public class ModelFornecedor implements CRUD{
     private String estado;
     private String telefone;
     private String email;
-    private ArrayList<ModelFornecedor> fornecedores;
-    private int id;
+    private static ArrayList<ModelFornecedor> fornecedores; 
+    private int id; 
+    
+    private DAOFornecedor dao; 
 
 
     public ModelFornecedor() {
@@ -32,21 +35,19 @@ public class ModelFornecedor implements CRUD{
         this.estado = estado;
         this.telefone = telefone;
         this.email = email;
-        this.id = id;
-    }
+        this.id = id; 
+        
+        this.dao = new DAOFornecedor(); 
+        
+        
+    } 
 
     //Sem ID
     public ModelFornecedor(String cnpj, String nomeFantasia, String razaoSocial, String endereco, String cidade, String estado, String telefone, String email) {
-        this.cnpj = cnpj;
-        this.nomeFantasia = nomeFantasia;
-        this.razaoSocial = razaoSocial;
-        this.endereco = endereco;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.telefone = telefone;
-        this.email = email;
-        this.id = -1;
-    }
+        
+        this(cnpj, nomeFantasia, razaoSocial, endereco, cidade, estado, telefone, email, -1); 
+        
+    } 
 
 
 
@@ -109,16 +110,12 @@ public class ModelFornecedor implements CRUD{
     public String getEmail() {
         return this.email;
     }
-//public boolean salvarNoArrayList(ModelFornecedor fornecedor){
-//127
-// 
-//        fornecedores.add(fornecedor);
-//128
-// 
-//        return true;
-//129
-// 
-//    }
+
+public boolean salvarNoArrayList(ModelFornecedor fornecedor){
+        fornecedores.add(fornecedor);
+        return true; 
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -129,13 +126,7 @@ public class ModelFornecedor implements CRUD{
 
     public void setId(int id) {
         this.id = id;
-    }
-
-
-    public boolean salvarNoArrayList(ModelFornecedor fornecedor){
-        fornecedores.add(fornecedor);
-        return true;
-    }
+    } 
     
     
 
@@ -169,31 +160,38 @@ public class ModelFornecedor implements CRUD{
   
 
     //
-//    public void atualizarArrayFornecedor() throws SQLException{
-//        fornecedor = (ArrayList<ModelFornecedor>)(ArrayList<?>) dao.getAll();
-//    }
-//    
-//    public ArrayList<ModelFornecedor> getFornecedor() {
-//        return fornecedor;
-//    }
-//    
-//    public static ModelFornecedor getByIdArray(int id)  {
-//        atualizarArrayFornecedor();
-//        
-//        //return fornecedor.get(fornecedor.indexOf(Object.getId() == id));
-//        // fornecedor.forEach(f -> {
-//        //     if(f.getId() == id)
-//        //         return f;
-//        // });
-//        for(ModelFornecedor f : fornecedor){
-//            if(f.getId() == id)
-//                return f;
-//        }
-//    }
-//
-//    public ArrayList<ModelFornecedor> getAllArray()  {
-//        return fornecedor;
-//    } 
+
+    public void atualizarArrayFornecedor() throws SQLException{
+        fornecedores = (ArrayList<ModelFornecedor>)(ArrayList<?>) dao.getAll();
+    }
+    
+    public ArrayList<ModelFornecedor> getFornecedor() {
+        return fornecedores;
+    }
+    
+    public ModelFornecedor getByIdArray(int id) throws SQLException  {
+        atualizarArrayFornecedor();
+        
+        //return fornecedor.get(fornecedor.indexOf(Object.getId() == id));
+        // fornecedor.forEach(f -> {
+        //     if(f.getId() == id)
+        //         return f;
+        // });
+        for(ModelFornecedor f : fornecedores){
+            if(f.getId() == id)
+                return f;
+        } 
+        
+        return null; 
+        
+        
+    } 
+
+    public ArrayList<ModelFornecedor> getAllArray()  {
+        return fornecedores; 
+    } 
 
 
-}
+
+} 
+
