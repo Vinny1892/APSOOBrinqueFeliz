@@ -59,19 +59,18 @@ public class FXML0loginController implements Initializable {
          this.funcionarioLogado = buscaFuncionario(user, passwordHashed);
             //System.out.println(funcionario.getEmail());
         if (funcionarioLogado != null && BCrypt.checkpw(password,funcionarioLogado.getSenha())) {//if (mf != null) {
-              System.out.println(funcionarioLogado.getEmail());
-
+            Stage stage = new Stage();
             if (funcionarioLogado.isIsADM()) {//if (mf.isADM()) //chama tela adm
-                 System.out.println(funcionarioLogado.isIsADM());
-                 Stage stage = new Stage();
-                 Parent p = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
+                Parent p = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
                 Scene scene = new Scene(p);
                 stage.setScene(scene);
-
             } else {//chama tela funcionario
-//                
-                
+                Parent p = FXMLLoader.load(getClass().getResource("FXML8Venda.fxml"));
+                Scene scene = new Scene(p);
+                stage.setScene(scene);
             }
+            stage.show();
+            buttonLogar.getScene().getWindow().hide();
             //fecha essa tela1 atual
         } else {
             Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
