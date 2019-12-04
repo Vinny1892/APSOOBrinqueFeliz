@@ -72,6 +72,7 @@ public abstract class GenericDAO_CRUD {
     
     protected void select(String selectSql) throws SQLException { 
         PreparedStatement pstmt = getConnection().prepareStatement(selectSql); 
+        pstmt.close();
     } 
     
     protected int createId(String table, String id) throws SQLException { 

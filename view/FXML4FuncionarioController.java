@@ -50,6 +50,10 @@ public class FXML4FuncionarioController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             inicializarFuncionarios();
+                  tableViewFuncionario.getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
+            buttonEditar.setDisable(false);
+            buttonExcluir.setDisable(false);
+        });
         } catch (SQLException ex) {
             Logger.getLogger(FXML4FuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -96,8 +100,11 @@ public class FXML4FuncionarioController implements Initializable {
     
       @FXML
     void onActionbuttonCriar(ActionEvent event) throws IOException {
-        Parent formFuncionario = FXMLLoader.load(getClass().getResource("FXMLFormFuncionario10.fxml"));
-        Scene scene = new Scene(formFuncionario);
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("FXMLFormFuncionario10.fxml"));
+        FXMLFormFuncionarioController telaFormFuncionario = new FXMLFormFuncionarioController();
+        loader.setController(telaFormFuncionario);
+        Parent root =  loader.load();
+        Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
@@ -107,13 +114,22 @@ public class FXML4FuncionarioController implements Initializable {
     @FXML
     void onActionbuttonEditar(ActionEvent event) throws IOException {
         ModelFuncionario funcionario = tableViewFuncionario.getSelectionModel().getSelectedItem();
+        FXMLFormFuncionarioController telaFormFuncionario = new FXMLFormFuncionarioController();
+        telaFormFuncionario.setFuncionarioAtualizar(funcionario);
         //passar o funcionario para  a proxima tela form, e preencher a tela com esses dados;
-        Parent formFuncionario = FXMLLoader.load(getClass().getResource("FXMLFormFuncionario10.fxml"));
-        Scene scene = new Scene(formFuncionario);
+//        Parent formFuncionario = FXMLLoader.load(getClass().getResource("FXMLFormFuncionario10.fxml"));
+//        Scene scene = new Scene(formFuncionario);
+//        Stage stage = new Stage();
+//        stage.setScene(scene);
+//        stage.show();
+//        //buttonCriar.getScene().getWindow().hide();
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("FXMLFormFuncionario10.fxml"));
+        loader.setController(telaFormFuncionario);
+        Parent root =  loader.load();
+        Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
-        //buttonCriar.getScene().getWindow().hide();
     }
 
     @FXML
@@ -126,6 +142,7 @@ public class FXML4FuncionarioController implements Initializable {
             dialogoInfo.setContentText("Não foi possivel excluir o funcionario.");
             dialogoInfo.showAndWait();
         }
+        tableViewFuncionario.getItems().remove(funcionario);
      
     }
     

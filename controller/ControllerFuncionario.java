@@ -29,4 +29,10 @@ public class ControllerFuncionario {
         new ModelFuncionario().getAllArray().remove(funcionario);
         return new ModelFuncionario().deletar(funcionario.getId()); 
     }
+    
+     public static int salvarFuncionario(ModelFuncionario funcionario) throws SQLException{
+      return new ModelFuncionario().salvar(funcionario);
+     
+    }
+    
 }

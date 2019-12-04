@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import static controller.ControllerFuncionario.buscaFuncionario;
 import java.sql.SQLException;
+import javafx.scene.control.PasswordField;
 import model.ModelFuncionario;
 
 /**
@@ -30,6 +31,7 @@ public class FXML0loginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+
     }
     ModelFuncionario funcionarioLogado;
     @FXML
@@ -39,26 +41,24 @@ public class FXML0loginController implements Initializable {
     private TextField textFieldUser;
 
     @FXML
-    private TextField textFieldPassword;
+    private PasswordField  textFieldPassword;
     
     
  
     
-      public ModelFuncionario getUserLogado(){
-        return funcionarioLogado;
-    }
+     
     
 
     @FXML
     void onActionButtonLogar(ActionEvent event) throws IOException, SQLException{
         String user = textFieldUser.getText();
         String password = textFieldPassword.getText();
-
         String passwordHashed = BCrypt.hashpw(password, BCrypt.gensalt(12));
+         System.out.println(password);
         System.out.println(passwordHashed);
           this.funcionarioLogado = null;
-         this.funcionarioLogado = buscaFuncionario(user, passwordHashed);
-            //System.out.println(funcionario.getEmail());
+          this.funcionarioLogado = buscaFuncionario(user, passwordHashed);
+           System.out.println(funcionarioLogado.getEmail());
         if (funcionarioLogado != null && BCrypt.checkpw(password,funcionarioLogado.getSenha())) {//if (mf != null) {
             Stage stage = new Stage();
             if (funcionarioLogado.isIsADM()) {//if (mf.isADM()) //chama tela adm
@@ -66,9 +66,18 @@ public class FXML0loginController implements Initializable {
                 Scene scene = new Scene(p);
                 stage.setScene(scene);
             } else {//chama tela funcionario
-                Parent p = FXMLLoader.load(getClass().getResource("FXML8Venda.fxml"));
-                Scene scene = new Scene(p);
-                stage.setScene(scene);
+//                Parent p = FXMLLoader.load(getClass().getResource("FXML8Venda.fxml"));
+//                Scene scene = new Scene(p);
+//                stage.setScene(scene);
+                
+                    FXML8VendaController telaVenda = new FXML8VendaController(funcionarioLogado);
+                    FXMLLoader loader= new FXMLLoader(getClass().getResource("FXML8Venda.fxml"));
+                    loader.setController(telaVenda);
+                    Parent root =  loader.load();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                
             }
             stage.show();
             buttonLogar.getScene().getWindow().hide();
