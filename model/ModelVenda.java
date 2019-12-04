@@ -136,24 +136,24 @@ public class ModelVenda implements CRUD{
     //     return carrinho;
     // }
 
-    public void atualizarArrayCarrinho() throws SQLException{
-        carrinho = (ArrayList<ModelItemDeVenda>)(ArrayList<?>) dao.getAll();
-    }
+//    public void atualizarArrayCarrinho() throws SQLException{
+//        carrinho = (ArrayList<ModelItemDeVenda>)(ArrayList<?>) dao.getAll();
+//    }
     
     //Aqui acho que não pode ser retornado ModelVenda pq o ArrayList é do tipo ModelItemDeVenda, então ele só retornaria objetos desse tipo.
-    public static ModelItemDeVenda getByIdArray(int id)  {
-    //     atualizarArrayCarrinho();
-
-    //     // carrinho.forEach(c -> {
-    //     //     if(c.getId() == id)
-    //     //         return c;
-    //     // });
-        for(ModelItemDeVenda item : carrinho){
-            if(item.getId() == id)
-                return item;
-        }
-        
-    }
+//    public static ModelItemDeVenda getByIdArray(int id)  {
+//    //     atualizarArrayCarrinho();
+//
+//    //     // carrinho.forEach(c -> {
+//    //     //     if(c.getId() == id)
+//    //     //         return c;
+//    //     // });
+//        for(ModelItemDeVenda item : carrinho){
+//            if(item.getId() == id)
+//                return item;
+//        }
+//        
+//    }
 
     public ArrayList<ModelItemDeVenda> getAllArray()  {
         return carrinho;

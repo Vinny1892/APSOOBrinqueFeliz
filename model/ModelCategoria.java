@@ -60,19 +60,19 @@ public class ModelCategoria implements CRUD{
         return categorias;
     }
     
-    public static ModelCategoria getByIdArray(int id)  {
-        atualizarArrayCategorias();
-        
-        //return categorias.get(categorias.indexOf(Object.getId() == id));
-        // categorias.forEach(c -> {
-        //     if(c.getId() == id)
-        //         return c;
-        // });
-        for(ModelCategoria c : categorias){
-            if(c.getId() == id)
-                return c;
-        }
-    }
+//    public static ModelCategoria getByIdArray(int id)  {
+////        atualizarArrayCategorias();
+////        
+////        //return categorias.get(categorias.indexOf(Object.getId() == id));
+////        // categorias.forEach(c -> {
+////        //     if(c.getId() == id)
+////        //         return c;
+////        // });
+////        for(ModelCategoria c : categorias){
+////            if(c.getId() == id)
+////                return c;
+////        }
+//    }
     
     public ArrayList<ModelCategoria> getAllArray()  {
         return categorias;

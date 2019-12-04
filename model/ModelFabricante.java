@@ -14,11 +14,8 @@ public class ModelFabricante implements CRUD{
     private ArrayList<ModelFabricante> fabricante;
 
     //Com ID
-<<<<<<< HEAD
     public ModelFabricante(String nome, /*ModelBrinquedo brinquedo,*/  String cnpj, int id) {
-=======
-    public ModelFabricante(String nome, /*ModelBrinquedo brinquedo,*/ String cnpj, int id) {
->>>>>>> developer
+
         this.nome = nome;
         this.cnpj = cnpj;
        // this.brinquedo = brinquedo;
@@ -90,27 +87,27 @@ public class ModelFabricante implements CRUD{
 
 
     //
-    public void atualizarArrayFabricante() throws SQLException{
-        fabricante = (ArrayList<ModelFabricante>)(ArrayList<?>) dao.getAll();
-    }
+//    public void atualizarArrayFabricante() throws SQLException{
+//        fabricante = (ArrayList<ModelFabricante>)(ArrayList<?>) dao.getAll();
+//    }
     
     public ArrayList<ModelFabricante> getFabricante() {
         return fabricante;
     }
     
-    public static ModelFabricante getByIdArray(int id)  {
-        atualizarArrayFabricante();
-
-        //return fabricante.get(fabricante.indexOf(Object.getId() == id));
-        // fabricante.forEach(f -> {
-        //     if(f.getId() == id)
-        //         return f;
-        // });
-        for(ModelFabricante f : fabricante){
-            if(f.getId() == id)
-                return f;
-        }
-    }
+//    public static ModelFabricante getByIdArray(int id)  {
+//        atualizarArrayFabricante();
+//
+//        //return fabricante.get(fabricante.indexOf(Object.getId() == id));
+//        // fabricante.forEach(f -> {
+//        //     if(f.getId() == id)
+//        //         return f;
+//        // });
+//        for(ModelFabricante f : fabricante){
+//            if(f.getId() == id)
+//                return f;
+//        }
+//    }
     public ArrayList<ModelFabricante> getAllArray()  {
         return fabricante;
     } 

@@ -138,19 +138,19 @@ public class ModelItemDeEstoque implements CRUD{
     //     return itensNoEstoque;
     // }
     
-    public static ModelItemDeEstoque getByIdArray(int id)  {
-        atualizarArrayItensNoEstoque();
-
-        //return itensNoEstoque.get(itensNoEstoque.indexOf(Object.getId() == id));
-        // itensNoEstoque.forEach(f -> {
-        //     if(f.getId() == id)
-        //         return f;
-        // });
-        for(ModelItemDeEstoque f : itensNoEstoque){
-            if(f.getId() == id)
-                return f;
-        }
-    }
+//    public static ModelItemDeEstoque getByIdArray(int id)  {
+//        atualizarArrayItensNoEstoque();
+//
+//        //return itensNoEstoque.get(itensNoEstoque.indexOf(Object.getId() == id));
+//        // itensNoEstoque.forEach(f -> {
+//        //     if(f.getId() == id)
+//        //         return f;
+//        // });
+//        for(ModelItemDeEstoque f : itensNoEstoque){
+//            if(f.getId() == id)
+//                return f;
+//        }
+//    }
     public ArrayList<ModelItemDeEstoque> getAllArray()  {
         return itensNoEstoque;
     } 

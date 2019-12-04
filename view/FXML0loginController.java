@@ -1,4 +1,5 @@
 package view;
+import br.com.fandrauss.fx.gui.WindowControllerFx;
 import helpers.BCrypt;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +22,7 @@ import model.ModelFuncionario;
  *
  * @author kaio
  */
-public class FXML0loginController implements Initializable {
+public class FXML0loginController extends WindowControllerFx implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -30,7 +31,7 @@ public class FXML0loginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
+    ModelFuncionario funcionarioLogado;
     @FXML
     private Button buttonLogar;
 
@@ -39,6 +40,14 @@ public class FXML0loginController implements Initializable {
 
     @FXML
     private TextField textFieldPassword;
+    
+    
+ 
+    
+      public ModelFuncionario getUserLogado(){
+        return funcionarioLogado;
+    }
+    
 
     @FXML
     void onActionButtonLogar(ActionEvent event) throws IOException {
@@ -47,31 +56,24 @@ public class FXML0loginController implements Initializable {
 
         String passwordHashed = BCrypt.hashpw(password,  BCrypt.gensalt(12));
         System.out.println(passwordHashed);
-         ModelFuncionario funcionario = null;
-         funcionario = buscaFuncionario(user, passwordHashed);
+          this.funcionarioLogado = null;
+         this.funcionarioLogado = buscaFuncionario(user, passwordHashed);
             //System.out.println(funcionario.getEmail());
-        if (funcionario != null && BCrypt.checkpw(password,funcionario.getSenha())) {//if (mf != null) {
-              System.out.println(funcionario.getEmail());
+        if (funcionarioLogado != null && BCrypt.checkpw(password,funcionarioLogado.getSenha())) {//if (mf != null) {
+              System.out.println(funcionarioLogado.getEmail());
 
-            Stage stage = new Stage();
-            if (funcionario.isIsADM()) {//if (mf.isADM()) //chama tela adm
-                 System.out.println(funcionario.isIsADM());
-                Parent p = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
+            if (funcionarioLogado.isIsADM()) {//if (mf.isADM()) //chama tela adm
+                 System.out.println(funcionarioLogado.isIsADM());
+                 Stage stage = new Stage();
+                 Parent p = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
                 Scene scene = new Scene(p);
                 stage.setScene(scene);
 
             } else {//chama tela funcionario
-                System.out.println("chamando tela venda");
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML8Venda.fxml"));
-                loader.setController(new FXML8VendaController(funcionario));
-                Parent root = loader.load();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-
+//                
+                
             }
-            stage.show();
             //fecha essa tela1 atual
-            buttonLogar.getScene().getWindow().hide();
         } else {
             Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
             dialogoInfo.setTitle("Login");

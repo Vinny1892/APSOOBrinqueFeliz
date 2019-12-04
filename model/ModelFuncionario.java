@@ -158,27 +158,27 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
 
 
     //
-    public void atualizarArrayFuncionario() throws SQLException{
-        funcionario = (ArrayList<ModelFuncionario>)(ArrayList<?>) dao.getAll();
-    }
-    
+//    public void atualizarArrayFuncionario() throws SQLException{
+//        funcionario = (ArrayList<ModelFuncionario>)(ArrayList<?>) dao.getAll();
+//    }
+//    
     public ArrayList<ModelFuncionario> getFuncionario() {
         return funcionario;
     }
     
-    public static ModelFuncionario getByIdArray(int id)  {
-        atualizarArrayFuncionario();
-        
-        //return funcionario.get(funcionario.indexOf(Object.getId() == id));
-        // funcionario.forEach(f -> {
-        //     if(f.getId() == id)
-        //         return f;
-        // });
-        for(ModelFuncionario f : funcionario){
-            if(f.getId() == id)
-                return f;
-        }
-    }
+//    public static ModelFuncionario getByIdArray(int id)  {
+//        atualizarArrayFuncionario();
+//        
+//        //return funcionario.get(funcionario.indexOf(Object.getId() == id));
+//        // funcionario.forEach(f -> {
+//        //     if(f.getId() == id)
+//        //         return f;
+//        // });
+//        for(ModelFuncionario f : funcionario){
+//            if(f.getId() == id)
+//                return f;
+//        }
+//    }
 
     public ArrayList<ModelFuncionario> getAllArray()  {
         return funcionario;

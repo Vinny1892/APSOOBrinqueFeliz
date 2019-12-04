@@ -157,19 +157,19 @@ public class ModelBrinquedo implements CRUD{
         return brinquedo;
     }
 
-    public static ModelBrinquedo getByIdArray(int id)  {
-        atualizarArrayBrinquedos();
-        
-        //return brinquedo.get(brinquedo.indexOf(Object.getId() == id));
-        // brinquedo.forEach(b -> {
-        //     if(b.getId() == id)
-        //         return b;
-        // });
-        for(ModelBrinquedo b : brinquedo){
-            if(b.getId() == id)
-                return b;
-        }
-    }
+//    public static ModelBrinquedo getByIdArray(int id)  {
+//        atualizarArrayBrinquedos();
+//        
+//        //return brinquedo.get(brinquedo.indexOf(Object.getId() == id));
+//        // brinquedo.forEach(b -> {
+//        //     if(b.getId() == id)
+//        //         return b;
+//        // });
+//        for(ModelBrinquedo b : brinquedo){
+//            if(b.getId() == id)
+//                return b;
+//        }
+//    }
 
     public ArrayList<ModelBrinquedo> getAllArray()  {
         return brinquedo;

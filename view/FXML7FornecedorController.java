@@ -90,7 +90,7 @@ public class FXML7FornecedorController implements Initializable {
     }
 
     @FXML
-    void onActionbuttonEditar(ActionEvent event) {
+    void onActionbuttonEditar(ActionEvent event) throws IOException {
         Parent categoria = FXMLLoader.load(getClass().getResource("FXMLFormFornecedor.fxml"));
         Scene scene = new Scene(categoria);
         Stage stage = new Stage();

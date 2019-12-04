@@ -82,28 +82,28 @@ public class ModelCliente extends ModelPessoa implements CRUD{
     //
 
 
-    public void atualizarArrayCliente() throws SQLException{
-        cliente = (ArrayList<ModelCliente>)(ArrayList<?>) new dao.DAOCliente.getAll();
-    }
-    
+//    public void atualizarArrayCliente() throws SQLException{
+//        cliente = (ArrayList<ModelCliente>)(ArrayList<?>) new dao.DAOCliente.getAll();
+//    }
+//    
     public ArrayList<ModelCliente> getCliente() {
         return cliente;
     }
     
-    public static ModelCliente getByIdArray(int id)  {
-        atualizarArrayCliente();
-
-        //return cliente.get(cliente.indexOf(Object.getId() == id));
-        // this.cliente.forEach(c -> {
-        //     if(c.getId() == id)
-        //         return c;
-        // });
-
-        for(ModelCliente c : cliente){
-            if(c.getId() == id)
-                return c;
-        }
-    }
+//    public static ModelCliente getByIdArray(int id)  {
+////        atualizarArrayCliente();
+//
+//        //return cliente.get(cliente.indexOf(Object.getId() == id));
+//        // this.cliente.forEach(c -> {
+//        //     if(c.getId() == id)
+//        //         return c;
+//        // });
+//
+////        for(ModelCliente c : cliente){
+////            if(c.getId() == id)
+////                return c;
+////        }
+//    }
     public ArrayList<ModelCliente> getAllArray()  {
         return cliente;
     }    
