@@ -107,9 +107,9 @@ public class FXMLBrinquedoController implements Initializable {
 
     @FXML
     void onActionbuttonExcluir(ActionEvent event) throws SQLException {
-        ModelBrinquedo brinquedo = tableViewBrinquedo.getSelectionModel().getSelectedItem();
-        controller.ControllerBrinquedo.excluirBrinquedo(brinquedo);
-        inicializarTabelaBrinquedo();
+//        ModelBrinquedo brinquedo = tableViewBrinquedo.getSelectionModel().getSelectedItem();
+//        controller.ControllerBrinquedo.excluir(brinquedo);
+//        inicializarTabelaBrinquedo();
     }
 
     @FXML
