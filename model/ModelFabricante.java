@@ -88,22 +88,17 @@ public class ModelFabricante implements CRUD{
 
 
     //
-<<<<<<< HEAD
 //    public void atualizarArrayFabricante() throws SQLException{
 //        fabricante = (ArrayList<ModelFabricante>)(ArrayList<?>) dao.getAll();
 //    }
-=======
     public void atualizarArrayFabricante() throws SQLException{
         fabricantes = (ArrayList<ModelFabricante>)(ArrayList<?>) new dao.DAOFabricante().getAll(); 
 
     }
->>>>>>> developer
     
     public ArrayList<ModelFabricante> getFabricante() {
         return fabricantes;
     }
-    
-<<<<<<< HEAD
 //    public static ModelFabricante getByIdArray(int id)  {
 //        atualizarArrayFabricante();
 //
@@ -117,7 +112,6 @@ public class ModelFabricante implements CRUD{
 //                return f;
 //        }
 //    }
-=======
 
     public ModelFabricante getByIdArray(int id) throws SQLException  {
         atualizarArrayFabricante();
@@ -134,7 +128,6 @@ public class ModelFabricante implements CRUD{
     } 
     
 
->>>>>>> developer
     public ArrayList<ModelFabricante> getAllArray()  {
         return fabricantes; 
     } 

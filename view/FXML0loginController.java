@@ -1,9 +1,4 @@
 package view;
-<<<<<<< HEAD
-import br.com.fandrauss.fx.gui.WindowControllerFx;
-=======
-
->>>>>>> developer
 import helpers.BCrypt;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,7 +21,7 @@ import model.ModelFuncionario;
  *
  * @author kaio
  */
-public class FXML0loginController extends WindowControllerFx implements Initializable {
+public class FXML0loginController implements Initializable {
 
     /**
      * Initializes the controller class.

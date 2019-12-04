@@ -156,8 +156,7 @@ public class ModelItemDeEstoque implements CRUD{
         
         
     } 
-    
->>>>>>> developer
+
     public ArrayList<ModelItemDeEstoque> getAllArray()  {
         return itensDeEstoque; 
     } 
