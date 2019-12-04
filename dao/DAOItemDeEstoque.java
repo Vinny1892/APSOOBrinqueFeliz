@@ -49,12 +49,18 @@ public class DAOItemDeEstoque extends GenericDAO_CRUD {
     public int salvar(Object object) throws SQLException {
         try {
             ModelItemDeEstoque ItemDeEstoque = (ModelItemDeEstoque) object;
-            int id = createId();
             
             String insert = "INSERT INTO itens_estoque (id_item_estoque, id_brinquedo, quantidade) VALUES(?,?,?) ";
+            
+            if(ItemDeEstoque.getId() > -1 )
+            	throw new RuntimeException("Valor ja inserido, para alterar o valor use o update");
+            
+            
+            int id = createId();
+
             save(insert, id, ItemDeEstoque.getBrinquedo().getId(), ItemDeEstoque.getQuantidade());
             System.out.println("Metodo salvar DAOItemDeEstoque realizado");
-            return 1;
+            return id;
         } catch (MySQLIntegrityConstraintViolationException e) {
             JOptionPane.showMessageDialog(null, "ItemDeEstoque Ja cadastrado no BD");
         } catch (SQLException ex) {

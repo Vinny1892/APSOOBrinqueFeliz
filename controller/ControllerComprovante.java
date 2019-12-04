@@ -24,4 +24,8 @@ public class ControllerComprovante {
         return null;
     }
     
+    
+    public static boolean remover(ModelComprovante comprovante) throws SQLException{
+        return new ModelComprovante().deletar(comprovante.getId());
+    }
 }

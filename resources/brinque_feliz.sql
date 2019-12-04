@@ -33,7 +33,7 @@ CREATE TABLE `brinquedos` (
   `id_categoria` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `codigo_de_barras` mediumtext NOT NULL,
-  `preco` decimal(10,0) NOT NULL,
+  `preco` decimal(10,2) NOT NULL,
   `id_fabricante` int(11) NOT NULL,
   `descricao` varchar(255) DEFAULT NULL,
   `id_fornecedor` int(11) NOT NULL
@@ -75,14 +75,38 @@ CREATE TABLE `clientes` (
 --
 
 CREATE TABLE `comprovantes` (
-  `id_comprovante` int(11) NOT NULL,
+  `id_comprovante` int(11) AUTO_INCREMENT NOT NULL,
   `nome_cliente` varchar(50) DEFAULT NULL,
   `rg_cliente` varchar(25) DEFAULT NULL,
   `nome_funcionario` varchar(50) DEFAULT NULL,
   `cpf_funcionario` varchar(25) DEFAULT NULL,
+  `valor` decimal(10,2) NOT NULL, 
+  `data_venda` date NOT NULL, 
   `forma_pagamento` varchar(255) DEFAULT NULL,
   `id_venda` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+delimiter $$ 
+
+create trigger gera_comprovante after insert on vendas for each row 
+	
+    begin 
+		
+        insert into comprovantes (nome_cliente, rg_cliente, nome_funcionario, cpf_funcionario, valor, data_venda, forma_pagamento, id_venda) values ( 
+        
+        (select clientes.nome, clientes.rg from clientes where clientes.id_cliente = new.id_cliente), 
+        (select funcionarios.nome, funcionarios.cpf from funcionarios where funcionarios.id_funcionario = new.id_funcionario), 
+        new.valor, 
+        new.forma_pagamento, 
+        new.id_venda 
+        
+        ); 
+	
+    end $$ 
+
+delimiter ; 
+
 
 -- --------------------------------------------------------
 
@@ -216,7 +240,7 @@ CREATE TABLE `tipos_pagamento` (
 CREATE TABLE `vendas` (
   `id_venda` int(11) NOT NULL,
   `data_venda` date DEFAULT NULL,
-  `valor` decimal(10,0) DEFAULT NULL,
+  `valor` decimal(10,2) DEFAULT NULL,
   `id_funcionario` int(11) DEFAULT NULL,
   `forma_pagamento` varchar(255) DEFAULT NULL,
   `id_cliente` int(11) DEFAULT NULL
@@ -345,6 +369,12 @@ ALTER TABLE `itens_venda`
 ALTER TABLE `vendas`
   ADD CONSTRAINT `vendas_ibfk_1` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionarios` (`id_funcionario`),
   ADD CONSTRAINT `vendas_ibfk_2` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`);
+
+INSERT INTO `funcionarios` (`id_funcionario`, `senha`, `telefone_residencial`, `telefone_celular`, `email`, `data_contratacao`, `is_adm`, `nome`, `cpf`, `data_nascimento`, `endereco`, `cep`, `cidade`, `estado`) VALUES
+(0, '$2a$12$HV/kWCfo/nPJkZglrQktSe0Xcu4.TbX/bFfJ2KYE72sqfa8hoRI3G', '99999-9999', '99999-9999', 'admin@admin.com', '2019-12-02', 1, 'admin', '1233456789', '1998-12-02', 'av seila rua 123', '123456789', 'Campo Grande ', 'MS'),
+(1, '$2a$12$w.5YpdmYnNy4VL.f6mx6A.uaSQ0QJZIFaaW2su43qcEdxALFFV2aO', '99999999', '1234566789', 'funcionario@teste.com', '2019-12-12', 0, 'estagiario', '12334567892', '1994-12-12', 'av seila rua somedaqui', '1234556789', 'Campo Grande', 'MS');
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

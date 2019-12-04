@@ -21,4 +21,21 @@ public class ControllerCategoria {
     
     }
     
+    public static int salvar(ModelCategoria categoria) throws SQLException{
+        new ModelCategoria().getCategorias().add(categoria);
+        return new ModelCategoria().salvar(categoria); 
+    }
+
+    public static int editar(ModelCategoria categoria) throws SQLException{
+        int index = new ModelCategoria().getCategorias().indexOf(categoria);
+        new ModelCategoria().getCategorias().add(0, categoria);
+        return new ModelCategoria().salvar(categoria);
+    }
+    
+    
+    public static boolean remover(ModelCategoria categoria) throws SQLException{
+        new ModelCategoria().getCategorias().remove(categoria);
+        return new ModelCategoria().deletar(categoria.getId());
+    }
+    
 }

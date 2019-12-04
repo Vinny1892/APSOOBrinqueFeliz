@@ -41,12 +41,18 @@ public class DAOCategoria extends GenericDAO_CRUD {
     public int salvar(Object object) throws SQLException {
         try {
             ModelCategoria categoria = (ModelCategoria) object;
-            int id = createId();
+            
             
             String insert = "INSERT INTO categorias (id_categoria, nome) VALUES(?,?) ";
+            
+            if(categoria.getId() > -1 )
+            	throw new RuntimeException("Valor ja inserido, para alterar o valor use o update");
+            
+            int id = createId();
+            
             save(insert, id, categoria.getNome());
             System.out.println("Metodo salvar Daocategoria realizado");
-            return 1;
+            return id;
         } catch (MySQLIntegrityConstraintViolationException e) {
             JOptionPane.showMessageDialog(null, "categoria Ja cadastrado no BD");
         } catch (SQLException ex) {

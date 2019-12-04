@@ -35,6 +35,7 @@ public class FXML10ComprovanteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ModelComprovante comprovante = controller.ControllerComprovante.getByIdVenda(idVenda);
+        itensComprado;
         itensComprado = comprovante.getCarrinho();
         inicializarTabelaDeItensComprados();
         // TODO

@@ -65,8 +65,7 @@ public class FXMLRelatorioEstoqueController implements Initializable {
 
     @FXML
     private TableColumn<ModelItemDeEstoque, Integer> quantidade;
-    
-    
+
     @FXML
     private Button buttonEditar;
 
@@ -78,7 +77,7 @@ public class FXMLRelatorioEstoqueController implements Initializable {
 
     @FXML
     private Button buttonVoltar;
-    
+
     private ArrayList<ModelItemDeEstoque> itensDeEstoque;
     private ObservableList<ModelItemDeEstoque> obsTableItensDeEstoque;
 
@@ -93,21 +92,32 @@ public class FXMLRelatorioEstoqueController implements Initializable {
 
     @FXML
     void onActionButtonExcluir(ActionEvent event) throws SQLException {
-       ModelItemDeEstoque item = tableViewBrinquedosDaLoja.getSelectionModel().getSelectedItem();
-       controller.ControllerItemDeEstoque.excluirItemNoEstoque(item.getId());
-       inicializarTabelaItensEstoque();
+        ModelItemDeEstoque item = tableViewBrinquedosDaLoja.getSelectionModel().getSelectedItem();
+        controller.ControllerItemDeEstoque.excluirItemNoEstoque(item);
+        inicializarTabelaItensEstoque();
     }
 
     @FXML
-    void onActionButtonVoltar(ActionEvent event) {
-        
+    void onActionButtonVoltar(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent p = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
+        Scene scene = new Scene(p);
+        stage.setScene(scene);
+        stage.show();
+        buttonVoltar.getScene().getWindow().hide();
     }
 
     @FXML
-    void onActionbuttonEditar(ActionEvent event) {
-
+    void onActionbuttonEditar(ActionEvent event) throws IOException {
+        ModelItemDeEstoque item = tableViewBrinquedosDaLoja.getSelectionModel().getSelectedItem();
+        passa para a proxima tela o item a ser editado;
+        Stage stage = new Stage();
+        Parent p = FXMLLoader.load(getClass().getResource("FXMLFormItemEstoque.fxml"));
+        Scene scene = new Scene(p);
+        stage.setScene(scene);
+        stage.show();
     }
-    
+
     private void inicializarTabelaItensEstoque() throws SQLException {
         itensDeEstoque = todosItensDeEstoque();
         columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -119,6 +129,5 @@ public class FXMLRelatorioEstoqueController implements Initializable {
         obsTableItensDeEstoque = FXCollections.observableArrayList(itensDeEstoque);
         tableViewBrinquedosDaLoja.setItems(obsTableItensDeEstoque);
     }
-    
-    
+
 }
