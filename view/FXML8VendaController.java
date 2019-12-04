@@ -1,5 +1,6 @@
 package view;
 
+import br.com.fandrauss.fx.gui.WindowControllerFx;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -39,19 +40,18 @@ import model.ModelVenda;
  *
  * @author kaio
  */
-public class FXML8VendaController implements Initializable {
-
-    public FXML8VendaController(ModelFuncionario funcionario) {
-            tableViewCarrinhoDeCompras.getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
+public class FXML8VendaController  implements Initializable {
+    
+    
+    
+      @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        this.funcionarioLogado = new FXML0loginController().getUserLogado();
+             tableViewCarrinhoDeCompras.getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
             buttonExcluirItemDoCarrinhoDeCompra.setDisable(false);
         });
-        this.funcionarioLogado = funcionario;
-    }
-    
-    public FXML8VendaController(){
-        
-    }
-
+         }  
+  
  
     private ModelFuncionario funcionarioLogado;
     @FXML

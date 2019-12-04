@@ -137,6 +137,7 @@ public class ModelComprovante implements CRUD {
         return itensComprado;
     }
 
+
     public void atualizarArrayCarrinho() throws SQLException {
         itensComprado = (ArrayList<ModelItemDeVenda>) (ArrayList<?>) dao.getAll();
     }

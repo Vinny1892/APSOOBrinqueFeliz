@@ -143,6 +143,7 @@ public class ModelVenda implements CRUD{
     //     return carrinho;
     // }
 
+
     public void atualizarArrayVenda() throws SQLException{
         vendas = (ArrayList<ModelVenda>)(ArrayList<?>) dao.getAll(); 
     }
@@ -164,6 +165,7 @@ public class ModelVenda implements CRUD{
         
         
     }
+
 
     public ArrayList<ModelItemDeVenda> getAllArray()  {
         return carrinho;

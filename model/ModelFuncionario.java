@@ -158,12 +158,9 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
 
 
     //
+
     public void atualizarArrayFuncionario() throws SQLException{
         funcionarios = (ArrayList<ModelFuncionario>)(ArrayList<?>) new dao.DAOFuncionario().getAll(); 
-    }
-    
-    public ArrayList<ModelFuncionario> getFuncionario() {
-        return funcionarios; 
     }
     
     public ModelFuncionario getByIdArray(int id) throws SQLException  {

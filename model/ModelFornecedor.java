@@ -110,10 +110,12 @@ public class ModelFornecedor implements CRUD{
     public String getEmail() {
         return this.email;
     }
+
 public boolean salvarNoArrayList(ModelFornecedor fornecedor){
         fornecedores.add(fornecedor);
         return true; 
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -158,6 +160,7 @@ public boolean salvarNoArrayList(ModelFornecedor fornecedor){
   
 
     //
+
     public void atualizarArrayFornecedor() throws SQLException{
         fornecedores = (ArrayList<ModelFornecedor>)(ArrayList<?>) dao.getAll();
     }
@@ -187,6 +190,7 @@ public boolean salvarNoArrayList(ModelFornecedor fornecedor){
     public ArrayList<ModelFornecedor> getAllArray()  {
         return fornecedores; 
     } 
+
 
 
 } 

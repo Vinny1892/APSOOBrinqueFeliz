@@ -122,8 +122,13 @@ public class DAOItemDeEstoque extends GenericDAO_CRUD {
         PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM itens_estoque");
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
+<<<<<<< HEAD
+         // ModelItemDeEstoque ItemDeEstoque = new ModelItemDeEstoque(ModelBrinquedo.getByIdArray(rs.getInt("id_brinquedo")), rs.getInt("quantidade"), rs.getInt("id_item_estoque"));
+         // itens_estoque.add(ItemDeEstoque);
+=======
           ModelItemDeEstoque itemDeEstoque = new ModelItemDeEstoque(new ModelBrinquedo().getByIdArray(rs.getInt("id_brinquedo")), rs.getInt("quantidade"), rs.getInt("id_item_estoque"));
           itens_estoque.add(itemDeEstoque);
+>>>>>>> developer
         }
         rs.close();
         stmt.close();

@@ -138,6 +138,7 @@ public class ModelItemDeEstoque implements CRUD{
     //     return itensNoEstoque;
     // }
     
+
     public ModelItemDeEstoque getByIdArray(int id) throws SQLException  {
         atualizarArrayItensNoEstoque();
 
@@ -156,6 +157,7 @@ public class ModelItemDeEstoque implements CRUD{
         
     } 
     
+>>>>>>> developer
     public ArrayList<ModelItemDeEstoque> getAllArray()  {
         return itensDeEstoque; 
     } 

@@ -82,14 +82,17 @@ public class ModelCliente extends ModelPessoa implements CRUD{
     //
 
 
+
     public void atualizarArrayCliente() throws SQLException{
         clientes = (ArrayList<ModelCliente>)(ArrayList<?>) new dao.DAOCliente().getAll(); 
     }
     
+
     public ArrayList<ModelCliente> getCliente() {
         return clientes; 
     }
     
+
     public ModelCliente getByIdArray(int id) throws SQLException  {
         atualizarArrayCliente();
 
@@ -108,6 +111,7 @@ public class ModelCliente extends ModelPessoa implements CRUD{
         
         
     } 
+
     public ArrayList<ModelCliente> getAllArray()  {
         return clientes; 
     }    
