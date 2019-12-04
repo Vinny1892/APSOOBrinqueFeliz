@@ -30,12 +30,11 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
     //Commom employee constructor
 
     
-    public ModelFuncionario(){
-    
+    public ModelFuncionario() throws SQLException{
     }
 
     //Com ID
-    public ModelFuncionario(int id, String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, boolean isADM, String senha, String nome, String cpf, Date dataDeNascimento, String endereco, String cep, String cidade, String estado) {
+    public ModelFuncionario(int id, String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, boolean isADM, String senha, String nome, String cpf, Date dataDeNascimento, String endereco, String cep, String cidade, String estado) throws SQLException {
         
         super(nome, cpf, dataDeNascimento, endereco, cep, cidade, estado); 
         
@@ -54,7 +53,7 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
 
 
     //Sem ID
-    public ModelFuncionario(String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, boolean isADM, String senha, String nome, String cpf, Date dataDeNascimento, String endereco, String cep, String cidade, String estado) {
+    public ModelFuncionario(String telefoneResidencial, String telefoneCelular, String email, Date dataDeContratacao, boolean isADM, String senha, String nome, String cpf, Date dataDeNascimento, String endereco, String cep, String cidade, String estado) throws SQLException {
         
         this( -1, telefoneResidencial, telefoneCelular, email, dataDeContratacao, isADM, senha, nome, cpf, dataDeNascimento, endereco, cep, cidade, estado); 
         
@@ -149,6 +148,7 @@ public class ModelFuncionario extends ModelPessoa implements CRUD{
 
     @Override
     public Object getById(int id) throws SQLException {
+
         return dao.getById(id); // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

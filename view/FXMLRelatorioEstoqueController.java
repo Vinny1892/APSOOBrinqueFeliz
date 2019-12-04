@@ -99,11 +99,11 @@ public class FXMLRelatorioEstoqueController implements Initializable {
 
     @FXML
     void onActionButtonVoltar(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        Parent p = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
-        Scene scene = new Scene(p);
-        stage.setScene(scene);
-        stage.show();
+//        Stage stage = new Stage();
+//        Parent p = FXMLLoader.load(getClass().getResource("FXML1Administrador.fxml"));
+//        Scene scene = new Scene(p);
+//        stage.setScene(scene);
+//        stage.show();
         buttonVoltar.getScene().getWindow().hide();
     }
 
