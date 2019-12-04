@@ -2,6 +2,7 @@
 package model;
 //package dao;
 
+import dao.DAOFabricante;
 import java.sql.SQLException;
 //import dao.DAOFabricante;
 import java.util.ArrayList;
@@ -12,6 +13,8 @@ public class ModelFabricante implements CRUD{
     private int id;
     private String cnpj;
     private static ArrayList<ModelFabricante> fabricantes; 
+    
+    private DAOFabricante dao; 
 
     //Com ID
     public ModelFabricante(String nome, /*ModelBrinquedo brinquedo,*/  String cnpj, int id) {
@@ -20,16 +23,22 @@ public class ModelFabricante implements CRUD{
         this.nome = nome;
         this.cnpj = cnpj;
        // this.brinquedo = brinquedo;
-        this.id = id;
-    }
+        this.id = id; 
+        
+        dao = new DAOFabricante(); 
+        
+        
+    } 
 
     //Sem ID
-    public ModelFabricante(String nome/*, DAOFabricante dao*/) {
-        this.nome = nome;
-        this.id = -1;
-        this.cnpj = cnpj;
-        //this.dao = dao;
-    }
+    public ModelFabricante(String nome, String cnpj/*, DAOFabricante dao*/) {
+        
+        
+        this(nome, cnpj, -1); 
+        
+        //this.dao = dao; 
+        
+    } 
 
     public ModelFabricante() {
     }
@@ -84,25 +93,14 @@ public class ModelFabricante implements CRUD{
     @Override
     public ArrayList<Object> getAll() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-<<<<<<< HEAD
-    public void atualizarArrayFabricante() throws SQLException{
-        fabricantes = (ArrayList<ModelFabricante>)(ArrayList<?>) new dao.DAOFabricante().getAll(); 
-
     } 
-    
-    public ArrayList<ModelFabricante> getFabricante() {
-        return fabricantes;
-    } 
-=======
 
     //
 //    public void atualizarArrayFabricante() throws SQLException{
 //        fabricante = (ArrayList<ModelFabricante>)(ArrayList<?>) dao.getAll();
 //    }
     public void atualizarArrayFabricante() throws SQLException{
-        fabricantes = (ArrayList<ModelFabricante>)(ArrayList<?>) new dao.DAOFabricante().getAll(); 
+        fabricantes = (ArrayList<ModelFabricante>)(ArrayList<?>) dao.getAll(); 
 
     }
     
