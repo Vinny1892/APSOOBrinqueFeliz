@@ -14,8 +14,9 @@ import model.ModelFornecedor;
  * @author kaio
  */
 public class ControllerFornecedor {
-    public static ArrayList<ModelFornecedor> todosFornecedores(){
-        return /*new ModelFornecedor().getAllArray()*/ null;
+    public static ArrayList<ModelFornecedor> todosFornecedores() throws SQLException{
+        new ModelFornecedor().atualizarArrayFornecedor();
+        return new ModelFornecedor().getAllArray();
     }
     
     public static int salvar(ModelFornecedor forncedor) throws SQLException{

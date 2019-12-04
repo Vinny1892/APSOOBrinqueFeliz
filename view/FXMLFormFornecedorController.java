@@ -117,11 +117,11 @@ public class FXMLFormFornecedorController implements Initializable {
 
     @FXML
     void onActionbtnVoltar(ActionEvent event) throws IOException {
-        Parent fornecedor = FXMLLoader.load(getClass().getResource("FXML7Fornecedor.fxml"));
-        Scene scene = new Scene(fornecedor);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
+//        Parent fornecedor = FXMLLoader.load(getClass().getResource("FXML7Fornecedor.fxml"));
+//        Scene scene = new Scene(fornecedor);
+//        Stage stage = new Stage();
+//        stage.setScene(scene);
+//        stage.show();
         btnVoltar.getScene().getWindow().hide();
 
     }

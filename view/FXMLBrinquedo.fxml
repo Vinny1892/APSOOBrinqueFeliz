@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="517.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXMLBrinquedoController">
+   <children>
+      <TableView fx:id="tableViewBrinquedo" prefHeight="444.0" prefWidth="824.0">
+        <columns>
+          <TableColumn fx:id="columnNome" prefWidth="132.0" text="Nome" />
+          <TableColumn fx:id="columnCodigo" prefWidth="73.0" text="Codigo" />
+            <TableColumn fx:id="columnPreco" prefWidth="106.0" text="Preço" />
+            <TableColumn fx:id="columnCategoria" prefWidth="146.0" text="Categoria" />
+            <TableColumn fx:id="columnFabricante" prefWidth="153.0" text="Fabricante" />
+            <TableColumn fx:id="columnDescricao" prefWidth="213.0" text="Descriçao" />
+        </columns>
+      </TableView>
+      <Button fx:id="buttonEditar" layoutX="23.0" layoutY="462.0" mnemonicParsing="false" onAction="#onActionbuttonEditar" text="Editar" />
+      <Button fx:id="buttonExcluir" layoutX="129.0" layoutY="462.0" mnemonicParsing="false" onAction="#onActionbuttonExcluir" text="Excluir" />
+      <Button fx:id="buttonCriar" layoutX="222.0" layoutY="462.0" mnemonicParsing="false" onAction="#onActionbuttonCriar" text="Criar" />
+      <Button fx:id="buttonVoltar" layoutX="302.0" layoutY="462.0" mnemonicParsing="false" onAction="#onActionbuttonVoltar" text="Voltar" />
+   </children>
+</AnchorPane>

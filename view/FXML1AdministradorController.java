@@ -60,7 +60,7 @@ public class FXML1AdministradorController implements Initializable {
 
     @FXML
     private Button buttonBackUp;
-
+    
     @FXML
     void buttonCategorias(ActionEvent event) throws IOException {
         Parent categoria = FXMLLoader.load(getClass().getResource("FXML2Categoria.fxml"));
@@ -83,12 +83,12 @@ public class FXML1AdministradorController implements Initializable {
 
     @FXML
     void onActionbuttonBrinquedos(ActionEvent event) throws IOException {
-        Parent paret = FXMLLoader.load(getClass().getResource("FXML1Brinquedo.fxml"));
+        Parent paret = FXMLLoader.load(getClass().getResource("FXMLBrinquedo.fxml"));
         Scene scene = new Scene(paret);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
-        buttonCategorias.getScene();
+        buttonBrinquedos.getScene();
     }
 
     @FXML
