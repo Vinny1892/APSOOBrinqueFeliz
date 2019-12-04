@@ -1,6 +1,7 @@
 
 package model;
 
+import dao.DAOCliente;
 import java.sql.SQLException;
 import java.util.ArrayList;
 //import dao.DAOCliente;
@@ -11,20 +12,27 @@ public class ModelCliente extends ModelPessoa implements CRUD{
     private String rg;
     private int id;
     private static ArrayList<ModelCliente> clientes; 
+    
+    private DAOCliente dao = new DAOCliente(); 
+    
 
     //Com ID
-    public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado, Date dataDeNascimento, String rg, int id) {
+    public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado, Date dataDeNascimento, String rg, int id) throws SQLException {
         super(nome, cpf, dataDeNascimento, endereco, cep, cidade, estado, id);
         this.id = id;
-        this.rg = rg;
-    }
+        this.rg = rg; 
+        
+        
+    } 
 
     //Sem ID
-    public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado, Date dataDeNascimento, String rg) {
+    public ModelCliente(String nome, String cpf, String endereco, String cep, String cidade, String estado, Date dataDeNascimento, String rg) throws SQLException {
         super(nome, cpf, dataDeNascimento, endereco, cep, cidade, estado);
         this.rg = rg;
-        this.id = -1;
-    }
+        this.id = -1; 
+        
+        
+    } 
 
 
     public ModelCliente() {
@@ -57,7 +65,7 @@ public class ModelCliente extends ModelPessoa implements CRUD{
 
     @Override
     public int salvar(Object obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.salvar(obj); // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

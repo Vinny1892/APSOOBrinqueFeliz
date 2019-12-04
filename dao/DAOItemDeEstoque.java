@@ -24,9 +24,9 @@ public class DAOItemDeEstoque extends GenericDAO_CRUD {
 
 	protected int createId() throws SQLException { 
         
-        System.out.println("SELECT id_item_estoque FROM itens_estoque order by ? desc limit 1"); 
-        PreparedStatement stmt = getConnection().prepareStatement("SELECT id_item_estoque FROM itens_estoque order by ? desc limit 1"); 
-        stmt.setString(1, "id_item_estoque"); 
+        System.out.println("SELECT id_item_estoque FROM itens_estoque order by id_item_estoque desc limit 1"); 
+        PreparedStatement stmt = getConnection().prepareStatement("SELECT id_item_estoque FROM itens_estoque order by id_item_estoque desc limit 1"); 
+        // stmt.setString(1, "id_item_estoque"); 
         stmt.execute(); 
         ResultSet rs = stmt.executeQuery(); 
         while (rs.next()) {
@@ -59,10 +59,13 @@ public class DAOItemDeEstoque extends GenericDAO_CRUD {
             int id = createId();
 
             save(insert, id, ItemDeEstoque.getBrinquedo().getId(), ItemDeEstoque.getQuantidade());
-            System.out.println("Metodo salvar DAOItemDeEstoque realizado");
-            return id;
-        } catch (MySQLIntegrityConstraintViolationException e) {
-            JOptionPane.showMessageDialog(null, "ItemDeEstoque Ja cadastrado no BD");
+            System.out.println("Metodo salvar DAOItemDeEstoque realizado"); 
+            
+            return id; 
+            
+            
+        } catch (MySQLIntegrityConstraintViolationException e) { 
+            JOptionPane.showMessageDialog(null, "ItemDeEstoque Ja cadastrado no BD"); 
         } catch (SQLException ex) {
             System.out.println(ex);
             JOptionPane.showMessageDialog(null, "Erro ao inserir ItemDeEstoque");

@@ -15,12 +15,18 @@ public class DAOCliente extends GenericDAO_CRUD {
 
     @Override
     public int salvar(Object object) throws SQLException {
-        try {
-            ModelCliente cliente = (ModelCliente) object;
-            String insert = "INSERT INTO clientes (rg, nome, data_nascimento, endereco, cep, cidade, estado) VALUES(?, ?, ?, ?, ?, ?,?) ";
-            save(insert, cliente.getRg(), cliente.getNome(), cliente.getDataDeNascimento(), cliente.getEndereco(), cliente.getCep(), cliente.getCidade(), cliente.getEstado());
+        try { 
+            ModelCliente cliente = (ModelCliente) object; 
+            
+            if(cliente.getId() > -1 ) 
+            	throw new RuntimeException("Valor ja inserido, para alterar o valor use o update"); 
+            
+            int id = createId(); 
+            
+            String insert = "INSERT INTO clientes (id_cliente, rg, cpf, nome, data_nascimento, endereco, cep, cidade, estado) VALUES(?, ?, ?, ?, ?, ?, ?, ?,?) ";
+            save(insert, id, cliente.getRg(), cliente.getCpf(), cliente.getNome(), cliente.getDataDeNascimento(), cliente.getEndereco(), cliente.getCep(), cliente.getCidade(), cliente.getEstado());
             System.out.println("Metodo salvar DAOCliente realizado");
-            return 1;
+            return 1; 
         } catch (MySQLIntegrityConstraintViolationException e) {
             JOptionPane.showMessageDialog(null, "DAOCliente Ja cadastrado no BD");
         } catch (SQLException ex) {
@@ -28,7 +34,32 @@ public class DAOCliente extends GenericDAO_CRUD {
             JOptionPane.showMessageDialog(null, "Erro ao inserir DAOCliente");
         }
         return -1;
-    }
+    } 
+    
+    protected int createId() throws SQLException { 
+	        
+	        System.out.println("SELECT id_cliente FROM clientes order by id_cliente desc limit 1"); 
+	        java.sql.PreparedStatement stmt = getConnection().prepareStatement("SELECT id_cliente FROM clientes order by id_cliente desc limit 1"); 
+	        // stmt.setString(1, "id_brinquedo"); 
+	        stmt.execute(); 
+	        ResultSet rs = stmt.executeQuery(); 
+	        while (rs.next()) {
+	            
+	            int ultimoId = rs.getInt("id_cliente"); 
+	            
+	            return ultimoId + 1; 
+	            
+	           
+	        } 
+	        
+	        
+	        rs.close();
+	        stmt.close(); 
+                
+	        return 0; 
+	        
+	        
+	   } 
 
     @Override
     public boolean atualizar(Object object) throws SQLException {

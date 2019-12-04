@@ -9,10 +9,11 @@ public class ModelItemDeEstoque implements CRUD{
     private static ArrayList<ModelItemDeEstoque> itensDeEstoque; 
     private ModelBrinquedo brinquedo; //tirar? 
     private int quantidade;
-    private int id;
+    private int id; 
+    
+    private DAOItemDeEstoque dao; 
 
-    public ModelItemDeEstoque() throws SQLException {
-        atualizarArrayListItensNoEstoque();
+    public ModelItemDeEstoque() throws SQLException { 
     }
 
     //Com ID
@@ -20,16 +21,23 @@ public class ModelItemDeEstoque implements CRUD{
         atualizarArrayListItensNoEstoque();
         this.brinquedo = brinquedo;
         this.quantidade = quantidade;
-        this.id = id;
-    }
+        this.id = id; 
+        
+        this.dao = new DAOItemDeEstoque(); 
+        
+        
+    } 
 
     //Sem ID
     public ModelItemDeEstoque(ModelBrinquedo brinquedo, int quantidade) throws SQLException {
         this.brinquedo = brinquedo;
         this.quantidade = quantidade;
-        this.id = -1;
-        atualizarArrayListItensNoEstoque();
-    }
+        this.id = -1; 
+        
+        this.dao = new DAOItemDeEstoque(); 
+        
+        
+    } 
 
     public static ArrayList<ModelItemDeEstoque> getItensNoEstoque() {
         return itensDeEstoque;
@@ -92,14 +100,7 @@ public class ModelItemDeEstoque implements CRUD{
             return false;
         }
         return true;
-    }
-    
-    
-    
-
-
-    //acesso DAO
-    private DAOItemDeEstoque dao = new DAOItemDeEstoque();
+    } 
 
     
     
@@ -115,17 +116,17 @@ public class ModelItemDeEstoque implements CRUD{
 
     @Override
     public boolean deletar(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        return dao.deletar(id); // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    } 
 
     @Override
     public Object getById(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        return dao.getById(id); // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    } 
 
     @Override
     public ArrayList<Object> getAll() throws SQLException {
-        return new DAOItemDeEstoque().getAll();
+        return dao.getAll(); 
     }
 
 

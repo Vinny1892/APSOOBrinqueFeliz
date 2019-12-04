@@ -15,21 +15,56 @@ public class DAOFornecedor extends GenericDAO_CRUD {
 	@Override
 	public int salvar(Object object) throws SQLException {
 		try {
-			ModelFornecedor fornecedor = (ModelFornecedor) object;
-			String insert ="INSERT INTO fornecedores(cnpj, nome_fantasia, razao_social, "
-					+ "endereco, cidade, estado, telefone, email)";
-			save(insert, fornecedor.getCnpj(), fornecedor.getNomeFantasia(), fornecedor.getRazaoSocial(), fornecedor.getEndereco(), 
+			ModelFornecedor fornecedor = (ModelFornecedor) object; 
+                        
+                        if(fornecedor.getId() > -1 )
+                            throw new RuntimeException("Valor ja inserido, para alterar o valor use o update"); 
+                        
+			String insert ="INSERT INTO fornecedores(id_fornecedor, cnpj, nome_fantasia, razao_social, " 
+					+ "endereco, cidade, estado, telefone, email) values (?,?,?,?,?,?,?,?,?) "; 
+                        
+                        int id = createId(); 
+                        
+			save(insert, id, fornecedor.getCnpj(), fornecedor.getNomeFantasia(), fornecedor.getRazaoSocial(), fornecedor.getEndereco(), 
 					     fornecedor.getCidade(), fornecedor.getEstado(), fornecedor.getTelefone(), fornecedor.getEmail());
-			return 1;
+			return id; 
+                        
+                        
 		} catch (MySQLIntegrityConstraintViolationException e ) {
 			JOptionPane.showMessageDialog(null, "Fornecedor Ja cadastrado no BD");
 			return -1;
 		}catch (SQLException ex) {
 	            System.out.println(ex);
-	            JOptionPane.showMessageDialog(null, "Erro ao inserir Brinquedo");
+	            JOptionPane.showMessageDialog(null, "Erro ao inserir Fornecedor"); 
 	        }
 		return -1;
-	}
+	} 
+        
+        protected int createId() throws SQLException { 
+        
+        System.out.println("SELECT id_categoria FROM categorias "); 
+        PreparedStatement stmt = getConnection().prepareStatement("SELECT id_fornecedor FROM fornecedores order by id_fornecedor desc limit 1"); 
+        // stmt.setString(1, "id_categoria"); 
+        stmt.execute(); 
+        ResultSet rs = stmt.executeQuery(); 
+        while (rs.next()) {
+            
+            int ultimoId = rs.getInt("id_fornecedor"); 
+            
+            System.out.println("Ultimo Id: " + ultimoId); 
+            
+            return ultimoId + 1; 
+            
+           
+        } 
+        
+        
+        rs.close();
+        stmt.close();
+        return 0;
+        
+        
+   } 
 
 	@Override
 	public boolean atualizar(Object object) throws SQLException {

@@ -24,26 +24,25 @@ public class ModelBrinquedo implements CRUD{
     }
 
     //Com ID
-    public ModelBrinquedo(ModelCategoria categoria, String nome, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor, int id) {
+    public ModelBrinquedo(ModelCategoria categoria, String nome, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor, int id) throws SQLException {
         this.categoria = categoria;
         this.nome = nome;
         this.preco = preco;
         this.fabricante = fabricante;
         this.descricao = descricao;
         this.fornecedor = fornecedor;
-        this.id = id;
-    }
+        this.id = id; 
+        
+        
+    } 
 
     //Sem ID
-    public ModelBrinquedo(ModelCategoria categoria, String nome, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor/*, DAOBrinquedo dao*/) {
-        this.categoria = categoria;
-        this.nome = nome;
-        this.preco = preco;
-        this.fabricante = fabricante;
-        this.descricao = descricao;
-        this.fornecedor = fornecedor;
-        this.id = -1;
-    }
+    public ModelBrinquedo(ModelCategoria categoria, String nome, Double preco, ModelFabricante fabricante, String descricao, ModelFornecedor fornecedor/*, DAOBrinquedo dao*/) throws SQLException {
+        
+        this(categoria, nome, preco, fabricante, descricao, fornecedor, -1); 
+        
+        
+    } 
 
 
 

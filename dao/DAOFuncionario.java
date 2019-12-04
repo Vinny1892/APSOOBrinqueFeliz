@@ -81,9 +81,9 @@ public class DAOFuncionario extends GenericDAO_CRUD {
     
     protected int createId() throws SQLException { 
         
-        System.out.println("SELECT funcionarios.id_funcionario FROM funcionarios order by ? desc limit 1"); 
-        PreparedStatement stmt = getConnection().prepareStatement("SELECT id_funcionario FROM funcionarios order by ? desc limit 1"); 
-        stmt.setString(1, "id_funcionario"); 
+        System.out.println("SELECT funcionarios.id_funcionario FROM funcionarios order by id_funcionario desc limit 1"); 
+        PreparedStatement stmt = getConnection().prepareStatement("SELECT id_funcionario FROM funcionarios order by id_funcionario desc limit 1"); 
+        // stmt.setString(1, "id_funcionario"); 
         stmt.execute(); 
         ResultSet rs = stmt.executeQuery(); 
         while (rs.next()) {
@@ -97,7 +97,8 @@ public class DAOFuncionario extends GenericDAO_CRUD {
         
         
         rs.close();
-        stmt.close();
+        stmt.close(); 
+        
         return 0;//fabricantes; 
         
         

@@ -16,14 +16,16 @@ public class DAOCategoria extends GenericDAO_CRUD {
 
 	protected int createId() throws SQLException { 
         
-        System.out.println("SELECT id_categoria FROM categorias order by ? desc limit 1"); 
-        PreparedStatement stmt = getConnection().prepareStatement("SELECT id_categoria FROM categorias order by ? desc limit 1"); 
-        stmt.setString(1, "id_categoria"); 
+        System.out.println("SELECT id_categoria FROM categorias "); 
+        PreparedStatement stmt = getConnection().prepareStatement("SELECT id_categoria FROM categorias order by id_categoria desc limit 1"); 
+        // stmt.setString(1, "id_categoria"); 
         stmt.execute(); 
         ResultSet rs = stmt.executeQuery(); 
         while (rs.next()) {
             
             int ultimoId = rs.getInt("id_categoria"); 
+            
+            System.out.println("Ultimo Id: " + ultimoId); 
             
             return ultimoId + 1; 
             
@@ -37,9 +39,10 @@ public class DAOCategoria extends GenericDAO_CRUD {
         
         
    } 
+        
+        
     @Override
-    public int salvar(Object object) throws SQLException {
-        try {
+    public int salvar(Object object) throws SQLException { 
             ModelCategoria categoria = (ModelCategoria) object;
             
             
@@ -52,14 +55,7 @@ public class DAOCategoria extends GenericDAO_CRUD {
             
             save(insert, id, categoria.getNome());
             System.out.println("Metodo salvar Daocategoria realizado");
-            return id;
-        } catch (MySQLIntegrityConstraintViolationException e) {
-            JOptionPane.showMessageDialog(null, "categoria Ja cadastrado no BD");
-        } catch (SQLException ex) {
-            System.out.println(ex);
-            JOptionPane.showMessageDialog(null, "Erro ao inserir categoria");
-        }
-        return -1;
+            return id; 
     }
 
     @Override
