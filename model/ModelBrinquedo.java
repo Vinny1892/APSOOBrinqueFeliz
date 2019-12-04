@@ -158,7 +158,7 @@ public class ModelBrinquedo implements CRUD{
     }
 
     public ModelBrinquedo getByIdArray(int id) throws SQLException  {
-        atualizarArrayBrinquedos(); 
+        //atualizarArrayBrinquedos(); 
         
         //return brinquedo.get(brinquedo.indexOf(Object.getId() == id));
         // brinquedo.forEach(b -> {
