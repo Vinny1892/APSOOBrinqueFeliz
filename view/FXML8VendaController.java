@@ -42,11 +42,13 @@ import model.ModelVenda;
  */
 public class FXML8VendaController  implements Initializable {
     
-    
+    public FXML8VendaController (ModelFuncionario funcionario){
+        this.funcionarioLogado = funcionario;
+    }
     
       @Override
     public void initialize(URL url, ResourceBundle rb) {
-        this.funcionarioLogado = new FXML0loginController().getUserLogado();
+          System.out.println(funcionarioLogado.getEmail());
              tableViewCarrinhoDeCompras.getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
             buttonExcluirItemDoCarrinhoDeCompra.setDisable(false);
         });

@@ -17,6 +17,7 @@ public class ConexaoBDMySQL {
 
     public static Connection getConnection() {
         System.out.println("Conectando ao Banco de Dados");
+        System.out.println("passou Aqui");
         try {
             Class.forName(DRIVER_CLASS);
             return DriverManager.getConnection(URL_MYSQL, USER, PASS);
