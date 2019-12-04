@@ -82,7 +82,7 @@ public class FXML7FornecedorController implements Initializable {
     private ObservableList<ModelFornecedor> obsTableFornecedores; 
 
     @FXML
-    void onActionButtonCriar(ActionEvent event) throws IOException {
+    void onActionButtonCriar(ActionEvent event) throws IOException, SQLException {
         Parent categoria = FXMLLoader.load(getClass().getResource("FXMLFormFornecedor.fxml"));
         Scene scene = new Scene(categoria);
         Stage stage = new Stage();
@@ -98,7 +98,7 @@ public class FXML7FornecedorController implements Initializable {
     }
 
     @FXML
-    void onActionbuttonEditar(ActionEvent event) throws IOException {
+    void onActionbuttonEditar(ActionEvent event) throws IOException, SQLException {
         Parent categoria = FXMLLoader.load(getClass().getResource("FXMLFormFornecedor.fxml"));
         Scene scene = new Scene(categoria);
         Stage stage = new Stage();
@@ -112,7 +112,7 @@ public class FXML7FornecedorController implements Initializable {
         buttonCriar.getScene().getWindow().hide();
     }
     
-    void inicilizarTableForncedor(){
+    void inicilizarTableForncedor() throws SQLException{
         fornecedores = controller.ControllerFornecedor.todosFornecedores();
         columnCNPJ.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
         columnCidade.setCellValueFactory(new PropertyValueFactory<>("cidade"));
